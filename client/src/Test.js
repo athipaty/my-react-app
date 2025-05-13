@@ -6,6 +6,7 @@ export function Test() {
             <h1>{count}</h1>
             <div className="flex gap-4">
                 <button onClick={() => setCount(count - 1)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300" >Minus</button>
+                <button onClick={() => setCount(count + 1)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Plus</button>
             </div>
         </div>
     );
