@@ -13,7 +13,7 @@ export function Test() {
 
   return (
     <div className="text-center text-xl font-bold">
-      <p>My first App!</p>
+      <p>My first simple app for beginer!!</p>
       <p>{count}</p>
       <button 
         className="bg-blue-500 py-2 px-4 mx-2 rounded text-white"
