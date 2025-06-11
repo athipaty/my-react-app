@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export default function App() {
     const products = [
-        { id: 1, name: "Tooth Brush", price: 30 },
-        { id: 2, name: "Tooth Plate", price: 45 },
+        { id: 1, name: "ToothBrush", price: 30 },
+        { id: 2, name: "ToothPaste", price: 45 },
         { id: 3, name: "Soap", price: 25 }
     ];
 
@@ -46,7 +46,7 @@ export default function App() {
                 <h2 className="text-xl font-semibold mb-2">🛒 Shopping Cart</h2>
 
                 {cart.length === 0 ? (
-                    <p className="text-gray-500">No profuct</p>
+                    <p className="text-gray-500">No product</p>
                 ) : (
                     <ul className="max-w-md mx-auto text-left p-2">
                         {cart.map((item, index) => (
