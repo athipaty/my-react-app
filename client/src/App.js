@@ -1,61 +1,54 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function App() {
 
-    const [celsius, setCelsius] = useState("")
-    const [fahrenheit, setFahrenheit] = useState("")
-    const [mode, setMode] = useState("light");
+    const [second, setSecond] = useState(0);
+    const [isRunning, setIsRunning] = useState(false)
+
+    function toggleRunning() {
+        setIsRunning(!isRunning)
+    }
 
     function handleReset() {
-        setCelsius("");
-        setFahrenheit("");
+        setSecond(0);
+        setIsRunning(false)
     }
 
-    function handleTheme() {
-        setMode(mode === "light" ? "dark" : "light")
+    function formatTime(totalSeconds) {
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+
+        return `${hours}:${minutes}:${seconds}`;
     }
+
+    useEffect(() => {
+        let internalId;
+        if (isRunning) {
+            internalId = setInterval(() => {
+                setSecond((previous) => previous + 1)
+            }, 1000)
+        }
+
+        return () => clearInterval(internalId)
+    }, [isRunning])
 
     return (
-        <div className={`text-center p-6 ${mode === "light" ? "bg-white text-black" : "bg-gray-900 text-white" }`}>
-            <h1 className="text-2xl font-bold mb-6">Temperature Calculation</h1>
-            <div className="mb-4 ">
-                <label className="font-medium mb-2 block">Celsius</label>
-                <input
-                    type="number"
-                    value={celsius}
-                    onChange={(e) => {
-                        const c = e.target.value;
-                        setCelsius(c);
-                        setFahrenheit(c === "" ? "" : (parseFloat(c * 9 /5 +32).toFixed(2)))
-                    }}
-                    className="border px-4 py-2 text-center w-64 rounded text-gray-700 bg-gray-100"
-                    placeholder="Input a Celsius"
-                />
-            </div>
-            <div className="mb-4 ">
-                <label className="font-medium mb-2 block">Fahrenheit</label>
-                <input
-                    type="number"
-                    value={fahrenheit}
-                    onChange={(e) => {
-                        const f = e.target.value;
-                        setFahrenheit(f);
-                        setCelsius(f === "" ? "" : (((parseFloat(f)-32) / 9 * 5).toFixed(2)))
-                    }}
-                    className="border rounded px-4 py-2 text-center bg-gray-100 text-gray-700 w-64"
-                    placeholder="Input a Fahrenheit"
-                />
-            </div>
-            
-            <button 
-                onClick={handleReset}
-                className="bg-red-500 px-4 py-2 rounded text-white mt-2"
-            >Reset</button>
+        <div className="text-center">
+            <h1 className="text-xl font-bold p-4 mb-2">Stop Watch</h1>
+            <p className="mb-4 text-xl">{formatTime(second)}</p>
 
             <button
-                className="rounded boder mb-4 py-2 px-4 ml-2 bg-blue-500 text-white"
-                onClick={handleTheme}
-            >Mode</button>
+                className={`py-2 text-white px-4 rounded ${isRunning === true ? "bg-red-500" : "bg-blue-500"} transition-1s`}
+                onClick={toggleRunning}
+            >{isRunning === true ? "Pause" : "Start"}</button>
+
+            <button
+                className="bg-green-500 text-white py-2 px-4 rounded ml-2"
+                onClick={handleReset}
+
+            >Reset</button>
+
         </div>
     )
-}
+};
