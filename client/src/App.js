@@ -1,60 +1,41 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export default function App() {
-    const [task, setTask] = useState("");
-    const [list, setList] = useState([]);
 
-    function handleAddTask() {
-
-        if(task.trim() === "") return
-
-        const newTask = {
-            id: list.length + 1,
-            text: task,
-        };
-
-        setList([...list, newTask]);
-        setTask(""); // ล้างค่า input หลังเพิ่ม
-    }
-
-    function handleDelete(id) {
-        const updateList = list.filter(item => item.id !== id)
-        setList(updateList);
-    }
+    const [celsius, setCelsius] = useState("")
+    const [fahrenheit, setFahrenheit] = useState("")
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start p-4 bg-gray-50">
-            <h1 className="text-2xl font-bold mb-4">To do list</h1>
-
-            <div className="flex flex-col sm:flex-row items-center gap-2 w-full max-w-md">
+        <div className="text-center p-6">
+            <h1 className="text-2xl font-bold mb-6">Temperature Calculation</h1>
+            <div className="mb-4 ">
+                <label className="font-medium mb-2 block">Celsius</label>
                 <input
-                    type="text"
-                    className="border px-4 py-2 w-full rounded"
-                    placeholder="Input your task"
-                    onChange={(e) => setTask(e.target.value)}
-                    value={task}
+                    type="number"
+                    value={celsius}
+                    onChange={(e) => {
+                        const c = e.target.value;
+                        setCelsius(c);
+                        setFahrenheit(c === "" ? "" : (parseFloat(c * 9 /5 +32).toFixed(2)))
+                    }}
+                    className="border px-4 py-2 text-center w-64  rounded"
+                    placeholder="Input a Celsius"
                 />
-                <button
-                    className="bg-blue-500 px-4 py-2 rounded text-white w-full sm:w-auto"
-                    onClick={handleAddTask}
-                >
-                    Add
-                </button>
             </div>
-
-            <div className="mt-4 w-full max-w-md">
-                {list.map((item) => (
-                    <div
-                        key={item.id}
-                        className="flex justify-between items-center border rounded px-4 py-2 mb-2 bg-white shadow-sm"
-                    >
-                        <span className="text-left">{item.text}</span>
-                        <button className="bg-red-500 text-white px-2 py-1 rounded" onClick={() => handleDelete(item.id)}>
-                            Delete
-                        </button>
-                    </div>
-                ))}
+            <div className="mb-4 ">
+                <label className="font-medium mb-2 block">Fahrenheit</label>
+                <input
+                    type="number"
+                    value={fahrenheit}
+                    onChange={(e) => {
+                        const f = e.target.value;
+                        setFahrenheit(f);
+                        setCelsius(f === "" ? "" : (((parseFloat(f)-32) / 9 * 5).toFixed(2)))
+                    }}
+                    className="border rounded px-4 py-2 text-center bg-gray-100 text-gray-700 w-64"
+                    placeholder="Input a Fahrenheit"
+                />
             </div>
         </div>
-    );
+    )
 }
