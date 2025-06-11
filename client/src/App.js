@@ -38,7 +38,7 @@ export default function App() {
 
             {cart.length > 0 && (
                 <p className="mt-4 font-bold">
-                    รวมทั้งหมด: {cart.reduce((sum, item) => sum + item.price, 0)} Bath
+                    Total: {cart.reduce((sum, item) => sum + item.price, 0)} Bath
                 </p>
             )}
 
