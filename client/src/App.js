@@ -38,15 +38,15 @@ export default function App() {
 
             {cart.length > 0 && (
                 <p className="mt-4 font-bold">
-                    รวมทั้งหมด: {cart.reduce((sum, item) => sum + item.price, 0)} บาท
+                    รวมทั้งหมด: {cart.reduce((sum, item) => sum + item.price, 0)} Bath
                 </p>
             )}
 
             <div className="mt-8">
-                <h2 className="text-xl font-semibold mb-2">🛒 ตะกร้าของคุณ</h2>
+                <h2 className="text-xl font-semibold mb-2">🛒 Shopping Cart</h2>
 
                 {cart.length === 0 ? (
-                    <p className="text-gray-500">ยังไม่มีสินค้าในตะกร้า</p>
+                    <p className="text-gray-500">No profuct</p>
                 ) : (
                     <ul className="max-w-md mx-auto text-left p-2">
                         {cart.map((item, index) => (
