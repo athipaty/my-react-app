@@ -1,67 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"
 
 export default function App() {
-    const products = [
-        { id: 1, name: "ToothBrush", price: 30 },
-        { id: 2, name: "ToothPaste", price: 45 },
-        { id: 3, name: "Soap", price: 25 }
-    ];
-
-    const [cart, setCart] = useState([]);
-
-    function handleCart(product) {
-        setCart([...cart, product])
+    const [catUrl, setCatUrl] = useState("")
+    async function fetchCat() {
+        const response = await fetch("https://cataas.com/cat?json=true")
+        const data = await response.json();
+        setCatUrl(data.url)
     }
-
-    function handleDelete(index1) {
-        const newUpdate = cart.filter((item, index2) => index1 !== index2)
-        setCart(newUpdate)
-    }
+    // 🟢 เพิ่ม useEffect ตรงนี้ (จะ fetch แมว 1 ตัวทันทีที่เปิดเว็บ)
+    useEffect(() => {
+        fetchCat();
+    }, []);
 
     return (
-        <div className="text-center p-6">
-            <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
-            {products.map((item) => (
-                <div key={item.id} className="border p-3 mb-2 flex justify-between items-center max-w-md mx-auto shadow">
-
-                    <div>
-                        <p className="text-start">{item.name}</p>
-                        <p className="text-gray-500 text-start">{item.price} Baht</p>
-                    </div>
-
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded transition-transform duration-30 active:scale-95 focus:ouline-none shadow" onClick={() => handleCart(item)}>
-                        Add
-                    </button>
-
-                </div>
-            ))}
-
-            {cart.length > 0 && (
-                <p className="mt-4 font-bold">
-                    Total: {cart.reduce((sum, item) => sum + item.price, 0)} Bath
-                </p>
-            )}
-
-            <div className="mt-8">
-                <h2 className="text-xl font-semibold mb-2">🛒 Shopping Cart</h2>
-
-                {cart.length === 0 ? (
-                    <p className="text-gray-500">No product</p>
+        <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+            <h1 className="text-2xl font-bold m-6">Random Cat</h1>
+            <div className="text-center bg-white max-w-md p-6 rounded shadow">
+                {catUrl ? (
+                    <img src={catUrl} alt="Cat Image" width={300} height={250} className="rounded mb-4 object-cover w-72 h-72" />
                 ) : (
-                    <ul className="max-w-md mx-auto text-left p-2">
-                        {cart.map((item, index) => (
-                            <li key={index} className="border-b py-2 flex justify-between">
-                                <span>{item.name}</span>
-                                <span>{item.price} ฿</span>
-                                <button className="px-2 py-1 bg-gray-500 text-white rounded" onClick={() => handleDelete(index)}>Delete</button>
-                            </li>
-                        ))}
-                    </ul>
+                    <p>No cat image found</p>
                 )}
+                <button className="py-3 px-4 text-white bg-blue-500 rounded mt-4" onClick={fetchCat}
+
+                >Rnadom</button>
             </div>
-
-
-
         </div>
     )
 }
