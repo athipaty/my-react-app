@@ -11,7 +11,7 @@ export default function App() {
     // ดึงรายชื่อโปเกมอนทั้งหมด
     useEffect(() => {
         async function fetchPokemonList() {
-            const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1300");
+            const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=5000");
             const data = await res.json();
             setPokemonList(data.results.map(p => p.name));
         }
