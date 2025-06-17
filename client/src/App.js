@@ -195,7 +195,7 @@ export default function App() {
 
                 {/* แสดงข้อมูลโปเกมอน + ลูกศรซ้ายขวา */}
                 {pokemon && (
-                    <div className="mt-1 flex flex-col items-center">
+                    <div className="flex flex-col items-center">
                         <div className="flex items-center mb-2 gap-4">
                             <button
                                 onClick={() => fetchPokemonById(pokemon.id - 1)}
@@ -205,9 +205,9 @@ export default function App() {
                                 ⬅️
                             </button>
                             <img
-                                src={pokemon.sprites.front_default}
+                                src={`https://img.pokemondb.net/sprites/home/normal/${pokemon.name}.png`}
                                 alt={pokemon.name}
-                                width={120}
+                                width={100}
                             />
                             <button
                                 onClick={() => fetchPokemonById(pokemon.id + 1)}
@@ -286,7 +286,7 @@ export default function App() {
                 )}
             </div>
             <footer className="mt-8 text-xs text-gray-400">
-                © 2025 ตัวอย่างโดย YourName | Powered by <a href="https://pokeapi.co/" className="underline" target="_blank" rel="noopener noreferrer">PokéAPI</a>
+                © 2025 TingTong | Powered by <a href="https://pokeapi.co/" className="underline" target="_blank" rel="noopener noreferrer">PokéAPI</a>
             </footer>
         </div>
     );
