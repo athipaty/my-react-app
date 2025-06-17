@@ -150,7 +150,7 @@ export default function App() {
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-blue-100 p-6">
-            <h1 className="text-2xl font-bold mb-4">Pokemon Info + Evolution Chain</h1>
+            <h1 className="text-2xl font-bold mb-4">Pokemon Info</h1>
             <div className="bg-white p-6 rounded shadow max-w-md w-full text-center relative">
                 {/* Input + Suggestion */}
                 <div className="relative">
