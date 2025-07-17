@@ -50,6 +50,42 @@ const recipes = [
       },
     ],
   },
+  {
+    name: 'Yuzu Kosho',
+    image: '/images/yozu-kosho.jpg',
+    ingredients: [
+      {
+        item: 'Seasoned Salt',
+        quantity: 420,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg',
+      },
+      {
+        item: 'Miwon',
+        quantity: 60,
+        unit: 'g',
+        image: '/images/ingredients/miwom.jpg',
+      },
+      {
+        item: 'Black Pepper Powder',
+        quantity: 45,
+        unit: 'g',
+        image: '/images/ingredients/black-pepper-powder.jpg',
+      },
+      {
+        item: 'Yuju Cheong',
+        quantity: 3900,
+        unit: 'g',
+        image: '/images/ingredients/yuju-cheong.jpg',
+      },
+      {
+        item:'Korean Chili',
+        quantity: 9000,
+        unit: 'g',
+        image: '/images/ingredients/korean-chili.jpg',
+      }
+    ]
+  }
 ];
 
 export function Sgo() {
@@ -67,7 +103,7 @@ export function Sgo() {
     <div className="min-h-screen p-8 bg-gray-50 text-center">
       {/* Search Bar */}
       <input
-        className="w-1/2 p-3 border rounded text-xl text-center"
+        className="w-1/2 p-3 border rounded text-m text-center"
         placeholder="Miso Sauce"
         value={query}
         onChange={(e) => {
