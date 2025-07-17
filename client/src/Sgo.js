@@ -85,6 +85,42 @@ const recipes = [
         image: '/images/ingredients/korean-chili.jpg',
       }
     ]
+  },
+  {
+    name: 'Sriracha Mayo',
+    iamge: '/images/sriracha-mayo.jpg',
+    ingredients: [
+      {
+        item: 'Sichimi',
+        quantity: 420,
+        unit: 'g',
+        image: '/images/ingredients/sichimi.jpg',
+      },
+      {
+        item: 'White Sugar',
+        quantity: 1050,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg',
+      },
+      {
+        item: 'Mirin',
+        quantity: 420,
+        unit: 'g',
+        image: '/images/ingredients/mirin.jpg',
+      },
+      {
+        item: 'Sriracha Sauce',
+        quantity: 1575,
+        unit: 'g',
+        image: '/images/ingredients/sriracha-sauce.jpg',
+      },
+      {
+        item : 'Mayonnaise',
+        quantity: 7770,
+        unit: 'g',
+        image: '/images/ingredients/mayonnaise.jpg',
+      }
+    ]
   }
 ];
 
