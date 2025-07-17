@@ -1,10 +1,10 @@
 // import { Pokemon } from "./Pokemon";
-import {Test} from "./Test.js"
+import {Sgo} from "./Sgo"
 
 export default function App() {
     return (
         <div>
-            <Test />
+            <Sgo />
         </div>
     );
 }
