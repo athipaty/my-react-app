@@ -294,6 +294,42 @@ const recipes = [
         image: '/images/ingredients/sesame-seeds.jpg'
       }
     ]
+  },
+  {
+    name: 'Rice Ball',
+    image: '/images//rice-ball.jpg',
+    ingredients: [
+      {
+        item: 'Cooked Rice',
+        quantity: 4000,
+        unit: 'g',
+        image: '/images/ingredients/cooked-rice.jpg'
+      },
+      {
+        item: 'Seaweed Flake',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/seaweed-flake.jpg'
+      },
+      {
+        item: 'Tenkasu',
+        quantity: 240,
+        unit: 'g',
+        image: '/images/ingredients/tenkasu.jpg'
+      },
+      {
+        item: 'Seansoned Salt',
+        quantity: 13,
+        unit: 'g',
+        image: '/images/ingredients/Seasoned-salt.jpg'
+      },
+      {
+        item: 'Sesame Oil',
+        quantity: '40',
+        unit: 'g',
+        image: '/images/ingredients/sesame-oil.jpg'
+      }
+    ]
   }
 ];
 
