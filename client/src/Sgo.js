@@ -240,6 +240,60 @@ const recipes = [
         image: '/images/ingredients/water.jpg',
       }
     ]
+  },
+  {
+    name: 'Dipping Sauce',
+    image: '/images//dipping-sauce.jpg',
+    ingredients: [
+      {
+        item: 'Minced Garlic',
+        quantity: 2100,
+        unit: 'g',
+        image: '/images/ingredients/minced-garlic.jpg',
+      },
+      {
+        item: 'Chopped Leek',
+        quantity: 2100,
+        unit: 'g',
+        image: '/images/ingredients/chopped-leek.jpg',
+      },
+      {
+        item: 'Sugar',
+        quantity: 1750,
+        unit: 'g',
+        image: '/images/ingredients/suar.jpg',
+      },
+      {
+        item: 'Soy Sauce',
+        quantity: 6300,
+        unit: 'g',
+        image: '/images/ingredients/soy-sauce.jpg',
+      },
+      {
+        item: 'Vinegar',
+        quantity: 1750,
+        unit: 'g',
+        image: '/images/ingredients/vinegar.jpg',
+      },
+      {
+        item: 'Fine Chilli Powder',
+        quantity: 700,
+        unit: 'g',
+        image: '/images/ingredients/fine-chilli-powder.jpg'
+      },
+      {
+        item: 'Mirin',
+        quantity: 1750,
+        unit: 'g',
+        image: '/images/ingredients/mirin.jpg'
+      },
+      {
+        item: 'Sesame Seeds',
+        quantity: 700,
+        unit: 'g',
+        image: '/images/ingredients/sesame-seeds.jpg'
+      }
+    ]
   }
 ];
 
