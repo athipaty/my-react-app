@@ -330,6 +330,60 @@ const recipes = [
         image: '/images/ingredients/sesame-oil.jpg'
       }
     ]
+  },
+  {
+    name: 'Kimchi Paste',
+    image: '/images//kimchi-paste-.jpg',
+    ingredients: [
+      {
+        item: 'Coarse Chilli Powder',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/coarse-chilli-powder.jpg'
+      },
+      {
+        item: 'Garlic',
+        quantity: 650,
+        unit: 'g',
+        image: '/images/ingredients/garlic.jpg'
+      },
+      {
+        item: 'Onion',
+        quantity: 1300,
+        unit: 'g',
+        image: '/images/ingredients/onion.jpg'
+      },
+      {
+        item: 'Salted Prawn',
+        quantity: 750,
+        unit: 'g',
+        image: '/images/ingredients/salted-prawn.jpg'
+      },
+      {
+        item: 'Brown Pear',
+        quantity: 1500,
+        unit: 'g',
+        image: '/images/ingredients/brown-pear.jpg'
+      },
+      {
+        item: 'Sugar',
+        quantity: 1000,
+        unit: 'g',
+        image: '/images/ingredients/sugar.jpg'
+      },
+      {
+        item: 'Fish Sauce',
+        quantity: 0,
+        unit: 'g',
+        image: '/images/ingredients/fish-sauce.jpg'
+      },
+      {
+        item: 'Miwon',
+        quantity: 100,
+        unit: 'g',
+        image: '/images/ingredients/miwon.jpg'
+      }
+    ]
   }
 ];
 
