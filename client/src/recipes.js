@@ -14,7 +14,7 @@ const recipes = [
         item: 'Miwon',
         quantity: 60,
         unit: 'g',
-        image: '/images/ingredients/miwom.jpg',
+        image: '/images/ingredients/miwon.png',
       },
       {
         item: 'Black Pepper Powder',
@@ -98,7 +98,7 @@ const recipes = [
         item: 'Miwon',
         quantity: 100,
         unit: 'g',
-        image: '/images/ingredients/miwon.jpg',
+        image: '/images/ingredients/miwon.png',
       },
       {
         item: 'Black Pepper Powder',
@@ -128,7 +128,7 @@ const recipes = [
         item: 'Corn Oil',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/corn-oil.jpg',
+        image: '/images/ingredients/corn-oil.webp',
       },
       {
         item: 'Sesame Oil',
@@ -385,7 +385,7 @@ const recipes = [
         item: 'Miwon',
         quantity: 100,
         unit: 'g',
-        image: '/images/ingredients/miwon.jpg'
+        image: '/images/ingredients/miwon.png',
       },
       {
         item: 'Glutinous Rice Flour',
@@ -487,7 +487,7 @@ const recipes = [
         item: 'Miwon',
         quantity: 80,
         unit: 'g',
-        image: '/images/ingredients/miwonr.jpg'
+        image: '/images/ingredients/miwon.png'
       },
       {
         item: 'Red Cheongyang Chilli Powder',
