@@ -31,7 +31,7 @@ const recipes = [
         image: '/images/ingredients/yuju-cheong.jpg',
       },
       {
-        item:'Korean Chili',
+        item: 'Korean Chili',
         quantity: 9000,
         unit: 'g',
         image: '/images/ingredients/korean-chili.jpg',
@@ -67,7 +67,7 @@ const recipes = [
         image: '/images/ingredients/sriracha-sauce.jpg',
       },
       {
-        item : 'Mayonnaise',
+        item: 'Mayonnaise',
         quantity: 7770,
         unit: 'g',
         image: '/images/ingredients/mayonnaise.jpg',
@@ -168,6 +168,78 @@ const recipes = [
         unit: 'g'
       }
     ]
+  },
+  {
+    name: 'Sancho Soy Sauce',
+    image: '/images//sancho-soy-sauce.jpg',
+    ingredients: [
+      {
+        item: 'White Sugar',
+        quantity: 3600,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg',
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 80,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg',
+      },
+      {
+        item: 'Vietnamese Dried Chili',
+        quantity: 20,
+        unit: 'g',
+        image: '/images/ingredients/vietnamese-dried-chili.jpg',
+      },
+      {
+        item: 'Sancho Powder',
+        quantity: 80,
+        unit: 'g',
+        image: '/images/ingredients/sancho-powder.jpg',
+      },
+      {
+        item: 'Black Pepper Power',
+        quantity: 40,
+        unit: 'g',
+        image: '/images/ingredients/black-pepper-powder.jpg',
+      },
+      {
+        item: 'Rice Wine',
+        quantity: 480,
+        unit: 'g',
+        image: '/images/ingredients/rice-wine.jpg',       
+      },
+      {
+        item: 'Kikoman Soy Sauce',
+        quantity: 4000,
+        unit: 'g',
+        image: '/images/ingredients/kikoman-say-sauce.jpg',
+      },
+      {
+        item: 'Plum Extract',
+        quantity: 1200,
+        unit: 'g',
+        image: '/images/ingredients/plum-extract.jpg',
+      },
+      {
+        item: 'Water',
+        quantity: 12000,
+        unit: 'g',
+        image: '/images/ingredients/water.jpg',
+      },
+      {
+        item: 'Potato Starch',
+        quantity: 440,
+        unit: 'g',
+        image: '/images/ingredients/potato-starch.jpg',
+      },
+      {
+        item: 'Water for Potato Starch',
+        quantity: 440,
+        unit: 'g',
+        image: '/images/ingredients/water.jpg',
+      }
+    ]
   }
 ];
 
@@ -178,8 +250,8 @@ export function Sgo() {
 
   const filtered = query
     ? recipes.filter((recipe) =>
-        recipe.name.toLowerCase().includes(query.toLowerCase())
-      )
+      recipe.name.toLowerCase().includes(query.toLowerCase())
+    )
     : [];
 
   return (
@@ -245,21 +317,23 @@ export function Sgo() {
               </tr>
             </thead>
             <tbody>
-              {selectedRecipe.ingredients.map((ing) => (
-                <tr key={ing.item} className="hover:bg-gray-50">
-                  <td className="px-4 py-2 border">
-                    <img
-                      src={ing.image}
-                      alt={ing.item}
-                      className="w-12 h-12 object-cover rounded"
-                    />
-                  </td>
-                  <td className="px-4 py-2 border">{ing.item}</td>
-                  <td className="px-4 py-2 border">
-                    {(ing.quantity * multiplier).toFixed(0)} {ing.unit}
-                  </td>
-                </tr>
-              ))}
+              {[...selectedRecipe.ingredients]
+                .sort((a, b) => b.quantity * multiplier - a.quantity * multiplier)
+                .map((ing) => (
+                  <tr key={ing.item} className="hover:bg-gray-50">
+                    <td className="px-4 py-2 border">
+                      <img
+                        src={ing.image}
+                        alt={ing.item}
+                        className="w-12 h-12 object-cover rounded"
+                      />
+                    </td>
+                    <td className="px-4 py-2 border">{ing.item}</td>
+                    <td className="px-4 py-2 border">
+                      {(ing.quantity * multiplier).toFixed(0)} {ing.unit}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
