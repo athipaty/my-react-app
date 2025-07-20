@@ -438,7 +438,32 @@ const recipes = [
         image: '/images/ingredients/sring-onion.jpg'
       }
     ]
+  },
+  {
+    name: 'Stir-fried Garlic Rice Sauce',
+    image: '/images/stir-fried-garlic-rice-sauce.jpg',
+    ingredients: [
+      {
+        item: 'Mihyang',
+        quantity: 1000,
+        unit: 'g',
+        image: '/images/ingredients/mihyang.jpg'
+      },
+      {
+        item: 'Oyster Sauce',
+        quantity: 600,
+        unit: 'g',
+        image: '/images/ingredients/oyster-sauce.jpg'
+      },
+      {
+        item: 'Dark Soy Sauce',
+        quantity: 100,
+        unit: 'g',
+        image: '/images/ingredients/dark-soy-sauce.jpg'
+      }
+    ]
   }
+
 ];
 
 export function Sgo() {
