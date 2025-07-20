@@ -74,6 +74,101 @@ const recipes = [
       }
     ]
   },
+  {
+    name: 'Garlic Sauce',
+    image: '/images/garlic sauce.jpg',
+    ingredients: [
+      {
+        item: 'Minced Garlic',
+        quantity: 4000,
+        unit: 'g',
+        image: '/images/ingredients/minced-garlic.jpg',
+      },
+      {
+        item: 'White Sugar',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg',
+      },
+      {
+        item: 'Miwon',
+        quantity: 100,
+        unit: 'g',
+        image: '/images/ingredients/miwon.jpg',
+      },
+      {
+        item: 'Black Pepper Powder',
+        quantity: 20,
+        unit: 'g',
+        image: '/images/ingredients/black-pepper-powder.jpg',
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg',
+      },
+      {
+        item: 'White Onion',
+        quantity: 2000,
+        unit: 'g',
+        image: '/images/ingredients/white-onion.jpg',
+      },
+      {
+        item: 'Plum Extract',
+        quantity: 280,
+        unit: 'g',
+        image: '/images/ingredients/plum-extract.jpg',
+      },
+      {
+        item: 'Corn Oil',
+        quantity: 600,
+        unit: 'g',
+        image: '/images/ingredients/corn-oil.jpg',
+      },
+      {
+        item: 'Sesame Oil',
+        quantity: 400,
+        unit: 'g',
+        image: '/images/ingredients/sesame-oil.jpg',
+      }
+    ]
+  },
+  {
+    name: 'Radish Kimchi',
+    image: '/images/radish-kimchi.jpg',
+    ingredients: [
+      {
+        item: 'Radish',
+        quantity: 20,
+        unit: 'Kg',
+        image: '/images/ingredients/radish.jpg',
+      },
+      {
+        item: 'Spring Onion',
+        quantity: 600,
+        unit: 'g',
+        image: '/images/ingredients/spring-onion.jpg',
+      },
+      {
+        item: 'Kimchi Sauce',
+        quantity: 2.4,
+        unit: 'Kg',
+        image: '/images/ingredients/kimchi-sauce.jpg',
+      },
+      {
+        item: 'Coarse Sea Salt',
+        quantity: 400,
+        unit: 'g',
+        image: '/images/ingredients/coarse-sea-salt.jpg',
+      },
+      {
+        item: 'New sugar',
+        quantity: 20,
+        unit: 'g'
+      }
+    ]
+  }
 ];
 
 export function Sgo() {
