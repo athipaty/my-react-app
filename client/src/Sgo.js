@@ -3,54 +3,6 @@ import { useState } from 'react';
 // Your recipe data
 const recipes = [
   {
-    name: 'Pad Thai',
-    image: '/images/pad-thai.jpg',
-    ingredients: [
-      {
-        item: 'Rice Noodles',
-        quantity: 200,
-        unit: 'g',
-        image: '/images/ingredients/rice-noodles.jpg',
-      },
-      {
-        item: 'Tofu',
-        quantity: 100,
-        unit: 'g',
-        image: '/images/ingredients/tofu.jpg',
-      },
-      {
-        item: 'Tamarind Paste',
-        quantity: 2,
-        unit: 'tbsp',
-        image: '/images/ingredients/tamarind.jpg',
-      },
-    ],
-  },
-  {
-    name: 'Green Curry',
-    image: '/images/green-curry.jpg',
-    ingredients: [
-      {
-        item: 'Chicken',
-        quantity: 300,
-        unit: 'g',
-        image: '/images/ingredients/chicken.jpg',
-      },
-      {
-        item: 'Coconut Milk',
-        quantity: 400,
-        unit: 'ml',
-        image: '/images/ingredients/coconut-milk.jpg',
-      },
-      {
-        item: 'Green Curry Paste',
-        quantity: 50,
-        unit: 'g',
-        image: '/images/ingredients/green-curry-paste.jpg',
-      },
-    ],
-  },
-  {
     name: 'Yuzu Kosho',
     image: '/images/yozu-kosho.jpg',
     ingredients: [
@@ -121,7 +73,7 @@ const recipes = [
         image: '/images/ingredients/mayonnaise.jpg',
       }
     ]
-  }
+  },
 ];
 
 export function Sgo() {
@@ -150,13 +102,13 @@ export function Sgo() {
 
       {/* Recipe List */}
       {query && !selectedRecipe && (
-        <ul className="mt-6 space-y-4">
+        <ul className="mt-4 space-y-4">
           {filtered.map((recipe) => (
-            <li key={recipe.name} className="flex items-center gap-4 justify-center">
+            <li key={recipe.name} className="flex items-center gap-2 justify-between">
               <img
                 src={recipe.image}
                 alt={recipe.name}
-                className="w-20 h-20 object-cover rounded shadow"
+                className="w-10 h-10 object-cover rounded shadow"
               />
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
@@ -174,10 +126,10 @@ export function Sgo() {
 
       {/* Recipe Detail View */}
       {selectedRecipe && (
-        <div className="mt-10">
-          <h2 className="text-2xl font-bold mb-4">{selectedRecipe.name}</h2>
+        <div className="mt-5">
+          <h2 className="text-2xl font-bold mb-2">{selectedRecipe.name}</h2>
 
-          <div className="mb-4">
+          <div className="mb-2">
             <label>Adjust Quantity: </label>
             <input
               type="number"
@@ -185,7 +137,7 @@ export function Sgo() {
               step={0.1}
               value={multiplier}
               onChange={(e) => setMultiplier(parseFloat(e.target.value))}
-              className="border p-2 w-20 ml-2"
+              className="border p-2 w-20 ml-2 text-center"
             />
           </div>
 
