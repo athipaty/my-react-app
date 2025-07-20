@@ -462,6 +462,78 @@ const recipes = [
         image: '/images/ingredients/dark-soy-sauce.jpg'
       }
     ]
+  },
+  {
+    name: 'Bibim Noodle Sauce',
+    image: '/images//bibim-noodle-sauce.jpg',
+    ingredients: [
+      {
+        item: 'Seasoned Salt',
+        quantity: 240,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg'
+      },
+      {
+        item: 'Whtie Sugar',
+        quantity: 2250,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg'
+      },
+      {
+        item: 'Miwon',
+        quantity: 80,
+        unit: 'g',
+        image: '/images/ingredients/miwonr.jpg'
+      },
+      {
+        item: 'Red Cheongyang Chilli Powder',
+        quantity: 750,
+        unit: 'g',
+        image: '/images/ingredients/red-cheongyang-chilli-powder.jpg'
+      },
+      {
+        item: 'Minced Garlic',
+        quantity: '750',
+        unit: 'g',
+        image: '/images/ingredients/minced-garlic.jpg'
+      },
+      {
+        item: 'Corn Syrup',
+        quantity: 1500,
+        unit: 'g',
+        image: '/images/ingredients/corn-syrup.jpg'
+      },
+      {
+        item: 'Thai Fish Sauce',
+        quantity: 450,
+        unit: 'g',
+        image: '/images/ingredients/thai-fish-sauce.jpg'
+      },
+      {
+        item: 'Kikoman Soy Sauce',
+        quantity: 600,
+        unit: 'g',
+        image: '/images/ingredients/kikoman-soy-sauce.jpg'
+      },
+      {
+        item: 'Sprite',
+        quantity: 2250,
+        unit: 'g',
+        image: '/images/ingredients/sprite.jpg'
+      },
+      {
+        Item: 'Mihyang',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/mihyang.jpg'
+      },
+      {
+        item: 'Viceger (Hwan Man)',
+        quantity: 1500,
+        unit: 'g',
+        image: '/images/ingredients/vinegar-hwan-man.jpg'
+      }
+    ]
   }
 
 ];
