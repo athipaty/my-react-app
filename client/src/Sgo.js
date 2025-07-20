@@ -32,9 +32,15 @@ const recipes = [
       },
       {
         item: 'Korean Chili',
-        quantity: 9000,
+        quantity: 6000,
         unit: 'g',
         image: '/images/ingredients/korean-chili.jpg',
+      },
+      {
+        item: 'Chili Padi',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/chili-padi.jpg',
       }
     ]
   },
@@ -586,6 +592,15 @@ const recipes = [
         quantity: 400,
         unit: 'g',
         image: '/images/ingredients/korean-coarse-sea-salt.jpg'
+      }
+    ]
+  },
+  {
+    name: 'Celery Pickle',
+    image: '/images/celery-pickle.jpg',
+    ingredients: [
+      {
+        item: ''
       }
     ]
   }
