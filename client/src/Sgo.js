@@ -493,7 +493,7 @@ const recipes = [
       },
       {
         item: 'Minced Garlic',
-        quantity: '750',
+        quantity: 750,
         unit: 'g',
         image: '/images/ingredients/minced-garlic.jpg'
       },
@@ -522,7 +522,7 @@ const recipes = [
         image: '/images/ingredients/sprite.jpg'
       },
       {
-        Item: 'Mihyang',
+        item: 'Mihyang',
         quantity: 3000,
         unit: 'g',
         image: '/images/ingredients/mihyang.jpg'
