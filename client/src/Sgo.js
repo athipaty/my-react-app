@@ -600,7 +600,52 @@ const recipes = [
     image: '/images/celery-pickle.jpg',
     ingredients: [
       {
-        item: ''
+        item: 'Celery',
+        quantity: 30,
+        unit: 'kg',
+        image: '/images/ingredients/celery.jpg'
+      },
+      {
+        item: 'Jin Soy Sauce',
+        quantity: 6000,
+        unit: 'g',
+        image: '/images/ingredients/jin-soy-sauce.jpg'
+      },
+      {
+        item: 'Vineger (Hwan man)',
+        quantity: 6000,
+        unit: 'g',
+        image: '/images/ingredients/celery.jpg'
+      },
+      {
+        item: 'White Sugar',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg'
+      },
+      {
+        item: 'Water',
+        quantity: 6000,
+        unit: 'g',
+        image: '/images/ingredients/water.jpg'
+      },
+      {
+        item: 'Mirin',
+        quantity: 6000,
+        unit: 'g',
+        image: '/images/ingredients/mirin.jpg'
+      },
+      {
+        item: 'Red Chili',
+        quantity: 15,
+        unit: 'Pcs',
+        image: '/images/ingredients/red-chili.jpg'
+      },
+      {
+        item: 'White Onion',
+        quantity: 2,
+        unit: 'Pcs',
+        image: '/images/ingredients/white-onion.jpg'
       }
     ]
   }
