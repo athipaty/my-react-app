@@ -382,6 +382,18 @@ const recipes = [
         quantity: 100,
         unit: 'g',
         image: '/images/ingredients/miwon.jpg'
+      },
+      {
+        item: 'Glutinous Rice Flour',
+        quantity: 120,
+        unit: 'g',
+        image: '/images/ingredients/glutinous-rice-fllour.jpg'
+      },
+      {
+        item: 'Water',
+        quantity: 1200,
+        unit: 'g',
+        image: '/images/ingredients/water.jpg'
       }
     ]
   }
