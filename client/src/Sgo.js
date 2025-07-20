@@ -396,6 +396,48 @@ const recipes = [
         image: '/images/ingredients/water.jpg'
       }
     ]
+  },
+  {
+    name: 'Egg Roll',
+    image: '/images/egg-roll.jpg',
+    ingredients: [
+      {
+        item: 'Egg',
+        quantity: 4,
+        unit: 'L',
+        image: '/images/ingredients/egg.jpg'
+      },
+      {
+        item: 'Water',
+        quantity: 500,
+        unit: 'ml',
+        image: '/images/ingredients/water.jpg'
+      },
+      {
+        item: 'Mirin',
+        quantity: 200,
+        unit: 'ml',
+        image: '/images/ingredients/mirin.jpg'
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 25,
+        uniit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg'
+      },
+      {
+        item: 'Carrot',
+        quantity: 400,
+        unit: 'g',
+        image: '/images/ingredients/carrot.jpg'
+      },
+      {
+        item: 'Spring Onion',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/sring-onion.jpg'
+      }
+    ]
   }
 ];
 
