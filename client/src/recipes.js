@@ -68,13 +68,13 @@ const recipes = [
         item: 'Sriracha Sauce',
         quantity: 1575,
         unit: 'g',
-        image: '/images/ingredients/sriracha-sauce.jpg',
+        image: '/images/ingredients/sriracha-sauce.jpeg',
       },
       {
         item: 'Mayonnaise',
         quantity: 7770,
         unit: 'g',
-        image: '/images/ingredients/mayonnaise.jpg',
+        image: '/images/ingredients/mayonnaise.webp',
       }
     ]
   },
@@ -229,7 +229,7 @@ const recipes = [
         item: 'Water',
         quantity: 12000,
         unit: 'g',
-        image: '/images/ingredients/water.jpg',
+        image: '/images/ingredients/water.jpeg',
       },
       {
         item: 'Potato Starch',
@@ -241,7 +241,7 @@ const recipes = [
         item: 'Water for Potato Starch',
         quantity: 440,
         unit: 'g',
-        image: '/images/ingredients/water.jpg',
+        image: '/images/ingredients/water.jpeg',
       }
     ]
   },
@@ -397,7 +397,7 @@ const recipes = [
         item: 'Water',
         quantity: 1200,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       }
     ]
   },
@@ -415,7 +415,7 @@ const recipes = [
         item: 'Water',
         quantity: 500,
         unit: 'ml',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       },
       {
         item: 'Mirin',
@@ -577,7 +577,7 @@ const recipes = [
         item: 'Water',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       },
       {
         item: 'Napa Cabbage',
@@ -625,7 +625,7 @@ const recipes = [
         item: 'Water',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       },
       {
         item: 'Mirin',
@@ -679,7 +679,7 @@ const recipes = [
         item: 'Water',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       },
       {
         item: 'Mirin',
@@ -727,7 +727,7 @@ const recipes = [
         item: 'Water',
         quantity: 4500,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       },
       {
         
