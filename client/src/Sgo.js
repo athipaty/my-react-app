@@ -534,8 +534,61 @@ const recipes = [
         image: '/images/ingredients/vinegar-hwan-man.jpg'
       }
     ]
+  },
+  {
+    name: 'Cabbage Pickle',
+    image: '/images//cabbage-pickle.jpg',
+    ingredients: [
+      {
+        item: 'Minced Garlic',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/minced-garlic.jpg'
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 200,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg'
+      },
+      {
+        item: 'White Sugar',
+        quantity: 2800,
+        unit: 'g',
+        image: '/images/ingredients/white-sugar.jpg'
+      },
+      {
+        item: 'Yuju Cheong',
+        quantity: 1000,
+        unit: 'g',
+        image: '/images/ingredients/yuju-cheong.jpg'
+      },
+      {
+        item: 'Viceger (Hwan Man)',
+        quantity: 3500,
+        unit: 'g',
+        image: '/images/ingredients/vinegar-hwan-man.jpg'
+      },
+      {
+        item: 'Water',
+        quantity: 6000,
+        unit: 'g',
+        image: '/images/ingredients/water.jpg'
+      },
+      {
+        item: 'Napa Cabbage',
+        quantity: 20,
+        unit: 'kg',
+        image: '/images/ingredients/napa-cabbage.jpg'
+      },
+      {
+        item: 'Korean Coarse Sea Salt',
+        quantity: 400,
+        unit: 'g',
+        image: '/images/ingredients/korean-coarse-sea-salt.jpg'
+      }
+    ]
   }
-
 ];
 
 export function Sgo() {
