@@ -20,7 +20,7 @@ const recipes = [
         item: 'Black Pepper Powder',
         quantity: 45,
         unit: 'g',
-        image: '/images/ingredients/black-pepper-powder.jpg',
+        image: '/images/ingredients/black-pepper-powder.webp',
       },
       {
         item: 'Yuju Cheong',
@@ -104,7 +104,7 @@ const recipes = [
         item: 'Black Pepper Powder',
         quantity: 20,
         unit: 'g',
-        image: '/images/ingredients/black-pepper-powder.jpg',
+        image: '/images/ingredients/black-pepper-powder.webp',
       },
       {
         item: 'Seasoned Salt',
@@ -146,19 +146,19 @@ const recipes = [
         item: 'Radish',
         quantity: 20,
         unit: 'Kg',
-        image: '/images/ingredients/radish.jpg',
+        image: '/images/ingredients/radish.webp',
       },
       {
         item: 'Spring Onion',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/spring-onion.jpg',
+        image: '/images/ingredients/spring-onion.webp',
       },
       {
-        item: 'Kimchi Sauce',
+        item: 'Kimchi Paste',
         quantity: 2.4,
         unit: 'Kg',
-        image: '/images/ingredients/kimchi-sauce.jpg',
+        image: '/images/ingredients/kimchi-paste.jpg',
       },
       {
         item: 'Coarse Sea Salt',
@@ -205,7 +205,7 @@ const recipes = [
         item: 'Black Pepper Power',
         quantity: 40,
         unit: 'g',
-        image: '/images/ingredients/black-pepper-powder.jpg',
+        image: '/images/ingredients/black-pepper-powder.webp',
       },
       {
         item: 'Rice Wine',
@@ -337,7 +337,7 @@ const recipes = [
   },
   {
     name: 'Kimchi Paste',
-    image: '/images//kimchi-paste-.jpg',
+    image: '/images/kimchi-paste.jpg',
     ingredients: [
       {
         item: 'Coarse Chilli Powder',
