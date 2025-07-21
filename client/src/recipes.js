@@ -583,13 +583,13 @@ const recipes = [
         item: 'Napa Cabbage',
         quantity: 20,
         unit: 'kg',
-        image: '/images/ingredients/napa-cabbage.jpg'
+        image: '/images/ingredients/napa-cabbage.png'
       },
       {
-        item: 'Korean Coarse Sea Salt',
+        item: 'Coarse Sea Salt',
         quantity: 400,
         unit: 'g',
-        image: '/images/ingredients/korean-coarse-sea-salt.jpg'
+        image: '/images/ingredients/coarse-sea-salt.jpg'
       }
     ]
   },

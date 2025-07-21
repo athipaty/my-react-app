@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import recipes from './recipes'; // Adjust path if needed
+import recipes from './recipes.js'; // Adjust path if needed
 
 export function Sgo() {
   const [query, setQuery] = useState('');
