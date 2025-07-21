@@ -5,7 +5,7 @@ export function Sgo() {
   const [query, setQuery] = useState('');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [multiplier, setMultiplier] = useState(1);
-  const [fullImage, setFullImage] = useState(null); // NEW: Fullscreen image state
+  const [fullImage, setFullImage] = useState(null); // Fullscreen image state
 
   const filtered = query
     ? recipes.filter((recipe) =>
@@ -37,7 +37,8 @@ export function Sgo() {
               <img
                 src={recipe.image}
                 alt={recipe.name}
-                className="w-10 h-10 object-cover rounded shadow"
+                className="w-10 h-10 object-cover rounded shadow cursor-pointer"
+                onClick={() => setFullImage(recipe.image)}
               />
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
@@ -91,7 +92,7 @@ export function Sgo() {
                         src={ing.image}
                         alt={ing.item}
                         className="w-12 h-12 object-cover rounded cursor-pointer"
-                        onClick={() => setFullImage(ing.image)} // NEW: open fullscreen
+                        onClick={() => setFullImage(ing.image)}
                       />
                     </td>
                     <td className="px-4 py-2 border">{ing.item}</td>
@@ -109,7 +110,7 @@ export function Sgo() {
       {fullImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-          onClick={() => setFullImage(null)} // NEW: close on click
+          onClick={() => setFullImage(null)}
         >
           <img
             src={fullImage}

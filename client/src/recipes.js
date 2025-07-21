@@ -2,7 +2,7 @@
 const recipes = [
   {
     name: 'Yuzu Kosho',
-    image: '/images/yozu-kosho.jpg',
+    image: '/images/yuzu-kosho.jpg',
     ingredients: [
       {
         item: 'Seasoned Salt',
@@ -80,7 +80,7 @@ const recipes = [
   },
   {
     name: 'Garlic Sauce',
-    image: '/images/garlic sauce.jpg',
+    image: '/images/garlic-sauce.jpg',
     ingredients: [
       {
         item: 'Minced Garlic',
