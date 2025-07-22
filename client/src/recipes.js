@@ -262,28 +262,28 @@ const recipes = [
         image: '/images/ingredients/chopped-leek.jpg',
       },
       {
-        item: 'Sugar',
+        item: 'White Sugar',
         quantity: 1750,
         unit: 'g',
-        image: '/images/ingredients/suar.jpg',
+        image: '/images/ingredients/white-sugar.jpg',
       },
       {
         item: 'Soy Sauce',
         quantity: 6300,
         unit: 'g',
-        image: '/images/ingredients/soy-sauce.jpg',
+        image: '/images/ingredients/soy-sauce.webp',
       },
       {
         item: 'Vinegar',
         quantity: 1750,
         unit: 'g',
-        image: '/images/ingredients/vinegar.jpg',
+        image: '/images/ingredients/vinegar-hwan-man.webp',
       },
       {
-        item: 'Fine Chilli Powder',
+        item: 'Fine Chili Powder',
         quantity: 700,
         unit: 'g',
-        image: '/images/ingredients/fine-chilli-powder.jpg'
+        image: '/images/ingredients/fine-chili-powder.webp'
       },
       {
         item: 'Mirin',
