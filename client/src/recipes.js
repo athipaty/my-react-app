@@ -29,16 +29,16 @@ const recipes = [
         image: '/images/ingredients/yuju-cheong.jpg',
       },
       {
-        item: 'Korean Chili',
+        item: 'Green Chili',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/korean-chili.jpg',
+        image: '/images/ingredients/green-chili.png',
       },
       {
-        item: 'Chili Padi',
+        item: 'Green Chili Padi',
         quantity: 3000,
         unit: 'g',
-        image: '/images/ingredients/chili-padi.jpg',
+        image: '/images/ingredients/green-chili-padi.webp',
       }
     ]
   },
@@ -193,13 +193,13 @@ const recipes = [
         item: 'Vietnamese Dried Chili',
         quantity: 20,
         unit: 'g',
-        image: '/images/ingredients/vietnamese-dried-chili.jpg',
+        image: '/images/ingredients/vietnamese-dried-chili.webp',
       },
       {
         item: 'Sancho Powder',
         quantity: 80,
         unit: 'g',
-        image: '/images/ingredients/sancho-powder.jpg',
+        image: '/images/ingredients/sancho-powder.webp',
       },
       {
         item: 'Black Pepper Power',
@@ -211,13 +211,13 @@ const recipes = [
         item: 'Rice Wine',
         quantity: 480,
         unit: 'g',
-        image: '/images/ingredients/rice-wine.jpg',       
+        image: '/images/ingredients/rice-wine.webp',       
       },
       {
         item: 'Kikoman Soy Sauce',
         quantity: 4000,
         unit: 'g',
-        image: '/images/ingredients/kikoman-say-sauce.jpg',
+        image: '/images/ingredients/kikoman-soy-sauce.webp',
       },
       {
         item: 'Plum Extract',
@@ -517,7 +517,7 @@ const recipes = [
         item: 'Kikoman Soy Sauce',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/kikoman-soy-sauce.jpg'
+        image: '/images/ingredients/kikoman-soy-sauce,webp'
       },
       {
         item: 'Sprite',
@@ -715,7 +715,7 @@ const recipes = [
         item: 'Kikoman Soy Sauce',
         quantity: 2500,
         unit: 'g',
-        image: '/images/ingredients/kikoman-soy-sauce.jpg'
+        image: '/images/ingredients/kikoman-soy-sauce.webp'
       },
       {
         item: 'Vinegar (Hwan Man)',
@@ -730,7 +730,28 @@ const recipes = [
         image: '/images/ingredients/water.jpeg'
       },
       {
-        
+        item: 'Minced Garlic',
+        quantity: 300,
+        unit: 'g',
+        image: '/images/ingredients/minced-garlic.jpg'
+      },
+      {
+        item: 'Vietnamese Dried Chili',
+        quantity: '700',
+        unit: 'g',
+        image: '/images/ingredients/vietnamese-dried-chili.webp'
+      },
+      {
+        item: 'Green Chili',
+        quantity: 4500,
+        unit: 'g',
+        image: '/images/ingredients/green-chili.png'
+      },
+      {
+        item: 'Green Chili Padi',
+        quantity: 2500,
+        unit: 'g',
+        image: '/images/ingredients/green-chili-padi.webp'
       }
     ]
   }
