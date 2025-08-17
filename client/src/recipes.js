@@ -6,37 +6,37 @@ const recipes = [
     ingredients: [
       {
         item: 'Seasoned Salt',
-        quantity: 420,
+        quantity: 240,
         unit: 'g',
         image: '/images/ingredients/seasoned-salt.jpg',
       },
       {
         item: 'Miwon',
-        quantity: 60,
+        quantity: 40,
         unit: 'g',
         image: '/images/ingredients/miwon.png',
       },
       {
         item: 'Black Pepper Powder',
-        quantity: 45,
+        quantity: 30,
         unit: 'g',
         image: '/images/ingredients/black-pepper-powder.webp',
       },
       {
         item: 'Yuju Cheong',
-        quantity: 3900,
+        quantity: 2600,
         unit: 'g',
         image: '/images/ingredients/yuju-cheong.jpg',
       },
       {
         item: 'Green Chili',
-        quantity: 6000,
+        quantity: 4000,
         unit: 'g',
         image: '/images/ingredients/green-chili.png',
       },
       {
         item: 'Green Chili Padi',
-        quantity: 3000,
+        quantity: 2000,
         unit: 'g',
         image: '/images/ingredients/green-chili-padi.webp',
       }
