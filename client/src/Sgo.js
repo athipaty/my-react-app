@@ -83,7 +83,7 @@ export function Sgo() {
     : [];
 
   return (
-    <div className="min-h-screen p-2 bg-gray-50 text-center relative flex flex-col items-center mt-4">
+    <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar */}
         <input
