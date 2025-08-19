@@ -1078,6 +1078,61 @@ const recipes = [
       }
     ],
     method: 'Peel the radish and slice it into thin strips (julienne). Cut the green part of the leek into 4 cm pieces and halve them. Cut the onion into 2 × 2 cm cubes. Place all the vegetables in a large pot with water and bring to a boil. Add all the sauces; if using Cheong Guk Jang, crush it roughly by hand before adding. Boil on high heat until it comes to a strong boil, then reduce to medium heat and continue boiling for 15–20 minutes. After that, turn off the heat.'
+  },
+  {
+    name: 'Hang Over Chili Paste',
+    image: '/images/hang-over-chili-paste.jpeg',
+    ingredients: [
+      {
+        item: 'Chili Powder Coarse',
+        quantity: 100,
+        unit: 'g',
+        image: '/images/ingredients/chili-powder-coarse.webp'
+      },
+      {
+        item: 'Chili Powder Fine',
+        quantity: 60,
+        unit: 'g',
+        image: '/images/ingredients/chili-powder-fine.avif'
+      },
+      {
+        item: 'Green Chili Powder',
+        quantity: 40,
+        unit: 'g',
+        image: '/images/ingredients/green-chili-powder.webp'
+      },
+      {
+        item: 'Beef Dasida',
+        quantity: 60,
+        unit: 'g',
+        image: '/images/ingredients/beef-dasida.jpg'
+      },
+      {
+        item: 'Miwon',
+        quantity: 20,
+        unit: 'g',
+        image: '/images/ingredients/miwon.png'
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 30,
+        unit: 'g',
+        image: '/images/ingredients/seasoned-salt.jpg'
+      },
+      {
+        item: 'Chili Oil',
+        quantity: 70,
+        unit: 'g',
+        image: '/images/ingredients/chili-oil.webp'
+      },
+      {
+        item: 'Water',
+        quantity: 300,
+        unit: 'g',
+        image: '/images/ingredients/water.jpeg'
+      }
+    ],
+    method: 'Mix coarse chili powder, fine chili powder, and green chili powder together in a bowl (A). Heat the oil in a pot until hot and ready to pour into bowl (A). While waiting for the oil to heat, blend the remaining ingredients into a paste and place it in bowl (A). Once the paste and powder are ready, slowly pour the hot oil over them while stirring to combine everything into a smooth paste. After mixing well, add the water. Once fully incorporated, store the paste in a container or vacuum pack and keep it in the chiller until ready to use.'
   }
 ];
 
