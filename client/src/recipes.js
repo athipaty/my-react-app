@@ -77,7 +77,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/mayonnaise.webp',
       }
-    ]
+    ],
+    method: 'Make sure all the ingredients are mixed evenly.'
   },
   {
     name: 'Garlic Sauce',
@@ -137,7 +138,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/sesame-oil.jpg',
       }
-    ]
+    ],
+    method: 'Chop the garlic and onion in a food processor (do not blend). Place them in a bowl, add the seasoning, and mix everything by hand or with a spatula.'
   },
   {
     name: 'Radish Kimchi',
@@ -244,7 +246,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/water.jpeg',
       }
-    ]
+    ],
+    method: 'Put all the ingredients into a pot, bring to a boil, and stir. In a separate bowl, mix potato starch with water. When the pot starts boiling, turn off the heat and slowly add the starch mixture while stirring continuously (to prevent lumps). Once it is well mixed, turn the heat back on and bring it to a boil again. Then turn off the heat and let it cool down.'
   },
   {
     name: 'Dipping Sauce',
@@ -598,7 +601,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/coarse-sea-salt.jpg'
       }
-    ]
+    ],
+    method: 'Use mainly the yellow parts of the cabbage, not the green ones. Cut the cabbage leaves in half and then into 5 cm cubes. Wash once and place in a large bowl. Sprinkle sea salt evenly and mix by hand. Let it sit for about an hour until the texture becomes slightly bendy, mixing occasionally. After an hour, rinse the cabbage under running water 2–3 times and gently squeeze out the excess water, but not too strongly. For the pickle water, boil all the seasonings in a pot except the garlic and vinegar. Once it boils, turn off the heat and add the chopped garlic. Let it cool to room temperature, then add the vinegar and mix well. Pour the pickle water over the cabbage, mix by hand, and store in the chiller. It will be ready to serve after one day.'
   },
   {
     name: 'Celery Pickle',
@@ -761,7 +765,7 @@ const recipes = [
         image: '/images/ingredients/green-chili-padi.webp'
       }
     ],
-    method: 'Slice the chili into thin pieces (1–2 mm). Chop the garlic. In a pot, boil water, sugar, and soy sauce — but do not add the garlic, vinegar, or chili flakes yet. Once the pickling sauce comes to a boil, turn off the heat and add the garlic and chili flakes. Let the sauce cool down to room temperature, then stir in the vinegar. Store it in the refrigerator.'
+    method: 'Slice the chili into thin pieces (1–2 mm). Chop the garlic. In a pot, boil water, sugar, and soy sauce — but do not add the garlic, vinegar, or chili flakes yet. Once the pickling sauce comes to a boil, turn off the heat and add the garlic and chili flakes. Let the sauce cool down to room temperature, then stir in the vinegar. Store it in the chiller.'
   },
   {
     name: 'Miso Sauce',
