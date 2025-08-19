@@ -174,7 +174,8 @@ const recipes = [
         quantity: 20,
         unit: 'g'
       }
-    ]
+    ],
+    method: 'Peel the radish and cut it into 2 cm × 2 cm cubes. Mix with salt and sugar, then leave for 1 hour, stirring occasionally. After that, drain the water. Cut the spring onion into 2–3 cm pieces, and if the white part is too thick, cut it in half first. Mix the radish and spring onion with kimchi paste. Leave it outside for 2 days (stir after 1 day), then transfer to a smaller container and keep in the chiller. It will be ready to serve after 3 days.'
   },
   {
     name: 'Sancho Soy Sauce',
@@ -350,16 +351,16 @@ const recipes = [
         image: '/images/ingredients/coarse-chilli-powder.jpg'
       },
       {
-        item: 'Garlic',
+        item: 'Minced Garlic',
         quantity: 650,
         unit: 'g',
-        image: '/images/ingredients/garlic.jpg'
+        image: '/images/ingredients/minced-garlic.jpg'
       },
       {
-        item: 'Onion',
+        item: 'White Onion',
         quantity: 1300,
         unit: 'g',
-        image: '/images/ingredients/onion.jpg'
+        image: '/images/ingredients/white-onion.jpg'
       },
       {
         item: 'Salted Prawn',
@@ -374,10 +375,10 @@ const recipes = [
         image: '/images/ingredients/brown-pear.jpg'
       },
       {
-        item: 'Sugar',
+        item: 'White Sugar',
         quantity: 1000,
         unit: 'g',
-        image: '/images/ingredients/sugar.jpg'
+        image: '/images/ingredients/white-sugar.jpg.jpg'
       },
       {
         item: 'Kanari Fish Sauce',
@@ -403,7 +404,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/water.jpeg'
       }
-    ]
+    ],
+    method: 'Mix water and glutinous rice flour, then boil until it becomes a thick, glue-like texture. Let it cool. Blend the garlic, onion, salted prawn, and pear. In a large bowl, combine the blended mixture with the rice paste and all the sauces. Store in the chiller.'
   },
   {
     name: 'Egg Roll',
@@ -451,7 +453,8 @@ const recipes = [
         unit: 'sheet',
         image: '/images/ingredients/roasted-kimbap-laver.jpg'
       }
-    ]
+    ],
+    method: 'Prepare big bowl, crack eggs. Whisk it until watery. Mix with water, mirin and seasoned salt. Strain through a sieve. Keep it in the chiller. Finely Carrot and Spring onion. Before cooking, mix egg water with veggies. Heat the pan, make the egg-roll carefully one layer by one layer until it 2.5*5 cm round size. When we roll it, put laver on the egg mix anf roll together. Slice it 1 cm thick and serve.'
   },
   {
     name: 'Stir-fried Garlic Rice Sauce',
@@ -475,7 +478,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/dark-soy-sauce.jpg'
       }
-    ]
+    ],
+    method: 'Make sure all the ingredients are mixed evenly.'
   },
   {
     name: 'Bibim Noodle Sauce',
@@ -547,7 +551,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/vinegar-hwan-man.webp'
       }
-    ]
+    ],
+    method: 'Put all the ingredients in a large pot and bring to a boil. Do not boil for too long — just until the sugar has dissolved. Stir continuously while boiling. Turn off the heat and let it cool down.'
   },
   {
     name: 'Cabbage Pickle',
@@ -801,7 +806,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/corn-syrup.jpg'
       }
-    ]
+    ],
+    method: 'Mix all the sauces together. The sauce can be kept for a long time, but once mixed with fish roe it should be used quickly as it does not keep well. To serve, mix the fish roe with the sauce and shape into rice balls.'
   },
   {
     name: 'Garlic Rice Prep',
@@ -831,7 +837,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/seasoned-salt.jpg'
       },
-    ]
+    ],
+    method: 'Wash the rice, drain the water and cook with same amount of water. Prepare the bowl, put cooked rice in and seasoning. Once order come, measure it 150g and stir-fry.'
   },
   {
     name: 'Bibim Noodle Chicken',
@@ -861,7 +868,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/cooking-oil.jpg'
       }
-    ]
+    ],
+    method: 'Defrost the chicken. Stir-fry the chicken in a pan with a little oil. Add the seasoning and continue stir-frying until the sauce is fully absorbed and the chicken is dry. Let it cool, then transfer to a container and store in the refrigerator. Serve cold.'
   },
   {
     name: "Minari Water Snail Sauce",
@@ -987,7 +995,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/red-chili.jpg'
       }
-    ]
+    ],
+    method: 'Remove the thick white part of the spring onion (about 5 cm) and slice it thinly (about 0.2 cm). Chop the green and red chilies. Mix the sauces, then add the spring onion and chilies at the last minute. Let it rest for 10 minutes before using. Cut the soft tofu into 6 pieces (about 2.5 × 2.5 cm cubes). When serving, place the tofu on a plate and add 1 teaspoon of sauce on top. Serve immediately.'
   },
   {
     name: 'SGO Doenjang Base',
@@ -1065,7 +1074,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/water.jpg'
       }
-    ]
+    ],
+    method: 'Peel the radish and slice it into thin strips (julienne). Cut the green part of the leek into 4 cm pieces and halve them. Cut the onion into 2 × 2 cm cubes. Place all the vegetables in a large pot with water and bring to a boil. Add all the sauces; if using Cheong Guk Jang, crush it roughly by hand before adding. Boil on high heat until it comes to a strong boil, then reduce to medium heat and continue boiling for 15–20 minutes. After that, turn off the heat.'
   }
 ];
 
