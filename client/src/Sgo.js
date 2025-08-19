@@ -83,7 +83,7 @@ export function Sgo() {
     : [];
 
   return (
-    <div className="min-h-screen p-2 bg-gray-50 text-center relative flex flex-col items-center">
+    <div className="min-h-screen p-2 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar */}
         <input
@@ -205,7 +205,11 @@ export function Sgo() {
             />
           </div>
         )}
+
       </div>
+              <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-500 z-40">
+  © {new Date().getFullYear()} TingTong. All rights reserved.
+</footer>
     </div>
   );
 }
