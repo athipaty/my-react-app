@@ -193,7 +193,7 @@ export function Sgo() {
 
         {/* Method (safe access) */}
         {selectedRecipe?.method && (
-          <section className="mt-8 max-w-3xl mx-auto text-left">
+          <section className="mt-8 max-w-3xl mx-auto text-center">
             <h3 className="text-xl font-semibold mb-3">Method</h3>
             <p className="whitespace-pre-line leading-relaxed text-gray-700">
               {selectedRecipe.method}

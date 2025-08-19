@@ -761,6 +761,7 @@ const recipes = [
         image: '/images/ingredients/green-chili-padi.webp'
       }
     ],
+    method: 'Slice the chili into thin pieces (1–2 mm). Chop the garlic. In a pot, boil water, sugar, and soy sauce — but do not add the garlic, vinegar, or chili flakes yet. Once the pickling sauce comes to a boil, turn off the heat and add the garlic and chili flakes. Let the sauce cool down to room temperature, then stir in the vinegar. Store it in the refrigerator.'
   },
   {
     name: 'Miso Sauce',
