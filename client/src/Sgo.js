@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import recipes from "./recipes.js"; // Adjust path if needed
+import recipes from "./recipes.js";
 
-// helpers (short + robust)
-const fmt = (n) => n.toFixed(2).replace(/\.?0+$/, ""); // up to 2 dp
-const valid = (s) => /^(\d+(\.\d*)?|\.\d+)$/.test(s); // 1 | 1. | 1.2 | .5 | 0.5
+// helpers
+const fmt = (n) => n.toFixed(2).replace(/\.?0+$/, "");
+const valid = (s) => /^(\d+(\.\d*)?|\.\d+)$/.test(s);
 const strip0 = (s) =>
-  s.startsWith("0.") || s === "" || s === "." ? s : s.replace(/^0+(?=\d)/, ""); // "02" -> "2", keep "0."
+  s.startsWith("0.") || s === "" || s === "." ? s : s.replace(/^0+(?=\d)/, "");
 
 export function Sgo() {
   const [query, setQuery] = useState("");
@@ -14,15 +14,11 @@ export function Sgo() {
   const [fullImage, setFullImage] = useState(null);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [searchPlaceholder, setSearchPlaceholder] = useState("Miso Sauce");
+  const [qtyInputs, setQtyInputs] = useState({}); // { [itemName]: string }
 
-  // text shown in each Quantity input, keyed by ingredient name
-  const [qtyInputs, setQtyInputs] = useState({});
-
-  // original/base quantities for the selected recipe (do not change)
   const baseQty = useRef({}); // { [itemName]: number }
 
-  // when a recipe is chosen, capture base quantities and seed inputs
-  // When recipe changes: capture base quantities and seed inputs (no multiplier read here)
+  // capture base quantities & seed inputs when recipe changes
   useEffect(() => {
     if (!selectedRecipe) return;
     const base = {};
@@ -31,7 +27,6 @@ export function Sgo() {
     });
     baseQty.current = base;
 
-    // seed inputs with base only; multiplier effect below will update them next
     const seeded = {};
     selectedRecipe.ingredients.forEach((ing) => {
       seeded[ing.item] = fmt(base[ing.item] || 0);
@@ -39,7 +34,7 @@ export function Sgo() {
     setQtyInputs(seeded);
   }, [selectedRecipe]);
 
-  // When multiplier changes (or recipe changes), scale quantities accordingly
+  // rescale inputs when multiplier (or recipe) changes
   useEffect(() => {
     if (!selectedRecipe) return;
     setQtyInputs((prev) => {
@@ -52,19 +47,18 @@ export function Sgo() {
     });
   }, [multiplier, selectedRecipe]);
 
-  // user edits a specific ingredient's quantity: scale all by factor
   const onQtyChange = (itemName, raw) => {
     const v = strip0(raw);
     setQtyInputs((prev) => ({ ...prev, [itemName]: v }));
 
-    // allow pausing at "" or trailing "."
+    // allow pause at "" or trailing "."
     if (v === "" || v.endsWith(".")) return;
 
     if (valid(v)) {
       const num = parseFloat(v);
       const base = baseQty.current[itemName] || 0;
       const factor = base === 0 ? 0 : num / base;
-      setMultiplier(factor); // this will re-render all inputs via the effect
+      setMultiplier(factor); // triggers rescale via effect
     }
   };
 
@@ -77,9 +71,7 @@ export function Sgo() {
   };
 
   const filtered = query
-    ? recipes.filter((recipe) =>
-        recipe.name.toLowerCase().includes(query.toLowerCase())
-      )
+    ? recipes.filter((r) => r.name.toLowerCase().includes(query.toLowerCase()))
     : [];
 
   return (
@@ -87,12 +79,12 @@ export function Sgo() {
       <div className="max-w-md w-full">
         {/* Search Bar */}
         <input
-          className="w-1/2 p-3 border rounded text-m text-center"
-          placeholder={searchPlaceholder} // ⬅️ use dynamic placeholder
+          className="w-1/2 p-3 border rounded text-base text-center"
+          placeholder={searchPlaceholder}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
-            setSelectedRecipe(null); // your existing behavior
+            setSelectedRecipe(null);
           }}
         />
 
@@ -100,10 +92,7 @@ export function Sgo() {
         {query && !selectedRecipe && (
           <ul className="mt-4 space-y-4">
             {filtered.map((recipe) => (
-              <li
-                key={recipe.name}
-                className="flex flex-col items-center gap-2 justify-between"
-              >
+              <li key={recipe.name} className="flex flex-col items-center gap-2 justify-between">
                 <img
                   src={recipe.image}
                   alt={recipe.name}
@@ -119,8 +108,8 @@ export function Sgo() {
                   onClick={() => {
                     setSelectedRecipe(recipe);
                     setMultiplier(1);
-                    setSearchPlaceholder(recipe.name); // ⬅️ update default placeholder
-                    setQuery(""); // ⬅️ clear input so placeholder is visible
+                    setSearchPlaceholder(recipe.name);
+                    setQuery("");
                   }}
                 >
                   {recipe.name}
@@ -144,9 +133,7 @@ export function Sgo() {
               </thead>
               <tbody>
                 {[...selectedRecipe.ingredients]
-                  .sort(
-                    (a, b) => b.quantity * multiplier - a.quantity * multiplier
-                  )
+                  .sort((a, b) => b.quantity * multiplier - a.quantity * multiplier)
                   .map((ing) => (
                     <tr key={ing.item} className="hover:bg-gray-50">
                       <td className="px-4 py-2 border">
@@ -169,9 +156,7 @@ export function Sgo() {
                             type="text"
                             inputMode="decimal"
                             value={qtyInputs[ing.item] ?? ""}
-                            onChange={(e) =>
-                              onQtyChange(ing.item, e.target.value)
-                            }
+                            onChange={(e) => onQtyChange(ing.item, e.target.value)}
                             onBlur={() => onQtyBlur(ing.item)}
                             placeholder="0"
                           />
@@ -205,7 +190,18 @@ export function Sgo() {
             />
           </div>
         )}
+
+        {/* Method (safe access) */}
+        {selectedRecipe?.method && (
+          <section className="mt-8 max-w-3xl mx-auto text-left">
+            <h3 className="text-xl font-semibold mb-3">Method</h3>
+            <p className="whitespace-pre-line leading-relaxed text-gray-700">
+              {selectedRecipe.method}
+            </p>
+          </section>
+        )}
       </div>
+
       <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-600 z-40">
         Powered by <strong>TingTong</strong>
       </footer>

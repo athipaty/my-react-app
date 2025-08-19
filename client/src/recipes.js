@@ -40,7 +40,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/green-chili-padi.webp',
       }
-    ]
+    ],
+    method: 'Chop the Yuzu Cheong and chili in a food processor (do not blend). Place all the ingredients in a bowl, add the seasonings, and mix everything together by hand or with a spatula.'
   },
   {
     name: 'Sriracha Mayo',
@@ -322,10 +323,10 @@ const recipes = [
         image: '/images/ingredients/tenkasu.jpg'
       },
       {
-        item: 'Seansoned Salt',
+        item: 'Seasoned Salt',
         quantity: 13,
         unit: 'g',
-        image: '/images/ingredients/Seasoned-salt.jpg'
+        image: '/images/ingredients/seasoned-salt.jpg'
       },
       {
         item: 'Sesame Oil',
