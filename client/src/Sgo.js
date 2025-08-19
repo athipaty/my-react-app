@@ -205,11 +205,10 @@ export function Sgo() {
             />
           </div>
         )}
-
       </div>
-              <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-500 z-40">
-  © {new Date().getFullYear()} TingTong. All rights reserved.
-</footer>
+      <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-600 z-40">
+        Powered by <strong>TingTong</strong>
+      </footer>
     </div>
   );
 }
