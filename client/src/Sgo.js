@@ -102,13 +102,13 @@ export function Sgo() {
             {filtered.map((recipe) => (
               <li
                 key={recipe.name}
-                className="flex items-center gap-2 justify-between"
+                className="flex flex-col items-center gap-2 justify-between"
               >
                 <img
                   src={recipe.image}
                   alt={recipe.name}
                   loading="eager"
-                  className="w-10 h-10 object-cover rounded shadow cursor-pointer transition-opacity duration-300 opacity-100"
+                  className="w-20 h-20 object-cover rounded shadow cursor-pointer transition-opacity duration-300 opacity-100"
                   onClick={() => {
                     setFullImage(recipe.image);
                     setImageLoaded(false);
