@@ -148,8 +148,8 @@ export function Sgo() {
                           }}
                         />
                       </td>
-                      <td className="px-4 py-2 border">{ing.item}</td>
-                      <td className="px-4 py-2 border">
+                      <td className="px-2 py-2 border">{ing.item}</td>
+                      <td className="px-2 py-2 border">
                         <div className="flex items-center gap-2">
                           <input
                             className="border px-2 py-1 rounded text-center w-24"
