@@ -172,7 +172,8 @@ const recipes = [
       {
         item: 'New sugar',
         quantity: 20,
-        unit: 'g'
+        unit: 'g',
+        image: '/images/ingredients/new-sugar.webp',
       }
     ],
     method: 'Peel the radish and cut it into 2 cm × 2 cm cubes. Mix with salt and sugar, then leave for 1 hour, stirring occasionally. After that, drain the water. Cut the spring onion into 2–3 cm pieces, and if the white part is too thick, cut it in half first. Mix the radish and spring onion with kimchi paste. Leave it outside for 2 days (stir after 1 day), then transfer to a smaller container and keep in the chiller. It will be ready to serve after 3 days.'
@@ -261,10 +262,10 @@ const recipes = [
         image: '/images/ingredients/minced-garlic.jpg',
       },
       {
-        item: 'Chopped Leek',
+        item: 'Leek',
         quantity: 2100,
         unit: 'g',
-        image: '/images/ingredients/chopped-leek.jpg',
+        image: '/images/ingredients/leek.webp',
       },
       {
         item: 'White Sugar',
@@ -302,7 +303,8 @@ const recipes = [
         unit: 'g',
         image: '/images/ingredients/sesame-seeds.jpg'
       }
-    ]
+    ],
+    method: 'Do not use old garlic or leek, as the sauce may taste sour. Finely chop the white part of the leek and the garlic. Place everything in a bowl and mix well. Add the sesame seeds at the end.'
   },
   {
     name: 'Rice Ball',
@@ -312,13 +314,13 @@ const recipes = [
         item: 'Cooked Rice',
         quantity: 4000,
         unit: 'g',
-        image: '/images/ingredients/cooked-rice.jpg'
+        image: '/images/ingredients/cooked-rice.webp'
       },
       {
         item: 'Seaweed Flake',
         quantity: 200,
         unit: 'g',
-        image: '/images/ingredients/seaweed-flake.jpg'
+        image: '/images/ingredients/seaweed-flake.jpeg'
       },
       {
         item: 'Tenkasu',
@@ -348,7 +350,7 @@ const recipes = [
         item: 'Coarse Chilli Powder',
         quantity: 3000,
         unit: 'g',
-        image: '/images/ingredients/coarse-chilli-powder.jpg'
+        image: '/images/ingredients/coarse-chilli-powder.webp'
       },
       {
         item: 'Minced Garlic',
@@ -372,19 +374,19 @@ const recipes = [
         item: 'Brown Pear',
         quantity: 1500,
         unit: 'g',
-        image: '/images/ingredients/brown-pear.jpg'
+        image: '/images/ingredients/brown-pear.webp'
       },
       {
         item: 'White Sugar',
         quantity: 1000,
         unit: 'g',
-        image: '/images/ingredients/white-sugar.jpg.jpg'
+        image: '/images/ingredients/white-sugar.jpg'
       },
       {
         item: 'Kanari Fish Sauce',
         quantity: 4000,
         unit: 'g',
-        image: '/images/ingredients/kabari-fish-sauce.jpg'
+        image: '/images/ingredients/kanari-fish-sauce.webp'
       },
       {
         item: 'Miwon',
@@ -396,7 +398,7 @@ const recipes = [
         item: 'Glutinous Rice Flour',
         quantity: 120,
         unit: 'g',
-        image: '/images/ingredients/glutinous-rice-fllour.jpg'
+        image: '/images/ingredients/glutinous-rice-flour.webp'
       },
       {
         item: 'Water',
@@ -464,7 +466,7 @@ const recipes = [
         item: 'Non Alcohol Mirin',
         quantity: 1000,
         unit: 'g',
-        image: '/images/ingredients/non-alcohol-mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Oyster Sauce',
@@ -543,7 +545,7 @@ const recipes = [
         item: 'Non Alcohol Mirin',
         quantity: 3000,
         unit: 'g',
-        image: '/images/ingredients/non-alcohol-mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Vineger (Hwan Man)',
@@ -798,7 +800,7 @@ const recipes = [
         item: 'Non Alcohol Mirin',
         quantity: 480,
         unit: 'g',
-        image: '/images/ingredients/non-alcohol-mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Corn Syrup',
@@ -817,7 +819,7 @@ const recipes = [
         item: 'Cooked Rice',
         quantity: 2000,
         unit: 'g',
-        image: '/images/ingredients/cooked-rice.jpg'
+        image: '/images/ingredients/cooked-rice.webp'
       },
       {
         item: 'Minced Garlic',
@@ -873,7 +875,7 @@ const recipes = [
   },
   {
     name: "Minari Water Snail Sauce",
-    image: '/images/minari-water-snail-sauce.jpg',
+    image: '/images/minari-water-snail-sauce.jpeg',
     ingredients: [
       {
         item: 'Minced Garlic',
@@ -1018,7 +1020,7 @@ const recipes = [
         item: 'Non Alcohol Mirin',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/non-alcohol-mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Miwon',
@@ -1060,7 +1062,7 @@ const recipes = [
         item: 'Leek (Green Part)',
         quantity: 1500,
         unit: 'g',
-        image: '/images/ingredients/leek.jpg'
+        image: '/images/ingredients/leek.webp'
       },
       {
         item: 'White Onion',
@@ -1069,10 +1071,10 @@ const recipes = [
         image: '/images/ingredients/white-onion.jpg'
       },
       {
-        item: 'water',
+        item: 'Water',
         quantity: 12000,
         unit: 'g',
-        image: '/images/ingredients/water.jpg'
+        image: '/images/ingredients/water.jpeg'
       }
     ],
     method: 'Peel the radish and slice it into thin strips (julienne). Cut the green part of the leek into 4 cm pieces and halve them. Cut the onion into 2 × 2 cm cubes. Place all the vegetables in a large pot with water and bring to a boil. Add all the sauces; if using Cheong Guk Jang, crush it roughly by hand before adding. Boil on high heat until it comes to a strong boil, then reduce to medium heat and continue boiling for 15–20 minutes. After that, turn off the heat.'
