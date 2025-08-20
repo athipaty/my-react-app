@@ -180,7 +180,7 @@ const recipes = [
   },
   {
     name: 'Sancho Soy Sauce',
-    image: '/images//sancho-soy-sauce.jpg',
+    image: '/images/sancho-soy-sauce.jpg',
     ingredients: [
       {
         item: 'White Sugar',
@@ -277,7 +277,7 @@ const recipes = [
         item: 'Soy Sauce',
         quantity: 6300,
         unit: 'g',
-        image: '/images/ingredients/soy-sauce.webp',
+        image: '/images/ingredients/soy-sauce.png',
       },
       {
         item: 'Vinegar',
@@ -509,7 +509,7 @@ const recipes = [
         item: 'Red Cheongyang Chilli Powder',
         quantity: 750,
         unit: 'g',
-        image: '/images/ingredients/red-cheongyang-chilli-powder.jpg'
+        image: '/images/ingredients/fine-chili-powder.webp'
       },
       {
         item: 'Minced Garlic',
@@ -521,25 +521,25 @@ const recipes = [
         item: 'Corn Syrup',
         quantity: 1500,
         unit: 'g',
-        image: '/images/ingredients/corn-syrup.jpg'
+        image: '/images/ingredients/corn-syrup.png'
       },
       {
         item: 'Thai Fish Sauce',
         quantity: 450,
         unit: 'g',
-        image: '/images/ingredients/thai-fish-sauce.jpg'
+        image: '/images/ingredients/thai-fish-sauce.webp'
       },
       {
         item: 'Kikoman Soy Sauce',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/kikoman-soy-sauce,webp'
+        image: '/images/ingredients/kikoman-soy-sauce.webp'
       },
       {
         item: 'Sprite',
         quantity: 2250,
         unit: 'g',
-        image: '/images/ingredients/sprite.jpg'
+        image: '/images/ingredients/sprite.webp'
       },
       {
         item: 'Non Alcohol Mirin',
@@ -625,7 +625,7 @@ const recipes = [
         item: 'Jin Soy Sauce',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/jin-soy-sauce.jpg'
+        image: '/images/ingredients/soy-sauce.png'
       },
       {
         item: 'Vinegar (Hwan man)',
@@ -679,7 +679,7 @@ const recipes = [
         item: 'Jin Soy Sauce',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/jin-soy-sauce.jpg'
+        image: '/images/ingredients/soy-sauce.png'
       },
       {
         item: 'Vinegar (Hwan man)',
@@ -794,7 +794,7 @@ const recipes = [
         item: 'Awase Miso',
         quantity: 1600,
         unit: 'g',
-        image: '/images/ingredients/awase-miso.jpg'
+        image: '/images/ingredients/awase-miso.webp'
       },
       {
         item: 'Non Alcohol Mirin',
@@ -806,7 +806,7 @@ const recipes = [
         item: 'Corn Syrup',
         quantity: 480,
         unit: 'g',
-        image: '/images/ingredients/corn-syrup.jpg'
+        image: '/images/ingredients/corn-syrup.png'
       }
     ],
     method: 'Mix all the sauces together. The sauce can be kept for a long time, but once mixed with fish roe it should be used quickly as it does not keep well. To serve, mix the fish roe with the sauce and shape into rice balls.'
@@ -831,7 +831,7 @@ const recipes = [
         item: 'Unsalted Butter',
         quantity: 160,
         unit: 'g',
-        image: '/images/ingredients/unsalted-butter.jpg'
+        image: '/images/ingredients/unsalted-butter.webp'
       },
       {
         item: 'Seasoned Salt',
@@ -856,7 +856,7 @@ const recipes = [
         item: 'Non Alcohol - Sancho Soy Sauce',
         quantity: 320,
         unit: 'g',
-        image: '/images/ingredients/non-alcohol-chicken-sansho-soy-sauce.jpg'
+        image: '/images/ingredients/non-alcohol-sancho-soy-sauce.webp'
       },
       {
         item: 'Dark Soy Sauce',
@@ -893,13 +893,13 @@ const recipes = [
         item: 'Jin Soy Sauce',
         quantity: 1000,
         unit: 'g',
-        image: '/images/ingredients/jin-soy-sauce.jpg'
+        image: '/images/ingredients/soy-sauce.png'
       },
       {
-        item: 'Black Pepper',
+        item: 'Black Pepper Powder',
         quantity: 12,
         unit: 'g',
-        image: '/images/ingredients/black-pepper.jpg'
+        image: '/images/ingredients/black-pepper-powder.webp'
       },
       {
         item: 'Dark Soy Sauce',
@@ -911,31 +911,31 @@ const recipes = [
         item: 'Hwanman Vinegar',
         quantity: 4660,
         unit: 'g',
-        image: '/images/ingredients/hwanman-vinegar.jpg'
+        image: '/images/ingredients/vinegar-hwan-man.webp'
       },
       {
         item: 'Coarse Chili Powder',
         quantity: 2000,
         unit: 'g',
-        image: '/images/ingredients/coarse-chili-powder.jpg'
+        image: '/images/ingredients/coarse-chilli-powder.webp'
       },
       {
         item: 'Corn Syrup',
         quantity: 3330,
         unit: 'g',
-        image: '/images/ingredients/corn-syrup.jpg'
+        image: '/images/ingredients/corn-syrup.png'
       },
       {
        item: 'Gochujan',
        quantity: 2000,
        unit: 'g',
-       image: '/images/ingredients/gochujang.jpg' 
+       image: '/images/ingredients/gochujang.webp' 
       },
       {
-        item: 'Sesame',
+        item: 'Sesame Seeds',
         quantity: '',
         unit: 'g',
-        image: '/images/ingredients/sesame.jpg'
+        image: '/images/ingredients/sesame-seeds.jpg'
       }
     ]
   },
@@ -947,13 +947,13 @@ const recipes = [
         item: 'Soy Sauce',
         quantity: 1200,
         unit: 'g',
-        image: '/images/ingredients/soy-sauce.jpg'
+        image: '/images/ingredients/soy-sauce.png'
       },
       {
         item: 'Coarse Chili Powder',
         quantity: 120,
         unit: 'g',
-        image: '/images/ingredients/coarse-chili-powder.jpg'
+        image: '/images/ingredients/chili-powder-coarse.webp'
       },
       {
         item: 'Minced Garlic',
@@ -965,13 +965,13 @@ const recipes = [
         item: 'Corn Syrup',
         quantity: 280,
         unit: 'g',
-        image: '/images/ingredients/corn-syrup.jpg'
+        image: '/images/ingredients/corn-syrup.png'
       },
       {
         item: 'Sesame Oil',
         quantity: 800,
         unit: 'g',
-        image: '/images/ingredients/sesame.jpg'
+        image: '/images/ingredients/sesame-oil.jpg'
       },
       {
         item: 'Sesame Seeds',
@@ -983,13 +983,13 @@ const recipes = [
         item: 'Spring Onion',
         quantity: 2000,
         unit: 'g',
-        image: '/images/ingredients/spring-onion.jpg'
+        image: '/images/ingredients/spring-onion.webp'
       },
       {
         item: 'Green Chili',
         quantity: 600,
         unit: 'g',
-        image: '/images/ingredients/green-chili.jpg'
+        image: '/images/ingredients/green-chili.png'
       },
       {
         item: 'Red Chili',
@@ -1038,7 +1038,7 @@ const recipes = [
         item: 'Red Cheongyang Chilli Powder',
         quantity:  240,
         unit: 'g',
-        image: '/images/ingredients/red-cheong-yang-chili-powder.jpg'
+        image: '/images/ingredients/chili-powder-fine.avif'
       },
       {
         item: 'Soybean Paste',
