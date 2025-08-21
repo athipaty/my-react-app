@@ -45,7 +45,7 @@ const recipes = [
   },
   {
     name: 'Sriracha Mayo',
-    iamge: '/images/sriracha-mayo.jpg',
+    image: '/images/sriracha-mayo.jpg',
     ingredients: [
       {
         item: 'Sichimi',
@@ -1056,7 +1056,7 @@ const recipes = [
         item: 'White Radish',
         quantity: 3600,
         unit: 'g',
-        image: '/images/ingredients/white-radish.jpg'
+        image: '/images/ingredients/radish.webp'
       },
       {
         item: 'Leek (Green Part)',
