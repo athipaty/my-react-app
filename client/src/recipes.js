@@ -875,7 +875,7 @@ const recipes = [
   },
   {
     name: "Minari Water Snail Sauce",
-    image: '/images/minari-water-snail-sauce.jpeg',
+    image: '/images/minari-water-snail-sauce.jpg',
     ingredients: [
       {
         item: 'Minced Garlic',
@@ -941,7 +941,7 @@ const recipes = [
   },
   {
     name: 'Cold Soft Tofu Sauce',
-    image: '/images/cold-soft-tofu-sauce',
+    image: '/images/cold-soft-tofu-sauce.jpg',
     ingredients: [
       {
         item: 'Soy Sauce',
@@ -1080,8 +1080,8 @@ const recipes = [
     method: 'Peel the radish and slice it into thin strips (julienne). Cut the green part of the leek into 4 cm pieces and halve them. Cut the onion into 2 × 2 cm cubes. Place all the vegetables in a large pot with water and bring to a boil. Add all the sauces; if using Cheong Guk Jang, crush it roughly by hand before adding. Boil on high heat until it comes to a strong boil, then reduce to medium heat and continue boiling for 15–20 minutes. After that, turn off the heat.'
   },
   {
-    name: 'Hang Over Chili Paste',
-    image: '/images/hang-over-chili-paste.jpeg',
+    name: 'Hangover Chili Paste',
+    image: '/images/hangover-chili-paste.jpg',
     ingredients: [
       {
         item: 'Chili Powder Coarse',
@@ -1133,6 +1133,50 @@ const recipes = [
       }
     ],
     method: 'Mix coarse chili powder, fine chili powder, and green chili powder together in a bowl (A). Heat the oil in a pot until hot and ready to pour into bowl (A). While waiting for the oil to heat, blend the remaining ingredients into a paste and place it in bowl (A). Once the paste and powder are ready, slowly pour the hot oil over them while stirring to combine everything into a smooth paste. After mixing well, add the water. Once fully incorporated, store the paste in a container or vacuum pack and keep it in the chiller until ready to use.'
+  },
+  {
+    name: 'Truffle Powder Mix',
+    image: '/images/truffle-powder.jpg',
+    ingredients: [
+      {
+        item: 'Glutinous Rice Flour',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/glutinous-rice-flour.webp'
+      },
+      {
+        item: 'Soy Bean Powder',
+        quantity: 800,
+        unit: 'g',
+        image: '/images/ingredients/soy-bean-powder.webp'
+      }
+    ],
+    method: 'Make sure all the ingredients are mixed evenly.'
+  },
+  {
+    name: 'Perilla Powder Mix',
+    image: '/images/perilla-powder.jpg',
+    ingredients: [
+      {
+        item: 'Glutinous Rice Flour',
+        quantity: 3000,
+        unit: 'g',
+        image: '/images/ingredients/glutinous-rice-flour.webp'
+      },
+      {
+        item: 'Soy Bean Powder',
+        quantity: 800,
+        unit: 'g',
+        image: '/images/ingredients/soy-bean-powder.webp'
+      },
+      {
+        item: 'Perilla Powder',
+        quantity: 4000,
+        unit: 'g',
+        image: '/images/ingredients/perilla-powder.webp'
+      }
+    ],
+    method: 'Make sure all the ingredients are mixed evenly.'
   }
 ];
 
