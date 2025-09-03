@@ -60,10 +60,10 @@ const recipes = [
         image: '/images/ingredients/white-sugar.jpg',
       },
       {
-        item: 'Mirin',
+        item: 'Non Alcohol Mirin',
         quantity: 420,
         unit: 'g',
-        image: '/images/ingredients/mirin.jpg',
+        image: '/images/ingredients/non-alcohol-mirin.webp',
       },
       {
         item: 'Sriracha Sauce',
@@ -292,10 +292,10 @@ const recipes = [
         image: '/images/ingredients/fine-chili-powder.webp'
       },
       {
-        item: 'Mirin',
+        item: 'Non Alcohol Mirin',
         quantity: 1750,
         unit: 'g',
-        image: '/images/ingredients/mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Sesame Seeds',
@@ -415,21 +415,21 @@ const recipes = [
     ingredients: [
       {
         item: 'Egg',
-        quantity: 2,
-        unit: 'L',
+        quantity: 2000,
+        unit: 'g',
         image: '/images/ingredients/egg.jpg'
       },
       {
         item: 'Water',
         quantity: 250,
-        unit: 'ml',
+        unit: 'g',
         image: '/images/ingredients/water.jpeg'
       },
       {
-        item: 'Mirin',
+        item: 'Non Alcohol Mirin',
         quantity: 100,
-        unit: 'ml',
-        image: '/images/ingredients/mirin.jpg'
+        unit: 'g',
+        image: '/images/ingredients/non-alcohol-mirin.webp'
       },
       {
         item: 'Seasoned Salt',
@@ -646,10 +646,10 @@ const recipes = [
         image: '/images/ingredients/water.jpeg'
       },
       {
-        item: 'Mirin',
+        item: 'Non Alcohol Mirin',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.Webp'
       },
       {
         item: 'Red Chili',
@@ -700,10 +700,10 @@ const recipes = [
         image: '/images/ingredients/water.jpeg'
       },
       {
-        item: 'Mirin',
+        item: 'Non Alcohol Mirin',
         quantity: 6000,
         unit: 'g',
-        image: '/images/ingredients/mirin.jpg'
+        image: '/images/ingredients/non-alcohol-mirin.Webp'
       },
       {
         item: 'Red Chili',
