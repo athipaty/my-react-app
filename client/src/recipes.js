@@ -1022,7 +1022,7 @@ const recipes = [
         item: "Kikoman Soy Sauce",
         quantity: 180,
         unit: "g",
-        image: "/images/ingredients/kikoman-soy-sauce.jpg",
+        image: "/images/ingredients/kikoman-soy-sauce.webp",
       },
       {
         item: "Dark Soy Sauce",
@@ -1058,7 +1058,7 @@ const recipes = [
         item: "Soybean Paste",
         quantity: 1500,
         unit: "g",
-        image: "/images/ingredients/soybean-paste.jpg",
+        image: "/images/ingredients/soybean-paste.png",
       },
       {
         item: "Cheonggukjang",
@@ -1326,6 +1326,54 @@ const recipes = [
       },
     ],
   },
+  {
+    name: 'Collegen Kalguksu (Noodle)',
+    image: "/images/collegen-kalguksu-noodle.png",
+    ingredients: [
+      {
+        item:'Chicken Broth',
+        quantity: 4000,
+        unit: 'g',
+        image: "/images/ingredients/chicken-broth.png",
+      },
+      {
+        item: 'Water',
+        quantity: 4000,
+        unit: 'g',
+        image: "/images/ingredients/water.jpeg",
+      },
+      {
+        item: 'Flower Salt',
+        quantity: 60,
+        unit: 'g',
+        image: "/images/ingredients/flower-salt.png",
+      },
+      {
+        item: 'Black Pepper Powder',
+        quantity: 12,
+        unit: 'g',
+        image: "/images/ingredients/black-pepper-powder.webp",
+      },
+      {
+        item: 'Miwon',
+        quantity: 16,
+        unit: 'g',
+        image: "/images/ingredients/miwon.png",
+      },
+      {
+        item: 'Liquid Chicken MSG',
+        quantity: 80,
+        unit: 'g',
+        image: "/images/ingredients/liquid-chicken-msg.png",
+      },{
+        item: 'Collegen Paitan',
+        quantity: 80,
+        unit: 'g',
+        image: "/images/ingredients/collegen=paitan.png",
+      }
+    ]
+
+  }
 ];
 
 export default recipes;
