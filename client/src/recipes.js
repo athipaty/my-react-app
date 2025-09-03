@@ -423,7 +423,7 @@ const recipes = [
         item: "Egg",
         quantity: 2000,
         unit: "g",
-        image: "/images/ingredients/egg.jpg",
+        image: "/images/ingredients/egg.webp",
       },
       {
         item: "Water",
