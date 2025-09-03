@@ -416,7 +416,7 @@ const recipes = [
       "Mix water and glutinous rice flour, then boil until it becomes a thick, glue-like texture. Let it cool. Blend the garlic, onion, salted prawn, and pear. In a large bowl, combine the blended mixture with the rice paste and all the sauces. Store in the chiller.",
   },
   {
-    name: "Egg Roll",
+    name: "Egg Roll Mix",
     image: "/images/egg-roll.jpg",
     ingredients: [
       {
@@ -442,24 +442,6 @@ const recipes = [
         quantity: 12.5,
         unit: "g",
         image: "/images/ingredients/seasoned-salt.jpg",
-      },
-      {
-        item: "Carrot",
-        quantity: 200,
-        unit: "g",
-        image: "/images/ingredients/carrot.jpg",
-      },
-      {
-        item: "Spring Onion",
-        quantity: 100,
-        unit: "g",
-        image: "/images/ingredients/sring-onion.jpg",
-      },
-      {
-        item: "Roasted Kimbap Laver",
-        quantity: 0.5,
-        unit: "sheet",
-        image: "/images/ingredients/roasted-kimbap-laver.jpg",
       },
     ],
     method:
