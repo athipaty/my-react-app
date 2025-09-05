@@ -1184,7 +1184,7 @@ const recipes = [
         item: "Chicken Broth",
         quantity: 8000,
         unit: "g",
-        image: "/images/ingredients/chceken-broth.webp",
+        image: "/images/ingredients/chicken-broth.jpg",
       },
       {
         item: "Collegen Paitan",
@@ -1196,7 +1196,7 @@ const recipes = [
         item: "Flower Salt",
         quantity: 50,
         unit: "g",
-        image: "/images/ingredients/flower-salt.webp",
+        image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: "Miwon",
@@ -1214,7 +1214,7 @@ const recipes = [
         item: "Checken Broth",
         quantity: 8000,
         unit: "g",
-        image: "/images/ingredients/checken-broth.webp",
+        image: "/images/ingredients/chicken-broth.jpg",
       },
       {
         item: "Perilla Powder Mix",
@@ -1226,7 +1226,7 @@ const recipes = [
         item: "Flower Salt",
         quantity: 50,
         unit: "g",
-        image: "/images/ingredients/flower-salt.webp",
+        image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: "Miwon",
@@ -1244,7 +1244,7 @@ const recipes = [
         item: "Checken Broth",
         quantity: 8000,
         unit: "g",
-        image: "/images/ingredients/checken-broth.webp",
+        image: "/images/ingredients/chicken-broth.jpg",
       },
       {
         item: "Hangover Paste",
@@ -1256,7 +1256,7 @@ const recipes = [
         item: "Flower Salt",
         quantity: 25,
         unit: "g",
-        image: "/images/ingredients/flower-salt.webp",
+        image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: "Miwon",
@@ -1274,7 +1274,7 @@ const recipes = [
         item: "Checken Broth",
         quantity: 8000,
         unit: "g",
-        image: "/images/ingredients/checken-broth.webp",
+        image: "/images/ingredients/chicken-broth.jpg",
       },
       {
         item: "Truffle Powder Mix",
@@ -1298,7 +1298,7 @@ const recipes = [
         item: "Flower Salt",
         quantity: 50,
         unit: "g",
-        image: "/images/ingredients/flower-salt.webp",
+        image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: "Miwon",
@@ -1310,13 +1310,13 @@ const recipes = [
   },
   {
     name: 'Collegen Kalguksu (Noodle)',
-    image: "/images/collegen-kalguksu-noodle.png",
+    image: "/images/collegen-kalguksu-noodle.jpg",
     ingredients: [
       {
         item:'Chicken Broth',
         quantity: 4000,
         unit: 'g',
-        image: "/images/ingredients/chicken-broth.png",
+        image: "/images/ingredients/chicken-broth.jpg",
       },
       {
         item: 'Water',
@@ -1328,7 +1328,7 @@ const recipes = [
         item: 'Flower Salt',
         quantity: 60,
         unit: 'g',
-        image: "/images/ingredients/flower-salt.png",
+        image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: 'Black Pepper Powder',
@@ -1346,7 +1346,7 @@ const recipes = [
         item: 'Liquid Chicken MSG',
         quantity: 80,
         unit: 'g',
-        image: "/images/ingredients/liquid-chicken-msg.png",
+        image: "/images/ingredients/liquid-chicken-msg.avif",
       },{
         item: 'Collegen Paitan',
         quantity: 80,
