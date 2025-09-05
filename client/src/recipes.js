@@ -640,7 +640,7 @@ const recipes = [
         item: "Non Alcohol Mirin",
         quantity: 6000,
         unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.Webp",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
         item: "Red Chili",
@@ -1025,10 +1025,10 @@ const recipes = [
         image: "/images/ingredients/miwon.png",
       },
       {
-        item: "Enchovy Powder",
+        item: "Anchovy Powder",
         quantity: 150,
         unit: "g",
-        image: "/images/ingredients/enchovy-powder.jpg",
+        image: "/images/ingredients/anchovy powder.png",
       },
       {
         item: "Red Cheongyang Chilli Powder",
