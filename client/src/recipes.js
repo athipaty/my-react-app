@@ -149,8 +149,8 @@ const recipes = [
     ingredients: [
       {
         item: "Radish",
-        quantity: 20,
-        unit: "Kg",
+        quantity: 20000,
+        unit: "g",
         image: "/images/ingredients/radish.webp",
       },
       {
@@ -161,8 +161,8 @@ const recipes = [
       },
       {
         item: "Kimchi Paste",
-        quantity: 2.4,
-        unit: "Kg",
+        quantity: 2400,
+        unit: "g",
         image: "/images/ingredients/kimchi-paste.jpg",
       },
       {
@@ -601,60 +601,6 @@ const recipes = [
     ],
     method:
       "Use mainly the yellow parts of the cabbage, not the green ones. Cut the cabbage leaves in half and then into 5 cm cubes. Wash once and place in a large bowl. Sprinkle sea salt evenly and mix by hand. Let it sit for about an hour until the texture becomes slightly bendy, mixing occasionally. After an hour, rinse the cabbage under running water 2–3 times and gently squeeze out the excess water, but not too strongly. For the pickle water, boil all the seasonings in a pot except the garlic and vinegar. Once it boils, turn off the heat and add the chopped garlic. Let it cool to room temperature, then add the vinegar and mix well. Pour the pickle water over the cabbage, mix by hand, and store in the chiller. It will be ready to serve after one day.",
-  },
-  {
-    name: "Celery Pickle",
-    image: "/images/celery-pickle.jpg",
-    ingredients: [
-      {
-        item: "Celery",
-        quantity: 30,
-        unit: "kg",
-        image: "/images/ingredients/celery.jpg",
-      },
-      {
-        item: "Jin Soy Sauce",
-        quantity: 6000,
-        unit: "g",
-        image: "/images/ingredients/soy-sauce.png",
-      },
-      {
-        item: "Vinegar (Hwan man)",
-        quantity: 6000,
-        unit: "g",
-        image: "/images/ingredients/vinegar-hwan-man.webp",
-      },
-      {
-        item: "White Sugar",
-        quantity: 3000,
-        unit: "g",
-        image: "/images/ingredients/white-sugar.jpg",
-      },
-      {
-        item: "Water",
-        quantity: 6000,
-        unit: "g",
-        image: "/images/ingredients/water.jpeg",
-      },
-      {
-        item: "Non Alcohol Mirin",
-        quantity: 6000,
-        unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.webp",
-      },
-      {
-        item: "Red Chili",
-        quantity: 15,
-        unit: "Pcs",
-        image: "/images/ingredients/red-chili.jpg",
-      },
-      {
-        item: "White Onion",
-        quantity: 2,
-        unit: "Pcs",
-        image: "/images/ingredients/white-onion.jpg",
-      },
-    ],
   },
   {
     name: "Chye Sim Pickle",
@@ -1292,7 +1238,7 @@ const recipes = [
         item: 'Truffle Paste',
         quantity: 500,
         unit: 'g',
-        image: "/images/ingredients/truffle-paste.webp",
+        image: "/images/ingredients/truffle-paste.jpg",
       },
       {
         item: "Flower Salt",
@@ -1354,7 +1300,90 @@ const recipes = [
         image: "/images/ingredients/collegen=paitan.png",
       }
     ]
-
+  },
+  {
+    name: 'Marinated Sauce',
+    image: "/images/marinated-sauce.png",
+    ingredients: [
+      {
+        item: 'White Sugar',
+        quantity: 1700,
+        unit: 'g',
+        image: "/images/ingredients/white-sugar.png",
+      },
+      {
+        item: 'Seasoned Salt',
+        quantity: 130,
+        unit: 'g',
+        image: "/images/ingredients/seasoned-salt.png",
+      },
+      {
+        item: 'Miwon',
+        quantity: 130,
+        unit: 'g',
+        image: "/images/ingredients/Miwan.png",
+      },
+      {
+        item: 'Black Pepper Power',
+        quantity: 30,
+        unit: 'g',
+        image: "/images/ingredients/black-pepper-powder.png",
+      },
+      {
+        item: 'Chicken Powder',
+        quantity: 90,
+        unit: 'g',
+        image: "/images/ingredients/chicken-powder.png",
+      },
+      {
+        item: "Korean Spicy Chilli Powder",
+        quantity: 1500,
+        unit: 'g',
+        image: "/images/ingredients/korean-spicy-chili-powder.png",
+      },
+      {
+        item: "Minced Garlic",
+        quantity: 750,
+        unit: 'g',
+        image: "/images/ingredients/minced-garlic.png",
+      },
+      {
+        item: 'Korean Chili Paste',
+        quantity: 550,
+        unit: 'g',
+        image: "/images/ingredients/korean-chili-paste.png",
+      },
+      {
+        item: 'Plum Extract',
+        quantity: 300,
+        unit: 'g',
+        image: "/images/ingredients/plum-extract.png",
+      },
+      {
+        item: "Corn Syrup",
+        quantity: 2000,
+        unit: 'g',
+        image: "/images/ingredients/corn-syrup.png",
+      },
+      {
+        item: "Honey Ginger Cheong",
+        quantity: 2000,
+        unit: 'g',
+        image: "/images/ingredients/honey-ginger-cheong.png",
+      },
+      {
+        item: 'Kikoman Soy Sauce',
+        quantity: 1600,
+        unit: 'g',
+        image: "/images/ingredients/kikoman-soy-sauce.webp",
+      },
+      {
+        item: 'Water',
+        quantity: 1900,
+        unit: 'g',
+        image: "/images/ingredients/water.jpeg",
+      }
+    ]
   }
 ];
 
