@@ -1077,8 +1077,8 @@ const recipes = [
       "Peel the radish and slice it into thin strips (julienne). Cut the green part of the leek into 4 cm pieces and halve them. Cut the onion into 2 × 2 cm cubes. Place all the vegetables in a large pot with water and bring to a boil. Add all the sauces; if using Cheong Guk Jang, crush it roughly by hand before adding. Boil on high heat until it comes to a strong boil, then reduce to medium heat and continue boiling for 15–20 minutes. After that, turn off the heat.",
   },
   {
-    name: "Hangover Chili Paste",
-    image: "/images/hangover-chili-paste.jpg",
+    name: "Hangover Paste",
+    image: "/images/hangover-paste.jpg",
     ingredients: [
       {
         item: "Chili Powder Coarse",
@@ -1134,7 +1134,7 @@ const recipes = [
   },
   {
     name: "Truffle Powder Mix",
-    image: "/images/truffle-powder.jpg",
+    image: "/images/truffle-powder-mix.jpg",
     ingredients: [
       {
         item: "Glutinous Rice Flour",
@@ -1153,7 +1153,7 @@ const recipes = [
   },
   {
     name: "Perilla Powder Mix",
-    image: "/images/perilla-powder.jpg",
+    image: "/images/perilla-powder-mix.jpg",
     ingredients: [
       {
         item: "Glutinous Rice Flour",
@@ -1171,7 +1171,7 @@ const recipes = [
         item: "Perilla Powder",
         quantity: 4000,
         unit: "g",
-        image: "/images/ingredients/perilla-powder.webp",
+        image: "/images/ingredients/perilla-powder.jpg",
       },
     ],
     method: "Make sure all the ingredients are mixed evenly.",
@@ -1208,7 +1208,7 @@ const recipes = [
   },
   {
     name: "Perilla Flavour",
-    image: "/images/perilla-flavour.webp",
+    image: "/images/perilla-flavour.jpg",
     ingredients: [
       {
         item: "Checken Broth",
@@ -1220,7 +1220,7 @@ const recipes = [
         item: "Perilla Powder Mix",
         quantity: 1000,
         unit: "g",
-        image: "/images/ingredients/perilla-powder-mix.webp",
+        image: "/images/ingredients/perilla-powder-mix.jpg",
       },
       {
         item: "Flower Salt",
@@ -1238,7 +1238,7 @@ const recipes = [
   },
   {
     name: "Hangover Flavour",
-    image: "/images/hangover-flavour.webp",
+    image: "/images/hangover-flavour.jpg",
     ingredients: [
       {
         item: "Checken Broth",
@@ -1250,7 +1250,7 @@ const recipes = [
         item: "Hangover Paste",
         quantity: 800,
         unit: "g",
-        image: "/images/ingredients/hangover-paste.webp",
+        image: "/images/ingredients/hangover-paste.jpg",
       },
       {
         item: "Flower Salt",
@@ -1268,7 +1268,7 @@ const recipes = [
   },
   {
     name: "Truffle Flavour",
-    image: "/images/truffle-flavour.webp",
+    image: "/images/truffle-flavour.jpg",
     ingredients: [
       {
         item: "Checken Broth",
@@ -1280,7 +1280,7 @@ const recipes = [
         item: "Truffle Powder Mix",
         quantity: 500,
         unit: "g",
-        image: "/images/ingredients/hangover-paste.webp",
+        image: "/images/ingredients/truffle-powder-mix.jpg",
       },
       {
         item: 'Blended Mushroom',
