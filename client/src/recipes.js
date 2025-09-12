@@ -1384,6 +1384,36 @@ const recipes = [
         image: "/images/ingredients/water.jpeg",
       }
     ]
+  },
+  {
+    name: "Kalguksu Chicken Prep",
+    image: "/images/kalguksu-chicken-prop.jpeg",
+    ingredients: [
+      {
+        item: "Chicken",
+        quantity: 10000,
+        unit: "g",
+        image: "/images/ingredients/chicken.jpeg",
+      },
+      {
+        item: "Cooking Oil",
+        quantity: 300,
+        unit: 'g',
+        image: "/images/ingredients/cooking-oil.jpg",
+      },
+      {
+        item: "Flower Salt",
+        quantity: 60,
+        unit: 'g',
+        image: "/images/ingredients/flower-salt.jpg",
+      },
+      {
+        item: "Black Pepper Powder",
+        quantity: 20,
+        unit: 'g',
+        image: "/images/ingredients/black-pepper-powder.webp",
+      }
+    ]
   }
 ];
 
