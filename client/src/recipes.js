@@ -1302,32 +1302,32 @@ const recipes = [
     ]
   },
   {
-    name: 'Marinated Sauce',
+    name: 'Chicken Marinated Sauce',
     image: "/images/marinated-sauce.png",
     ingredients: [
       {
         item: 'White Sugar',
         quantity: 1700,
         unit: 'g',
-        image: "/images/ingredients/white-sugar.png",
+        image: "/images/ingredients/white-sugar.jpg",
       },
       {
         item: 'Seasoned Salt',
         quantity: 130,
         unit: 'g',
-        image: "/images/ingredients/seasoned-salt.png",
+        image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
         item: 'Miwon',
         quantity: 130,
         unit: 'g',
-        image: "/images/ingredients/Miwan.png",
+        image: "/images/ingredients/miwan.png",
       },
       {
         item: 'Black Pepper Power',
         quantity: 30,
         unit: 'g',
-        image: "/images/ingredients/black-pepper-powder.png",
+        image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
         item: 'Chicken Powder',
@@ -1345,7 +1345,7 @@ const recipes = [
         item: "Minced Garlic",
         quantity: 750,
         unit: 'g',
-        image: "/images/ingredients/minced-garlic.png",
+        image: "/images/ingredients/minced-garlic.jpg",
       },
       {
         item: 'Korean Chili Paste',
@@ -1357,7 +1357,7 @@ const recipes = [
         item: 'Plum Extract',
         quantity: 300,
         unit: 'g',
-        image: "/images/ingredients/plum-extract.png",
+        image: "/images/ingredients/plum-extract.jpg",
       },
       {
         item: "Corn Syrup",
@@ -1393,7 +1393,7 @@ const recipes = [
         item: "Chicken",
         quantity: 10000,
         unit: "g",
-        image: "/images/ingredients/chicken.jpeg",
+        image: "/images/ingredients/chicken.webp",
       },
       {
         item: "Cooking Oil",
@@ -1412,6 +1412,84 @@ const recipes = [
         quantity: 20,
         unit: 'g',
         image: "/images/ingredients/black-pepper-powder.webp",
+      }
+    ]
+  },
+  {
+    name: "Marinated Chicken Prep",
+    image: "/images/ingredients/marinated-chicken-prep.webp",
+    ingredients: [
+      {
+        item: "Chicken Thigh",
+        quantity: 10000,
+        unit: 'g',
+        image: "/images/ingredients/chicken-thigh.webp",
+      },
+      {
+        item: "Chicken Marinated Sauce",
+        quantity: 2500,
+        unit: 'g',
+        image: "/images/ingredients/marinated-sauce.webp",
+      },
+      {
+        item: "Seasoned Salt",
+        quantity: 60,
+        unit: 'g',
+        image: "/images/ingredients/seasoned-salt.jpg",
+      },
+      {
+        item: "Black-Pepper-Powder",
+        quantity: 20,
+        unit: 'g',
+        image: "/images/ingredients/black-pepper-powder.webp",
+      }
+    ]
+  },
+  {
+    name: 'Tempura Dipping Sauce',
+    image: "/images/ingredients/tempura-dipping-sauce.webp",
+    ingredients: [
+      {
+        item: 'Soy Sauce',
+        quantity: 50,
+        unit: 'g',
+        image: "/images/ingredients/soy-sauce.png",
+      },
+      {
+        item: 'Sweet Sauce',
+        quantity: 15,
+        unit: 'g',
+        image: "/images/ingredients/sweet-sauce.webp",
+      },
+      {
+        item: 'Vineger',
+        quantity: 12,
+        unit: 'g',
+        image: "/images/ingredients/vineger.webp",
+      },
+      {
+        item: 'Chili Powder Coarse',
+        quantity: 4,
+        unit: 'g',
+        image: "/images/ingredients/chili-powder-coarse.webp",
+      },
+      {
+        item: 'Sesame B/W',
+        quantity: 5,
+        unit: 'g',
+        image: "/images/ingredients/sesame-bw.webp",
+      },
+      {
+        item: 'Honey',
+        quantity: 20,
+        unit: 'g',
+        image: "/images/ingredients/honey.webp",
+      },
+      {
+        item: 'White Sugar',
+        quantity: 4,
+        unit: 'g',
+        image: "/images/ingredients/white-sugar.jpg",
       }
     ]
   }
