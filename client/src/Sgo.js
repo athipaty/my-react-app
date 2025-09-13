@@ -140,11 +140,11 @@ export default function Sgo() {
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar Row with Back + Search + Home */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 w-full">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 w-1/7"
               onClick={goBack}
             >
               ←
@@ -155,7 +155,7 @@ export default function Sgo() {
 
           {/* Search Input */}
           <input
-            className="mx-2 p-3 border rounded text-base text-center w-64"
+            className="mx-2 p-3 border rounded text-base text-center w-5/7"
             placeholder={searchPlaceholder}
             value={query}
             onChange={(e) => {
@@ -167,7 +167,7 @@ export default function Sgo() {
 
           {/* Home Button */}
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 w-1/7"
             onClick={goHome}
           >
             🏠
