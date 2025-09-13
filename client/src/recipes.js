@@ -345,7 +345,31 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/sesame-oil.jpg",
       },
+      {
+        item: "Fish Roe Mix",
+        quantity: 200,
+        unit: 'g',
+        image: "/images/ingredients/fish-roe-mix.jpg",
+      }
     ],
+  },
+  {
+    name: 'Fish Roe Mix',
+     image: "/images/fish-roe-mix.jpg",
+     ingredients: [
+      {
+        item: 'Fish Roe',
+        quantity: 500,
+        unit: 'g',
+         image: "/images/ingredients/fish-roe.jpg",
+      },
+      {
+        item: 'Miso Sauce',
+        quantity: 230,
+        unit: 'g',
+         image: "/images/ingredients/miso-sauce.jpg",
+      }
+     ]
   },
   {
     name: "Kimchi Paste",
@@ -793,10 +817,10 @@ const recipes = [
         image: "/images/ingredients/minced-chiken-tender.jpg",
       },
       {
-        item: "Non Alcohol - Sancho Soy Sauce",
+        item: "Sancho Soy Sauce",
         quantity: 320,
         unit: "g",
-        image: "/images/ingredients/non-alcohol-sancho-soy-sauce.webp",
+        image: "/images/ingredients/sancho-soy-sauce.jpg",
       },
       {
         item: "Dark Soy Sauce",
