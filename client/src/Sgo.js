@@ -138,9 +138,9 @@ export default function Sgo() {
 
   return (
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
-      <div className="max-w-md w-full border">
+      <div className="max-w-md w-full">
         {/* Search Bar Row with Back + Search + Home */}
-        <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2 border" >
+        <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2" >
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
@@ -202,7 +202,7 @@ export default function Sgo() {
 
         {/* Recipe Detail View */}
         {selectedRecipe && (
-          <div className="mt-2 border">
+          <div className="mt-2">
             <h2 className="text-2xl font-bold mb-2">{selectedRecipe.name}</h2>
             <table className="mx-auto border-collapse w-full max-w-3xl text-left shadow">
               <thead>
