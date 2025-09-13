@@ -155,7 +155,7 @@ export default function Sgo() {
 
           {/* Search Input */}
           <input
-            className="mx-2 p-3 border rounded text-base text-center w-72"
+            className="mx-2 p-3 border rounded text-base text-center w-64"
             placeholder={searchPlaceholder}
             value={query}
             onChange={(e) => {
