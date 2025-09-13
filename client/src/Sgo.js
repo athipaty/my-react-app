@@ -140,7 +140,7 @@ export default function Sgo() {
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar Row with Back + Search + Home */}
-        <div className="flex items-center justify-between mb-4 w-full">
+        <div className="flex items-center justify-between mb-4 w-full max-w-3xl">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
@@ -155,7 +155,7 @@ export default function Sgo() {
 
           {/* Search Input */}
           <input
-            className="mx-2 p-3 border rounded text-base text-center w-5/7"
+            className="mx-2 p-3 border rounded text-base text-center flex-grow"
             placeholder={searchPlaceholder}
             value={query}
             onChange={(e) => {
