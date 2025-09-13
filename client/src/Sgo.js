@@ -140,11 +140,11 @@ export default function Sgo() {
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar Row with Back + Search + Home */}
-        <div className="flex items-center justify-between mb-4 w-full max-w-3xl">
+        <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 w-1/7"
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 w-1/8"
               onClick={goBack}
             >
               ←
@@ -167,7 +167,7 @@ export default function Sgo() {
 
           {/* Home Button */}
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 w-1/7"
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 w-1/8"
             onClick={goHome}
           >
             🏠
