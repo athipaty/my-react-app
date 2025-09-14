@@ -352,6 +352,7 @@ const recipes = [
         image: "/images/ingredients/fish-roe-mix.jpg",
       }
     ],
+    method: 'Mix rice, tenkasu, seaweed flakes, sesame oil, and seasoned salt thoroughly. Place mixture into a rice ball mold. Make a hole in the center and add about 1 teaspoon of fish roe. Cover with more rice and press firmly so the mold is filled evenly.'
   },
   {
     name: 'Fish Roe Mix',
@@ -369,7 +370,8 @@ const recipes = [
         unit: 'g',
          image: "/images/ingredients/miso-sauce.jpg",
       }
-     ]
+     ],
+     method: "Make sure all the ingredients are mixed evenly.",
   },
   {
     name: "Kimchi Paste",
@@ -1345,7 +1347,7 @@ const recipes = [
         item: 'Miwon',
         quantity: 130,
         unit: 'g',
-        image: "/images/ingredients/miwan.png",
+        image: "/images/ingredients/miwon.png",
       },
       {
         item: 'Black Pepper Power',
@@ -1357,13 +1359,13 @@ const recipes = [
         item: 'Chicken Powder',
         quantity: 90,
         unit: 'g',
-        image: "/images/ingredients/chicken-powder.png",
+        image: "/images/ingredients/chicken-powder.webp",
       },
       {
         item: "Korean Spicy Chilli Powder",
         quantity: 1500,
         unit: 'g',
-        image: "/images/ingredients/korean-spicy-chili-powder.png",
+        image: "/images/ingredients/chili-powder-fine.avif",
       },
       {
         item: "Minced Garlic",
@@ -1375,7 +1377,7 @@ const recipes = [
         item: 'Korean Chili Paste',
         quantity: 550,
         unit: 'g',
-        image: "/images/ingredients/korean-chili-paste.png",
+        image: "/images/ingredients/gochujang.webp",
       },
       {
         item: 'Plum Extract',
@@ -1393,7 +1395,7 @@ const recipes = [
         item: "Honey Ginger Cheong",
         quantity: 2000,
         unit: 'g',
-        image: "/images/ingredients/honey-ginger-cheong.png",
+        image: "/images/ingredients/honey-ginger-cheong.webp",
       },
       {
         item: 'Kikoman Soy Sauce',
@@ -1516,6 +1518,56 @@ const recipes = [
         image: "/images/ingredients/white-sugar.jpg",
       }
     ]
+  },
+  {
+    name: "Grill Rice Ball",
+    image: "/images/grill-rice-ball.jpg",
+    ingredients: [
+      {
+        item: 'Rice Ball',
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/gril-rice-ball.jpg",
+      },
+      {
+        item: "Sancho Soy Sauce",
+        quantity: 0,
+        unit: 'g',
+        image: "/images/ingredients/sancho-soy-sauce.jpg",
+      },
+      {
+        item: "Cooking Oil",
+        quantity: 0,
+        unit: 'g',
+        image: "/images/ingredients/cooking-oil.jpg",
+      },
+      {
+        item: "Yellow Radish",
+        quantity: 3,
+        unit: 'ea',
+        image: "/images/ingredients/yellow-radish.jpg",
+      }
+    ],
+    method: 'Heat a little cooking oil in a pan and place the rice ball inside. Brush both sides with Sancho soy sauce and grill until golden yellow. Before serving, add three pieces of yellow radish (cut into semi-circles) as a side dish.'
+  },
+  {
+    name: 'Cooked Rice',
+    image: "/images/cooked-rice.webp",
+    ingredients: [
+      {
+        item: 'Rice',
+        quantity: 1000,
+        unit: 'g',
+        image: "/images/ingredients/rice.jpg",
+      },
+      {
+        item: 'Water',
+        quantity: 1000,
+        unit: 'g',
+        image: "/images/ingredients/water.jpeg",
+      }
+    ],
+    method: "No need to wash the rice. Cook either in the rice cooker or in the oven. For oven cooking, set temperature to 100°C and bake for 35 minutes. Cover the container properly to prevent the rice surface from drying out."
   }
 ];
 
