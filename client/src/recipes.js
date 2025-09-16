@@ -1143,7 +1143,7 @@ const recipes = [
         item: "Perilla Powder",
         quantity: 4000,
         unit: "g",
-        image: "/images/ingredients/perilla-powder.jpg",
+        image: "/images/ingredients/perilla-powder.webp",
       },
     ],
     method: "Make sure all the ingredients are mixed evenly.",
@@ -1258,7 +1258,7 @@ const recipes = [
         item: 'Blended Mushroom',
         quantity: 500,
         unit: 'g',
-        image: "/images/ingredients/blended-mushroom.webp",
+        image: "/images/ingredients/blended-mushroom.jpg",
       },
       {
         item: 'Truffle Paste',
@@ -1328,8 +1328,8 @@ const recipes = [
     ]
   },
   {
-    name: 'Chicken Marinated Sauce',
-    image: "/images/marinated-sauce.png",
+    name: 'Marinated Sauce',
+    image: "/images/marinated-sauce.jpg",
     ingredients: [
       {
         item: 'White Sugar',
@@ -1443,7 +1443,7 @@ const recipes = [
   },
   {
     name: "Marinated Chicken Prep",
-    image: "/images/ingredients/marinated-chicken-prep.webp",
+    image: "/images/marinated-chicken-prep.jpg",
     ingredients: [
       {
         item: "Chicken Thigh",
@@ -1452,10 +1452,10 @@ const recipes = [
         image: "/images/ingredients/chicken-thigh.webp",
       },
       {
-        item: "Chicken Marinated Sauce",
+        item: "Marinated Sauce",
         quantity: 2500,
         unit: 'g',
-        image: "/images/ingredients/marinated-sauce.webp",
+        image: "/images/ingredients/marinated-sauce.jpg",
       },
       {
         item: "Seasoned Salt",
@@ -1469,11 +1469,12 @@ const recipes = [
         unit: 'g',
         image: "/images/ingredients/black-pepper-powder.webp",
       }
-    ]
+    ],
+   
   },
   {
     name: 'Tempura Dipping Sauce',
-    image: "/images/ingredients/tempura-dipping-sauce.webp",
+    image: "/images/ingredients/tempura-dipping-sauce.jpg",
     ingredients: [
       {
         item: 'Soy Sauce',
@@ -1491,7 +1492,7 @@ const recipes = [
         item: 'Vineger',
         quantity: 12,
         unit: 'g',
-        image: "/images/ingredients/vineger.webp",
+        image: "/images/ingredients/vinegar-hwan-man.webp",
       },
       {
         item: 'Chili Powder Coarse',
@@ -1527,7 +1528,7 @@ const recipes = [
         item: 'Rice Ball',
         quantity: 2,
         unit: 'ea',
-        image: "/images/ingredients/gril-rice-ball.jpg",
+        image: "/images/ingredients/rice-ball.jpg",
       },
       {
         item: "Sancho Soy Sauce",
