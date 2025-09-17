@@ -242,7 +242,7 @@ export default function Sgo() {
                             return (
                               <button
                                 type="button"
-                                className="text-blue-600 hover:text-blue-800 underline underline-offset-4 font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
+                                className="text-blue-600 text-start hover:text-blue-800 underline underline-offset-4 font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
                                 title={`Open ${target.name}`}
                                 onClick={() => openRecipe(target)}
                               >
