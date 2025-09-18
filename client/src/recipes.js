@@ -210,7 +210,7 @@ const recipes = [
         image: "/images/ingredients/sancho-powder.webp",
       },
       {
-        item: "Black Pepper Power",
+        item: "Black Pepper Powder",
         quantity: 40,
         unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
@@ -443,7 +443,7 @@ const recipes = [
   },
   {
     name: "Egg Roll Mix",
-    image: "/images/egg-roll.jpg",
+    image: "/images/egg-roll-mix.jpg",
     ingredients: [
       {
         item: "Egg",
@@ -1350,7 +1350,7 @@ const recipes = [
         image: "/images/ingredients/miwon.png",
       },
       {
-        item: 'Black Pepper Power',
+        item: 'Black Pepper Powder',
         quantity: 30,
         unit: 'g',
         image: "/images/ingredients/black-pepper-powder.webp",
@@ -1464,7 +1464,7 @@ const recipes = [
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
-        item: "Black-Pepper-Powder",
+        item: "Black Pepper Powder",
         quantity: 20,
         unit: 'g',
         image: "/images/ingredients/black-pepper-powder.webp",
@@ -1483,10 +1483,10 @@ const recipes = [
         image: "/images/ingredients/soy-sauce.png",
       },
       {
-        item: 'Sweet Sauce',
+        item: 'Non-Alcohol Mirin',
         quantity: 15,
         unit: 'g',
-        image: "/images/ingredients/sweet-sauce.webp",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
         item: 'Vineger',
@@ -1504,13 +1504,13 @@ const recipes = [
         item: 'Sesame B/W',
         quantity: 5,
         unit: 'g',
-        image: "/images/ingredients/sesame-bw.webp",
+        image: "/images/ingredients/sesame-bw.jpg",
       },
       {
         item: 'Honey',
         quantity: 20,
         unit: 'g',
-        image: "/images/ingredients/honey.webp",
+        image: "/images/ingredients/honey.jpg",
       },
       {
         item: 'White Sugar',
@@ -1569,6 +1569,54 @@ const recipes = [
       }
     ],
     method: "No need to wash the rice. Cook either in the rice cooker or in the oven. For oven cooking, set temperature to 100°C and bake for 35 minutes. Cover the container properly to prevent the rice surface from drying out."
+  },
+  {
+    name: 'Tempura Mushroom',
+    image: "/images/tempura-mushroom.jpg",
+    ingredients: [
+      {
+        item: "Minari",
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/minaari.jpg",
+      },
+      {
+        item: "Enoki",
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/enoki.jpg",
+      },
+      {
+        item: "King Oyster Mushroom",
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/king-oyster-mushroom.jpg",
+      },
+      {
+        item: "Spring Onion (White Part)",
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/spring-onion.jpg",
+      },
+      {
+        item: "Shitake",
+        quantity: 1,
+        unit: 'ea',
+        image: "/images/ingredients/shitake.jpg",
+      },
+      {
+        item: 'Shimeji',
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/shimeji.jpg",
+      },
+      {
+        item: "Zucchini",
+        quantity: 2,
+        unit: 'ea',
+        image: "/images/ingredients/zucchini.jpg",
+      }
+    ]
   }
 ];
 
