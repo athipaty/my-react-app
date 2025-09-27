@@ -1646,11 +1646,12 @@ const recipes = [
       {
         item: "Marinated Sauce",
         quantity: 40,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/marinated-sauce.jpg",
-      }
+      },
     ],
-    method: 'Place 150 g of marinated chicken feet into a square container. Before serving, pour 40 g of the marinated sauce on top and heat until fully cooked. Mix everything well, then garnish with chopped spring onions and a sprinkle of white sesame seeds on the surface.'
+    method:
+      "Place 150 g of marinated chicken feet into a square container. Before serving, pour 40 g of the marinated sauce on top and heat until fully cooked. Mix everything well, then garnish with chopped spring onions and a sprinkle of white sesame seeds on the surface.",
   },
   {
     name: "Marinated Boneless Chicken Feet",
@@ -1665,11 +1666,12 @@ const recipes = [
       {
         item: "Marinated Sauce",
         quantity: 500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/marinated-sauce.jpg",
-      }
+      },
     ],
-    method: 'Boil the boneless chicken feet first, then let them cool down to room temperature. Pour the marinade sauce over them and mix well. Let the chicken feet marinate for at least one day before serving.'
+    method:
+      "Boil the boneless chicken feet first, then let them cool down to room temperature. Pour the marinade sauce over them and mix well. Let the chicken feet marinate for at least one day before serving.",
   },
   {
     name: "Eggplant Sauce",
@@ -1678,7 +1680,7 @@ const recipes = [
       {
         item: "Honey",
         quantity: 1500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/honey.jpg",
       },
       {
@@ -1690,17 +1692,17 @@ const recipes = [
       {
         item: "Non-Alcohol-Mirin",
         quantity: 3000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
-        item: 'Corn Syrup',
+        item: "Corn Syrup",
         quantity: 3000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/corn-syrup.png",
       },
       {
-        item: 'Minced Garlic',
+        item: "Minced Garlic",
         quantity: 150,
         unit: "g",
         image: "/images/ingredients/minced-garlic.jpg",
@@ -1708,18 +1710,108 @@ const recipes = [
       {
         item: "Leek",
         quantity: 500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/leek.webp",
       },
       {
         item: "Jin Soy Sauce",
         quantity: 1500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/soy-sauce.png",
+      },
+    ],
+    method: "Waiting for Johnny!",
+  },
+  {
+    name: "Chicken Popcorn",
+    image: "/images/chicken-popcorn.jpg",
+    ingredients: [
+      {
+        item: "Fried Gizzard",
+        quantity: "150",
+        unit: "g",
+        image: "/images/ingredients/fried-gizzard.png,",
+      },
+      {
+        item: "Leek (slice)",
+        quantity: 5,
+        unit: "g",
+        image: "/images/ingredients/leek.webp",
+      },
+      {
+        item: "Sichimi",
+        quantity: 5,
+        unit: "g",
+        image: "/images/ingredients/sichimi.jpg",
+      },
+      {
+        item: "Tempura Dipping Sauce",
+        quantity: 20,
+        unit: "g",
+        image: "/images/ingredients/tempura-dipping-sauce.jpg",
       }
     ],
-    method: "Waiting for Johnny!"
-  }
+  },
+  {
+    name: "Fried Gizzard",
+    image: "/images/fried-gizzard.png",
+    ingredients: [
+      {
+        item: "Gizzard (Cut)",
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/gizzard(cut).png",
+      },
+      {
+        item: "Frying Powder Mix",
+        quantity: 40,
+        unit: "g",
+        image: "/images/ingredients/frying-powder-mix.png",
+      },
+      {
+        item: "Black Pepper Powder",
+        quantity: 2,
+        unit: "pinch",
+        image: "/images/ingredients/black-pepper-powder.webp",
+      },
+      {
+        item: "Seasoned Salt",
+        quantity: 2,
+        unit: "pinch",
+        image: "/images/ingredients/seasoned-salt.jpg",
+      },
+      {
+        item: "Cooking Oil",
+        quantity: "",
+        unit: "g",
+        image: "/images/ingredients/cooking-oil.jpg",
+      },
+    ],
+  },
+  {
+    name: "Frying Powder Mix",
+    image: "/images/frying-powder-mix.png",
+    ingredients: [
+      {
+        item: "Non-Alcohol-Mirin",
+        quantity: 20,
+        unit: "g",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
+      },
+      {
+        item: "Frying Powder",
+        quantity: 100,
+        unit: "g",
+        image: "/images/ingredients/frying-powder.jpg",
+      },
+      {
+        item: "Water",
+        quantity: 120,
+        unit: "g",
+        image: "/images/ingredients/water.jpeg",
+      },
+    ],
+  },
 ];
 
 export default recipes;
