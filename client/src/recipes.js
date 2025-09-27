@@ -1599,7 +1599,7 @@ const recipes = [
         item: "Spring Onion (White Part)",
         quantity: 2,
         unit: "ea",
-        image: "/images/ingredients/spring-onion.jpg",
+        image: "/images/ingredients/spring-onion.webp",
       },
       {
         item: "Shitake",
@@ -1632,28 +1632,35 @@ const recipes = [
         image: "/images/ingredients/marinated-boneless-checken-feet.jpg",
       },
       {
-        item: "Sping Onion",
+        item: "Spring Onion",
         quantity: 1,
         unit: "g",
-        image: "/images/ingredients/spring-onion.jpg",
+        image: "/images/ingredients/spring-onion.webp",
       },
       {
         item: "White Sesame Seed",
         quantity: 1,
         unit: "g",
-        image: "/images/ingredients/white-sesame.jpg",
+        image: "/images/ingredients/sesame-seeds.jpg",
       },
+      {
+        item: "Marinated Sauce",
+        quantity: 40,
+        unit: 'g',
+        image: "/images/ingredients/marinated-sauce.jpg",
+      }
     ],
+    method: 'Place 150 g of marinated chicken feet into a square container. Before serving, pour 40 g of the marinated sauce on top and heat until fully cooked. Mix everything well, then garnish with chopped spring onions and a sprinkle of white sesame seeds on the surface.'
   },
   {
-    name: "Marinate Boneless Chicken Feet",
+    name: "Marinated Boneless Chicken Feet",
     image: "/images/marinated-boneless-checken-feet.jpg",
     ingredients: [
       {
         item: "Boneless Chicken Feet",
         quantity: 1000,
         unit: "g",
-        image: "/images/ingredients/boneless-checken-feet.jpg",
+        image: "/images/ingredients/boneless-chicken-feet.jpg",
       },
       {
         item: "Marinated Sauce",
@@ -1662,7 +1669,57 @@ const recipes = [
         image: "/images/ingredients/marinated-sauce.jpg",
       }
     ],
+    method: 'Boil the boneless chicken feet first, then let them cool down to room temperature. Pour the marinade sauce over them and mix well. Let the chicken feet marinate for at least one day before serving.'
   },
+  {
+    name: "Eggplant Sauce",
+    image: "/images/eggplant-sauce.jpg",
+    ingredients: [
+      {
+        item: "Honey",
+        quantity: 1500,
+        unit: 'g',
+        image: "/images/ingredients/honey.jpg",
+      },
+      {
+        item: "Red Chilli",
+        quantity: 50,
+        unit: "pcs",
+        image: "/images/ingredients/red-chili.jpg",
+      },
+      {
+        item: "Mirin",
+        quantity: 3000,
+        unit: 'g',
+        image: "/images/ingredients/mirin.jpg",
+      },
+      {
+        item: 'Corn Syrup',
+        quantity: 3000,
+        unit: 'g',
+        image: "/images/ingredients/corn-syrup.png",
+      },
+      {
+        item: 'Minced Garlic',
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/minced-garlic.jpg",
+      },
+      {
+        item: "Leek",
+        quantity: 500,
+        unit: 'g',
+        image: "/images/ingredients/leek.webp",
+      },
+      {
+        item: "Jin Soy Sauce",
+        quantity: 1500,
+        unit: 'g',
+        image: "/images/ingredients/soy-sauce.png",
+      }
+    ],
+    method: "Waiting for Johnny!"
+  }
 ];
 
 export default recipes;
