@@ -348,30 +348,31 @@ const recipes = [
       {
         item: "Fish Roe Mix",
         quantity: 200,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/fish-roe-mix.jpg",
-      }
+      },
     ],
-    method: 'Mix rice, tenkasu, seaweed flakes, sesame oil, and seasoned salt thoroughly. Place mixture into a rice ball mold. Make a hole in the center and add about 1 teaspoon of fish roe. Cover with more rice and press firmly so the mold is filled evenly.'
+    method:
+      "Mix rice, tenkasu, seaweed flakes, sesame oil, and seasoned salt thoroughly. Place mixture into a rice ball mold. Make a hole in the center and add about 1 teaspoon of fish roe. Cover with more rice and press firmly so the mold is filled evenly.",
   },
   {
-    name: 'Fish Roe Mix',
-     image: "/images/fish-roe-mix.jpg",
-     ingredients: [
+    name: "Fish Roe Mix",
+    image: "/images/fish-roe-mix.jpg",
+    ingredients: [
       {
-        item: 'Fish Roe',
+        item: "Fish Roe",
         quantity: 500,
-        unit: 'g',
-         image: "/images/ingredients/fish-roe.jpg",
+        unit: "g",
+        image: "/images/ingredients/fish-roe.jpg",
       },
       {
-        item: 'Miso Sauce',
+        item: "Miso Sauce",
         quantity: 230,
-        unit: 'g',
-         image: "/images/ingredients/miso-sauce.jpg",
-      }
-     ],
-     method: "Make sure all the ingredients are mixed evenly.",
+        unit: "g",
+        image: "/images/ingredients/miso-sauce.jpg",
+      },
+    ],
+    method: "Make sure all the ingredients are mixed evenly.",
   },
   {
     name: "Kimchi Paste",
@@ -1255,15 +1256,15 @@ const recipes = [
         image: "/images/ingredients/truffle-powder-mix.jpg",
       },
       {
-        item: 'Blended Mushroom',
+        item: "Blended Mushroom",
         quantity: 500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/blended-mushroom.jpg",
       },
       {
-        item: 'Truffle Paste',
+        item: "Truffle Paste",
         quantity: 500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/truffle-paste.jpg",
       },
       {
@@ -1281,135 +1282,136 @@ const recipes = [
     ],
   },
   {
-    name: 'Collegen Kalguksu (Noodle)',
+    name: "Collegen Kalguksu (Noodle)",
     image: "/images/collegen-kalguksu-noodle.jpg",
     ingredients: [
       {
-        item:'Chicken Broth',
+        item: "Chicken Broth",
         quantity: 4000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/chicken-broth.jpg",
       },
       {
-        item: 'Water',
+        item: "Water",
         quantity: 4000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/water.jpeg",
       },
       {
-        item: 'Flower Salt',
+        item: "Flower Salt",
         quantity: 60,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/flower-salt.jpg",
       },
       {
-        item: 'Black Pepper Powder',
+        item: "Black Pepper Powder",
         quantity: 12,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
-        item: 'Miwon',
+        item: "Miwon",
         quantity: 16,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/miwon.png",
       },
       {
-        item: 'Liquid Chicken MSG',
+        item: "Liquid Chicken MSG",
         quantity: 80,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/liquid-chicken-msg.avif",
-      },{
-        item: 'Collegen Paitan',
+      },
+      {
+        item: "Collegen Paitan",
         quantity: 80,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/collegen=paitan.png",
-      }
-    ]
+      },
+    ],
   },
   {
-    name: 'Marinated Sauce',
+    name: "Marinated Sauce",
     image: "/images/marinated-sauce.jpg",
     ingredients: [
       {
-        item: 'White Sugar',
+        item: "White Sugar",
         quantity: 1700,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/white-sugar.jpg",
       },
       {
-        item: 'Seasoned Salt',
+        item: "Seasoned Salt",
         quantity: 130,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
-        item: 'Miwon',
+        item: "Miwon",
         quantity: 130,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/miwon.png",
       },
       {
-        item: 'Black Pepper Powder',
+        item: "Black Pepper Powder",
         quantity: 30,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
-        item: 'Chicken Powder',
+        item: "Chicken Powder",
         quantity: 90,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/chicken-powder.webp",
       },
       {
         item: "Korean Spicy Chilli Powder",
         quantity: 1500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/chili-powder-fine.avif",
       },
       {
         item: "Minced Garlic",
         quantity: 750,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/minced-garlic.jpg",
       },
       {
-        item: 'Korean Chili Paste',
+        item: "Korean Chili Paste",
         quantity: 550,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/gochujang.webp",
       },
       {
-        item: 'Plum Extract',
+        item: "Plum Extract",
         quantity: 300,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/plum-extract.jpg",
       },
       {
         item: "Corn Syrup",
         quantity: 2000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/corn-syrup.png",
       },
       {
         item: "Honey Ginger Cheong",
         quantity: 2000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/honey-ginger-cheong.webp",
       },
       {
-        item: 'Kikoman Soy Sauce',
+        item: "Kikoman Soy Sauce",
         quantity: 1600,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
       },
       {
-        item: 'Water',
+        item: "Water",
         quantity: 1900,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/water.jpeg",
-      }
-    ]
+      },
+    ],
   },
   {
     name: "Kalguksu Chicken Prep",
@@ -1424,22 +1426,22 @@ const recipes = [
       {
         item: "Cooking Oil",
         quantity: 300,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/cooking-oil.jpg",
       },
       {
         item: "Flower Salt",
         quantity: 60,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/flower-salt.jpg",
       },
       {
         item: "Black Pepper Powder",
         quantity: 20,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
-      }
-    ]
+      },
+    ],
   },
   {
     name: "Marinated Chicken Prep",
@@ -1448,176 +1450,219 @@ const recipes = [
       {
         item: "Chicken Thigh",
         quantity: 10000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/chicken-thigh.webp",
       },
       {
         item: "Marinated Sauce",
         quantity: 2500,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/marinated-sauce.jpg",
       },
       {
         item: "Seasoned Salt",
         quantity: 60,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
         item: "Black Pepper Powder",
         quantity: 20,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
-      }
+      },
     ],
-   
   },
   {
-    name: 'Tempura Dipping Sauce',
+    name: "Tempura Dipping Sauce",
     image: "/images/ingredients/tempura-dipping-sauce.jpg",
     ingredients: [
       {
-        item: 'Soy Sauce',
+        item: "Soy Sauce",
         quantity: 50,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/soy-sauce.png",
       },
       {
-        item: 'Non-Alcohol Mirin',
+        item: "Non-Alcohol Mirin",
         quantity: 15,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
-        item: 'Vineger',
+        item: "Vineger",
         quantity: 12,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
       },
       {
-        item: 'Chili Powder Coarse',
+        item: "Chili Powder Coarse",
         quantity: 4,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/chili-powder-coarse.webp",
       },
       {
-        item: 'Sesame B/W',
+        item: "Sesame B/W",
         quantity: 5,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/sesame-bw.jpg",
       },
       {
-        item: 'Honey',
+        item: "Honey",
         quantity: 20,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/honey.jpg",
       },
       {
-        item: 'White Sugar',
+        item: "White Sugar",
         quantity: 4,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/white-sugar.jpg",
-      }
-    ]
+      },
+    ],
   },
   {
     name: "Grill Rice Ball",
     image: "/images/grill-rice-ball.jpg",
     ingredients: [
       {
-        item: 'Rice Ball',
+        item: "Rice Ball",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/rice-ball.jpg",
       },
       {
         item: "Sancho Soy Sauce",
         quantity: 0,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/sancho-soy-sauce.jpg",
       },
       {
         item: "Cooking Oil",
         quantity: 0,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/cooking-oil.jpg",
       },
       {
         item: "Yellow Radish",
         quantity: 3,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/yellow-radish.jpg",
-      }
+      },
     ],
-    method: 'Heat a little cooking oil in a pan and place the rice ball inside. Brush both sides with Sancho soy sauce and grill until golden yellow. Before serving, add three pieces of yellow radish (cut into semi-circles) as a side dish.'
+    method:
+      "Heat a little cooking oil in a pan and place the rice ball inside. Brush both sides with Sancho soy sauce and grill until golden yellow. Before serving, add three pieces of yellow radish (cut into semi-circles) as a side dish.",
   },
   {
-    name: 'Cooked Rice',
+    name: "Cooked Rice",
     image: "/images/cooked-rice.webp",
     ingredients: [
       {
-        item: 'Rice',
+        item: "Rice",
         quantity: 1000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/rice.jpg",
       },
       {
-        item: 'Water',
+        item: "Water",
         quantity: 1000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/water.jpeg",
-      }
+      },
     ],
-    method: "No need to wash the rice. Cook either in the rice cooker or in the oven. For oven cooking, set temperature to 100°C and bake for 35 minutes. Cover the container properly to prevent the rice surface from drying out."
+    method:
+      "No need to wash the rice. Cook either in the rice cooker or in the oven. For oven cooking, set temperature to 100°C and bake for 35 minutes. Cover the container properly to prevent the rice surface from drying out.",
   },
   {
-    name: 'Tempura Mushroom',
+    name: "Tempura Mushroom",
     image: "/images/tempura-mushroom.jpg",
     ingredients: [
       {
         item: "Minari",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/minaari.jpg",
       },
       {
         item: "Enoki",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/enoki.jpg",
       },
       {
         item: "King Oyster Mushroom",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/king-oyster-mushroom.jpg",
       },
       {
         item: "Spring Onion (White Part)",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/spring-onion.jpg",
       },
       {
         item: "Shitake",
         quantity: 1,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/shitake.jpg",
       },
       {
-        item: 'Shimeji',
+        item: "Shimeji",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/shimeji.jpg",
       },
       {
         item: "Zucchini",
         quantity: 2,
-        unit: 'ea',
+        unit: "ea",
         image: "/images/ingredients/zucchini.jpg",
+      },
+    ],
+  },
+  {
+    name: "Spicy Boneless Chicken Feet",
+    image: "/images/splicy-boneless-chicken-feet.jpg",
+    ingredients: [
+      {
+        item: "Marinated Boneless Chicken Feet",
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/marinated-boneless-checken-feet.jpg",
+      },
+      {
+        item: "Sping Onion",
+        quantity: 1,
+        unit: "g",
+        image: "/images/ingredients/spring-onion.jpg",
+      },
+      {
+        item: "White Sesame Seed",
+        quantity: 1,
+        unit: "g",
+        image: "/images/ingredients/white-sesame.jpg",
+      },
+    ],
+  },
+  {
+    name: "Marinate Boneless Chicken Feet",
+    image: "/images/marinated-boneless-checken-feet.jpg",
+    ingredients: [
+      {
+        item: "Boneless Chicken Feet",
+        quantity: 1000,
+        unit: "g",
+        image: "/images/ingredients/boneless-checken-feet.jpg",
+      },
+      {
+        item: "Marinated Sauce",
+        quantity: 500,
+        unit: 'g',
+        image: "/images/ingredients/marinated-sauce.jpg",
       }
-    ]
-  }
+    ],
+  },
 ];
 
 export default recipes;
