@@ -667,7 +667,7 @@ const recipes = [
         item: "Non Alcohol Mirin",
         quantity: 6000,
         unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.Webp",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
         item: "Red Chili",
@@ -1688,10 +1688,10 @@ const recipes = [
         image: "/images/ingredients/red-chili.jpg",
       },
       {
-        item: "Mirin",
+        item: "Non-Alcohol-Mirin",
         quantity: 3000,
         unit: 'g',
-        image: "/images/ingredients/mirin.jpg",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
         item: 'Corn Syrup',
