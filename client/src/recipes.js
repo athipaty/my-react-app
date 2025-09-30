@@ -1578,12 +1578,6 @@ const recipes = [
     image: "/images/tempura-mushroom.jpg",
     ingredients: [
       {
-        item: "Minari",
-        quantity: 2,
-        unit: "ea",
-        image: "/images/ingredients/minaari.jpg",
-      },
-      {
         item: "Enoki",
         quantity: 2,
         unit: "ea",
@@ -1599,7 +1593,7 @@ const recipes = [
         item: "Spring Onion (White Part)",
         quantity: 2,
         unit: "ea",
-        image: "/images/ingredients/spring-onion.webp",
+        image: "/images/ingredients/spring-onion-white-part.jpg",
       },
       {
         item: "Shitake",
@@ -1619,6 +1613,18 @@ const recipes = [
         unit: "ea",
         image: "/images/ingredients/zucchini.jpg",
       },
+      {
+        item: "Frying Powder",
+        quantity: 10,
+        unit: "g",
+        image: "/images/ingredients/frying-powder.jpg",
+      },
+      {
+        item: "Frying Powder Mix",
+        quantity: 20,
+        unit: "g",
+        image: "/images/ingredients/frying-powder-mix.jpg",
+      },
     ],
   },
   {
@@ -1629,7 +1635,7 @@ const recipes = [
         item: "Marinated Boneless Chicken Feet",
         quantity: 150,
         unit: "g",
-        image: "/images/ingredients/marinated-boneless-checken-feet.jpg",
+        image: "/images/ingredients/marinated-boneless-chicken-feet.jpg",
       },
       {
         item: "Spring Onion",
@@ -1655,7 +1661,7 @@ const recipes = [
   },
   {
     name: "Marinated Boneless Chicken Feet",
-    image: "/images/marinated-boneless-checken-feet.jpg",
+    image: "/images/marinated-boneless-chicken-feet.jpg",
     ingredients: [
       {
         item: "Boneless Chicken Feet",
@@ -1760,13 +1766,13 @@ const recipes = [
         item: "Gizzard (Cut)",
         quantity: 150,
         unit: "g",
-        image: "/images/ingredients/gizzard(cut).png",
+        image: "/images/ingredients/gizzard-cut.jpg",
       },
       {
         item: "Frying Powder Mix",
         quantity: 40,
         unit: "g",
-        image: "/images/ingredients/frying-powder-mix.png",
+        image: "/images/ingredients/frying-powder-mix.jpg",
       },
       {
         item: "Black Pepper Powder",
@@ -1786,18 +1792,19 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/cooking-oil.jpg",
       },
+      {
+        item: "Frying Powder",
+        quantity: 10,
+        unit: "g",
+        image: "/images/ingredients/frying-powder.jpg",
+      },
+
     ],
   },
   {
     name: "Frying Powder Mix",
-    image: "/images/frying-powder-mix.png",
+    image: "/images/frying-powder-mix.jpg",
     ingredients: [
-      {
-        item: "Non-Alcohol-Mirin",
-        quantity: 20,
-        unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.webp",
-      },
       {
         item: "Frying Powder",
         quantity: 100,
@@ -1806,7 +1813,7 @@ const recipes = [
       },
       {
         item: "Water",
-        quantity: 120,
+        quantity: 180,
         unit: "g",
         image: "/images/ingredients/water.jpeg",
       },
