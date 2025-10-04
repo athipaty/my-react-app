@@ -1,6 +1,7 @@
 // Sgo.js (pure JavaScript)
 import { useEffect, useRef, useState } from "react";
 import recipes from "./recipes.js"; // change to "./recipes.js" if your file is plural
+import Todo from "./Todo.js";
 
 // ---------- helpers ----------
 const fmt = (n) => Number(n ?? 0).toFixed(2).replace(/\.?0+$/, "");
@@ -306,6 +307,8 @@ export default function Sgo() {
           </section>
         )}
       </div>
+
+      <Todo/>
 
       <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-600 z-40">
         Powered by <strong>TingTong</strong>

@@ -1819,6 +1819,29 @@ const recipes = [
       },
     ],
   },
-];
-
+  {
+    name: "Blended Mushroom",
+    image: "/images/blended-mushroom.jpg",
+    ingredients: [
+      {
+        item: "Shitake",
+        quantity: 2000,
+        unit: "g",
+        image: "/images/ingredients/shitake.jpg", 
+      },
+      {
+        item: "Enoki",
+        quantity: 2000,
+        unit: "g",
+        image: "/images/ingredients/enoki.jpg",
+      },
+      {
+        item: "King Oyster Mushroom",
+        quantity: 2000,
+        unit: "g",
+        image: "/images/ingredients/king-oyster-mushroom.jpg",
+      },
+    ]
+  }
+]
 export default recipes;
