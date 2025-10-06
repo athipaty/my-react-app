@@ -1415,7 +1415,7 @@ const recipes = [
   },
   {
     name: "Kalguksu Chicken Prep",
-    image: "/images/kalguksu-chicken-prop.jpeg",
+    image: "/images/kalguksu-chicken-prep.jpg",
     ingredients: [
       {
         item: "Chicken",

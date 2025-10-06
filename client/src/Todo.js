@@ -4,9 +4,9 @@ export default function Todo() {
             <h2 className="text-center">Take a picture of...</h2>
             <ul>
                 <li>Collegen Flavour</li>
-                <li>Kalguksu Chicken Prep</li>
                 <li>Tempura Mushroom</li>
                 <li>Fried Gizzard</li>
+                <li>Collegen</li>
 
             </ul>
         </div>
