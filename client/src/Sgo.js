@@ -3,7 +3,55 @@ import { useEffect, useRef, useState } from "react";
 import recipes from "./recipes.js"; // change to "./recipes.js" if your file is plural
 import Todo from "./Todo.js";
 
-// ---------- helpers ----------
+/* ------------------------- Reusable Image Loader ------------------------- */
+/* Shows a pulse skeleton until the image loads, then cross-fades the image. */
+function ImageWithLoader({
+  src,
+  alt,
+  onClick,
+  wrapperClass = "",
+  imgClass = "",
+  loading = "eager",
+  rounded = "rounded",
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div
+      className={`relative overflow-hidden ${rounded} ${wrapperClass}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      aria-label={onClick ? `Open ${alt}` : undefined}
+    >
+      {/* Skeleton while loading */}
+      {!loaded && !error && <div className="absolute inset-0 bg-gray-200 animate-pulse" />}
+
+      {/* Error fallback */}
+      {error && (
+        <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-600 bg-gray-100">
+          Image unavailable
+        </div>
+      )}
+
+      {/* Real image with fade-in */}
+      {!error && (
+        <img
+          src={src}
+          alt={alt}
+          loading={loading}
+          onLoad={() => setLoaded(true)}
+          onError={() => setError(true)}
+          className={`${imgClass} ${rounded} transition-opacity duration-300 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------ helpers --------------------------------- */
 const fmt = (n) => Number(n ?? 0).toFixed(2).replace(/\.?0+$/, "");
 const valid = (s) => /^(\d+(\.\d*)?|\.\d+)$/.test(s);
 const strip0 = (s) =>
@@ -29,13 +77,13 @@ function resolveLinkedRecipe(itemName) {
   return null;
 }
 
+/* --------------------------------- App ---------------------------------- */
 export default function Sgo() {
   const [query, setQuery] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [history, setHistory] = useState([]); // <-- stack of previous recipes
+  const [history, setHistory] = useState([]); // stack of previous recipes
   const [multiplier, setMultiplier] = useState(1);
   const [fullImage, setFullImage] = useState(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [searchPlaceholder, setSearchPlaceholder] = useState("Miso Sauce");
   const [qtyInputs, setQtyInputs] = useState({}); // { [itemName]: string }
   const baseQty = useRef({}); // { [itemName]: number }
@@ -44,8 +92,7 @@ export default function Sgo() {
   const openRecipe = (recipe) => {
     if (!recipe) return;
     if (selectedRecipe) {
-      // push current recipe onto stack before navigating
-      setHistory((prev) => [...prev, selectedRecipe]);
+      setHistory((prev) => [...prev, selectedRecipe]); // push current page
     }
     setSelectedRecipe(recipe);
     setMultiplier(1);
@@ -141,17 +188,18 @@ export default function Sgo() {
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
         {/* Search Bar Row with Back + Search + Home */}
-        <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2" >
+        <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
-              className="px-2 py-2 bg-gray-300 rounded hover:bg-gray-400 w-1/8"
+              className="px-2 py-2 bg-gray-300 rounded hover:bg-gray-400 min-w-[44px]"
               onClick={goBack}
+              title="Back"
             >
               ←
             </button>
           ) : (
-            <div className="w-[60px]" /> // spacer width ~ Back button
+            <div className="w-[44px]" /> // spacer width ~ Back button
           )}
 
           {/* Search Input */}
@@ -162,14 +210,15 @@ export default function Sgo() {
             onChange={(e) => {
               setQuery(e.target.value);
               setSelectedRecipe(null);
-              // NOTE: we keep history intact here so user can still back from a detail view they came from
+              // keep history so user can still back to their previous detail
             }}
           />
 
           {/* Home Button */}
           <button
-            className="px-2 py-2 bg-green-500 text-white rounded hover:bg-green-600 w-1/8"
+            className="px-2 py-2 bg-green-500 text-white rounded hover:bg-green-600 min-w-[44px]"
             onClick={goHome}
+            title="Home"
           >
             🏠
           </button>
@@ -180,15 +229,13 @@ export default function Sgo() {
           <ul className="mt-4 space-y-4">
             {filtered.map((recipe) => (
               <li key={recipe.name} className="flex flex-col items-center gap-2 justify-between">
-                <img
+                <ImageWithLoader
                   src={recipe.image}
                   alt={recipe.name}
                   loading="eager"
-                  className="w-20 h-20 object-cover rounded shadow cursor-pointer transition-opacity duration-300 opacity-100"
-                  onClick={() => {
-                    setFullImage(recipe.image);
-                    setImageLoaded(false);
-                  }}
+                  wrapperClass="w-20 h-20 shadow cursor-pointer"
+                  imgClass="w-20 h-20 object-cover"
+                  onClick={() => setFullImage(recipe.image)}
                 />
                 <button
                   className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
@@ -217,21 +264,18 @@ export default function Sgo() {
                 {[...selectedRecipe.ingredients]
                   .sort(
                     (a, b) =>
-                      (Number(b.quantity) || 0) * multiplier -
-                      (Number(a.quantity) || 0) * multiplier
+                      (Number(b.quantity) || 0) * multiplier - (Number(a.quantity) || 0) * multiplier
                   )
                   .map((ing) => (
                     <tr key={ing.item} className="hover:bg-gray-50">
                       <td className="px-4 py-2 border">
-                        <img
+                        <ImageWithLoader
                           src={ing.image}
                           alt={ing.item}
                           loading="eager"
-                          className="w-12 h-12 object-cover rounded cursor-pointer transition-opacity duration-300 opacity-100"
-                          onClick={() => {
-                            setFullImage(ing.image);
-                            setImageLoaded(false);
-                          }}
+                          wrapperClass="w-12 h-12 cursor-pointer"
+                          imgClass="w-12 h-12 object-cover"
+                          onClick={() => setFullImage(ing.image)}
                         />
                       </td>
 
@@ -280,19 +324,14 @@ export default function Sgo() {
         {fullImage && (
           <div
             className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-            onClick={() => {
-              setFullImage(null);
-              setImageLoaded(false);
-            }}
+            onClick={() => setFullImage(null)}
           >
-            <img
+            <ImageWithLoader
               src={fullImage}
               alt="Fullscreen"
               loading="eager"
-              onLoad={() => setImageLoaded(true)}
-              className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${
-                imageLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              wrapperClass="max-w-[95vw] max-h-[90vh]"
+              imgClass="max-w-full max-h-full object-contain"
             />
           </div>
         )}
@@ -308,7 +347,7 @@ export default function Sgo() {
         )}
       </div>
 
-      <Todo/>
+      {/* <Todo/> */}
 
       <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 backdrop-blur px-4 py-3 text-center text-sm text-gray-600 z-40">
         Powered by <strong>TingTong</strong>

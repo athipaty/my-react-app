@@ -1151,7 +1151,7 @@ const recipes = [
   },
   {
     name: "Collegen Flavour",
-    image: "/images/perilla-powder.webp",
+    image: "/images/collegen-flavour.jpg",
     ingredients: [
       {
         item: "Chicken Broth",
@@ -1574,8 +1574,8 @@ const recipes = [
       "No need to wash the rice. Cook either in the rice cooker or in the oven. For oven cooking, set temperature to 100°C and bake for 35 minutes. Cover the container properly to prevent the rice surface from drying out.",
   },
   {
-    name: "Tempura Mushroom",
-    image: "/images/tempura-mushroom.jpg",
+    name: "Fried Mushrooms",
+    image: "/images/tempura-mushrooms.jpg",
     ingredients: [
       {
         item: "Enoki",
@@ -1626,6 +1626,24 @@ const recipes = [
         image: "/images/ingredients/frying-powder-mix.jpg",
       },
     ],
+  },
+  {
+    name: "Tempura Mushroom",
+    image: "/images/tempura-mushroom.jpg",
+    ingredients: [
+      {
+        item: "Fried Mushrooms",
+        quantity: 1,
+        unit: "set",
+        image: "/images/ingredients/fried-mushrooms.jpg",
+      },
+      {
+        item: "Tempura Dipping Sauce",
+        quantity: 20,
+        unit: "g",
+        image: "/images/ingredients/tempura-dipping-sauce.jpg",
+      }
+    ]
   },
   {
     name: "Spicy Boneless Chicken Feet",
@@ -1736,7 +1754,7 @@ const recipes = [
         item: "Fried Gizzard",
         quantity: "150",
         unit: "g",
-        image: "/images/ingredients/fried-gizzard.png,",
+        image: "/images/ingredients/fried-gizzard.jpg",
       },
       {
         item: "Leek (slice)",
@@ -1760,7 +1778,7 @@ const recipes = [
   },
   {
     name: "Fried Gizzard",
-    image: "/images/fried-gizzard.png",
+    image: "/images/fried-gizzard.jpg",
     ingredients: [
       {
         item: "Gizzard (Cut)",
