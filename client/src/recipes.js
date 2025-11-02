@@ -1651,7 +1651,7 @@ const recipes = [
     ingredients: [
       {
         item: "Marinated Boneless Chicken Feet",
-        quantity: 150,
+        quantity: 250,
         unit: "g",
         image: "/images/ingredients/marinated-boneless-chicken-feet.jpg",
       },
