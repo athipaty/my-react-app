@@ -1635,7 +1635,7 @@ const recipes = [
         item: "Fried Mushrooms",
         quantity: 1,
         unit: "set",
-        image: "/images/ingredients/fried-mushrooms.jpg",
+        image: "/images/ingredients/tempura-mushrooms.jpg",
       },
       {
         item: "Tempura Dipping Sauce",
