@@ -1860,6 +1860,79 @@ const recipes = [
         image: "/images/ingredients/king-oyster-mushroom.jpg",
       },
     ]
+  },
+  {
+    name: "Charcoal Fried Eggplant",
+    image: "/images/charcoal-fried-eggplant.jpg",
+    ingredients: [
+      {
+        item: 'Eggplant',
+        quantity: 1,
+        unit: 'ea',
+        image: "/images/ingredients/eggplant.jpg", 
+      },
+      {
+        item: 'Frying Charcoal Powder Mix',
+        quantity: 0,
+        unit: 'g',
+        image: "/images/ingredients/frying-charcoal-powder-mix.jpg", 
+      },
+      {
+        item: "Cooking Oil",
+        quantity: "",
+        unit: "g",
+        image: "/images/ingredients/cooking-oil.jpg",
+      },
+      {
+        item: "Eggplant Sauce",
+        quantity: 1,
+        unit: 'g',
+        image: "/images/eggplant-sauce.jpg",
+      },
+      {
+        item: "Spring Onions (Sliced)",
+        quantity: 1,
+        unit: "g",
+        image: "/images/ingredients/spring-onion.webp",
+      },
+      {
+        item: "Crushed Peanuts",
+        quantity: '1',
+        unit: 'g',
+        image: "/images/ingredients/crushed-peanuts.webp",
+      }
+    ],
+    method: 'Cut the eggplant into slices about 3 cm thick, then cut each slice in half to make half-circles. Coat the pieces with charcoal powder mix and fry them for about 1–2 minutes. After frying, let the oil drain for a while. Then dip the eggplant in the eggplant sauce and top with sliced spring onions and crushed peanuts before serving.'
+  },
+  {
+    name: 'Frying Charcoal Powder Mix',
+    image: "/images/frying-charcoal-powder-mix.jpg",
+    ingredients: [
+      {
+        item: "Frying Powder",
+        quantity: 250,
+        unit: "g",
+        image: "/images/ingredients/frying-powder.jpg",
+      },
+      {
+        item: "Seasoned Salt",
+        quantity: 5,
+        unit: "g",
+        image: "/images/ingredients/seasoned-salt.jpg",
+      },
+      {
+        item: 'Charcoal Powder',
+        quantity: 20,
+        unit: 'g',
+        image: "/images/ingredients/charcoal-powder.jpg",
+      },
+      {
+        item: 'Soda',
+        quantity: 330,
+        unit: 'g',
+        image: "/images/ingredients/soda.jpg",
+      }
+    ]
   }
 ]
 export default recipes;
