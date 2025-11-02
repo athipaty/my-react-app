@@ -1675,7 +1675,7 @@ const recipes = [
       },
     ],
     method:
-      "Place 150 g of marinated chicken feet into a square container. Before serving, pour 40 g of the marinated sauce on top and heat until fully cooked. Mix everything well, then garnish with chopped spring onions and a sprinkle of white sesame seeds on the surface.",
+      "Place 250 g of marinated chicken feet into a square container. Before serving, pour 40 g of the marinated sauce on top and heat until fully cooked. Mix everything well, then garnish with chopped spring onions and a sprinkle of white sesame seeds on the surface.",
   },
   {
     name: "Marinated Boneless Chicken Feet",
