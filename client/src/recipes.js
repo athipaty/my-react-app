@@ -1910,25 +1910,25 @@ const recipes = [
     ingredients: [
       {
         item: "Frying Powder",
-        quantity: 250,
+        quantity: 100,
         unit: "g",
         image: "/images/ingredients/frying-powder.jpg",
       },
       {
         item: "Seasoned Salt",
-        quantity: 5,
+        quantity: 1,
         unit: "g",
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
         item: 'Charcoal Powder',
-        quantity: 20,
+        quantity: 5,
         unit: 'g',
         image: "/images/ingredients/charcoal-powder.jpg",
       },
       {
         item: 'Soda',
-        quantity: 330,
+        quantity: 120,
         unit: 'g',
         image: "/images/ingredients/soda.jpg",
       }
