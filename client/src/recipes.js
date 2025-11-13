@@ -1933,6 +1933,61 @@ const recipes = [
         image: "/images/ingredients/soda.jpg",
       }
     ]
+  },
+  {
+    name: 'Chicken Broth',
+    image: "/images/chicken-broth.jpg",
+    ingredients: [
+      {
+        item: 'Baked Chicken Bone',
+        quantity: 3000,
+        unit: 'g',
+        image: "/images/ingredients/baked-chicken-bone.jpg",
+      },
+      {
+        item: 'Baked Chicken Feet',
+        quantity: 3000,
+        unit: 'g',
+        image: "/images/ingredients/baked-chicken-feet.jpg",
+      },
+      {
+        item: 'Leek',
+        quantity: 1000,
+        unit: 'g',
+        image: "/images/ingredients/leek.webp",
+      },
+      {
+        item: 'White Onion',
+        quantity: 1000,
+        unit: 'g',
+        image: "/images/ingredients/white-onion.jpg",
+      },
+      {
+        item: 'Ginseng',
+        quantity: 500,
+        unit: 'g',
+        image: "/images/ingredients/ginseng.jpg",
+      },
+      {
+        item: 'Dried Red Jujube',
+        quantity: 200,
+        unit: 'g',
+        image: "/images/ingredients/dried-red-jujube.jpg",
+      },
+      {
+        item: 'Samgyetang Herbal Stuffing Mix',
+        quantity: 5,
+        unit: 'pack',
+        image: "/images/ingredients/samgyetang-herbal-stuffing-mix.jpg",
+      },
+      {
+        item: 'Water',
+        quantity: 50000,
+        unit: 'g',
+        image: "/images/ingredients/water.jpeg",
+      }
+    ],
+    method: 'Place all the ingredients in a pot and simmer for a minimum of 6 hours. Add more water whenever the level gets low. Once finished, allow it to cool, then strain the mixture and keep only the broth.'
   }
 ]
 export default recipes;
