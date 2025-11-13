@@ -1184,7 +1184,7 @@ const recipes = [
     image: "/images/perilla-flavour.jpg",
     ingredients: [
       {
-        item: "Checken Broth",
+        item: "Chicken Broth",
         quantity: 8000,
         unit: "g",
         image: "/images/ingredients/chicken-broth.jpg",
@@ -1214,7 +1214,7 @@ const recipes = [
     image: "/images/hangover-flavour.jpg",
     ingredients: [
       {
-        item: "Checken Broth",
+        item: "Chicken Broth",
         quantity: 8000,
         unit: "g",
         image: "/images/ingredients/chicken-broth.jpg",
@@ -1244,7 +1244,7 @@ const recipes = [
     image: "/images/truffle-flavour.jpg",
     ingredients: [
       {
-        item: "Checken Broth",
+        item: "Chicken Broth",
         quantity: 8000,
         unit: "g",
         image: "/images/ingredients/chicken-broth.jpg",
