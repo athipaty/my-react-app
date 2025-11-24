@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import recipes from "./recipes.js"; // change to "./recipes.js" if your file is plural
 
 /* ------------------------- Reusable Image Loader ------------------------- */
-/* Shows a pulse skeleton until the image loads, then cross-fades the image. */
 function ImageWithLoader({
   src,
   alt,
@@ -23,8 +22,9 @@ function ImageWithLoader({
       role={onClick ? "button" : undefined}
       aria-label={onClick ? `Open ${alt}` : undefined}
     >
-      {/* Skeleton while loading */}
-      {!loaded && !error && <div className="absolute inset-0 bg-gray-200 animate-pulse" />}
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+      )}
 
       {!loaded && !error && (
         <div className="absolute inset-0 flex items-center justify-center">
@@ -32,14 +32,12 @@ function ImageWithLoader({
         </div>
       )}
 
-      {/* Error fallback */}
       {error && (
         <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-600 bg-gray-100">
           Image unavailable
         </div>
       )}
 
-      {/* Real image with fade-in */}
       {!error && (
         <img
           src={src}
@@ -57,10 +55,15 @@ function ImageWithLoader({
 }
 
 /* ------------------------------ helpers --------------------------------- */
-const fmt = (n) => Number(n ?? 0).toFixed(2).replace(/\.?0+$/, "");
+const fmt = (n) =>
+  Number(n ?? 0)
+    .toFixed(2)
+    .replace(/\.?0+$/, "");
 const valid = (s) => /^(\d+(\.\d*)?|\.\d+)$/.test(s);
 const strip0 = (s) =>
-  s?.startsWith("0.") || s === "" || s === "." ? s : s?.replace(/^0+(?=\d)/, "") ?? "";
+  s?.startsWith("0.") || s === "" || s === "."
+    ? s
+    : s?.replace(/^0+(?=\d)/, "") ?? "";
 
 // Build a quick index of recipes by name
 const recipeIndex = recipes.reduce((acc, r) => {
@@ -93,6 +96,11 @@ export default function Sgo() {
   const [qtyInputs, setQtyInputs] = useState({}); // { [itemName]: string }
   const baseQty = useRef({}); // { [itemName]: number }
 
+  // 🔹 NEW: search mode state
+  // "recipe" = search by recipe name (original)
+  // "ingredient" = search by ingredient name
+  const [searchMode, setSearchMode] = useState("recipe");
+
   // ---- navigation helpers (history-aware) ----
   const openRecipe = (recipe) => {
     if (!recipe) return;
@@ -115,19 +123,20 @@ export default function Sgo() {
       setSearchPlaceholder(prev.name);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // no history → go home
       setSelectedRecipe(null);
       setMultiplier(1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  const goHome = () => {
+  // 🔹 NEW: toggle between recipe search and ingredient search
+  const toggleSearchMode = () => {
+    setSearchMode((prev) => (prev === "recipe" ? "ingredient" : "recipe"));
+    // reset view when switching mode
     setQuery("");
     setSelectedRecipe(null);
+    setHistory([]);
     setMultiplier(1);
-    setHistory([]); // clear stack for a clean home state
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // ---- capture base quantities & seed inputs when recipe changes ----
@@ -166,7 +175,6 @@ export default function Sgo() {
     const v = strip0(raw);
     setQtyInputs((prev) => ({ ...prev, [itemName]: v }));
 
-    // allow pause at "" or trailing "."
     if (v === "" || v.endsWith(".")) return;
 
     if (valid(v)) {
@@ -185,16 +193,27 @@ export default function Sgo() {
     }
   };
 
-  const filtered = query
-  ? recipes
-      .filter((r) => r.name.toLowerCase().includes(query.toLowerCase()))
-      .sort((a, b) => a.name.localeCompare(b.name))
-  : [];
+  // 🔹 NEW: unified filtered list based on search mode
+  const lcQuery = query.toLowerCase().trim();
+
+  const filtered = lcQuery
+    ? searchMode === "recipe"
+      ? recipes
+          .filter((r) => r.name.toLowerCase().includes(lcQuery))
+          .sort((a, b) => a.name.localeCompare(b.name)) // A–Z
+      : recipes
+          .filter((r) =>
+            r.ingredients?.some((ing) =>
+              String(ing.item).toLowerCase().includes(lcQuery)
+            )
+          )
+          .sort((a, b) => a.name.localeCompare(b.name))
+    : [];
 
   return (
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
-        {/* Search Bar Row with Back + Search + Home */}
+        {/* Search Bar Row with Back + Search + Mode Switch */}
         <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
@@ -206,36 +225,55 @@ export default function Sgo() {
               ←
             </button>
           ) : (
-            <div className="w-[44px]" /> // spacer width ~ Back button
+            <div className="w-[44px]" />
           )}
 
           {/* Search Input */}
           <input
             className="mx-2 p-3 border rounded text-base text-center flex-grow"
-            placeholder={searchPlaceholder}
+            placeholder={
+              searchMode === "recipe" ? searchPlaceholder : "Spring Onion"
+            }
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
               setSelectedRecipe(null);
-              // keep history so user can still back to their previous detail
+              // keep history so user can still go back if needed
             }}
           />
 
-          {/* Home Button */}
-          <button
-            className="px-2 py-2 bg-green-500 text-white rounded hover:bg-green-600 min-w-[44px]"
-            onClick={goHome}
-            title="Home"
-          >
-            🏠
-          </button>
+          {/* 🔹 Mode Switch Button (replaces Home) */}
+          <div className="flex flex-col items-center min-w-[90px]">
+            <button
+              className={`
+      px-2 py-2 text-white rounded text-xs w-full transition-colors
+      ${
+        searchMode === "recipe"
+          ? "bg-green-500 hover:bg-green-600"
+          : "bg-yellow-500 hover:bg-yellow-600"
+      }
+    `}
+              onClick={toggleSearchMode}
+            >
+              {searchMode === "recipe" ? "Recipe 🔍" : "Ingredient 🧂"}
+            </button>
+
+            <div className="text-[10px] text-gray-500 mt-1 text-center">
+              {searchMode === "recipe"
+                ? "Searching by recipe name"
+                : "Searching by ingredient"}
+            </div>
+          </div>
         </div>
 
         {/* Recipe List */}
         {query && !selectedRecipe && (
           <ul className="mt-4 space-y-4">
             {filtered.map((recipe) => (
-              <li key={recipe.name} className="flex flex-col items-center gap-2 justify-between">
+              <li
+                key={recipe.name}
+                className="flex flex-col items-center gap-2 justify-between"
+              >
                 <ImageWithLoader
                   src={recipe.image}
                   alt={recipe.name}
@@ -244,12 +282,26 @@ export default function Sgo() {
                   imgClass="w-20 h-20 object-cover"
                   onClick={() => setFullImage(recipe.image)}
                 />
+
                 <button
                   className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
                   onClick={() => openRecipe(recipe)}
                 >
                   {recipe.name}
                 </button>
+
+                {/* Optional: when in ingredient mode, show info */}
+                {searchMode === "ingredient" && (
+                  <p className="text-[11px] text-gray-500">
+                    Uses ingredient matching:{" "}
+                    <span className="font-semibold">
+                      {recipe.ingredients
+                        .map((ing) => ing.item)
+                        .filter((item) => item.toLowerCase().includes(lcQuery))
+                        .join(", ")}
+                    </span>
+                  </p>
+                )}
               </li>
             ))}
           </ul>
@@ -271,7 +323,8 @@ export default function Sgo() {
                 {[...selectedRecipe.ingredients]
                   .sort(
                     (a, b) =>
-                      (Number(b.quantity) || 0) * multiplier - (Number(a.quantity) || 0) * multiplier
+                      (Number(b.quantity) || 0) * multiplier -
+                      (Number(a.quantity) || 0) * multiplier
                   )
                   .map((ing) => (
                     <tr key={ing.item} className="hover:bg-gray-50">
@@ -286,7 +339,6 @@ export default function Sgo() {
                         />
                       </td>
 
-                      {/* Ingredient name with auto-linking to other recipes */}
                       <td className="px-2 py-2 border">
                         {(() => {
                           const target = resolveLinkedRecipe(ing.item);
@@ -302,7 +354,9 @@ export default function Sgo() {
                               </button>
                             );
                           }
-                          return <span className="text-gray-900">{ing.item}</span>;
+                          return (
+                            <span className="text-gray-900">{ing.item}</span>
+                          );
                         })()}
                       </td>
 
@@ -313,7 +367,9 @@ export default function Sgo() {
                             type="text"
                             inputMode="decimal"
                             value={qtyInputs[ing.item] ?? ""}
-                            onChange={(e) => onQtyChange(ing.item, e.target.value)}
+                            onChange={(e) =>
+                              onQtyChange(ing.item, e.target.value)
+                            }
                             onBlur={() => onQtyBlur(ing.item)}
                             placeholder="0"
                           />
