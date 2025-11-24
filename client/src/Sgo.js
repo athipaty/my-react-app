@@ -255,13 +255,13 @@ export default function Sgo() {
     `}
               onClick={toggleSearchMode}
             >
-              {searchMode === "recipe" ? "Recipe 🔍" : "Ingredient 🧂"}
+              {searchMode === "recipe" ? "Recipe" : "Ingredient"}
             </button>
 
             <div className="text-[10px] text-gray-500 mt-1 text-center">
               {searchMode === "recipe"
-                ? "Searching by recipe name"
-                : "Searching by ingredient"}
+                ? "Recipe search"
+                : "Ingredient search"}
             </div>
           </div>
         </div>
