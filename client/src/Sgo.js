@@ -96,10 +96,13 @@ export default function Sgo() {
   const [qtyInputs, setQtyInputs] = useState({}); // { [itemName]: string }
   const baseQty = useRef({}); // { [itemName]: number }
 
-  // 🔹 NEW: search mode state
+  // search mode state
   // "recipe" = search by recipe name (original)
   // "ingredient" = search by ingredient name
   const [searchMode, setSearchMode] = useState("recipe");
+
+  // NEW: overlay for selecting search mode
+  const [showModeOverlay, setShowModeOverlay] = useState(false);
 
   // ---- navigation helpers (history-aware) ----
   const openRecipe = (recipe) => {
@@ -129,14 +132,14 @@ export default function Sgo() {
     }
   };
 
-  // 🔹 NEW: toggle between recipe search and ingredient search
-  const toggleSearchMode = () => {
-    setSearchMode((prev) => (prev === "recipe" ? "ingredient" : "recipe"));
-    // reset view when switching mode
+  // choose mode from overlay
+  const chooseMode = (mode) => {
+    setSearchMode(mode);
     setQuery("");
     setSelectedRecipe(null);
     setHistory([]);
     setMultiplier(1);
+    setShowModeOverlay(false);
   };
 
   // ---- capture base quantities & seed inputs when recipe changes ----
@@ -193,7 +196,7 @@ export default function Sgo() {
     }
   };
 
-  // 🔹 NEW: unified filtered list based on search mode
+  // unified filtered list based on search mode
   const lcQuery = query.toLowerCase().trim();
 
   const filtered = lcQuery
@@ -213,16 +216,17 @@ export default function Sgo() {
   return (
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
       <div className="max-w-md w-full">
-        {/* Search Bar Row with Back + Search + Mode Switch */}
+        {/* Search Bar Row with Back + Search + Hamburger Menu */}
         <div className="flex items-center justify-between mb-4 w-full max-w-3xl px-2">
           {/* Back Button (show when in a detail view) */}
           {selectedRecipe ? (
             <button
-              className="px-2 py-2 bg-gray-300 rounded hover:bg-gray-400 min-w-[44px]"
+              className="flex items-center justify-center min-w-[48px] min-h-[48px]
+             text-gray-700 hover:opacity-60 active:opacity-40"
               onClick={goBack}
               title="Back"
             >
-              ←
+              <span className="text-3xl">⬅️</span>
             </button>
           ) : (
             <div className="w-[44px]" />
@@ -238,32 +242,20 @@ export default function Sgo() {
             onChange={(e) => {
               setQuery(e.target.value);
               setSelectedRecipe(null);
-              // keep history so user can still go back if needed
             }}
           />
 
-          {/* 🔹 Mode Switch Button (replaces Home) */}
-          <div className="flex flex-col items-center min-w-[90px]">
-            <button
-              className={`
-      px-2 py-2 text-white rounded text-xs w-full transition-colors
-      ${
-        searchMode === "recipe"
-          ? "bg-green-500 hover:bg-green-600"
-          : "bg-yellow-500 hover:bg-yellow-600"
-      }
-    `}
-              onClick={toggleSearchMode}
-            >
-              {searchMode === "recipe" ? "Recipe" : "Ingredient"}
-            </button>
-
-            <div className="text-[10px] text-gray-500 mt-1 text-center">
-              {searchMode === "recipe"
-                ? "Recipe search"
-                : "Ingredient search"}
-            </div>
-          </div>
+          {/* Hamburger button to open mode selection overlay */}
+          <button
+            className="min-w-[44px] flex flex-col items-center justify-center gap-[4px] p-2 
+             hover:opacity-60 active:opacity-40 transition-opacity"
+            onClick={() => setShowModeOverlay(true)}
+            title="Select search type"
+          >
+            <span className="w-7 h-[3px] bg-gray-600 rounded" />
+            <span className="w-7 h-[3px] bg-gray-600 rounded" />
+            <span className="w-7 h-[3px] bg-gray-600 rounded" />
+          </button>
         </div>
 
         {/* Recipe List */}
@@ -290,7 +282,7 @@ export default function Sgo() {
                   {recipe.name}
                 </button>
 
-                {/* Optional: when in ingredient mode, show info */}
+                {/* When in ingredient mode, show which ingredient matched */}
                 {searchMode === "ingredient" && (
                   <p className="text-[11px] text-gray-500">
                     Uses ingredient matching:{" "}
@@ -383,10 +375,72 @@ export default function Sgo() {
           </div>
         )}
 
+        {/* 🔹 Search mode overlay (hamburger menu) */}
+        {showModeOverlay && (
+          <div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+            onClick={() => setShowModeOverlay(false)}
+          >
+            <div
+              className="bg-white rounded-xl shadow-xl px-6 py-5 max-w-xs w-[90%] text-left"
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+            >
+              <h2 className="text-lg font-semibold mb-1 text-gray-800">
+                Select search type
+              </h2>
+              <p className="text-xs text-gray-500 mb-4">
+                Current:{" "}
+                <span className="font-semibold">
+                  {searchMode === "recipe"
+                    ? "Recipe search"
+                    : "Ingredient search"}
+                </span>
+              </p>
+
+              <div className="space-y-3">
+                <button
+                  className={`w-full py-2 rounded-lg text-sm font-medium border transition-colors ${
+                    searchMode === "recipe"
+                      ? "bg-green-500 text-white border-green-500"
+                      : "bg-white text-gray-800 border-gray-300 hover:bg-gray-50"
+                  }`}
+                  onClick={() => chooseMode("recipe")}
+                >
+                  🔍 Recipe search
+                  <span className="block text-[11px] font-normal text-gray-100 sm:text-gray-200">
+                    Search by menu name
+                  </span>
+                </button>
+
+                <button
+                  className={`w-full py-2 rounded-lg text-sm font-medium border transition-colors ${
+                    searchMode === "ingredient"
+                      ? "bg-yellow-500 text-white border-yellow-500"
+                      : "bg-white text-gray-800 border-gray-300 hover:bg-gray-50"
+                  }`}
+                  onClick={() => chooseMode("ingredient")}
+                >
+                  🧂 Ingredient search
+                  <span className="block text-[11px] font-normal text-gray-100 sm:text-gray-200">
+                    Find menus using this ingredient
+                  </span>
+                </button>
+              </div>
+
+              <button
+                className="mt-4 w-full text-center text-xs text-gray-500 hover:text-gray-700"
+                onClick={() => setShowModeOverlay(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Fullscreen Image Overlay */}
         {fullImage && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-60"
             onClick={() => setFullImage(null)}
           >
             <ImageWithLoader
