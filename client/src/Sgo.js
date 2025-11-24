@@ -186,8 +186,10 @@ export default function Sgo() {
   };
 
   const filtered = query
-    ? recipes.filter((r) => r.name.toLowerCase().includes(query.toLowerCase()))
-    : [];
+  ? recipes
+      .filter((r) => r.name.toLowerCase().includes(query.toLowerCase()))
+      .sort((a, b) => a.name.localeCompare(b.name))
+  : [];
 
   return (
     <div className="min-h-screen p-2 pb-14 bg-gray-50 text-center relative flex flex-col items-center mt-4">
