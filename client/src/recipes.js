@@ -814,7 +814,7 @@ const recipes = [
     image: "/images/bibim-noodle-chicken.jpg",
     ingredients: [
       {
-        item: "Minced Chiken Tender",
+        item: "Minced Chiken",
         quantity: 2000,
         unit: "g",
         image: "/images/ingredients/minced-chiken-tender.jpg",
@@ -1988,6 +1988,72 @@ const recipes = [
       }
     ],
     method: 'Place all the ingredients in a pot and simmer for a minimum of 6 hours. Add more water whenever the level gets low. Once finished, allow it to cool, then strain the mixture and keep only the broth.'
+  },
+  {
+    name: 'Pad Krapow',
+    image: "/images/pad-krapow.webp",
+    ingredients: [
+      {
+        item: 'Minced Chicken',
+        quantity: 150,
+        unit: 'g',
+        image: "/images/ingredients/minced-chiken-tender.jpg"
+      },
+      {
+        item: 'Minced Garlic',
+        quantity: 10,
+        unit: 'g',
+        image: "/images/ingredients/minced-garlic.jpg"
+      },
+      {
+        item: 'Red Chili Padi',
+        quantity: 10,
+        unit: 'g',
+        image: "/images/ingredients/red-chilli-padi.webp"
+      },
+      {
+        item: 'Thai Holy Basil',
+        quantity: '10',
+        unit: 'g',
+        image: "/images/ingredients/thai-holy-basil.jpg"
+      },
+      {
+        item: 'Cooking Oil',
+        quantity: '10',
+        unit: 'g',
+        image: "/images/ingredients/cooking-oil.jpg"
+      },
+      {
+        item: 'Fish Sauce',
+        quantity: 15,
+        unit: 'g',
+        image: "/images/ingredients/fish-sauce.webp"
+      },
+      {
+        item: 'Oyster Sauce',
+        quantity: 18,
+        unit: 'g',
+        image: "/images/ingredients/oyster-sauce.jpg"
+      },
+      {
+        item: 'Soy Sauce',
+        quantity: 15,
+        unit: 'g',
+        image: "/images/ingredients/soy-sauce.png"
+      },
+      {
+        item: 'White Sugar',
+        quantity: 4,
+        unit: 'g',
+        image: "/images/ingredients/white-sugar.jpg"
+      },
+      {
+        item: 'Water',
+        quantity: 10,
+        unit: 'g',
+        image: "/images/ingredients/water.jpeg"
+      }
+    ]
   }
 ]
 export default recipes;
