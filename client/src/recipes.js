@@ -2019,25 +2019,25 @@ const recipes = [
       },
       {
         item: 'Cooking Oil',
-        quantity: '10',
+        quantity: '0',
         unit: 'g',
         image: "/images/ingredients/cooking-oil.jpg"
       },
       {
         item: 'Fish Sauce',
-        quantity: 15,
+        quantity: 10,
         unit: 'g',
         image: "/images/ingredients/fish-sauce.webp"
       },
       {
         item: 'Oyster Sauce',
-        quantity: 18,
+        quantity: 10,
         unit: 'g',
         image: "/images/ingredients/oyster-sauce.jpg"
       },
       {
         item: 'Soy Sauce',
-        quantity: 15,
+        quantity: 10,
         unit: 'g',
         image: "/images/ingredients/soy-sauce.png"
       },
@@ -2047,12 +2047,6 @@ const recipes = [
         unit: 'g',
         image: "/images/ingredients/white-sugar.jpg"
       },
-      {
-        item: 'Water',
-        quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/water.jpeg"
-      }
     ]
   }
 ]
