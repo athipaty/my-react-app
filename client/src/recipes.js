@@ -2055,7 +2055,7 @@ const recipes = [
     image: "/images/udon-broth.webp",
     ingredients: [
       {
-        item: 'Soaked Kilp',
+        item: 'Soaked Kelp',
         quantity: 18000,
         unit: 'g',
         image: "/images/soaked-kelp.jpg",
