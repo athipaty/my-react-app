@@ -2150,7 +2150,7 @@ const recipes = [
         item: 'Udon Broth',
         quantity: 300,
         unit: 'g',
-        image: "/images/ingredients/kelp.jpg",
+        image: "/images/ingredients/....jpg",
       },
       {
         item: 'Udon Noodle',
