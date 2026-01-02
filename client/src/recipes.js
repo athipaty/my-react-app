@@ -2088,7 +2088,7 @@ const recipes = [
         item: "Katsuobushi",
         quantity: 500,
         unit: "g",
-        image: "/images/ingredients/Katsuobushi.webp",
+        image: "/images/ingredients/katsuobushi.jpg",
       },
        {
         item: "Dark Soy Sauce",
@@ -2137,7 +2137,7 @@ const recipes = [
         item: "Kelp",
         quantity: 120,
         unit: "g",
-        image: "/images/ingredients/kelp.webp",
+        image: "/images/ingredients/kelp.jpg",
       },
     ],
     method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours.'
