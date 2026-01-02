@@ -2144,7 +2144,7 @@ const recipes = [
       },
       {
         item: "Non Alcohol Mirin",
-        quantity: 420,
+        quantity: 500,
         unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
