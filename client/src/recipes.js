@@ -2140,7 +2140,7 @@ const recipes = [
         image: "/images/ingredients/kelp.jpg",
       },
     ],
-    method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours.'
+    method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours..'
   }
 ];
 export default recipes;
