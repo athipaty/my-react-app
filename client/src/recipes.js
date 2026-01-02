@@ -1642,8 +1642,8 @@ const recipes = [
         quantity: 20,
         unit: "g",
         image: "/images/ingredients/tempura-dipping-sauce.jpg",
-      }
-    ]
+      },
+    ],
   },
   {
     name: "Spicy Boneless Chicken Feet",
@@ -1773,7 +1773,7 @@ const recipes = [
         quantity: 20,
         unit: "g",
         image: "/images/ingredients/tempura-dipping-sauce.jpg",
-      }
+      },
     ],
   },
   {
@@ -1816,7 +1816,6 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/frying-powder.jpg",
       },
-
     ],
   },
   {
@@ -1845,7 +1844,7 @@ const recipes = [
         item: "Shitake",
         quantity: 2000,
         unit: "g",
-        image: "/images/ingredients/shitake.jpg", 
+        image: "/images/ingredients/shitake.jpg",
       },
       {
         item: "Enoki",
@@ -1859,23 +1858,23 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/king-oyster-mushroom.jpg",
       },
-    ]
+    ],
   },
   {
     name: "Charcoal Fried Eggplant",
     image: "/images/charcoal-fried-eggplant.jpg",
     ingredients: [
       {
-        item: 'Eggplant',
+        item: "Eggplant",
         quantity: 1,
-        unit: 'ea',
-        image: "/images/ingredients/eggplant.jpg", 
+        unit: "ea",
+        image: "/images/ingredients/eggplant.jpg",
       },
       {
-        item: 'Frying Charcoal Powder Mix',
+        item: "Frying Charcoal Powder Mix",
         quantity: 0,
-        unit: 'g',
-        image: "/images/ingredients/frying-charcoal-powder-mix.jpg", 
+        unit: "g",
+        image: "/images/ingredients/frying-charcoal-powder-mix.jpg",
       },
       {
         item: "Cooking Oil",
@@ -1886,7 +1885,7 @@ const recipes = [
       {
         item: "Eggplant Sauce",
         quantity: 1,
-        unit: 'g',
+        unit: "g",
         image: "/images/eggplant-sauce.jpg",
       },
       {
@@ -1897,15 +1896,16 @@ const recipes = [
       },
       {
         item: "Crushed Peanuts",
-        quantity: '1',
-        unit: 'g',
+        quantity: "1",
+        unit: "g",
         image: "/images/ingredients/crushed-peanuts.webp",
-      }
+      },
     ],
-    method: 'Cut the eggplant into slices about 3 cm thick, then cut each slice in half to make half-circles. Coat the pieces with charcoal powder mix and fry them for about 1–2 minutes. After frying, let the oil drain for a while. Then dip the eggplant in the eggplant sauce and top with sliced spring onions and crushed peanuts before serving.'
+    method:
+      "Cut the eggplant into slices about 3 cm thick, then cut each slice in half to make half-circles. Coat the pieces with charcoal powder mix and fry them for about 1–2 minutes. After frying, let the oil drain for a while. Then dip the eggplant in the eggplant sauce and top with sliced spring onions and crushed peanuts before serving.",
   },
   {
-    name: 'Frying Charcoal Powder Mix',
+    name: "Frying Charcoal Powder Mix",
     image: "/images/frying-charcoal-powder-mix.jpg",
     ingredients: [
       {
@@ -1921,133 +1921,188 @@ const recipes = [
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
-        item: 'Charcoal Powder',
+        item: "Charcoal Powder",
         quantity: 5,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/charcoal-powder.jpg",
       },
       {
-        item: 'Soda',
+        item: "Soda",
         quantity: 120,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/soda.jpg",
-      }
-    ]
+      },
+    ],
   },
   {
-    name: 'Chicken Broth',
+    name: "Chicken Broth",
     image: "/images/chicken-broth.jpg",
     ingredients: [
       {
-        item: 'Baked Chicken Bone and Feet',
+        item: "Baked Chicken Bone and Feet",
         quantity: 15,
-        unit: 'kg',
+        unit: "kg",
         image: "/images/ingredients/baked-chicken-bone-and-feet.jpg",
       },
       {
-        item: 'Leek',
+        item: "Leek",
         quantity: 1,
-        unit: 'kg',
+        unit: "kg",
         image: "/images/ingredients/leek.webp",
       },
       {
-        item: 'White Onion',
+        item: "White Onion",
         quantity: 1,
-        unit: 'kg',
+        unit: "kg",
         image: "/images/ingredients/white-onion.jpg",
       },
       {
-        item: 'Ginseng',
+        item: "Ginseng",
         quantity: 0.6,
-        unit: 'kg',
+        unit: "kg",
         image: "/images/ingredients/ginseng.jpg",
       },
       {
-        item: 'Red Date',
+        item: "Red Date",
         quantity: 0.5,
-        unit: 'kg',
+        unit: "kg",
         image: "/images/ingredients/red-date.jpg",
       },
       {
-        item: 'Samgyetang Herbal',
+        item: "Samgyetang Herbal",
         quantity: 5,
-        unit: 'pack',
+        unit: "pack",
         image: "/images/ingredients/samgyetang-herbal.webp",
       },
       {
-        item: 'Water',
+        item: "Water",
         quantity: 80,
-        unit: 'litres',
+        unit: "litres",
         image: "/images/ingredients/water.jpeg",
       },
       {
-        item: 'Garlic',
+        item: "Garlic",
         quantity: 1,
-        unit: 'kg',
-        image: "/images/ingredients/garlic.avif"
-      }
+        unit: "kg",
+        image: "/images/ingredients/garlic.avif",
+      },
     ],
-    method: 'Place all the ingredients in a pot and simmer for a minimum of 6 hours. Add more water whenever the level gets low. Once finished, allow it to cool, then strain the mixture and keep only the broth.'
+    method:
+      "Place all the ingredients in a pot and simmer for a minimum of 6 hours. Add more water whenever the level gets low. Once finished, allow it to cool, then strain the mixture and keep only the broth.",
   },
   {
-    name: 'Pad Krapow',
+    name: "Pad Krapow",
     image: "/images/pad-krapow.webp",
     ingredients: [
       {
-        item: 'Minced Chicken',
+        item: "Minced Chicken",
         quantity: 150,
-        unit: 'g',
-        image: "/images/ingredients/minced-chiken-tender.jpg"
+        unit: "g",
+        image: "/images/ingredients/minced-chiken-tender.jpg",
       },
       {
-        item: 'Minced Garlic',
+        item: "Minced Garlic",
         quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/minced-garlic.jpg"
+        unit: "g",
+        image: "/images/ingredients/minced-garlic.jpg",
       },
       {
-        item: 'Red Chili Padi',
+        item: "Red Chili Padi",
         quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/red-chilli-padi.webp"
+        unit: "g",
+        image: "/images/ingredients/red-chilli-padi.webp",
       },
       {
-        item: 'Thai Holy Basil',
-        quantity: '10',
-        unit: 'g',
-        image: "/images/ingredients/thai-holy-basil.jpg"
+        item: "Thai Holy Basil",
+        quantity: "10",
+        unit: "g",
+        image: "/images/ingredients/thai-holy-basil.jpg",
       },
       {
-        item: 'Cooking Oil',
-        quantity: '0',
-        unit: 'g',
-        image: "/images/ingredients/cooking-oil.jpg"
+        item: "Cooking Oil",
+        quantity: "0",
+        unit: "g",
+        image: "/images/ingredients/cooking-oil.jpg",
       },
       {
-        item: 'Fish Sauce',
+        item: "Fish Sauce",
         quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/fish-sauce.webp"
+        unit: "g",
+        image: "/images/ingredients/fish-sauce.webp",
       },
       {
-        item: 'Oyster Sauce',
+        item: "Oyster Sauce",
         quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/oyster-sauce.jpg"
+        unit: "g",
+        image: "/images/ingredients/oyster-sauce.jpg",
       },
       {
-        item: 'Soy Sauce',
+        item: "Soy Sauce",
         quantity: 10,
-        unit: 'g',
-        image: "/images/ingredients/soy-sauce.png"
+        unit: "g",
+        image: "/images/ingredients/soy-sauce.png",
       },
       {
-        item: 'White Sugar',
+        item: "White Sugar",
         quantity: 4,
-        unit: 'g',
-        image: "/images/ingredients/white-sugar.jpg"
+        unit: "g",
+        image: "/images/ingredients/white-sugar.jpg",
       },
-    ]
-  }
-]
+    ],
+  },
+  {
+    name: "Udin Broth",
+    image: "/images/udon-broth.webp",
+    ingredients: [
+      {
+        item: "Water (soaked)",
+        quantity: 12000,
+        unit: "g",
+        image: "/images/ingredients/water.jpeg",
+      },
+      {
+        item: "Non Alcohol Mirin (soaked)",
+        quantity: 420,
+        unit: "g",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
+      },
+      {
+        item: "Kelp (soaked)",
+        quantity: 120,
+        unit: "g",
+        image: "/images/ingredients/kelp.webp",
+      },
+      {
+        item: "Garlic",
+        quantity: 600,
+        unit: "g",
+        image: "/images/ingredients/garlic.avif",
+      },
+      {
+        item: "Radish",
+        quantity: 600,
+        unit: "g",
+        image: "/images/ingredients/radish.webp",
+      },
+      {
+        item: "Black Pepper Corn",
+        quantity: 90,
+        unit: "g",
+        image: "/images/ingredients/black-pepper-corn.webp",
+      },
+      {
+        item: "Dried Chili",
+        quantity: 60,
+        unit: "g",
+        image: "/images/ingredients/vietnamese-dried-chili.webp",
+      },
+      {
+        item: "Katsuobushi",
+        quantity: 500,
+        unit: "g",
+        image: "/images/ingredients/Katsuobushi.webp",
+      },
+    ],
+  },
+];
 export default recipes;
