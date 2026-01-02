@@ -2097,25 +2097,25 @@ const recipes = [
     image: "/images/boiled-katsuo-broth.webp",
     ingredients: [
       {
-        item: "Water (soaked)",
+        item: "Water",
         quantity: 18000,
         unit: "g",
         image: "/images/ingredients/water.jpeg",
       },
       {
-        item: "Non Alcohol Mirin (soaked)",
+        item: "Non Alcohol Mirin",
         quantity: 420,
         unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
-        item: "Kelp (soaked)",
+        item: "Kelp",
         quantity: 120,
         unit: "g",
         image: "/images/ingredients/kelp.webp",
       },
-    ]
-
+    ],
+    method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours.'
   }
 ];
 export default recipes;
