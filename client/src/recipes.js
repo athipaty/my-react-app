@@ -2058,7 +2058,7 @@ const recipes = [
         item: 'Soaked Kelp',
         quantity: 18000,
         unit: 'g',
-        image: "/images/soaked-kelp.jpg",
+        image: "/images/ingredients/soaked-kelp.jpg",
       },
       {
         item: "Garlic",
