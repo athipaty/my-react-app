@@ -2141,6 +2141,54 @@ const recipes = [
       },
     ],
     method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours..'
+  },
+  {
+    name: 'Jidori Udon',
+    image: "/images/jidori-udon.jpg",
+    ingredients: [
+      {
+        item: 'Udon Broth',
+        quantity: 300,
+        unit: 'g',
+        image: "/images/ingredients/kelp.jpg",
+      },
+      {
+        item: 'Udon Noodle',
+        quantity: 150,
+        unit: 'g',
+        image: "/images/ingredients/udon-noodle.jpg",
+      },
+      {
+        item: "Chicken Thigh",
+        quantity: 6,
+        unit: "pcs",
+        image: "/images/ingredients/chicken-thigh.webp",
+      },
+      {
+        item: "Leek (Green Part)",
+        quantity: 5,
+        unit: "g",
+        image: "/images/ingredients/leek.webp",
+      },
+      {
+        item: "Cooking Oil",
+        quantity: "2",
+        unit: "g",
+        image: "/images/ingredients/cooking-oil.jpg",
+      },
+      {
+        item: "Black Pepper Powder (furnished)",
+        quantity: 1,
+        unit: "g",
+        image: "/images/ingredients/black-pepper-powder.webp",
+      },
+      {
+        item: "Sichimi (furnished)",
+        quantity: 1,
+        unit: "g",
+        image: "/images/ingredients/sichimi.jpg",
+      },
+    ]
   }
 ];
 export default recipes;
