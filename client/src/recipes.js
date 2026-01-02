@@ -1520,6 +1520,8 @@ const recipes = [
         image: "/images/ingredients/white-sugar.jpg",
       },
     ],
+    method:
+      "Add all the ingredients together and heat until everything is well combined, then let it cool down. The sauce can be kept in the chiller for up to one week.",
   },
   {
     name: "Grill Rice Ball",
@@ -1626,6 +1628,8 @@ const recipes = [
         image: "/images/ingredients/frying-powder-mix.jpg",
       },
     ],
+    method:
+      "Coat each mushroom with the frying flour first, then finish with the frying powder mixture and deep-fry for 1–2 minutes, depending on the type of mushroom. You can tell it’s ready when the surface turns a golden-yellow color. Once all the mushrooms are fried, place them on a serving dish and serve with tempura sauce.",
   },
   {
     name: "Tempura Mushroom",
@@ -1644,6 +1648,8 @@ const recipes = [
         image: "/images/ingredients/tempura-dipping-sauce.jpg",
       },
     ],
+    method:
+      "Once the mushrooms are fried, serve them together with tempura sauce.",
   },
   {
     name: "Spicy Boneless Chicken Feet",
@@ -1744,7 +1750,8 @@ const recipes = [
         image: "/images/ingredients/soy-sauce.png",
       },
     ],
-    method: "Waiting for Johnny!",
+    method:
+      "Add all the ingredients together and heat until everything is well combined, then let it cool down. The sauce can be kept in the chiller for up to one week.",
   },
   {
     name: "Chicken Popcorn",
@@ -1775,6 +1782,8 @@ const recipes = [
         image: "/images/ingredients/tempura-dipping-sauce.jpg",
       },
     ],
+    method:
+      "After frying, place it in a serving bowl with the tempura sauce on the side, and don’t forget to finish with sliced leeks and shichimi.",
   },
   {
     name: "Fried Gizzard",
@@ -1817,6 +1826,8 @@ const recipes = [
         image: "/images/ingredients/frying-powder.jpg",
       },
     ],
+    method:
+      "Prepare the gizzard and mix it with seasoning salt and black pepper powder, then coat it with frying flour and mix well. Dip the gizzard into the final frying flour mixture and deep-fry in hot oil for about 1–2 minutes. Drain off the excess oil, and it’s ready to serve.",
   },
   {
     name: "Frying Powder Mix",
@@ -1835,6 +1846,7 @@ const recipes = [
         image: "/images/ingredients/water.jpeg",
       },
     ],
+    method: "make sure all the ingredients are mixed evenly.",
   },
   {
     name: "Blended Mushroom",
@@ -1933,6 +1945,8 @@ const recipes = [
         image: "/images/ingredients/soda.jpg",
       },
     ],
+    method:
+      "Use cold soda water and mix well so all the ingredients are evenly combined.",
   },
   {
     name: "Chicken Broth",
@@ -2055,9 +2069,9 @@ const recipes = [
     image: "/images/udon-broth.webp",
     ingredients: [
       {
-        item: 'Soaked Kelp',
+        item: "Soaked Kelp",
         quantity: 18000,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/soaked-kelp.jpg",
       },
       {
@@ -2090,13 +2104,13 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/katsuobushi.jpg",
       },
-       {
+      {
         item: "Dark Soy Sauce",
         quantity: 140,
         unit: "g",
         image: "/images/ingredients/dark-soy-sauce.jpg",
       },
-       {
+      {
         item: "Non Alcohol Mirin",
         quantity: 1140,
         unit: "g",
@@ -2115,10 +2129,11 @@ const recipes = [
         image: "/images/ingredients/higashimaru-shoyu.webp",
       },
     ],
-    method: 'Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.'
+    method:
+      "Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.",
   },
   {
-    name: 'Soaked Kelp',
+    name: "Soaked Kelp",
     image: "/images/ingredients/soaked-kelp.jpg",
     ingredients: [
       {
@@ -2140,26 +2155,27 @@ const recipes = [
         image: "/images/ingredients/kelp.jpg",
       },
     ],
-    method: 'Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours..'
+    method:
+      "Combine the water and non-alcoholic mirin in a large pot, then soak the kelp for 6–8 hours..",
   },
   {
-    name: 'Jidori Udon',
+    name: "Jidori Udon",
     image: "/images/jidori-udon.jpg",
     ingredients: [
       {
-        item: 'Udon Broth',
+        item: "Udon Broth",
         quantity: 300,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/....jpg",
       },
       {
-        item: 'Udon Noodle',
+        item: "Udon Noodle",
         quantity: 150,
-        unit: 'g',
+        unit: "g",
         image: "/images/ingredients/udon-noodle.jpg",
       },
       {
-        item: "Chicken Thigh",
+        item: "Chicken",
         quantity: 6,
         unit: "pcs",
         image: "/images/ingredients/chicken-thigh.webp",
@@ -2189,7 +2205,8 @@ const recipes = [
         image: "/images/ingredients/sichimi.jpg",
       },
     ],
-    method: 'Boil the udon broth and cook the udon noodles, then fry the chicken thighs and leeks until fully cooked. Pour the noodles into the broth, place the chicken and leeks on top, and finish with black pepper powder and shichimi.'
-  }
+    method:
+      "Boil the udon broth and cook the udon noodles, then fry the chicken thighs and leeks until fully cooked. Pour the noodles into the broth, place the chicken and leeks on top, and finish with black pepper powder and shichimi.",
+  },
 ];
 export default recipes;
