@@ -2177,18 +2177,19 @@ const recipes = [
         image: "/images/ingredients/cooking-oil.jpg",
       },
       {
-        item: "Black Pepper Powder (furnished)",
+        item: "Black Pepper Powder",
         quantity: 1,
         unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
-        item: "Sichimi (furnished)",
+        item: "Sichimi",
         quantity: 1,
         unit: "g",
         image: "/images/ingredients/sichimi.jpg",
       },
-    ]
+    ],
+    method: 'Boil the udon broth and cook the udon noodles, then fry the chicken thighs and leeks until fully cooked. Pour the noodles into the broth, place the chicken and leeks on top, and finish with black pepper powder and shichimi.'
   }
 ];
 export default recipes;
