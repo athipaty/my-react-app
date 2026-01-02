@@ -2090,7 +2090,32 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/Katsuobushi.webp",
       },
+       {
+        item: "Dark Soy Sauce",
+        quantity: 140,
+        unit: "g",
+        image: "/images/ingredients/dark-soy-sauce.jpg",
+      },
+       {
+        item: "Non Alcohol Mirin",
+        quantity: 1140,
+        unit: "g",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
+      },
+      {
+        item: "Hondashi",
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/hondashi.webp",
+      },
+      {
+        item: "Higashimaru Shoyu",
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/higashimaru-shoyu.webp",
+      },
     ],
+    method: 'Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.'
   },
   {
     name: 'Boiled Katsuo Broth',
