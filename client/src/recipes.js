@@ -2055,10 +2055,10 @@ const recipes = [
     image: "/images/udon-broth.webp",
     ingredients: [
       {
-        item: 'Boiled Katsuo Broth',
+        item: 'Soaked Kilp',
         quantity: 18000,
         unit: 'g',
-        image: "/images/boiled-katsuo-broth.webp",
+        image: "/images/soaked-kelp.jpg",
       },
       {
         item: "Garlic",
@@ -2118,8 +2118,8 @@ const recipes = [
     method: 'Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.'
   },
   {
-    name: 'Boiled Katsuo Broth',
-    image: "/images/boiled-katsuo-broth.webp",
+    name: 'Soaked Kelp',
+    image: "/images/soaked-kelp.jpg",
     ingredients: [
       {
         item: "Water",
