@@ -2051,26 +2051,14 @@ const recipes = [
     ],
   },
   {
-    name: "Udin Broth",
+    name: "Udon Broth",
     image: "/images/udon-broth.webp",
     ingredients: [
       {
-        item: "Water (soaked)",
-        quantity: 12000,
-        unit: "g",
-        image: "/images/ingredients/water.jpeg",
-      },
-      {
-        item: "Non Alcohol Mirin (soaked)",
-        quantity: 420,
-        unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.webp",
-      },
-      {
-        item: "Kelp (soaked)",
-        quantity: 120,
-        unit: "g",
-        image: "/images/ingredients/kelp.webp",
+        item: 'Boiled Katsuo Broth',
+        quantity: 18000,
+        unit: 'g',
+        image: "/images/boiled-katsuo-broth.webp",
       },
       {
         item: "Garlic",
@@ -2104,5 +2092,30 @@ const recipes = [
       },
     ],
   },
+  {
+    name: 'Boiled Katsuo Broth',
+    image: "/images/boiled-katsuo-broth.webp",
+    ingredients: [
+      {
+        item: "Water (soaked)",
+        quantity: 18000,
+        unit: "g",
+        image: "/images/ingredients/water.jpeg",
+      },
+      {
+        item: "Non Alcohol Mirin (soaked)",
+        quantity: 420,
+        unit: "g",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
+      },
+      {
+        item: "Kelp (soaked)",
+        quantity: 120,
+        unit: "g",
+        image: "/images/ingredients/kelp.webp",
+      },
+    ]
+
+  }
 ];
 export default recipes;
