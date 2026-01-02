@@ -2119,7 +2119,7 @@ const recipes = [
   },
   {
     name: 'Soaked Kelp',
-    image: "/images/soaked-kelp.jpg",
+    image: "/images/ingredients/soaked-kelp.jpg",
     ingredients: [
       {
         item: "Water",
