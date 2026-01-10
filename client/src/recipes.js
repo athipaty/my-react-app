@@ -2124,7 +2124,7 @@ const recipes = [
       },
       {
         item: "Higashimaru Shoyu",
-        quantity: 150,
+        quantity: 1040,
         unit: "g",
         image: "/images/ingredients/higashimaru-shoyu.webp",
       },
