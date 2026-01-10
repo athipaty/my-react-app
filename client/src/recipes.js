@@ -1163,7 +1163,7 @@ const recipes = [
         item: "Collegen Paitan",
         quantity: 500,
         unit: "g",
-        image: "/images/ingredients/collegen-paitan.webp",
+        image: "/images/ingredients/collegen-paitan.png",
       },
       {
         item: "Flower Salt",
@@ -1325,7 +1325,7 @@ const recipes = [
         item: "Collegen Paitan",
         quantity: 80,
         unit: "g",
-        image: "/images/ingredients/collegen=paitan.png",
+        image: "/images/ingredients/collegen-paitan.png",
       },
     ],
   },
@@ -1441,7 +1441,7 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
       },
-    ],
+    ]
   },
   {
     name: "Marinated Chicken Prep",
