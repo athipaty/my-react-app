@@ -1846,7 +1846,7 @@ const recipes = [
         image: "/images/ingredients/water.jpeg",
       },
     ],
-    method: "make sure all the ingredients are mixed evenly.",
+    method: "make sure all the ingredients are mixed evenly..",
   },
   {
     name: "Blended Mushroom",
