@@ -2208,5 +2208,37 @@ const recipes = [
     method:
       "Boil the udon broth and cook the udon noodles, then fry the chicken thighs and leeks until fully cooked. Pour the noodles into the broth, place the chicken and leeks on top, and finish with black pepper powder and shichimi.",
   },
+  {
+    name: 'Black Peper Salt',
+    image: "/images/sichimi.jpg",
+    ingredients: [
+      {
+        item: "Flower Salt",
+        quantity: 100,
+        unit: "g",
+        image: "/images/ingredients/flower-salt.jpg",
+      },
+      {
+        item: "Black Pepper Powder",
+        quantity: 100,
+        unit: "g",
+        image: "/images/ingredients/black-pepper-powder.webp",
+      },
+      {
+        item: "White Sesame Seed",
+        quantity: 25,
+        unit: "g",
+        image: "/images/ingredients/sesame-seeds.jpg",
+      },
+      {
+        item: "Black Sesame Seed",
+        quantity: 25,
+        unit: "g",
+        image: "/images/ingredients/black-sesame-seeds.jpg",
+      },
+
+    ]
+
+  }
 ];
 export default recipes;
