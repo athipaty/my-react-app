@@ -1884,7 +1884,7 @@ const recipes = [
       },
       {
         item: "Frying Charcoal Powder Mix",
-        quantity: 0,
+        quantity: 3,
         unit: "g",
         image: "/images/ingredients/frying-charcoal-powder-mix.jpg",
       },
