@@ -2075,6 +2075,12 @@ const recipes = [
         image: "/images/ingredients/soaked-kelp.jpg",
       },
       {
+        item: "Udon Seasonings",
+        quantity: 1,
+        unit: 'set',
+        image: "/images/udon-seasonings.jpg",
+      },
+      {
         item: "Garlic",
         quantity: 600,
         unit: "g",
@@ -2103,30 +2109,6 @@ const recipes = [
         quantity: 500,
         unit: "g",
         image: "/images/ingredients/katsuobushi.jpg",
-      },
-      {
-        item: "Dark Soy Sauce",
-        quantity: 140,
-        unit: "g",
-        image: "/images/ingredients/dark-soy-sauce.jpg",
-      },
-      {
-        item: "Non Alcohol Mirin",
-        quantity: 1140,
-        unit: "g",
-        image: "/images/ingredients/non-alcohol-mirin.webp",
-      },
-      {
-        item: "Hondashi",
-        quantity: 150,
-        unit: "g",
-        image: "/images/ingredients/hondashi.webp",
-      },
-      {
-        item: "Higashimaru Shoyu",
-        quantity: 1040,
-        unit: "g",
-        image: "/images/ingredients/higashimaru-shoyu.webp",
       },
     ],
     method:
@@ -2239,6 +2221,38 @@ const recipes = [
 
     ]
 
-  }
+  },
+  {
+    name: "Udon Seasonings",
+    image: "/images/udon-seasonings.jpg",
+    ingredients: [
+      {
+        item: "Katsuobushi",
+        quantity: 500,
+        unit: "g",
+        image: "/images/ingredients/katsuobushi.jpg",
+      },
+      {
+        item: "Dark Soy Sauce",
+        quantity: 140,
+        unit: "g",
+        image: "/images/ingredients/dark-soy-sauce.jpg",
+      },
+      {
+        item: "Non Alcohol Mirin",
+        quantity: 1140,
+        unit: "g",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
+      },
+      {
+        item: "Hondashi",
+        quantity: 150,
+        unit: "g",
+        image: "/images/ingredients/hondashi.webp",
+      },
+    ],
+    method:
+      "Mix well",
+  },
 ];
 export default recipes;
