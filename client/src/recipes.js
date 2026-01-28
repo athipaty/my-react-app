@@ -2252,8 +2252,7 @@ const recipes = [
         image: "/images/ingredients/hondashi.webp",
       },
     ],
-    method:
-      "Mix well",
+    method: "Make sure all the ingredients are mixed evenly.",
   },
 ];
 export default recipes;
