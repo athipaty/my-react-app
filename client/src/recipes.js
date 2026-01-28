@@ -2069,6 +2069,12 @@ const recipes = [
     image: "/images/udon-broth.webp",
     ingredients: [
       {
+        item: "Katsuobushi",
+        quantity: 500,
+        unit: "g",
+        image: "/images/ingredients/katsuobushi.jpg",
+      },
+      {
         item: "Soaked Kelp",
         quantity: 18000,
         unit: "g",
@@ -2104,12 +2110,7 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/vietnamese-dried-chili.webp",
       },
-      {
-        item: "Hihashimaru Shoyu",
-        quantity: 1040,
-        unit: "g",
-        image: "/images/ingredients/higashimaru-shoyu.webp",
-      },
+      
     ],
     method:
       "Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.",
@@ -2227,10 +2228,10 @@ const recipes = [
     image: "/images/udon-seasonings.jpg",
     ingredients: [
       {
-        item: "Katsuobushi",
-        quantity: 500,
+        item: "Hihashimaru Shoyu",
+        quantity: 1040,
         unit: "g",
-        image: "/images/ingredients/katsuobushi.jpg",
+        image: "/images/ingredients/higashimaru-shoyu.webp",
       },
       {
         item: "Dark Soy Sauce",
