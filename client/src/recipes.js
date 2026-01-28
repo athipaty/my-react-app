@@ -2105,10 +2105,10 @@ const recipes = [
         image: "/images/ingredients/vietnamese-dried-chili.webp",
       },
       {
-        item: "Katsuobushi",
-        quantity: 500,
+        item: "Hihashimaru Shoyu",
+        quantity: 1040,
         unit: "g",
-        image: "/images/ingredients/katsuobushi.jpg",
+        image: "/images/ingredients/higashimaru-shoyu.webp",
       },
     ],
     method:
