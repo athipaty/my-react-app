@@ -1883,7 +1883,7 @@ const recipes = [
         image: "/images/ingredients/eggplant.jpg",
       },
       {
-        item: "Frying Charcoal Powder Mix",
+        item: "Charcoal Powder Mix",
         quantity: 3,
         unit: "g",
         image: "/images/ingredients/frying-charcoal-powder-mix.jpg",
@@ -1917,7 +1917,7 @@ const recipes = [
       "Cut the eggplant into slices about 3 cm thick, then cut each slice in half to make half-circles. Coat the pieces with charcoal powder mix and fry them for about 1–2 minutes. After frying, let the oil drain for a while. Then dip the eggplant in the eggplant sauce and top with sliced spring onions and crushed peanuts before serving.",
   },
   {
-    name: "Frying Charcoal Powder Mix",
+    name: "Charcoal Powder Mix",
     image: "/images/frying-charcoal-powder-mix.jpg",
     ingredients: [
       {
