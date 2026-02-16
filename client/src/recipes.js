@@ -222,7 +222,7 @@ const recipes = [
         image: "/images/ingredients/rice-wine.webp",
       },
       {
-        item: "Kikoman Soy Sauce",
+        item: "Kikkoman Soy Sauce",
         quantity: 4000,
         unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
@@ -379,7 +379,7 @@ const recipes = [
     image: "/images/kimchi-paste.jpg",
     ingredients: [
       {
-        item: "Coarse Chilli Powder",
+        item: "Coarse Chili Powder",
         quantity: 3000,
         unit: "g",
         image: "/images/ingredients/coarse-chilli-powder.webp",
@@ -510,7 +510,7 @@ const recipes = [
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
-        item: "Whtie Sugar",
+        item: "White Sugar",
         quantity: 2250,
         unit: "g",
         image: "/images/ingredients/white-sugar.jpg",
@@ -546,7 +546,7 @@ const recipes = [
         image: "/images/ingredients/thai-fish-sauce.webp",
       },
       {
-        item: "Kikoman Soy Sauce",
+        item: "Kikkoman Soy Sauce",
         quantity: 600,
         unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
@@ -564,7 +564,7 @@ const recipes = [
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
-        item: "Vineger (Hwan Man)",
+        item: "Vinegar",
         quantity: 1500,
         unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
@@ -602,7 +602,7 @@ const recipes = [
         image: "/images/ingredients/yuju-cheong.jpg",
       },
       {
-        item: "Vinegar (Hwan Man)",
+        item: "Vinegar",
         quantity: 3500,
         unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
@@ -646,7 +646,7 @@ const recipes = [
         image: "/images/ingredients/soy-sauce.png",
       },
       {
-        item: "Vinegar (Hwan man)",
+        item: "Vinegar",
         quantity: 6000,
         unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
@@ -694,13 +694,13 @@ const recipes = [
         image: "/images/ingredients/white-sugar.jpg",
       },
       {
-        item: "Kikoman Soy Sauce",
+        item: "Kikkoman Soy Sauce",
         quantity: 2500,
         unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
       },
       {
-        item: "Vinegar (Hwan Man)",
+        item: "Vinegar",
         quantity: 1300,
         unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
@@ -814,7 +814,7 @@ const recipes = [
     image: "/images/bibim-noodle-chicken.jpg",
     ingredients: [
       {
-        item: "Minced Chiken",
+        item: "Minced Chicken",
         quantity: 2000,
         unit: "g",
         image: "/images/ingredients/minced-chiken-tender.jpg",
@@ -974,7 +974,7 @@ const recipes = [
     image: "/images/sgo-doenjang-base.jpg",
     ingredients: [
       {
-        item: "Kikoman Soy Sauce",
+        item: "Kikkoman Soy Sauce",
         quantity: 180,
         unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
@@ -1028,7 +1028,7 @@ const recipes = [
         image: "/images/ingredients/radish.webp",
       },
       {
-        item: "Leek (Green Part)",
+        item: "Leek",
         quantity: 1500,
         unit: "g",
         image: "/images/ingredients/leek.webp",
@@ -1400,7 +1400,7 @@ const recipes = [
         image: "/images/ingredients/honey-ginger-cheong.webp",
       },
       {
-        item: "Kikoman Soy Sauce",
+        item: "Kikkoman Soy Sauce",
         quantity: 1600,
         unit: "g",
         image: "/images/ingredients/kikoman-soy-sauce.webp",
@@ -1484,13 +1484,13 @@ const recipes = [
         image: "/images/ingredients/soy-sauce.png",
       },
       {
-        item: "Non-Alcohol Mirin",
+        item: "Non Alcohol Mirin",
         quantity: 15,
         unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
-        item: "Vineger",
+        item: "Vinegar",
         quantity: 12,
         unit: "g",
         image: "/images/ingredients/vinegar-hwan-man.webp",
@@ -1714,13 +1714,13 @@ const recipes = [
         image: "/images/ingredients/honey.jpg",
       },
       {
-        item: "Red Chilli",
+        item: "Red Chili",
         quantity: 50,
         unit: "pcs",
         image: "/images/ingredients/red-chili.jpg",
       },
       {
-        item: "Non-Alcohol-Mirin",
+        item: "Non Alcohol Mirin",
         quantity: 3000,
         unit: "g",
         image: "/images/ingredients/non-alcohol-mirin.webp",
@@ -1764,7 +1764,7 @@ const recipes = [
         image: "/images/ingredients/fried-gizzard.jpg",
       },
       {
-        item: "Leek (slice)",
+        item: "Leek",
         quantity: 5,
         unit: "g",
         image: "/images/ingredients/leek.webp",
@@ -2164,7 +2164,7 @@ const recipes = [
         image: "/images/ingredients/chicken-thigh.webp",
       },
       {
-        item: "Leek (Green Part)",
+        item: "Leek",
         quantity: 5,
         unit: "g",
         image: "/images/ingredients/leek.webp",
