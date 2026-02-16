@@ -1,5 +1,5 @@
 // import { Pokemon } from "./Pokemon";
-import Sgo from "./Sgo"
+import Sgo from "./pages/Sgo"
 
 export default function App() {
     return (
