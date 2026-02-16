@@ -1,11 +1,12 @@
 import products from "../productPrice";
+import { convertUnit } from "./unitConverter";
 import { calculateRecipeCost } from "./recipeCostResolver";
 
-// build fast lookup table
 const priceIndex = products.reduce((acc, p) => {
   acc[p.name.toLowerCase().trim()] = p;
   return acc;
 }, {});
+
 
 export function calculateIngredientPrice({
   ingredientName,
@@ -19,11 +20,23 @@ export function calculateIngredientPrice({
 
   // 1️⃣ Raw product pricing
   if (product?.price && product?.weight?.value) {
-    if (product.weight.unit !== usedUnit) return 0;
-    return (usedQty / product.weight.value) * product.price;
+    const baseWeight = product.weight.value;
+    const baseUnit = product.weight.unit;
+
+    // convert ingredient qty → product unit
+    const convertedQty = convertUnit(
+      usedQty,
+      usedUnit,
+      baseUnit
+    );
+
+    if (convertedQty === null) return 0;
+
+    return (convertedQty / baseWeight) * product.price;
   }
 
-  // 2️⃣ Fallback → recipe pricing
-  return calculateRecipeCost(ingredientName);
+  // 2️⃣ Nested recipe pricing
+  return calculateRecipeCost(ingredientName, usedQty);
 }
+
 
