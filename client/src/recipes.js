@@ -2082,8 +2082,8 @@ const recipes = [
       },
       {
         item: "Udon Seasonings",
-        quantity: 1,
-        unit: 'set',
+        quantity: 2470,
+        unit: 'g',
         image: "/images/udon-seasonings.jpg",
       },
       {
