@@ -23,7 +23,6 @@ export default function RecipeDetail({
       <h2 className="text-2xl font-bold text-center mb-3">{recipe.name}</h2>
 
       <table className="w-full max-w-3xl border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white">
-
         <thead>
           <tr className="bg-gray-200 text-sm">
             <th className="px-2 py-2 border text-left">Image</th>
@@ -32,22 +31,31 @@ export default function RecipeDetail({
           </tr>
         </thead>
         <tbody>
-          {recipe.ingredients.map((ing) => (
-            <IngredientRow
-              key={ing.item}
-              ingredient={ing}
-              value={qtyInputs[ing.item]}
-              unit={ing.unit}
-              price={getPrice(ing.item, qtyInputs[ing.item], ing.unit)}
-              onChange={(v) => onQtyChange(ing.item, v)}
-              onBlur={() => onQtyBlur(ing.item)}
-              onOpenRecipe={onOpenRecipe}
-              onImage={onImage}
-            />
-          ))}
+          {[...recipe.ingredients]
+            .sort((a, b) => {
+              const qtyA = Number(qtyInputs[a.item]) || 0;
+              const qtyB = Number(qtyInputs[b.item]) || 0;
+              return qtyB - qtyA; // DESC (higher first)
+            })
+            .map((ing) => (
+              <IngredientRow
+                key={ing.item}
+                ingredient={ing}
+                value={qtyInputs[ing.item]}
+                unit={ing.unit}
+                price={getPrice(
+                  ing.item,
+                  Number(qtyInputs[ing.item]),
+                  ing.unit,
+                )}
+                onChange={(v) => onQtyChange(ing.item, v)}
+                onBlur={() => onQtyBlur(ing.item)}
+                onOpenRecipe={onOpenRecipe}
+                onImage={onImage}
+              />
+            ))}
         </tbody>
         <tr className="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition">
-
           {/* Image column (empty) */}
           <td className="border px-2 py-2" />
 
