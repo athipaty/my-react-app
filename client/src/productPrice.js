@@ -45,7 +45,7 @@ const products = [
   { name: "Frying Powder Mix", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Garlic", price: 1.75, weight: { value: 500, unit: "g" } },
   { name: "Ginseng", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Gizzard (Cut)", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Gizzard (Cut)", price: 3, weight: { value: 1000, unit: "g" } },
   { name: "Glutinous Rice Flour", price: 1.6, weight: { value: 600, unit: "g" } },
   { name: "Gochujan", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Green Chili", price: 0, weight: { value: 0, unit: "g" } },
