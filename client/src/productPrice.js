@@ -104,7 +104,7 @@ const products = [
   { name: "Shitake", price: 6.8, weight: { value: 1000, unit: "g" } },
   { name: "Sichimi", price: 15, weight: { value: 1000, unit: "g" } },
   { name: "Soaked Kelp", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Soda", price: 0.75, weight: { value: 330, unit: "g" } },
+  { name: "Soda", price: 0.75, weight: { value: 320, unit: "g" } },
   { name: "Soy Bean Powder", price: 4, weight: { value: 400, unit: "g" } },
   { name: "Soy Sauce", price: 28.5, weight: { value: 1500, unit: "g" } },
   { name: "Soybean Paste", price: 0, weight: { value: 0, unit: "g" } },
