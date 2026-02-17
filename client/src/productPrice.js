@@ -116,7 +116,7 @@ const products = [
   { name: "Tempura Dipping Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Tenkasu", price: 8.5, weight: { value: 1000, unit: "g" } },
   { name: "Thai Fish Sauce", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Thai Holy Basil", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Thai Holy Basil", price: 5, weight: { value: 500, unit: "g" } },
   { name: "Truffle Paste", price: 36, weight: { value: 960, unit: "g" } },
   { name: "Truffle Powder Mix", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Udon Broth", price: 0, weight: { value: 0, unit: "g" } },
