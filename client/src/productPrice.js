@@ -31,7 +31,7 @@ const products = [
   { name: "Dark Soy Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Dried Chili", price: 8.8, weight: { value: 1000, unit: "g" } },
   { name: "Egg", price: 9, weight: { value: 1800, unit: "g" } },
-  { name: "Eggplant", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Eggplant", price: 5, weight: { value: 1000, unit: "g" } },
   { name: "Eggplant Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Enoki", price: 0.7, weight: { value: 150, unit: "g" } },
   { name: "Fine Chili Powder", price: 0, weight: { value: 0, unit: "g" } },
@@ -63,7 +63,7 @@ const products = [
   { name: "Kelp", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Kikkoman Soy Sauce", price: 10.5, weight: { value: 1600, unit: "g" } },
   { name: "Kimchi Paste", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "King Oyster Mushroom", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "King Oyster Mushroom", price: 1.8, weight: { value: 200, unit: "g" } },
   { name: "Korean Chili Paste", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Korean Spicy Chilli Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Leek", price: 4.5, weight: { value: 1000, unit: "g" } },
@@ -133,7 +133,7 @@ const products = [
   { name: "White Sugar", price: 2.1, weight: { value: 1000, unit: "g" } },
   { name: "Yellow Radish", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Yuju Cheong", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Zucchini", price: 0, weight: { value: 0, unit: "g" } }
+  { name: "Zucchini", price: 3.8, weight: { value: 1000, unit: "g" } }
 ];
 
 export default products;
