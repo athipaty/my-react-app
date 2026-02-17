@@ -1803,14 +1803,14 @@ const recipes = [
       },
       {
         item: "Black Pepper Powder",
-        quantity: 2,
-        unit: "pinch",
+        quantity: 1,
+        unit: "g",
         image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
         item: "Seasoned Salt",
-        quantity: 2,
-        unit: "pinch",
+        quantity: 1,
+        unit: "g",
         image: "/images/ingredients/seasoned-salt.jpg",
       },
       {
@@ -1878,8 +1878,8 @@ const recipes = [
     ingredients: [
       {
         item: "Eggplant",
-        quantity: 1,
-        unit: "ea",
+        quantity: 2,
+        unit: "g",
         image: "/images/ingredients/eggplant.jpg",
       },
       {
