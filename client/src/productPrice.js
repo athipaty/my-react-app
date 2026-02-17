@@ -71,7 +71,7 @@ const products = [
   { name: "Marinated Boneless Chicken Feet", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Marinated Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Mayonnaise", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Minced Chicken", price: 5.5, weight: { value: 1000, unit: "g" } },
+  { name: "Minced Chicken", price: 5.5, weight: { value: 500, unit: "g" } },
   { name: "Minced Garlic", price: 1.75, weight: { value: 1000, unit: "g" } },
   { name: "Miso Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Miwon", price: 25.6, weight: { value: 1000, unit: "g" } },
