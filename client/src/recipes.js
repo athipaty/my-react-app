@@ -2034,7 +2034,7 @@ const recipes = [
       },
       {
         item: "Cooking Oil",
-        quantity: "0",
+        quantity: "1",
         unit: "g",
         image: "/images/ingredients/cooking-oil.jpg",
       },
