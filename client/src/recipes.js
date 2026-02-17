@@ -2040,7 +2040,7 @@ const recipes = [
       },
       {
         item: "Fish Sauce",
-        quantity: 8,
+        quantity: 7,
         unit: "g",
         image: "/images/ingredients/fish-sauce.webp",
       },
@@ -2052,13 +2052,13 @@ const recipes = [
       },
       {
         item: "Soy Sauce",
-        quantity: 8,
+        quantity: 7,
         unit: "g",
         image: "/images/ingredients/soy-sauce.png",
       },
       {
         item: "White Sugar",
-        quantity: 5,
+        quantity: 3,
         unit: "g",
         image: "/images/ingredients/white-sugar.jpg",
       },
