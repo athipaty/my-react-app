@@ -2062,6 +2062,12 @@ const recipes = [
         unit: "g",
         image: "/images/ingredients/white-sugar.jpg",
       },
+      {
+        item: "White Onion",
+        quantity: 15,
+        unit: "g",
+        image: "/images/ingredients/white-onion.jpg",
+      },
     ],
   },
   {
