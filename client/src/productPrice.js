@@ -37,7 +37,7 @@ const products = [
   { name: "Fine Chili Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Fish Roe", price: 31, weight: { value: 500, unit: "g" } },
   { name: "Fish Roe Mix", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Fish Sauce", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Fish Sauce", price: 3, weight: { value: 700, unit: "g" } },
   { name: "Flower Salt", price: 2.7, weight: { value: 1000, unit: "g" } },
   { name: "Fried Gizzard", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Fried Mushrooms", price: 0, weight: { value: 0, unit: "g" } },
