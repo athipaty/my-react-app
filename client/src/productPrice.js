@@ -133,7 +133,9 @@ const products = [
   { name: "White Sugar", price: 2.1, weight: { value: 1000, unit: "g" } },
   { name: "Yellow Radish", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Yuju Cheong", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Zucchini", price: 3.8, weight: { value: 1000, unit: "g" } }
+  { name: "Zucchini", price: 3.8, weight: { value: 1000, unit: "g" } },
+  { name: "Silken Tofu", price: 0.8, weight: { value: 300, unit: "g" } }
 ];
+
 
 export default products;

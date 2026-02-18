@@ -207,7 +207,7 @@ const recipes = [
         item: "Sancho Powder",
         quantity: 80,
         unit: "g",
-        image: "/images/ingredients/sancho-powder.webp",
+        image: "/images/ingredients/sancho-powder.jpg",
       },
       {
         item: "Black Pepper Powder",
@@ -2259,6 +2259,31 @@ const recipes = [
       },
     ],
     method: "Make sure all the ingredients are mixed evenly.",
+  },
+  {
+    name: "Fresh Tofu",
+    image: "/images/fresh-tofu.jpg",
+    ingredients: [
+      {
+        item: "Silken Tofu",
+        quantity: 50,
+        unit: "g",
+        image: "/images/ingredients/silken-tofu.jpg",
+      },
+      {
+        item: "Spring Onion",
+        quantity: 2,
+        unit: "g",
+        image: "/images/ingredients/spring-onion.webp",
+      },
+      {
+        item: "Cold Soft Tofu Sauce",
+        quantity: 3,
+        unit: "g",
+        image: "/images/cold-soft-tofu-sauce.jpg",
+      },
+    ],
+    method: "Silken tofu cut into six portions, served with tofu sauce and topped with sliced spring onions.",
   },
 ];
 export default recipes;
