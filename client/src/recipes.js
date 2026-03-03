@@ -2370,6 +2370,80 @@ const recipes = [
   ],
   method:
     "Soak rice noodles until soft. Heat oil in a wok and sauté tofu, chaipo, and shrimp. Add egg and scramble. Add noodles and season with tamarind paste, fish sauce, and palm sugar. Stir-fry until the noodles absorb the sauce. Add bean sprouts and garlic chives, toss briefly, then serve topped with crushed peanuts, chili powder, and lime.",
+},
+  {
+  name: "Tom Kha Gai",
+  image: "/images/tom-kha-gai.jpg",
+  ingredients: [
+    {
+      item: "Chicken Thigh",
+      quantity: 300,
+      unit: "g",
+      image: "/images/ingredients/chicken-thigh.jpg",
+    },
+    {
+      item: "Coconut Milk",
+      quantity: 400,
+      unit: "ml",
+      image: "/images/ingredients/coconut-milk.jpg",
+    },
+    {
+      item: "Galangal",
+      quantity: 20,
+      unit: "g",
+      image: "/images/ingredients/galangal.jpg",
+    },
+    {
+      item: "Lemongrass",
+      quantity: 2,
+      unit: "stalk",
+      image: "/images/ingredients/lemongrass.jpg",
+    },
+    {
+      item: "Kaffir Lime Leaves",
+      quantity: 4,
+      unit: "pcs",
+      image: "/images/ingredients/kaffir-lime-leaves.jpg",
+    },
+    {
+      item: "Straw Mushroom",
+      quantity: 100,
+      unit: "g",
+      image: "/images/ingredients/straw-mushroom.jpg",
+    },
+    {
+      item: "Fish Sauce",
+      quantity: 25,
+      unit: "g",
+      image: "/images/ingredients/fish-sauce.jpg",
+    },
+    {
+      item: "Palm Sugar",
+      quantity: 10,
+      unit: "g",
+      image: "/images/ingredients/palm-sugar.jpg",
+    },
+    {
+      item: "Lime Juice",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/lime-juice.jpg",
+    },
+    {
+      item: "Bird Eye Chili",
+      quantity: 3,
+      unit: "pcs",
+      image: "/images/ingredients/bird-eye-chili.jpg",
+    },
+    {
+      item: "Coriander",
+      quantity: 10,
+      unit: "g",
+      image: "/images/ingredients/coriander.jpg",
+    }
+  ],
+  method:
+    "Bring coconut milk to a gentle simmer. Add galangal, lemongrass, and kaffir lime leaves to infuse the aroma. Add chicken and cook until tender. Add mushrooms and season with fish sauce and palm sugar. Turn off the heat and add lime juice and crushed bird eye chili. Garnish with coriander before serving."
 }
 ];
 export default recipes;
