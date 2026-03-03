@@ -2285,5 +2285,73 @@ const recipes = [
     ],
     method: "Silken tofu cut into six portions, served with tofu sauce and topped with sliced spring onions.",
   },
+  {
+  name: "Pad Thai",
+  image: "/images/pad-thai.jpg",
+  ingredients: [
+    {
+      item: "Rice Noodles",
+      quantity: 150,
+      unit: "g",
+      image: "/images/ingredients/rice-noodles.jpg",
+    },
+    {
+      item: "Shrimp",
+      quantity: 120,
+      unit: "g",
+      image: "/images/ingredients/shrimp.jpg",
+    },
+    {
+      item: "Egg",
+      quantity: 1,
+      unit: "pc",
+      image: "/images/ingredients/egg.jpg",
+    },
+    {
+      item: "Bean Sprouts",
+      quantity: 100,
+      unit: "g",
+      image: "/images/ingredients/bean-sprouts.jpg",
+    },
+    {
+      item: "Garlic Chives",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/garlic-chives.jpg",
+    },
+    {
+      item: "Firm Tofu",
+      quantity: 50,
+      unit: "g",
+      image: "/images/ingredients/tofu.jpg",
+    },
+    {
+      item: "Tamarind Paste",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/tamarind-paste.jpg",
+    },
+    {
+      item: "Fish Sauce",
+      quantity: 15,
+      unit: "g",
+      image: "/images/ingredients/fish-sauce.jpg",
+    },
+    {
+      item: "Palm Sugar",
+      quantity: 20,
+      unit: "g",
+      image: "/images/ingredients/palm-sugar.jpg",
+    },
+    {
+      item: "Peanuts",
+      quantity: 20,
+      unit: "g",
+      image: "/images/ingredients/peanuts.jpg",
+    }
+  ],
+  method:
+    "Soak rice noodles until soft. Heat oil in a wok and sauté tofu and shrimp. Add egg and scramble. Add noodles and season with tamarind paste, fish sauce, and palm sugar. Stir-fry until the noodles absorb the sauce. Add bean sprouts and garlic chives, toss briefly, then serve topped with crushed peanuts and lime.",
+}
 ];
 export default recipes;
