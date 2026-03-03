@@ -2326,6 +2326,12 @@ const recipes = [
       image: "/images/ingredients/tofu.jpg",
     },
     {
+      item: "Chaipo (Sweet Pickled Radish)",
+      quantity: 25,
+      unit: "g",
+      image: "/images/ingredients/chaipo.jpg",
+    },
+    {
       item: "Tamarind Paste",
       quantity: 30,
       unit: "g",
@@ -2348,10 +2354,22 @@ const recipes = [
       quantity: 20,
       unit: "g",
       image: "/images/ingredients/peanuts.jpg",
+    },
+    {
+      item: "Lime",
+      quantity: 1,
+      unit: "pc",
+      image: "/images/ingredients/lime.jpg",
+    },
+    {
+      item: "Chili Powder",
+      quantity: 5,
+      unit: "g",
+      image: "/images/ingredients/chili-powder.jpg",
     }
   ],
   method:
-    "Soak rice noodles until soft. Heat oil in a wok and sauté tofu and shrimp. Add egg and scramble. Add noodles and season with tamarind paste, fish sauce, and palm sugar. Stir-fry until the noodles absorb the sauce. Add bean sprouts and garlic chives, toss briefly, then serve topped with crushed peanuts and lime.",
+    "Soak rice noodles until soft. Heat oil in a wok and sauté tofu, chaipo, and shrimp. Add egg and scramble. Add noodles and season with tamarind paste, fish sauce, and palm sugar. Stir-fry until the noodles absorb the sauce. Add bean sprouts and garlic chives, toss briefly, then serve topped with crushed peanuts, chili powder, and lime.",
 }
 ];
 export default recipes;
