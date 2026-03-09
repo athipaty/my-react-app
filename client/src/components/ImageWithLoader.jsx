@@ -6,7 +6,7 @@ export default function ImageWithLoader({
   onClick,
   wrapperClass = "",
   imgClass = "",
-  loading = "eager",
+  loading = "lazy",  // changed from "eager"
   rounded = "rounded",
 }) {
   const [loaded, setLoaded] = useState(false);

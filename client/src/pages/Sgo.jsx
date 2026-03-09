@@ -156,7 +156,7 @@ export default function Sgo() {
                   <button
                     key={recipe.name}
                     onClick={() => openRecipe(recipe)}
-                    className="grid-card-pop flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in"
+                    className="grid-card-pop will-change-transform flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in"
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
                     {recipe.image ? (
@@ -164,6 +164,7 @@ export default function Sgo() {
                         src={recipe.image}
                         alt={recipe.name}
                         className="w-full aspect-square object-cover"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full aspect-square bg-gray-100 flex items-center justify-center">
