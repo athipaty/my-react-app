@@ -10,11 +10,15 @@ export default function IngredientRow({
   onBlur,
   onOpenRecipe,
   onImage,
+  animationDelay = 0,
 }) {
   const linked = resolveLinkedRecipe(ingredient.item);
 
   return (
-    <tr>
+    <tr
+      className="animate-fade-slide-in"
+      style={{ animationDelay: `${animationDelay}ms` }}
+    >
       <td className="border px-2">
         <ImageWithLoader
           src={ingredient.image}
@@ -28,7 +32,7 @@ export default function IngredientRow({
       <td className="border px-2">
         {linked ? (
           <button
-            className="text-blue-600 underline"
+            className="text-blue-600 underline transition-all duration-150 active:scale-95 active:text-blue-400"
             onClick={() => onOpenRecipe(linked)}
           >
             {ingredient.item}
