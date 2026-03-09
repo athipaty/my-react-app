@@ -74,6 +74,13 @@ export default function RecipeDetail({
           </td>
         </tr>
       </table>
+{/* Method Section */}
+      {recipe.method && (
+        <div className="w-full max-w-3xl mt-4 bg-white border border-gray-200 rounded-lg shadow-sm p-4">
+          <h3 className="text-lg font-semibold mb-2">Method</h3>
+          <p className="text-sm text-gray-700 whitespace-pre-line">{recipe.method}</p>
+        </div>
+      )}
     </>
   );
 }
