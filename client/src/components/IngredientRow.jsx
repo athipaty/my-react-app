@@ -32,7 +32,7 @@ export default function IngredientRow({
       <td className="border px-2">
         {linked ? (
           <button
-            className="text-blue-600 underline transition-all duration-150 active:scale-95 active:text-blue-400"
+            className="text-blue-600 text-start underline transition-all duration-150 active:scale-95 active:text-blue-400"
             onClick={() => onOpenRecipe(linked)}
           >
             {ingredient.item}
