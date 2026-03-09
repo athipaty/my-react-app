@@ -4,6 +4,7 @@ import recipes from "../recipes";
 import SearchBar from "../components/SearchBar";
 import RecipeDetail from "../components/RecipeDetail";
 import FullImageModal from "../components/FullImageModal";
+import ImageWithLoader from "../components/ImageWithLoader";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
@@ -160,11 +161,13 @@ export default function Sgo() {
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
                     {recipe.image ? (
-                      <img
+                      <ImageWithLoader
                         src={recipe.image}
                         alt={recipe.name}
-                        className="w-full aspect-square object-cover"
+                        wrapperClass="w-full aspect-square"
+                        imgClass="w-full h-full object-cover"
                         loading="lazy"
+                        rounded="rounded-none"
                       />
                     ) : (
                       <div className="w-full aspect-square bg-gray-100 flex items-center justify-center">

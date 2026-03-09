@@ -5,7 +5,7 @@ export default function RecipeCard({ recipe, onOpen, onImage }) {
     <li className="flex flex-col items-center gap-2">
       <ImageWithLoader
         src={recipe.image}
-        alt={recipe.name}
+        alt={recipe.name ? recipe.name : "image is unavailable"}
         wrapperClass="w-20 h-20 shadow cursor-pointer"
         imgClass="w-20 h-20 object-cover"
         onClick={() => onImage(recipe.image)}
