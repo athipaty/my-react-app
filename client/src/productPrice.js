@@ -11,7 +11,7 @@ const products = [
   { name: "Brown Pear", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Charcoal Powder", price: 1.65, weight: { value: 100, unit: "g" } },
   { name: "Charcoal Powder Mix", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Cheonggukjang", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Cheonggukjang", price: 12, weight: { value: 1000, unit: "g" } },
   { name: "Chicken", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Chicken Broth", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Chicken Powder", price: 0, weight: { value: 0, unit: "g" } },
