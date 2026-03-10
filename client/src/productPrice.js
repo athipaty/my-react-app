@@ -112,7 +112,7 @@ const products = [
   { name: "Spring Onion (White Part)", price: 8, weight: { value: 1000, unit: "g" } },
   { name: "Spring Onions (Sliced)", price: 8, weight: { value: 1000, unit: "g" } },
   { name: "Sprite", price: 10.5, weight: { value: 3840, unit: "g" } },
-  { name: "Sriracha Sauce", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Sriracha Sauce", price: 8, weight: { value: 700, unit: "g" } },
   { name: "Tempura Dipping Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Tenkasu", price: 8.5, weight: { value: 1000, unit: "g" } },
   { name: "Thai Fish Sauce", price: 3, weight: { value: 700, unit: "g" } },
