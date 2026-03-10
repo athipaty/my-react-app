@@ -92,7 +92,7 @@ const products = [
   { name: "Rice Ball", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Rice Wine", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Salted Prawn", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Samgyetang Herbal", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Samgyetang Herbal", price: 2.5, weight: { value: 1, unit: "packs" } },
   { name: "Sancho Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Sancho Soy Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Seasoned Salt", price: 3.5, weight: { value: 1000, unit: "g" } },
