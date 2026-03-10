@@ -128,7 +128,7 @@ const products = [
   { name: "Water", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Water for Potato Starch", price: 0, weight: { value: 0, unit: "g" } },
   { name: "White Onion", price: 1.9, weight: { value: 1000, unit: "g" } },
-  { name: "White Radish", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "White Radish", price: 1.5, weight: { value: 650, unit: "g" } },
   { name: "White Sesame Seed", price: 17.8, weight: { value: 1000, unit: "g" } },
   { name: "White Sugar", price: 2.1, weight: { value: 1000, unit: "g" } },
   { name: "Yellow Radish", price: 0, weight: { value: 0, unit: "g" } },
