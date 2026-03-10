@@ -22,7 +22,7 @@ const products = [
   { name: "Chye Sim", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Coarse Chili Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Coarse Sea Salt", price: 3, weight: { value: 1000, unit: "g" } },
-  { name: "Collegen Paitan", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Collegen Paitan", price: 18, weight: { value: 1000, unit: "g" } },
   { name: "Cooked Rice", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Cooking Oil", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Corn Oil", price: 0, weight: { value: 0, unit: "g" } },
