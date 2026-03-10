@@ -67,7 +67,7 @@ const products = [
   { name: "Korean Chili Paste", price: 6, weight: { value: 500, unit: "g" } },
   { name: "Korean Spicy Chilli Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Leek", price: 4.5, weight: { value: 1000, unit: "g" } },
-  { name: "Liquid Chicken MSG", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Liquid Chicken MSG", price: 6, weight: { value: 240, unit: "g" } },
   { name: "Marinated Boneless Chicken Feet", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Marinated Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Mayonnaise", price: 0, weight: { value: 0, unit: "g" } },
