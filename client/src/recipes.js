@@ -1990,8 +1990,8 @@ const recipes = [
       },
       {
         item: "Water",
-        quantity: 80,
-        unit: "litres",
+        quantity: 80000,
+        unit: "g",
         image: "/images/ingredients/water.jpeg",
       },
       {
