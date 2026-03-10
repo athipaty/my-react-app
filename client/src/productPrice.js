@@ -97,7 +97,7 @@ const products = [
   { name: "Sancho Soy Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Seasoned Salt", price: 3.5, weight: { value: 1000, unit: "g" } },
   { name: "Seaweed Flake", price: 33.6, weight: { value: 1000, unit: "g" } },
-  { name: "Sesame B/W", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Sesame B/W", price: 5.5, weight: { value: 1000, unit: "g" } },
   { name: "Sesame Oil", price: 32, weight: { value: 1800, unit: "g" } },
   { name: "Sesame Seeds", price: 11, weight: { value: 1000, unit: "g" } },
   { name: "Shimeji", price: 0.9, weight: { value: 200, unit: "g" } },
