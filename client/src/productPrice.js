@@ -60,7 +60,7 @@ const products = [
   { name: "Jin Soy Sauce", price:28.5, weight: { value: 1500, unit: "g" } },
   { name: "Kanari Fish Sauce", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Katsuobushi", price: 14.5, weight: { value: 500, unit: "g" } },
-  { name: "Kelp", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Kelp", price: 6.5, weight: { value: 150, unit: "g" } },
   { name: "Kikkoman Soy Sauce", price: 10.5, weight: { value: 1600, unit: "g" } },
   { name: "Kimchi Paste", price: 0, weight: { value: 0, unit: "g" } },
   { name: "King Oyster Mushroom", price: 1.8, weight: { value: 200, unit: "g" } },
