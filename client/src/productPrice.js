@@ -87,7 +87,7 @@ const products = [
   { name: "Red Cheongyang Chilli Powder", price: 6, weight: { value: 500, unit: "g" } },
   { name: "Red Chili", price: 1.7, weight: { value: 100, unit: "g" } },
   { name: "Red Chili Padi", price: 4, weight: { value: 500, unit: "g" } },
-  { name: "Red Date", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Red Date", price: 2.5, weight: { value: 100, unit: "g" } },
   { name: "Rice", price: 47.50, weight: { value: 2500, unit: "g" } },
   { name: "Rice Ball", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Rice Wine", price: 0, weight: { value: 0, unit: "g" } },
