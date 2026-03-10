@@ -108,7 +108,7 @@ const products = [
   { name: "Soy Bean Powder", price: 4, weight: { value: 400, unit: "g" } },
   { name: "Soy Sauce", price: 28.5, weight: { value: 1500, unit: "g" } },
   { name: "Soybean Paste", price: 4, weight: { value: 500, unit: "g" } },
-  { name: "Spring Onion", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Spring Onion", price: 8, weight: { value: 1000, unit: "g" } },
   { name: "Spring Onion (White Part)", price: 8, weight: { value: 1000, unit: "g" } },
   { name: "Spring Onions (Sliced)", price: 8, weight: { value: 1000, unit: "g" } },
   { name: "Sprite", price: 10.5, weight: { value: 3840, unit: "g" } },
