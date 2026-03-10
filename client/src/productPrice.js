@@ -1,5 +1,5 @@
 const products = [
-  { name: "Anchovy Powder", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Anchovy Powder", price: 18, weight: { value: 1000, unit: "g" } },
   { name: "Awase Miso", price: 3.5, weight: { value: 650, unit: "g" } },
   { name: "Baked Chicken Bone and Feet", price: 5, weight: { value: 1000, unit: "g" } },
   { name: "Beef Dasida", price: 0, weight: { value: 0, unit: "g" } },
