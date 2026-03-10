@@ -216,10 +216,10 @@ const recipes = [
         image: "/images/ingredients/black-pepper-powder.webp",
       },
       {
-        item: "Rice Wine",
+        item: "Non Alcohol Mirin",
         quantity: 480,
         unit: "g",
-        image: "/images/ingredients/rice-wine.webp",
+        image: "/images/ingredients/non-alcohol-mirin.webp",
       },
       {
         item: "Kikkoman Soy Sauce",
