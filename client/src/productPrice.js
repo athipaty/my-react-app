@@ -3,7 +3,7 @@ const products = [
   { name: "Awase Miso", price: 3.5, weight: { value: 650, unit: "g" } },
   { name: "Baked Chicken Bone and Feet", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Beef Dasida", price: 0, weight: { value: 0, unit: "g" } },
-  { name: "Black Pepper Corn", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Black Pepper Corn", price: 12, weight: { value: 500, unit: "g" } },
   { name: "Black Pepper Powder", price: 32, weight: { value: 1000, unit: "g" } },
   { name: "Black Sesame Seed", price: 5.5, weight: { value: 1000, unit: "g" } },
   { name: "Blended Mushroom", price: 0, weight: { value: 0, unit: "g" } },
