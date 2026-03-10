@@ -83,7 +83,7 @@ const products = [
   { name: "Perilla Powder Mix", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Plum Extract", price: 11.7, weight: { value: 1500, unit: "g" } },
   { name: "Potato Starch", price: 2.8, weight: { value: 500, unit: "g" } },
-  { name: "Radish", price: 1.5, weight: { value: 700, unit: "g" } },
+  { name: "Radish", price: 1.5, weight: { value: 650, unit: "g" } },
   { name: "Red Cheongyang Chilli Powder", price: 6, weight: { value: 500, unit: "g" } },
   { name: "Red Chili", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Red Chili Padi", price: 4, weight: { value: 500, unit: "g" } },
