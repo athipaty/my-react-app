@@ -53,7 +53,7 @@ const products = [
   { name: "Green Chili Powder", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Hangover Paste", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Hihashimaru Shoyu", price: 8.5, weight: { value: 1800, unit: "g" } },
-  { name: "Hondashi", price: 0, weight: { value: 0, unit: "g" } },
+  { name: "Hondashi", price: 6, weight: { value: 120, unit: "g" } },
   { name: "Honey", price: 5.5, weight: { value: 1000, unit: "g" } },
   { name: "Honey Ginger Cheong", price: 0, weight: { value: 0, unit: "g" } },
   { name: "Hwanman Vinegar", price: 0, weight: { value: 0, unit: "g" } },
