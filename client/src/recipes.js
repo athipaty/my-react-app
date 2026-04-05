@@ -1859,16 +1859,16 @@ const recipes = [
         image: "/images/ingredients/shitake.jpg",
       },
       {
-        item: "Enoki",
+        item: "Portobello",
         quantity: 2000,
         unit: "g",
-        image: "/images/ingredients/enoki.jpg",
+        image: "/images/ingredients/portobello.webp",
       },
       {
-        item: "King Oyster Mushroom",
+        item: "White Button",
         quantity: 2000,
         unit: "g",
-        image: "/images/ingredients/king-oyster-mushroom.jpg",
+        image: "/images/ingredients/white-button.jpg",
       },
     ],
   },
@@ -2119,7 +2119,7 @@ const recipes = [
       
     ],
     method:
-      "Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it; if it is less than 18 liters, add water to bring it back to 18 liters so it doesn’t become too salty. While the broth is still hot, add the seasonings and mix well.",
+      "Remove the kelp, then put the sliced radish, whole garlic, peppercorns, and blended dried chili into a pouch. Boil the pouch in the water over high heat until it boils well, then lower the heat and simmer for about 30 minutes. Turn off the heat, add the katsuobushi, and let it sit for 15 minutes before removing all the ingredients. Squeeze out the broth and measure it. While the broth is still hot, add the seasonings and mix well. After that, if the total volume is less than 18 liters, top up with water to bring it back to 18 liters so it doesn’t become too salty.",
   },
   {
     name: "Soaked Kelp",
