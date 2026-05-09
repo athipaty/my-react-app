@@ -28,6 +28,16 @@ export async function updateRecipe(id, recipe) {
   return data;
 }
 
+export async function fetchIngredients() {
+  const { data } = await api.get("/api/ingredients");
+  return data;
+}
+
+export async function saveIngredient(ingredient) {
+  const { data } = await api.post("/api/ingredients", ingredient);
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);

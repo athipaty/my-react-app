@@ -8,10 +8,11 @@ import FullImageModal from "../components/FullImageModal";
 import ImageWithLoader from "../components/ImageWithLoader";
 import DrawerMenu from "../components/DrawerMenu";
 import IngredientPriceList from "../components/IngredientPriceList";
+import IngredientEditModal from "../components/IngredientEditModal";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient } from "../api";
 
 export default function Sgo() {
   const [recipes, setRecipes] = useState([]);
@@ -33,6 +34,9 @@ export default function Sgo() {
   const [passwordFor, setPasswordFor] = useState(null); // "edit" | "add"
   const [showDrawer, setShowDrawer] = useState(false);
   const [currentView, setCurrentView] = useState("recipes"); // "recipes" | "prices"
+  const [ingredients, setIngredients] = useState([]);
+  const [editingIngredient, setEditingIngredient] = useState(null);
+  const [pendingIngredient, setPendingIngredient] = useState(null);
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -51,6 +55,11 @@ export default function Sgo() {
       }
     }
     load();
+  }, []);
+
+  /* ---------------------- load ingredient overrides ---------------------- */
+  useEffect(() => {
+    fetchIngredients().then(setIngredients).catch(() => {});
   }, []);
 
   /* ---------------------- navigation ---------------------- */
@@ -153,6 +162,15 @@ export default function Sgo() {
     }
   };
 
+  const onSaveIngredient = async (draft) => {
+    const saved = await saveIngredient(draft);
+    setIngredients((prev) => {
+      const idx = prev.findIndex((i) => i._id === saved._id);
+      return idx >= 0 ? prev.map((i) => (i._id === saved._id ? saved : i)) : [...prev, saved];
+    });
+    setEditingIngredient(null);
+  };
+
   /* ---------------------- drawer navigation ---------------------- */
   const navigateTo = (view) => {
     setCurrentView(view);
@@ -174,9 +192,15 @@ export default function Sgo() {
       setShowPasswordModal(false);
       if (passwordFor === "edit") setEditMode(true);
       else if (passwordFor === "add") setAddMode(true);
+      else if (passwordFor === "editIngredient") setEditingIngredient(pendingIngredient);
     } else {
       setPasswordError(true);
     }
+  };
+
+  const handleEditIngredient = (ing) => {
+    setPendingIngredient(ing);
+    openPasswordModal("editIngredient");
   };
 
   /* ---------------------- edit / add ---------------------- */
@@ -223,7 +247,14 @@ export default function Sgo() {
         />
 
         {/* Ingredient prices view */}
-        {currentView === "prices" && <IngredientPriceList query={query} recipes={recipes} />}
+        {currentView === "prices" && (
+          <IngredientPriceList
+            query={query}
+            recipes={recipes}
+            ingredients={ingredients}
+            onEdit={handleEditIngredient}
+          />
+        )}
 
         {/* Add new recipe form */}
         {currentView === "recipes" && addMode && (
@@ -325,6 +356,14 @@ export default function Sgo() {
           <FullImageModal src={fullImage} onClose={() => setFullImage(null)} />
         )}
       </div>
+
+      {editingIngredient && (
+        <IngredientEditModal
+          ingredient={editingIngredient}
+          onSave={onSaveIngredient}
+          onCancel={() => setEditingIngredient(null)}
+        />
+      )}
 
       <DrawerMenu
         open={showDrawer}
