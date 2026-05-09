@@ -9,7 +9,7 @@ import ImageWithLoader from "../components/ImageWithLoader";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe } from "../api";
 
 export default function Sgo() {
   const [recipes, setRecipes] = useState([]);
@@ -24,9 +24,11 @@ export default function Sgo() {
   const baseQty = useRef({});
   const [fullImage, setFullImage] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [addMode, setAddMode] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [passwordError, setPasswordError] = useState(false);
+  const [passwordFor, setPasswordFor] = useState(null); // "edit" | "add"
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -148,29 +150,36 @@ export default function Sgo() {
   };
 
   /* ---------------------- password gate ---------------------- */
-  const openEditWithPassword = () => {
+  const openPasswordModal = (action) => {
     setPasswordInput("");
     setPasswordError(false);
+    setPasswordFor(action);
     setShowPasswordModal(true);
   };
 
   const submitPassword = () => {
     if (passwordInput === "5555") {
       setShowPasswordModal(false);
-      setEditMode(true);
+      if (passwordFor === "edit") setEditMode(true);
+      else if (passwordFor === "add") setAddMode(true);
     } else {
       setPasswordError(true);
     }
   };
 
-  /* ---------------------- edit ---------------------- */
-  const saveRecipe = async (updatedRecipe) => {
-    const saved = await updateRecipe(updatedRecipe._id, updatedRecipe);
-    setRecipes((prev) =>
-      prev.map((r) => (r._id === saved._id ? saved : r))
-    );
-    setSelectedRecipe(saved);
-    setEditMode(false);
+  /* ---------------------- edit / add ---------------------- */
+  const saveRecipe = async (draft) => {
+    if (draft._id) {
+      const saved = await updateRecipe(draft._id, draft);
+      setRecipes((prev) => prev.map((r) => (r._id === saved._id ? saved : r)));
+      setSelectedRecipe(saved);
+      setEditMode(false);
+    } else {
+      const saved = await createRecipe(draft);
+      setRecipes((prev) => [...prev, saved]);
+      setSelectedRecipe(saved);
+      setAddMode(false);
+    }
   };
 
   /* ---------------------- filtering ---------------------- */
@@ -194,11 +203,21 @@ export default function Sgo() {
             setSelectedRecipe(null);
             setEditMode(false);
           }}
-          onEdit={selectedRecipe && !editMode ? openEditWithPassword : undefined}
+          onEdit={selectedRecipe && !editMode && !addMode ? () => openPasswordModal("edit") : undefined}
+          onAdd={!selectedRecipe && !addMode ? () => openPasswordModal("add") : undefined}
         />
 
+        {/* Add new recipe form */}
+        {addMode && (
+          <EditRecipeForm
+            recipe={{ name: "", image: "", ingredients: [], method: "" }}
+            onSave={saveRecipe}
+            onCancel={() => setAddMode(false)}
+          />
+        )}
+
         {/* Recipe grid */}
-        {!selectedRecipe && (
+        {!selectedRecipe && !addMode && (
           <div
             className={
               isGridLeaving
@@ -250,7 +269,7 @@ export default function Sgo() {
         )}
 
         {/* Recipe detail / edit */}
-        {selectedRecipe && (
+        {selectedRecipe && !addMode && (
           <div
             className={
               isLeaving ? "animate-slide-out-right" : "animate-slide-in-right"

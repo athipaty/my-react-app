@@ -5,6 +5,7 @@ export default function SearchBar({
   onBack,
   showBack,
   onEdit,
+  onAdd,
   onMenu,
 }) {
   return (
@@ -46,7 +47,17 @@ export default function SearchBar({
         </button>
       )}
 
-      {!onMenu && !onEdit && <div className="w-[44px]" />}
+      {onAdd && (
+        <button
+          onClick={onAdd}
+          className="text-2xl w-[44px] flex items-center justify-center transition-transform duration-200 active:scale-90"
+          title="Add new recipe"
+        >
+          ➕
+        </button>
+      )}
+
+      {!onMenu && !onEdit && !onAdd && <div className="w-[44px]" />}
     </div>
   );
 }

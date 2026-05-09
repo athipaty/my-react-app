@@ -18,6 +18,11 @@ export async function seedRecipes(recipes) {
   return data;
 }
 
+export async function createRecipe(recipe) {
+  const { data } = await api.post("/api/recipes", recipe);
+  return data;
+}
+
 export async function updateRecipe(id, recipe) {
   const { data } = await api.put(`/api/recipes/${id}`, recipe);
   return data;
