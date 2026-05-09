@@ -13,9 +13,17 @@ export default function SearchBar({
       {showBack ? (
         <button
           onClick={onBack}
-          className="text-3xl transition-transform duration-200 active:scale-90"
+          className="text-3xl w-[44px] flex items-center justify-center transition-transform duration-200 active:scale-90"
         >
           ⬅️
+        </button>
+      ) : onMenu ? (
+        <button
+          onClick={onMenu}
+          className="text-2xl w-[44px] flex items-center justify-center transition-transform duration-200 active:scale-90"
+          title="Menu"
+        >
+          ☰
         </button>
       ) : (
         <div className="w-[44px]" />
@@ -27,15 +35,6 @@ export default function SearchBar({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
       />
-
-      {onMenu && (
-        <button
-          onClick={onMenu}
-          className="p-2 transition-transform duration-200 active:scale-90"
-        >
-          ☰
-        </button>
-      )}
 
       {onEdit && (
         <button
@@ -57,7 +56,7 @@ export default function SearchBar({
         </button>
       )}
 
-      {!onMenu && !onEdit && !onAdd && <div className="w-[44px]" />}
+      {!onEdit && !onAdd && <div className="w-[44px]" />}
     </div>
   );
 }

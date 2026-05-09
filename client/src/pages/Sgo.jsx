@@ -6,6 +6,8 @@ import RecipeDetail from "../components/RecipeDetail";
 import EditRecipeForm from "../components/EditRecipeForm";
 import FullImageModal from "../components/FullImageModal";
 import ImageWithLoader from "../components/ImageWithLoader";
+import DrawerMenu from "../components/DrawerMenu";
+import IngredientPriceList from "../components/IngredientPriceList";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
@@ -29,6 +31,8 @@ export default function Sgo() {
   const [passwordInput, setPasswordInput] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [passwordFor, setPasswordFor] = useState(null); // "edit" | "add"
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [currentView, setCurrentView] = useState("recipes"); // "recipes" | "prices"
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -149,6 +153,14 @@ export default function Sgo() {
     }
   };
 
+  /* ---------------------- drawer navigation ---------------------- */
+  const navigateTo = (view) => {
+    setCurrentView(view);
+    setQuery("");
+    setEditMode(false);
+    setAddMode(false);
+  };
+
   /* ---------------------- password gate ---------------------- */
   const openPasswordModal = (action) => {
     setPasswordInput("");
@@ -195,20 +207,26 @@ export default function Sgo() {
       <div className="max-w-md w-full">
         <SearchBar
           query={query}
-          placeholder="Search recipes..."
-          showBack={!!selectedRecipe}
+          placeholder={currentView === "prices" ? "Search ingredients..." : "Search recipes..."}
+          showBack={currentView === "recipes" && !!selectedRecipe && !editMode && !addMode}
           onBack={goBack}
           onChange={(v) => {
             setQuery(v);
-            setSelectedRecipe(null);
-            setEditMode(false);
+            if (currentView === "recipes") {
+              setSelectedRecipe(null);
+              setEditMode(false);
+            }
           }}
-          onEdit={selectedRecipe && !editMode && !addMode ? () => openPasswordModal("edit") : undefined}
-          onAdd={!selectedRecipe && !addMode ? () => openPasswordModal("add") : undefined}
+          onMenu={() => setShowDrawer(true)}
+          onEdit={currentView === "recipes" && selectedRecipe && !editMode && !addMode ? () => openPasswordModal("edit") : undefined}
+          onAdd={currentView === "recipes" && !selectedRecipe && !addMode ? () => openPasswordModal("add") : undefined}
         />
 
+        {/* Ingredient prices view */}
+        {currentView === "prices" && <IngredientPriceList query={query} />}
+
         {/* Add new recipe form */}
-        {addMode && (
+        {currentView === "recipes" && addMode && (
           <EditRecipeForm
             recipe={{ name: "", image: "", ingredients: [], method: "" }}
             onSave={saveRecipe}
@@ -217,7 +235,7 @@ export default function Sgo() {
         )}
 
         {/* Recipe grid */}
-        {!selectedRecipe && !addMode && (
+        {currentView === "recipes" && !selectedRecipe && !addMode && (
           <div
             className={
               isGridLeaving
@@ -269,7 +287,7 @@ export default function Sgo() {
         )}
 
         {/* Recipe detail / edit */}
-        {selectedRecipe && !addMode && (
+        {currentView === "recipes" && selectedRecipe && !addMode && (
           <div
             className={
               isLeaving ? "animate-slide-out-right" : "animate-slide-in-right"
@@ -307,6 +325,13 @@ export default function Sgo() {
           <FullImageModal src={fullImage} onClose={() => setFullImage(null)} />
         )}
       </div>
+
+      <DrawerMenu
+        open={showDrawer}
+        onClose={() => setShowDrawer(false)}
+        currentView={currentView}
+        onNavigate={navigateTo}
+      />
 
       {showPasswordModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-6">
