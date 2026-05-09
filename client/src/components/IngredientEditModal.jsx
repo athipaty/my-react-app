@@ -6,8 +6,8 @@ const UNITS = ["g", "ml", "kg", "L", "pack", "piece"];
 export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
   const [draft, setDraft] = useState({
     name: ingredient.name,
-    price: ingredient.price ?? 0,
-    weight: { value: ingredient.weight?.value ?? 0, unit: ingredient.weight?.unit ?? "g" },
+    price: String(ingredient.price ?? 0),
+    weight: { value: String(ingredient.weight?.value ?? 0), unit: ingredient.weight?.unit ?? "g" },
     image: ingredient.image ?? "",
   });
   const [uploading, setUploading] = useState(false);
@@ -34,7 +34,11 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await onSave(draft);
+      await onSave({
+        ...draft,
+        price: Number(draft.price) || 0,
+        weight: { ...draft.weight, value: Number(draft.weight.value) || 0 },
+      });
     } catch {
       alert("Failed to save. Please try again.");
       setSaving(false);
@@ -82,7 +86,7 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
             <input
               type="number"
               value={draft.price}
-              onChange={(e) => setDraft((d) => ({ ...d, price: Number(e.target.value) }))}
+              onChange={(e) => setDraft((d) => ({ ...d, price: e.target.value }))}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
             />
           </div>
@@ -91,7 +95,7 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
             <input
               type="number"
               value={draft.weight.value}
-              onChange={(e) => setDraft((d) => ({ ...d, weight: { ...d.weight, value: Number(e.target.value) } }))}
+              onChange={(e) => setDraft((d) => ({ ...d, weight: { ...d.weight, value: e.target.value } }))}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
             />
           </div>
