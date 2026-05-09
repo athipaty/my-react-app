@@ -45,7 +45,7 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
-      <div className="bg-white rounded-t-2xl w-full max-w-md p-5 pb-8">
+      <div className="bg-white rounded-t-2xl w-full max-w-md p-5 pb-10 min-h-[520px]">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <button onClick={onCancel} disabled={busy} className="text-sm text-gray-500 px-3 py-1 border border-gray-300 rounded disabled:opacity-40">
@@ -63,9 +63,9 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
           onClick={() => !busy && imgRef.current?.click()}
         >
           {draft.image ? (
-            <img src={draft.image} alt={draft.name} className="w-full h-36 object-cover rounded-xl" />
+            <img src={draft.image} alt={draft.name} className="w-full h-56 object-cover rounded-xl" />
           ) : (
-            <div className="w-full h-36 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
+            <div className="w-full h-56 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
               No image
             </div>
           )}
