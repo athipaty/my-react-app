@@ -40,9 +40,12 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
     return { ...p, image: recipeImage };
   });
 
-  const per100g = (p) => {
-    if (!p.price || !p.weight?.value || p.weight?.unit !== "g") return null;
-    return (p.price / p.weight.value) * 100;
+  const formatWeight = (value, unit) => {
+    if (unit === "g" && value >= 1000) {
+      const kg = value / 1000;
+      return `${kg % 1 === 0 ? kg : kg}kg`;
+    }
+    return `${value}${unit}`;
   };
 
   const lc = query.toLowerCase().trim();
@@ -56,9 +59,7 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
         {items.length} ingredient{items.length !== 1 ? "s" : ""}
       </div>
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-        {items.map((p, i) => {
-          const rate = per100g(p);
-          return (
+        {items.map((p, i) => (
             <div
               key={p.name}
               className={`flex items-center px-3 py-2 gap-3 ${i !== 0 ? "border-t border-gray-100" : ""}`}
@@ -85,17 +86,12 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
               {/* Price info */}
               <div className="text-right shrink-0 mr-1">
                 {p.price > 0 ? (
-                  <>
-                    <div className="text-sm font-semibold text-gray-800">
-                      {p.price}
-                      <span className="text-xs font-normal text-gray-500">
-                        {" "}/ {p.weight.value}{p.weight.unit}
-                      </span>
-                    </div>
-                    {rate !== null && (
-                      <div className="text-xs text-green-600">{rate.toFixed(2)} / 100g</div>
-                    )}
-                  </>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {p.price}
+                    <span className="text-xs font-normal text-gray-500">
+                      {" "}/ {formatWeight(p.weight.value, p.weight.unit)}
+                    </span>
+                  </span>
                 ) : (
                   <span className="text-xs text-gray-400">—</span>
                 )}
@@ -114,8 +110,7 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
                 </button>
               )}
             </div>
-          );
-        })}
+          ))}
         {items.length === 0 && (
           <div className="text-center text-gray-400 text-sm py-10">
             No ingredients found for "{query}"
