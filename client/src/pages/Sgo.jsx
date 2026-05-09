@@ -175,6 +175,7 @@ export default function Sgo() {
             setSelectedRecipe(null);
             setEditMode(false);
           }}
+          onEdit={selectedRecipe && !editMode ? () => setEditMode(true) : undefined}
         />
 
         {/* Recipe grid */}

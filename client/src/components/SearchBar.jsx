@@ -4,6 +4,7 @@ export default function SearchBar({
   placeholder,
   onBack,
   showBack,
+  onEdit,
   onMenu,
 }) {
   return (
@@ -34,7 +35,18 @@ export default function SearchBar({
           ☰
         </button>
       )}
-      {!onMenu && <div className="w-[44px]" />}
+
+      {onEdit && (
+        <button
+          onClick={onEdit}
+          className="text-2xl w-[44px] flex items-center justify-center transition-transform duration-200 active:scale-90"
+          title="Edit recipe"
+        >
+          ✏️
+        </button>
+      )}
+
+      {!onMenu && !onEdit && <div className="w-[44px]" />}
     </div>
   );
 }

@@ -28,15 +28,9 @@ export default function RecipeDetail({
 
   return (
     <>
-      <div className="flex items-center justify-between mb-3 animate-fade-slide-in">
-        <h2 className="text-2xl font-bold">{recipe.name}</h2>
-        <button
-          onClick={onEdit}
-          className="text-xs text-gray-500 px-2 py-1 rounded border border-gray-300 hover:bg-gray-50 active:scale-95 transition-transform"
-        >
-          ✎ Edit
-        </button>
-      </div>
+      <h2 className="text-2xl font-bold text-center mb-3 animate-fade-slide-in">
+        {recipe.name}
+      </h2>
 
       {!hasIngredients ? (
         <div className="w-full max-w-3xl mt-4 bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center gap-2 animate-fade-slide-in">
