@@ -1,9 +1,32 @@
 import products from "../productPrice";
 
-export default function IngredientPriceList({ query }) {
-  const lc = query.toLowerCase().trim();
+export default function IngredientPriceList({ query, recipes = [] }) {
+  // Build a set of all recipe names (lowercased) to detect sub-recipes
+  const recipeNameSet = new Set(recipes.map((r) => r.name.toLowerCase().trim()));
 
-  const items = products
+  // Collect raw ingredient names from recipes — exclude anything that is itself a recipe
+  const rawFromRecipes = new Set();
+  recipes.forEach((recipe) => {
+    recipe.ingredients.forEach((ing) => {
+      if (ing.item && !recipeNameSet.has(ing.item.toLowerCase().trim())) {
+        rawFromRecipes.add(ing.item.trim());
+      }
+    });
+  });
+
+  // Build a lookup map from productPrice so we can dedup by name
+  const priceMap = new Map(products.map((p) => [p.name.toLowerCase().trim(), p]));
+
+  // Merged list: all productPrice items + recipe ingredients not already in productPrice
+  const merged = [...products];
+  rawFromRecipes.forEach((name) => {
+    if (!priceMap.has(name.toLowerCase().trim())) {
+      merged.push({ name, price: 0, weight: { value: 0, unit: "g" } });
+    }
+  });
+
+  const lc = query.toLowerCase().trim();
+  const items = merged
     .filter((p) => p.name.toLowerCase().includes(lc))
     .sort((a, b) => a.name.localeCompare(b.name));
 

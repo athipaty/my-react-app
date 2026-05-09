@@ -223,7 +223,7 @@ export default function Sgo() {
         />
 
         {/* Ingredient prices view */}
-        {currentView === "prices" && <IngredientPriceList query={query} />}
+        {currentView === "prices" && <IngredientPriceList query={query} recipes={recipes} />}
 
         {/* Add new recipe form */}
         {currentView === "recipes" && addMode && (
