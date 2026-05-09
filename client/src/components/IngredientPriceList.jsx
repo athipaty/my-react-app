@@ -87,13 +87,13 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
                 {p.price > 0 ? (
                   <>
                     <div className="text-sm font-semibold text-gray-800">
-                      ฿{p.price}
+                      {p.price}
                       <span className="text-xs font-normal text-gray-500">
                         {" "}/ {p.weight.value}{p.weight.unit}
                       </span>
                     </div>
                     {rate !== null && (
-                      <div className="text-xs text-green-600">฿{rate.toFixed(2)} / 100g</div>
+                      <div className="text-xs text-green-600">{rate.toFixed(2)} / 100g</div>
                     )}
                   </>
                 ) : (
