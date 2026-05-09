@@ -4,13 +4,16 @@ export default function IngredientPriceList({ query, recipes = [] }) {
   // Build a set of all recipe names (lowercased) to detect sub-recipes
   const recipeNameSet = new Set(recipes.map((r) => r.name.toLowerCase().trim()));
 
-  // Collect raw ingredient names from recipes — exclude anything that is itself a recipe
+  // Collect raw ingredient names + first available image from recipes
   const rawFromRecipes = new Set();
+  const imageMap = {};
   recipes.forEach((recipe) => {
     recipe.ingredients.forEach((ing) => {
-      if (ing.item && !recipeNameSet.has(ing.item.toLowerCase().trim())) {
-        rawFromRecipes.add(ing.item.trim());
-      }
+      if (!ing.item) return;
+      const key = ing.item.toLowerCase().trim();
+      if (recipeNameSet.has(key)) return;
+      rawFromRecipes.add(ing.item.trim());
+      if (ing.image && !imageMap[key]) imageMap[key] = ing.image;
     });
   });
 
@@ -46,10 +49,25 @@ export default function IngredientPriceList({ query, recipes = [] }) {
           return (
             <div
               key={p.name}
-              className={`flex items-center px-4 py-3 gap-3 ${
+              className={`flex items-center px-3 py-2 gap-3 ${
                 i !== 0 ? "border-t border-gray-100" : ""
               }`}
             >
+              {/* Ingredient image */}
+              {(() => {
+                const img = imageMap[p.name.toLowerCase().trim()];
+                return img ? (
+                  <img
+                    src={img}
+                    alt={p.name}
+                    className="w-10 h-10 rounded-lg object-cover shrink-0"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-lg bg-gray-100 shrink-0 flex items-center justify-center text-gray-300 text-lg">
+                    🧂
+                  </div>
+                );
+              })()}
               <span className="flex-1 text-sm text-gray-800 font-medium leading-tight">
                 {p.name}
               </span>
