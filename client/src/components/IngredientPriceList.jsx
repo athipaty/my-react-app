@@ -1,6 +1,6 @@
 import products from "../productPrice";
 
-export default function IngredientPriceList({ query, recipes = [], ingredients = [], onEdit }) {
+export default function IngredientPriceList({ query, recipes = [], ingredients = [], onEdit, onImage }) {
   // Set of all recipe names for sub-recipe detection
   const recipeNameSet = new Set(recipes.map((r) => r.name.toLowerCase().trim()));
 
@@ -65,7 +65,12 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
             >
               {/* Image */}
               {p.image ? (
-                <img src={p.image} alt={p.name} className="w-10 h-10 rounded-lg object-cover shrink-0" />
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="w-10 h-10 rounded-lg object-cover shrink-0 cursor-pointer active:opacity-80"
+                  onClick={() => onImage?.(p.image)}
+                />
               ) : (
                 <div className="w-10 h-10 rounded-lg bg-gray-100 shrink-0 flex items-center justify-center text-gray-300 text-lg">
                   🧂

@@ -253,6 +253,7 @@ export default function Sgo() {
             recipes={recipes}
             ingredients={ingredients}
             onEdit={handleEditIngredient}
+            onImage={setFullImage}
           />
         )}
 
