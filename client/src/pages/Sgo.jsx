@@ -24,6 +24,9 @@ export default function Sgo() {
   const baseQty = useRef({});
   const [fullImage, setFullImage] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -144,6 +147,22 @@ export default function Sgo() {
     }
   };
 
+  /* ---------------------- password gate ---------------------- */
+  const openEditWithPassword = () => {
+    setPasswordInput("");
+    setPasswordError(false);
+    setShowPasswordModal(true);
+  };
+
+  const submitPassword = () => {
+    if (passwordInput === "5555") {
+      setShowPasswordModal(false);
+      setEditMode(true);
+    } else {
+      setPasswordError(true);
+    }
+  };
+
   /* ---------------------- edit ---------------------- */
   const saveRecipe = async (updatedRecipe) => {
     const saved = await updateRecipe(updatedRecipe._id, updatedRecipe);
@@ -175,7 +194,7 @@ export default function Sgo() {
             setSelectedRecipe(null);
             setEditMode(false);
           }}
-          onEdit={selectedRecipe && !editMode ? () => setEditMode(true) : undefined}
+          onEdit={selectedRecipe && !editMode ? openEditWithPassword : undefined}
         />
 
         {/* Recipe grid */}
@@ -269,6 +288,41 @@ export default function Sgo() {
           <FullImageModal src={fullImage} onClose={() => setFullImage(null)} />
         )}
       </div>
+
+      {showPasswordModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-6">
+          <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-xs">
+            <h2 className="text-base font-semibold text-gray-800 mb-1 text-center">Admin Access</h2>
+            <p className="text-xs text-gray-500 text-center mb-4">Enter password to edit this recipe</p>
+            <input
+              type="password"
+              value={passwordInput}
+              onChange={(e) => { setPasswordInput(e.target.value); setPasswordError(false); }}
+              onKeyDown={(e) => e.key === "Enter" && submitPassword()}
+              autoFocus
+              placeholder="Password"
+              className={`w-full border rounded-lg px-3 py-2 text-sm text-center outline-none mb-2 focus:ring-2 ${passwordError ? "border-red-400 focus:ring-red-300" : "border-gray-300 focus:ring-green-300"}`}
+            />
+            {passwordError && (
+              <p className="text-xs text-red-500 text-center mb-2">Incorrect password</p>
+            )}
+            <div className="flex gap-2 mt-1">
+              <button
+                onClick={() => setShowPasswordModal(false)}
+                className="flex-1 border border-gray-300 text-gray-600 text-sm py-2 rounded-lg"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={submitPassword}
+                className="flex-1 bg-green-500 text-white text-sm py-2 rounded-lg font-medium"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 py-3 text-center text-sm text-gray-600">
         Powered by <strong>TingTong</strong>
