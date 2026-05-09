@@ -1,31 +1,55 @@
 import { useEffect, useRef, useState } from "react";
-import recipes from "../recipes";
+import staticRecipes from "../recipes";
 
 import SearchBar from "../components/SearchBar";
 import RecipeDetail from "../components/RecipeDetail";
+import EditRecipeForm from "../components/EditRecipeForm";
 import FullImageModal from "../components/FullImageModal";
 import ImageWithLoader from "../components/ImageWithLoader";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
+import { fetchRecipes, seedRecipes, updateRecipe } from "../api";
 
 export default function Sgo() {
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [history, setHistory] = useState([]);
-  const [isLeaving, setIsLeaving] = useState(false); // recipe sliding out
-  const [isGridLeaving, setIsGridLeaving] = useState(false); // grid sliding out
+  const [isLeaving, setIsLeaving] = useState(false);
+  const [isGridLeaving, setIsGridLeaving] = useState(false);
   const [multiplier, setMultiplier] = useState(1);
   const [qtyInputs, setQtyInputs] = useState({});
   const baseQty = useRef({});
   const [fullImage, setFullImage] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+
+  /* ---------------------- load recipes ---------------------- */
+  useEffect(() => {
+    async function load() {
+      try {
+        let data = await fetchRecipes();
+        if (data.length === 0) {
+          await seedRecipes(staticRecipes);
+          data = await fetchRecipes();
+        }
+        setRecipes(data);
+      } catch {
+        setRecipes(staticRecipes);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
 
   /* ---------------------- navigation ---------------------- */
   const openRecipe = (recipe) => {
     if (!recipe) return;
+    setEditMode(false);
 
     if (selectedRecipe) {
-      // coming from inside a recipe — slide current recipe out first
       setIsLeaving(true);
       setTimeout(() => {
         setIsLeaving(false);
@@ -39,7 +63,6 @@ export default function Sgo() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }, 250);
     } else {
-      // coming from the grid — slide grid out first
       setIsGridLeaving(true);
       setTimeout(() => {
         setIsGridLeaving(false);
@@ -56,6 +79,7 @@ export default function Sgo() {
   };
 
   const goBack = () => {
+    setEditMode(false);
     setIsLeaving(true);
     setTimeout(() => {
       setIsLeaving(false);
@@ -120,6 +144,16 @@ export default function Sgo() {
     }
   };
 
+  /* ---------------------- edit ---------------------- */
+  const saveRecipe = async (updatedRecipe) => {
+    const saved = await updateRecipe(updatedRecipe._id, updatedRecipe);
+    setRecipes((prev) =>
+      prev.map((r) => (r._id === saved._id ? saved : r))
+    );
+    setSelectedRecipe(saved);
+    setEditMode(false);
+  };
+
   /* ---------------------- filtering ---------------------- */
   const lcQuery = query.toLowerCase().trim();
 
@@ -139,6 +173,7 @@ export default function Sgo() {
           onChange={(v) => {
             setQuery(v);
             setSelectedRecipe(null);
+            setEditMode(false);
           }}
         />
 
@@ -151,11 +186,15 @@ export default function Sgo() {
                 : "animate-slide-in-right"
             }
           >
-            {visibleRecipes.length > 0 ? (
+            {loading ? (
+              <p className="text-center text-gray-400 text-sm mt-10">
+                Loading recipes...
+              </p>
+            ) : visibleRecipes.length > 0 ? (
               <div className="grid grid-cols-3 gap-2 mt-2">
                 {visibleRecipes.map((recipe, i) => (
                   <button
-                    key={recipe.name}
+                    key={recipe._id || recipe.name}
                     onClick={() => openRecipe(recipe)}
                     className="grid-card-pop will-change-transform flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in"
                     style={{ animationDelay: `${i * 40}ms` }}
@@ -190,28 +229,38 @@ export default function Sgo() {
           </div>
         )}
 
-        {/* Recipe detail */}
+        {/* Recipe detail / edit */}
         {selectedRecipe && (
           <div
             className={
               isLeaving ? "animate-slide-out-right" : "animate-slide-in-right"
             }
           >
-            <RecipeDetail
-              recipe={selectedRecipe}
-              qtyInputs={qtyInputs}
-              onQtyChange={onQtyChange}
-              onQtyBlur={onQtyBlur}
-              onOpenRecipe={openRecipe}
-              onImage={setFullImage}
-              getPrice={(item, qty, unit) =>
-                calculateIngredientPrice({
-                  ingredientName: item,
-                  usedQty: Number(qty),
-                  usedUnit: unit,
-                })
-              }
-            />
+            {editMode ? (
+              <EditRecipeForm
+                recipe={selectedRecipe}
+                onSave={saveRecipe}
+                onCancel={() => setEditMode(false)}
+              />
+            ) : (
+              <RecipeDetail
+                recipe={selectedRecipe}
+                qtyInputs={qtyInputs}
+                onQtyChange={onQtyChange}
+                onQtyBlur={onQtyBlur}
+                onOpenRecipe={openRecipe}
+                onImage={setFullImage}
+                onEdit={() => setEditMode(true)}
+                allRecipes={recipes}
+                getPrice={(item, qty, unit) =>
+                  calculateIngredientPrice({
+                    ingredientName: item,
+                    usedQty: Number(qty),
+                    usedUnit: unit,
+                  })
+                }
+              />
+            )}
           </div>
         )}
 

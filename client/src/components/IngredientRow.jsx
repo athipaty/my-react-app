@@ -10,9 +10,10 @@ export default function IngredientRow({
   onBlur,
   onOpenRecipe,
   onImage,
+  allRecipes = [],
   animationDelay = 0,
 }) {
-  const linked = resolveLinkedRecipe(ingredient.item);
+  const linked = resolveLinkedRecipe(ingredient.item, allRecipes);
 
   return (
     <tr

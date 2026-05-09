@@ -7,7 +7,9 @@ export default function RecipeDetail({
   onQtyBlur,
   onOpenRecipe,
   onImage,
+  onEdit,
   getPrice,
+  allRecipes = [],
 }) {
   const hasIngredients = recipe.ingredients && recipe.ingredients.length > 0;
 
@@ -26,9 +28,15 @@ export default function RecipeDetail({
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-center mb-3 animate-fade-slide-in">
-        {recipe.name}
-      </h2>
+      <div className="flex items-center justify-between mb-3 animate-fade-slide-in">
+        <h2 className="text-2xl font-bold">{recipe.name}</h2>
+        <button
+          onClick={onEdit}
+          className="text-xs text-gray-500 px-2 py-1 rounded border border-gray-300 hover:bg-gray-50 active:scale-95 transition-transform"
+        >
+          ✎ Edit
+        </button>
+      </div>
 
       {!hasIngredients ? (
         <div className="w-full max-w-3xl mt-4 bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center gap-2 animate-fade-slide-in">
@@ -56,7 +64,7 @@ export default function RecipeDetail({
               })
               .map((ing, i) => (
                 <IngredientRow
-                  key={ing.item}
+                  key={ing.item + i}
                   ingredient={ing}
                   value={qtyInputs[ing.item]}
                   unit={ing.unit}
@@ -65,6 +73,7 @@ export default function RecipeDetail({
                   onBlur={() => onQtyBlur(ing.item)}
                   onOpenRecipe={onOpenRecipe}
                   onImage={onImage}
+                  allRecipes={allRecipes}
                   animationDelay={i * 30}
                 />
               ))}

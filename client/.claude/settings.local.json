@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\loret\\\\tong\\\\recipe\\\\my-react-app\\\\client\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Remove-Item *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\loret\\\\tong\\\\recipe\\\\my-react-app\\\\client\\\\public\\\\images\" -Recurse -File)",
+      "Bash(Select-Object Name, Length, FullName)",
+      "Bash(Sort-Object Name)",
+      "Bash(Format-Table -AutoSize)"
+    ]
+  }
+}
