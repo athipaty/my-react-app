@@ -17,8 +17,8 @@ export default function IngredientPriceList({ query, recipes = [] }) {
   // Build a lookup map from productPrice so we can dedup by name
   const priceMap = new Map(products.map((p) => [p.name.toLowerCase().trim(), p]));
 
-  // Merged list: all productPrice items + recipe ingredients not already in productPrice
-  const merged = [...products];
+  // Merged list: productPrice items that are NOT recipe names + recipe ingredients not in productPrice
+  const merged = products.filter((p) => !recipeNameSet.has(p.name.toLowerCase().trim()));
   rawFromRecipes.forEach((name) => {
     if (!priceMap.has(name.toLowerCase().trim())) {
       merged.push({ name, price: 0, weight: { value: 0, unit: "g" } });
