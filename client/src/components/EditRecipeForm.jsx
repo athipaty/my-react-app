@@ -40,6 +40,8 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
     try {
       const url = await uploadImage(file);
       updateField("image", url);
+    } catch (err) {
+      alert(`Upload failed: ${err?.response?.data?.error || err.message}`);
     } finally {
       setStatus("");
       e.target.value = "";
@@ -53,6 +55,8 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
     try {
       const url = await uploadImage(file);
       updateIng(i, "image", url);
+    } catch (err) {
+      alert(`Upload failed: ${err?.response?.data?.error || err.message}`);
     } finally {
       setStatus("");
       e.target.value = "";
