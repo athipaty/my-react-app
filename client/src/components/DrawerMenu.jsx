@@ -2,8 +2,9 @@ export default function DrawerMenu({ open, onClose, currentView, onNavigate }) {
   if (!open) return null;
 
   const items = [
-    { id: "recipes", icon: "🍳", label: "Recipes" },
-    { id: "prices", icon: "💰", label: "Ingredient Prices" },
+    { id: "recipes",        icon: "🍳", label: "Recipes" },
+    { id: "prices",         icon: "💰", label: "Ingredient Prices" },
+    { id: "standingOrders", icon: "📋", label: "Standing Orders" },
   ];
 
   return (
