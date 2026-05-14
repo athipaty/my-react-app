@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 const STORAGE_KEY = "inventory_exclusions";
 
@@ -133,8 +134,8 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
         </div>
       )}
 
-      {/* Filter panel */}
-      {showPanel && (
+      {/* Filter panel — portalled to body to escape overflow:hidden parents */}
+      {showPanel && createPortal(
         <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
           <div className="bg-white rounded-t-2xl w-full max-w-md pb-10 flex flex-col max-h-[80vh]">
             {/* Panel header */}
@@ -174,7 +175,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </div>
   );
 }
