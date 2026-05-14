@@ -102,7 +102,7 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
           {/* Header */}
           <div className="flex items-center gap-2 px-1">
             <span className="text-xs font-semibold text-green-700 uppercase tracking-wide">Inventory</span>
-            <span className="text-xs bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">{activeRecipes.length}</span>
+            <span className="text-xs bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">{visibleIngredients.length}</span>
             <button
               onClick={() => setShowPanel(true)}
               className="ml-auto flex items-center gap-1 text-xs text-gray-500 border border-gray-200 rounded-lg px-2 py-1 hover:bg-gray-50"
