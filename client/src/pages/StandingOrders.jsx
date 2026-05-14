@@ -1,145 +1,53 @@
-import { useState } from "react";
+const DAYS = ["Mon", "Wed", "Fri"];
 
-const ORDERS = [
-  {
-    day: "Monday",
-    short: "Mon",
-    sections: [
-      {
-        type: "sauces",
-        label: "Sauces & Condiments",
-        items: [
-          { name: "Hangover sauce",   qty: "5 kg"  },
-          { name: "Dipping sauce",    qty: "10 kg" },
-          { name: "Bibim sauce",      qty: "10 kg" },
-          { name: "Marinade sauce",   qty: "20 kg" },
-          { name: "Dakdoritang sauce",qty: "0 kg"  },
-          { name: "Cabbage pickle",   qty: "25 kg" },
-          { name: "Radish kimchi",    qty: "15 kg" },
-          { name: "Yuzu kosho",       qty: "5 kg"  },
-          { name: "Chili pickle",     qty: "5 kg"  },
-          { name: "Garlic sauce",     qty: "5 kg"  },
-          { name: "Sriracha mayo",    qty: "5 kg"  },
-        ],
-      },
-      {
-        type: "proteins",
-        label: "Meats & Proteins",
-        items: [
-          { name: "Heart",            qty: "5 kg"   },
-          { name: "Gizzard",          qty: "5 kg"   },
-          { name: "Gizzard popcorn",  qty: "2.5 kg" },
-          { name: "Softbone",         qty: "5 kg"   },
-          { name: "Tender",           qty: "10 kg"  },
-          { name: "Neck",             qty: "7.5 kg" },
-          { name: "Thigh",            qty: "50 kg"  },
-        ],
-      },
-    ],
-  },
-  {
-    day: "Wednesday",
-    short: "Wed",
-    sections: [
-      {
-        type: "sauces",
-        label: "Sauces & Condiments",
-        items: [
-          { name: "Cabbage pickle",   qty: "30 kg" },
-          { name: "Radish kimchi",    qty: "15 kg" },
-          { name: "Yuzu kosho",       qty: "5 kg"  },
-          { name: "Chili pickle",     qty: "5 kg"  },
-          { name: "Garlic sauce",     qty: "5 kg"  },
-          { name: "Sriracha mayo",    qty: "5 kg"  },
-        ],
-      },
-      {
-        type: "proteins",
-        label: "Meats & Proteins",
-        items: [
-          { name: "Heart",            qty: "5 kg"   },
-          { name: "Gizzard",          qty: "2.5 kg" },
-          { name: "Softbone",         qty: "7.5 kg" },
-          { name: "Tender",           qty: "10 kg"  },
-          { name: "Neck",             qty: "7.5 kg" },
-          { name: "Thigh",            qty: "50 kg"  },
-          { name: "Popcorn",          qty: "2.5 kg" },
-        ],
-      },
-    ],
-  },
-  {
-    day: "Friday",
-    short: "Fri",
-    sections: [
-      {
-        type: "sauces",
-        label: "Sauces & Condiments",
-        items: [
-          { name: "Cabbage pickle",   qty: "30 kg" },
-          { name: "Radish kimchi",    qty: "25 kg" },
-          { name: "Yuzu kosho",       qty: "10 kg" },
-          { name: "Chili pickle",     qty: "10 kg" },
-          { name: "Garlic sauce",     qty: "10 kg" },
-          { name: "Sriracha mayo",    qty: "5 kg"  },
-        ],
-      },
-      {
-        type: "proteins",
-        label: "Meats & Proteins",
-        items: [
-          { name: "Heart",            qty: "2.5 kg" },
-          { name: "Gizzard",          qty: "2.5 kg" },
-          { name: "Softbone",         qty: "7.5 kg" },
-          { name: "Tender",           qty: "10 kg"  },
-          { name: "Neck",             qty: "7.5 kg" },
-          { name: "Thigh",            qty: "50 kg"  },
-          { name: "Popcorn",          qty: "2.5 kg" },
-        ],
-      },
-    ],
-  },
-];
-
-const SECTION_STYLE = {
+const DATA = {
   sauces: {
-    header: "bg-amber-50 border-amber-200",
-    headerText: "text-amber-700",
-    icon: (
-      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-      </svg>
-    ),
-    badge: "bg-amber-100 text-amber-700",
-    dot: "bg-amber-400",
-    row: "hover:bg-amber-50/60",
+    label: "Sauces & Condiments",
+    headerClass: "bg-amber-50 border-amber-200 text-amber-700",
+    badgeClass: "bg-amber-100 text-amber-700",
+    dotClass: "bg-amber-400",
+    rowClass: "hover:bg-amber-50/40",
+    items: [
+      { name: "Hangover sauce",    Mon: "5 kg",  Wed: null,    Fri: null    },
+      { name: "Dipping sauce",     Mon: "10 kg", Wed: null,    Fri: null    },
+      { name: "Bibim sauce",       Mon: "10 kg", Wed: null,    Fri: null    },
+      { name: "Marinade sauce",    Mon: "20 kg", Wed: null,    Fri: null    },
+      { name: "Dakdoritang sauce", Mon: "0 kg",  Wed: null,    Fri: null    },
+      { name: "Cabbage pickle",    Mon: "25 kg", Wed: "30 kg", Fri: "30 kg" },
+      { name: "Radish kimchi",     Mon: "15 kg", Wed: "15 kg", Fri: "25 kg" },
+      { name: "Yuzu kosho",        Mon: "5 kg",  Wed: "5 kg",  Fri: "10 kg" },
+      { name: "Chili pickle",      Mon: "5 kg",  Wed: "5 kg",  Fri: "10 kg" },
+      { name: "Garlic sauce",      Mon: "5 kg",  Wed: "5 kg",  Fri: "10 kg" },
+      { name: "Sriracha mayo",     Mon: "5 kg",  Wed: "5 kg",  Fri: "5 kg"  },
+    ],
   },
   proteins: {
-    header: "bg-orange-50 border-orange-200",
-    headerText: "text-orange-700",
-    icon: (
-      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-      </svg>
-    ),
-    badge: "bg-orange-100 text-orange-700",
-    dot: "bg-orange-400",
-    row: "hover:bg-orange-50/60",
+    label: "Meats & Proteins",
+    headerClass: "bg-orange-50 border-orange-200 text-orange-700",
+    badgeClass: "bg-orange-100 text-orange-700",
+    dotClass: "bg-orange-400",
+    rowClass: "hover:bg-orange-50/40",
+    items: [
+      { name: "Heart",           Mon: "5 kg",   Wed: "5 kg",   Fri: "2.5 kg" },
+      { name: "Gizzard",         Mon: "5 kg",   Wed: "2.5 kg", Fri: "2.5 kg" },
+      { name: "Gizzard popcorn", Mon: "2.5 kg", Wed: null,     Fri: null     },
+      { name: "Popcorn",         Mon: null,     Wed: "2.5 kg", Fri: "2.5 kg" },
+      { name: "Softbone",        Mon: "5 kg",   Wed: "7.5 kg", Fri: "7.5 kg" },
+      { name: "Tender",          Mon: "10 kg",  Wed: "10 kg",  Fri: "10 kg"  },
+      { name: "Neck",            Mon: "7.5 kg", Wed: "7.5 kg", Fri: "7.5 kg" },
+      { name: "Thigh",           Mon: "50 kg",  Wed: "50 kg",  Fri: "50 kg"  },
+    ],
   },
 };
 
-function totalKg(items) {
-  return items.reduce((sum, it) => {
-    const n = parseFloat(it.qty);
-    return sum + (isNaN(n) ? 0 : n);
-  }, 0);
+function parseKg(val) {
+  if (!val) return 0;
+  const n = parseFloat(val);
+  return isNaN(n) ? 0 : n;
 }
 
 export default function StandingOrders() {
-  const today = new Date().toLocaleDateString("en-US", { weekday: "long" });
-  const defaultIdx = ORDERS.findIndex((o) => o.day === today);
-  const [activeIdx, setActiveIdx] = useState(defaultIdx >= 0 ? defaultIdx : 0);
-  const active = ORDERS[activeIdx];
+  const today = new Date().toLocaleDateString("en-US", { weekday: "long" }).slice(0, 3);
 
   return (
     <div className="pb-6">
@@ -149,86 +57,86 @@ export default function StandingOrders() {
         <p className="text-xs text-gray-400 mt-0.5">Weekly production schedule</p>
       </div>
 
-      {/* Day tabs */}
-      <div className="flex gap-2 mb-4 bg-gray-100 p-1 rounded-xl">
-        {ORDERS.map((order, i) => (
-          <button
-            key={order.day}
-            onClick={() => setActiveIdx(i)}
-            className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-              activeIdx === i
-                ? "bg-white text-green-700 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            {order.short}
-            {order.day === today && (
-              <span className="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-green-500 align-middle mb-0.5" />
-            )}
-          </button>
-        ))}
-      </div>
+      {Object.entries(DATA).map(([type, section]) => {
+        const dayTotals = DAYS.map((d) =>
+          section.items.reduce((s, it) => s + parseKg(it[d]), 0)
+        );
 
-      {/* Sections */}
-      <div className="flex flex-col gap-3">
-        {active.sections.map((section) => {
-          const s = SECTION_STYLE[section.type];
-          const total = totalKg(section.items);
-          return (
-            <div key={section.type} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              {/* Section header */}
-              <div className={`flex items-center justify-between px-4 py-3 border-b ${s.header}`}>
-                <div className={`flex items-center gap-2 font-semibold text-sm ${s.headerText}`}>
-                  {s.icon}
-                  {section.label}
-                </div>
-                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${s.badge}`}>
-                  {total} kg total
-                </span>
-              </div>
-
-              {/* Items */}
-              <div className="divide-y divide-gray-50">
-                {section.items.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`flex items-center justify-between px-4 py-2.5 transition-colors ${s.row}`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${s.dot}`} />
-                      <span className="text-sm text-gray-700">{item.name}</span>
-                    </div>
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${s.badge}`}>
-                      {item.qty}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Section footer total */}
-              <div className={`flex justify-end px-4 py-2 border-t ${s.header}`}>
-                <span className={`text-xs font-semibold ${s.headerText}`}>
-                  {section.items.length} items · {total} kg
-                </span>
-              </div>
+        return (
+          <div key={type} className="mb-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            {/* Section header */}
+            <div className={`px-4 py-3 border-b ${section.headerClass}`}>
+              <span className="font-semibold text-sm">{section.label}</span>
             </div>
-          );
-        })}
-      </div>
 
-      {/* Grand total card */}
-      <div className="mt-3 bg-gray-800 rounded-2xl px-5 py-4 flex items-center justify-between shadow-md">
-        <div>
-          <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Total — {active.day}</p>
-          <p className="text-white font-bold text-base mt-0.5">
-            {active.sections.reduce((s, sec) => s + sec.items.length, 0)} items
-          </p>
+            {/* Column headers — day names */}
+            <div className="flex items-center px-3 py-1.5 bg-gray-50 border-b border-gray-100">
+              <span className="flex-1 text-xs text-gray-400">Item</span>
+              {DAYS.map((d) => (
+                <span
+                  key={d}
+                  className={`w-16 text-center text-xs font-bold shrink-0 ${
+                    d === today ? "text-green-600" : "text-gray-500"
+                  }`}
+                >
+                  {d}
+                  {d === today && <span className="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-green-500 align-middle mb-0.5" />}
+                </span>
+              ))}
+            </div>
+
+            {/* Rows */}
+            <div className="divide-y divide-gray-50">
+              {section.items.map((item, idx) => (
+                <div key={idx} className={`flex items-center px-3 py-2 transition-colors ${section.rowClass}`}>
+                  <div className="flex-1 flex items-center gap-2 min-w-0">
+                    <span className={`w-2 h-2 rounded-full shrink-0 ${section.dotClass}`} />
+                    <span className="text-sm text-gray-700 truncate">{item.name}</span>
+                  </div>
+                  {DAYS.map((d) => (
+                    <span key={d} className={`w-16 text-center text-xs font-semibold shrink-0 ${
+                      item[d] ? section.badgeClass.split(" ")[1] : "text-gray-200"
+                    }`}>
+                      {item[d] ?? "—"}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Totals row */}
+            <div className={`flex items-center px-3 py-2 border-t ${section.headerClass}`}>
+              <span className="flex-1 text-xs font-semibold">Total</span>
+              {dayTotals.map((t, i) => (
+                <span key={i} className={`w-16 text-center text-xs font-bold shrink-0 ${section.badgeClass}`}>
+                  {t} kg
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Grand total row */}
+      <div className="bg-gray-800 rounded-2xl px-4 py-4 shadow-md">
+        <div className="flex items-center mb-2">
+          <span className="flex-1 text-xs text-gray-400 uppercase tracking-wider font-medium">Grand Total</span>
+          {DAYS.map((d) => (
+            <span key={d} className={`w-16 text-center text-xs font-medium shrink-0 ${d === today ? "text-green-400" : "text-gray-400"}`}>{d}</span>
+          ))}
         </div>
-        <div className="text-right">
-          <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Grand Total</p>
-          <p className="text-green-400 font-bold text-xl mt-0.5">
-            {active.sections.reduce((s, sec) => s + totalKg(sec.items), 0)} kg
-          </p>
+        <div className="flex items-center">
+          <span className="flex-1 text-xs text-gray-500">All items</span>
+          {DAYS.map((d) => {
+            const total = Object.values(DATA).reduce(
+              (s, sec) => s + sec.items.reduce((ss, it) => ss + parseKg(it[d]), 0), 0
+            );
+            return (
+              <span key={d} className={`w-16 text-center text-base font-bold shrink-0 ${d === today ? "text-green-400" : "text-white"}`}>
+                {total} kg
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>
