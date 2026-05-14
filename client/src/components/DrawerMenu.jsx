@@ -3,7 +3,7 @@ export default function DrawerMenu({ open, onClose, currentView, onNavigate }) {
 
   const items = [
     { id: "recipes",        icon: "🍳", label: "Recipes" },
-    { id: "prices",         icon: "💰", label: "Ingredient Prices" },
+    { id: "prices",         icon: "💰", label: "Inventory" },
     { id: "standingOrders", icon: "📋", label: "Standing Orders" },
   ];
 
