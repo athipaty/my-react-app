@@ -94,6 +94,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
         <input
           value={draft.name}
           onChange={(e) => updateField("name", e.target.value)}
+          autoComplete="off"
           className="flex-1 text-xl font-bold text-center border-b-2 border-green-400 bg-transparent outline-none"
         />
         <button
@@ -179,6 +180,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
                 <input
                   value={ing.item}
                   onChange={(e) => updateIng(i, "item", e.target.value)}
+                  autoComplete="off"
                   className="w-full border border-gray-300 rounded px-1 py-0.5 text-sm focus:ring-1 focus:ring-green-400 outline-none"
                 />
               </td>
@@ -200,6 +202,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
                 <input
                   value={ing.unit}
                   onChange={(e) => updateIng(i, "unit", e.target.value)}
+                  autoComplete="off"
                   className="w-full border border-gray-300 rounded px-1 py-0.5 text-xs text-center focus:ring-1 focus:ring-green-400 outline-none"
                 />
               </td>
