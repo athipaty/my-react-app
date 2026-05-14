@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { fetchInventoryFilter, saveInventoryFilter } from "../api";
 
-const UNITS = ["g", "kg", "ml", "L", "pack", "piece", "bottle"];
+const UNITS = ["g", "kg", "ml", "L", "pack", "piece", "bottle", "tube", "tin"];
 
 function StockEditor({ override, ingName, onSave }) {
   const [value, setValue] = useState(String(override?.stock?.value ?? ""));
