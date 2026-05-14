@@ -55,7 +55,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
                   )}
                   <div className="flex-1 min-w-0">
                     <span className="text-sm text-gray-700">{ing.item}</span>
-                    {usedBy.length > 1 && (
+                    {usedBy.length > 0 && (
                       <p className="text-xs text-gray-400 truncate">{usedBy.join(", ")}</p>
                     )}
                   </div>
