@@ -11,6 +11,17 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
   // Map of MongoDB overrides (name → ingredient record)
   const overrideMap = new Map(ingredients.map((i) => [i.name.toLowerCase().trim(), i]));
 
+  // Map of ingredient name → recipe names that use it
+  const usedByMap = {};
+  activeRecipes.forEach((r) => {
+    r.ingredients?.forEach((ing) => {
+      const key = ing.item?.toLowerCase().trim();
+      if (!key) return;
+      if (!usedByMap[key]) usedByMap[key] = [];
+      usedByMap[key].push(r.name);
+    });
+  });
+
   const formatWeight = (value, unit) => {
     if (unit === "g" && value >= 1000) {
       const kg = value / 1000;
@@ -34,6 +45,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
               const override = overrideMap.get(key);
               const ingImage = ing.image || override?.image || imageMap[key] || "";
               const priceInfo = override;
+              const usedBy = usedByMap[key] || [];
               return (
                 <div key={j} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50" : ""}`}>
                   {ingImage ? (
@@ -41,7 +53,12 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
                   ) : (
                     <div className="w-9 h-9 rounded-lg bg-gray-100 shrink-0 flex items-center justify-center text-gray-300 text-lg">🧂</div>
                   )}
-                  <span className="flex-1 text-sm text-gray-700">{ing.item}</span>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm text-gray-700">{ing.item}</span>
+                    {usedBy.length > 1 && (
+                      <p className="text-xs text-gray-400 truncate">{usedBy.join(", ")}</p>
+                    )}
+                  </div>
                   <span className="text-xs font-medium text-gray-500 shrink-0">
                     {ing.quantity} {ing.unit}
                   </span>
