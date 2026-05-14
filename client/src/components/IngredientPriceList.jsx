@@ -70,14 +70,6 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
     });
   });
 
-  const formatWeight = (value, unit) => {
-    if (unit === "g" && value >= 1000) {
-      const kg = value / 1000;
-      return `${kg % 1 === 0 ? kg : kg}kg`;
-    }
-    return `${value}${unit}`;
-  };
-
   const toggleExclude = (name) => {
     const key = name.toLowerCase().trim();
     const next = excluded.includes(key)
