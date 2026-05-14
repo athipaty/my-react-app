@@ -45,7 +45,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
                 const key = ing.item?.toLowerCase().trim();
                 const override = overrideMap.get(key);
                 const ingImage = ing.image || override?.image || imageMap[key] || "";
-                const priceInfo = override || merged.find((m) => m.name.toLowerCase().trim() === key);
+                const priceInfo = override;
                 return (
                   <div key={j} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50" : ""}`}>
                     {ingImage ? (
