@@ -241,11 +241,8 @@ export default function Sgo() {
         {/* Ingredient prices view */}
         {currentView === "prices" && (
           <IngredientPriceList
-            query={query}
-            recipes={recipes}
             activeRecipes={recipes.filter((r) => r.active)}
             ingredients={ingredients}
-            onEdit={setEditingIngredient}
             onImage={setFullImage}
           />
         )}
