@@ -1,10 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { fetchInventoryFilter, saveInventoryFilter } from "../api";
 
-export default function IngredientPriceList({ activeRecipes = [], ingredients = [], onImage }) {
+const UNITS = ["g", "kg", "ml", "L", "pack", "piece"];
+
+function StockEditor({ override, ingName, onSave }) {
+  const [value, setValue] = useState(String(override?.stock?.value ?? ""));
+  const [unit, setUnit] = useState(override?.stock?.unit || override?.weight?.unit || "g");
+  const inputRef = useRef(null);
+
+  useEffect(() => { inputRef.current?.focus(); }, []);
+
+  const commit = () => {
+    onSave({
+      ...(override || { name: ingName, price: 0, weight: { value: 0, unit: "g" }, image: "" }),
+      name: override?.name || ingName,
+      stock: { value: Number(value) || 0, unit },
+    });
+  };
+
+  return (
+    <div className="flex items-center gap-1 shrink-0">
+      <input
+        ref={inputRef}
+        type="number"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => { if (e.key === "Enter") commit(); if (e.key === "Escape") onSave(null); }}
+        className="w-16 text-xs border border-green-400 rounded px-1.5 py-0.5 text-center focus:outline-none"
+      />
+      <select
+        value={unit}
+        onChange={(e) => setUnit(e.target.value)}
+        className="text-xs border border-gray-200 rounded px-1 py-0.5 focus:outline-none"
+      >
+        {UNITS.map((u) => <option key={u}>{u}</option>)}
+      </select>
+      <button onClick={commit} className="text-xs text-green-600 font-semibold px-1">✓</button>
+    </div>
+  );
+}
+
+export default function IngredientPriceList({ activeRecipes = [], ingredients = [], onImage, onSaveIngredient }) {
   const [excluded, setExcluded] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
+  const [editingStock, setEditingStock] = useState(null); // ingredient key being edited
 
   useEffect(() => {
     fetchInventoryFilter().then(setExcluded).catch(() => {});
@@ -47,6 +87,12 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
     saveInventoryFilter(next).catch(() => {});
   };
 
+  const handleStockSave = async (draft) => {
+    setEditingStock(null);
+    if (!draft || !onSaveIngredient) return;
+    await onSaveIngredient(draft);
+  };
+
   const allIngredients = Array.from(
     new Map(
       activeRecipes.flatMap((r) => r.ingredients || []).map((ing) => [ing.item?.toLowerCase().trim(), ing])
@@ -85,8 +131,9 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
               const key = ing.item?.toLowerCase().trim();
               const override = overrideMap.get(key);
               const ingImage = ing.image || override?.image || imageMap[key] || "";
-              const priceInfo = override;
               const usedBy = usedByMap[key] || [];
+              const stock = override?.stock;
+              const isEditing = editingStock === key;
               return (
                 <div key={j} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50" : ""}`}>
                   {ingImage ? (
@@ -100,14 +147,21 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
                       <p className="text-xs text-gray-400 truncate">{usedBy.join(", ")}</p>
                     )}
                   </div>
-                  <span className="text-xs font-medium text-gray-500 shrink-0">
-                    {ing.quantity} {ing.unit}
-                  </span>
-                  {priceInfo?.price > 0 && (
-                    <span className="text-xs text-green-700 font-semibold shrink-0 ml-1">
-                      {priceInfo.price}
-                      <span className="font-normal text-gray-400">/{formatWeight(priceInfo.weight.value, priceInfo.weight.unit)}</span>
-                    </span>
+
+                  {/* Stock — tap to edit */}
+                  {isEditing ? (
+                    <StockEditor
+                      override={override}
+                      ingName={ing.item}
+                      onSave={handleStockSave}
+                    />
+                  ) : (
+                    <button
+                      onClick={() => setEditingStock(key)}
+                      className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 text-gray-500 hover:border-green-400 hover:text-green-600 transition-colors min-w-[52px] text-center"
+                    >
+                      {stock?.value > 0 ? `${stock.value} ${stock.unit}` : "— stock"}
+                    </button>
                   )}
                 </div>
               );
@@ -125,18 +179,15 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
         </div>
       )}
 
-      {/* Filter panel — portalled to body to escape overflow:hidden parents */}
+      {/* Filter panel */}
       {showPanel && createPortal(
         <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
           <div className="bg-white rounded-t-2xl w-full max-w-md pb-10 flex flex-col max-h-[80vh]">
-            {/* Panel header */}
             <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b shrink-0">
               <span className="font-semibold text-gray-800 text-sm">Filter Ingredients</span>
               <button onClick={() => setShowPanel(false)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">✕</button>
             </div>
             <p className="text-xs text-gray-400 px-5 pt-2 pb-1 shrink-0">Tap an item to hide or show it in the inventory list.</p>
-
-            {/* All ingredients as toggle list */}
             <div className="overflow-y-auto flex-1 px-5 pt-2">
               {allIngredients.length === 0 && (
                 <p className="text-center text-gray-400 text-sm py-6">No ingredients</p>

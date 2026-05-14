@@ -244,6 +244,7 @@ export default function Sgo() {
             activeRecipes={recipes.filter((r) => r.active)}
             ingredients={ingredients}
             onImage={setFullImage}
+            onSaveIngredient={onSaveIngredient}
           />
         )}
 
