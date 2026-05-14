@@ -17,9 +17,7 @@ function saveExclusions(list) {
 export default function IngredientPriceList({ activeRecipes = [], ingredients = [], onImage }) {
   const [excluded, setExcluded] = useState(loadExclusions);
   const [showPanel, setShowPanel] = useState(false);
-  const [newItem, setNewItem] = useState("");
 
-  // Image map from all active recipe ingredients
   const imageMap = {};
   activeRecipes.forEach((r) => {
     r.ingredients?.forEach((ing) => {
@@ -28,10 +26,8 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
     });
   });
 
-  // Map of MongoDB overrides (name → ingredient record)
   const overrideMap = new Map(ingredients.map((i) => [i.name.toLowerCase().trim(), i]));
 
-  // Map of ingredient name → recipe names that use it
   const usedByMap = {};
   activeRecipes.forEach((r) => {
     r.ingredients?.forEach((ing) => {
@@ -50,27 +46,13 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
     return `${value}${unit}`;
   };
 
-  const excludeItem = (name) => {
+  const toggleExclude = (name) => {
     const key = name.toLowerCase().trim();
-    if (excluded.includes(key)) return;
-    const next = [...excluded, key];
+    const next = excluded.includes(key)
+      ? excluded.filter((k) => k !== key)
+      : [...excluded, key];
     setExcluded(next);
     saveExclusions(next);
-  };
-
-  const restoreItem = (key) => {
-    const next = excluded.filter((k) => k !== key);
-    setExcluded(next);
-    saveExclusions(next);
-  };
-
-  const addManual = () => {
-    const key = newItem.toLowerCase().trim();
-    if (!key || excluded.includes(key)) { setNewItem(""); return; }
-    const next = [...excluded, key];
-    setExcluded(next);
-    saveExclusions(next);
-    setNewItem("");
   };
 
   const allIngredients = Array.from(
@@ -98,7 +80,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h18M7 8h10M11 12h2M9 16h6" />
               </svg>
-              Exclude
+              Filter
               {excluded.length > 0 && (
                 <span className="bg-red-100 text-red-600 font-bold px-1 rounded-full">{excluded.length}</span>
               )}
@@ -135,20 +117,11 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
                       <span className="font-normal text-gray-400">/{formatWeight(priceInfo.weight.value, priceInfo.weight.unit)}</span>
                     </span>
                   )}
-                  <button
-                    onClick={() => excludeItem(ing.item)}
-                    className="shrink-0 ml-1 w-6 h-6 flex items-center justify-center rounded-full text-gray-300 hover:bg-red-50 hover:text-red-400 transition-colors"
-                    title="Exclude from inventory"
-                  >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
                 </div>
               );
             })}
             {visibleIngredients.length === 0 && (
-              <p className="text-center text-gray-400 text-sm py-6">All ingredients are excluded</p>
+              <p className="text-center text-gray-400 text-sm py-6">All ingredients are hidden — open Filter to restore</p>
             )}
           </div>
         </div>
@@ -160,52 +133,45 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
         </div>
       )}
 
-      {/* Exclusion list panel */}
+      {/* Filter panel */}
       {showPanel && (
         <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
-          <div className="bg-white rounded-t-2xl w-full max-w-md p-5 pb-10">
+          <div className="bg-white rounded-t-2xl w-full max-w-md pb-10 flex flex-col max-h-[80vh]">
             {/* Panel header */}
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-semibold text-gray-800 text-sm">Excluded Items</span>
+            <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b shrink-0">
+              <span className="font-semibold text-gray-800 text-sm">Filter Ingredients</span>
               <button onClick={() => setShowPanel(false)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">✕</button>
             </div>
+            <p className="text-xs text-gray-400 px-5 pt-2 pb-1 shrink-0">Tap an item to hide or show it in the inventory list.</p>
 
-            {/* Add new exclusion */}
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={newItem}
-                onChange={(e) => setNewItem(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addManual()}
-                placeholder="Type ingredient name to exclude..."
-                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
-              />
-              <button
-                onClick={addManual}
-                className="bg-green-500 text-white text-sm px-3 py-2 rounded-lg"
-              >
-                Add
-              </button>
-            </div>
-
-            {/* Excluded list */}
-            {excluded.length === 0 ? (
-              <p className="text-center text-gray-400 text-sm py-6">No items excluded</p>
-            ) : (
-              <div className="flex flex-col gap-1 max-h-72 overflow-y-auto">
-                {excluded.map((key) => (
-                  <div key={key} className="flex items-center justify-between px-3 py-2 bg-gray-50 rounded-lg">
-                    <span className="text-sm text-gray-700 capitalize">{key}</span>
+            {/* All ingredients as toggle list */}
+            <div className="overflow-y-auto flex-1 px-5 pt-2">
+              {allIngredients.length === 0 && (
+                <p className="text-center text-gray-400 text-sm py-6">No ingredients</p>
+              )}
+              <div className="flex flex-col gap-1">
+                {allIngredients.map((ing) => {
+                  const key = ing.item?.toLowerCase().trim();
+                  const isExcluded = excluded.includes(key);
+                  return (
                     <button
-                      onClick={() => restoreItem(key)}
-                      className="text-xs text-green-600 hover:text-green-800 font-medium"
+                      key={key}
+                      onClick={() => toggleExclude(ing.item)}
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-colors ${
+                        isExcluded ? "bg-red-50 text-gray-400 line-through" : "bg-gray-50 text-gray-700 hover:bg-green-50"
+                      }`}
                     >
-                      Restore
+                      <span className="text-sm">{ing.item}</span>
+                      {isExcluded ? (
+                        <span className="text-xs text-red-400 font-medium shrink-0 ml-2">Hidden</span>
+                      ) : (
+                        <span className="text-xs text-gray-300 shrink-0 ml-2">Visible</span>
+                      )}
                     </button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
