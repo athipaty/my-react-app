@@ -1,23 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-
-const STORAGE_KEY = "inventory_exclusions";
-
-function loadExclusions() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-  } catch {
-    return [];
-  }
-}
-
-function saveExclusions(list) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-}
+import { fetchInventoryFilter, saveInventoryFilter } from "../api";
 
 export default function IngredientPriceList({ activeRecipes = [], ingredients = [], onImage }) {
-  const [excluded, setExcluded] = useState(loadExclusions);
+  const [excluded, setExcluded] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
+
+  useEffect(() => {
+    fetchInventoryFilter().then(setExcluded).catch(() => {});
+  }, []);
 
   const imageMap = {};
   activeRecipes.forEach((r) => {
@@ -53,7 +44,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
       ? excluded.filter((k) => k !== key)
       : [...excluded, key];
     setExcluded(next);
-    saveExclusions(next);
+    saveInventoryFilter(next).catch(() => {});
   };
 
   const allIngredients = Array.from(

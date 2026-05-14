@@ -38,6 +38,16 @@ export async function saveIngredient(ingredient) {
   return data;
 }
 
+export async function fetchInventoryFilter() {
+  const { data } = await api.get("/api/inventory-filter");
+  return data;
+}
+
+export async function saveInventoryFilter(excluded) {
+  const { data } = await api.put("/api/inventory-filter", { excluded });
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);
