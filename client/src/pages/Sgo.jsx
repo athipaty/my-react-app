@@ -7,7 +7,7 @@ import EditRecipeForm from "../components/EditRecipeForm";
 import FullImageModal from "../components/FullImageModal";
 import ImageWithLoader from "../components/ImageWithLoader";
 import DrawerMenu from "../components/DrawerMenu";
-import IngredientPriceList from "../components/IngredientPriceList";
+import InventoryList from "../components/InventoryList";
 import IngredientEditModal from "../components/IngredientEditModal";
 import StandingOrders from "./StandingOrders";
 
@@ -240,7 +240,7 @@ export default function Sgo() {
 
         {/* Ingredient prices view */}
         {currentView === "prices" && (
-          <IngredientPriceList
+          <InventoryList
             activeRecipes={recipes.filter((r) => r.active)}
             ingredients={ingredients}
             onImage={setFullImage}

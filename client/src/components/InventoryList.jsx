@@ -41,7 +41,7 @@ function StockEditor({ override, ingName, onSave }) {
   );
 }
 
-export default function IngredientPriceList({ activeRecipes = [], ingredients = [], onImage, onSaveIngredient }) {
+export default function InventoryList({ activeRecipes = [], ingredients = [], onImage, onSaveIngredient }) {
   const [excluded, setExcluded] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
   const [editingStock, setEditingStock] = useState(null); // ingredient key being edited
