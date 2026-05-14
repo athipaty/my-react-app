@@ -2,7 +2,7 @@ const DAYS = ["Mon", "Wed", "Fri"];
 
 const DATA = {
   sauces: {
-    label: "Sauces & Condiments",
+    label: "Sauce",
     headerClass: "bg-amber-50 border-amber-200 text-amber-700",
     badgeClass: "bg-amber-100 text-amber-700",
     dotClass: "bg-amber-400",
@@ -22,7 +22,7 @@ const DATA = {
     ],
   },
   proteins: {
-    label: "Meats & Proteins",
+    label: "Chicken",
     headerClass: "bg-orange-50 border-orange-200 text-orange-700",
     badgeClass: "bg-orange-100 text-orange-700",
     dotClass: "bg-orange-400",
