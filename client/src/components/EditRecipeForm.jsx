@@ -2,7 +2,10 @@ import { useState, useRef } from "react";
 import { uploadImage } from "../api";
 
 export default function EditRecipeForm({ recipe, onSave, onCancel }) {
-  const [draft, setDraft] = useState(() => JSON.parse(JSON.stringify(recipe)));
+  const [draft, setDraft] = useState(() => {
+    const r = JSON.parse(JSON.stringify(recipe));
+    return { ...r, ingredients: r.ingredients.map((ing) => ({ ...ing, quantity: String(ing.quantity ?? "") })) };
+  });
   const [status, setStatus] = useState(""); // "" | "uploading" | "saving"
 
   const recipeImgRef = useRef(null);
@@ -23,7 +26,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
       ...d,
       ingredients: [
         ...d.ingredients,
-        { item: "", quantity: 0, unit: "g", image: "" },
+        { item: "", quantity: "", unit: "g", image: "" },
       ],
     }));
 
@@ -66,7 +69,14 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
   const handleSave = async () => {
     setStatus("saving");
     try {
-      await onSave(draft);
+      const toSave = {
+        ...draft,
+        ingredients: draft.ingredients.map((ing) => ({
+          ...ing,
+          quantity: Number(ing.quantity) || 0,
+        })),
+      };
+      await onSave(toSave);
     } catch {
       alert("Failed to save. Please try again.");
       setStatus("");
@@ -190,9 +200,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
                 <input
                   type="number"
                   value={ing.quantity}
-                  onChange={(e) =>
-                    updateIng(i, "quantity", Number(e.target.value))
-                  }
+                  onChange={(e) => updateIng(i, "quantity", e.target.value)}
                   className="w-full border border-gray-300 rounded px-1 py-0.5 text-sm text-center focus:ring-1 focus:ring-green-400 outline-none"
                 />
               </td>
