@@ -9,6 +9,7 @@ import ImageWithLoader from "../components/ImageWithLoader";
 import DrawerMenu from "../components/DrawerMenu";
 import IngredientPriceList from "../components/IngredientPriceList";
 import IngredientEditModal from "../components/IngredientEditModal";
+import StandingOrders from "./StandingOrders";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
@@ -227,6 +228,9 @@ export default function Sgo() {
             onImage={setFullImage}
           />
         )}
+
+        {/* Standing orders view */}
+        {currentView === "standingOrders" && <StandingOrders />}
 
         {/* Add new recipe form */}
         {currentView === "recipes" && addMode && (
