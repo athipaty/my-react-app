@@ -175,6 +175,13 @@ export default function Sgo() {
     setAddMode(false);
   };
 
+  /* ---------------------- toggle active ---------------------- */
+  const toggleActive = async (recipe) => {
+    const updated = await updateRecipe(recipe._id, { ...recipe, active: !recipe.active });
+    setRecipes((prev) => prev.map((r) => (r._id === updated._id ? updated : r)));
+    if (selectedRecipe?._id === updated._id) setSelectedRecipe(updated);
+  };
+
   /* ---------------------- edit / add ---------------------- */
   const saveRecipe = async (draft) => {
     if (draft._id) {
@@ -223,6 +230,7 @@ export default function Sgo() {
           <IngredientPriceList
             query={query}
             recipes={recipes}
+            activeRecipes={recipes.filter((r) => r.active)}
             ingredients={ingredients}
             onEdit={setEditingIngredient}
             onImage={setFullImage}
@@ -257,12 +265,26 @@ export default function Sgo() {
             ) : visibleRecipes.length > 0 ? (
               <div className="grid grid-cols-3 gap-2 mt-2">
                 {visibleRecipes.map((recipe, i) => (
-                  <button
+                  <div
                     key={recipe._id || recipe.name}
-                    onClick={() => openRecipe(recipe)}
-                    className="grid-card-pop will-change-transform flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in"
+                    className="grid-card-pop will-change-transform relative flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in cursor-pointer"
                     style={{ animationDelay: `${i * 40}ms` }}
+                    onClick={() => openRecipe(recipe)}
                   >
+                    {/* Active toggle badge */}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleActive(recipe); }}
+                      className={`absolute top-1 right-1 z-10 w-5 h-5 rounded-full flex items-center justify-center shadow transition-colors ${
+                        recipe.active ? "bg-green-500" : "bg-white/80 border border-gray-300"
+                      }`}
+                    >
+                      {recipe.active && (
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </button>
+
                     {recipe.image ? (
                       <ImageWithLoader
                         src={recipe.image}
@@ -282,7 +304,7 @@ export default function Sgo() {
                     <span className="text-[11px] text-gray-700 font-medium text-center px-1 py-1 leading-tight line-clamp-2">
                       {recipe.name}
                     </span>
-                  </button>
+                  </div>
                 ))}
               </div>
             ) : (
@@ -315,6 +337,8 @@ export default function Sgo() {
                 onOpenRecipe={openRecipe}
                 onImage={setFullImage}
                 onEdit={() => setEditMode(true)}
+                isActive={!!selectedRecipe.active}
+                onToggleActive={() => toggleActive(selectedRecipe)}
                 allRecipes={recipes}
                 getPrice={(item, qty, unit) =>
                   calculateIngredientPrice({

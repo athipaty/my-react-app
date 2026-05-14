@@ -1,6 +1,6 @@
 import products from "../productPrice";
 
-export default function IngredientPriceList({ query, recipes = [], ingredients = [], onEdit, onImage }) {
+export default function IngredientPriceList({ query, recipes = [], activeRecipes = [], ingredients = [], onEdit, onImage }) {
   // Set of all recipe names for sub-recipe detection
   const recipeNameSet = new Set(recipes.map((r) => r.name.toLowerCase().trim()));
 
@@ -55,6 +55,29 @@ export default function IngredientPriceList({ query, recipes = [], ingredients =
 
   return (
     <div className="animate-fade-slide-in">
+      {/* Active recipes section */}
+      {activeRecipes.length > 0 && (
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2 px-1">
+            <span className="text-xs font-semibold text-green-700 uppercase tracking-wide">Menu</span>
+            <span className="text-xs bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">{activeRecipes.length}</span>
+          </div>
+          <div className="bg-white border border-green-200 rounded-xl overflow-hidden">
+            {activeRecipes.map((r, i) => (
+              <div key={r._id} className={`flex items-center gap-3 px-3 py-2 ${i !== 0 ? "border-t border-green-50" : ""}`}>
+                {r.image ? (
+                  <img src={r.image} alt={r.name} className="w-9 h-9 rounded-lg object-cover shrink-0" onClick={() => onImage?.(r.image)} />
+                ) : (
+                  <div className="w-9 h-9 rounded-lg bg-green-50 shrink-0 flex items-center justify-center text-green-300 text-sm">🍳</div>
+                )}
+                <span className="flex-1 text-sm text-gray-800 font-medium">{r.name}</span>
+                <span className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="mb-2 text-xs text-gray-400 px-1">
         {items.length} ingredient{items.length !== 1 ? "s" : ""}
       </div>

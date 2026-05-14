@@ -8,6 +8,8 @@ export default function RecipeDetail({
   onOpenRecipe,
   onImage,
   onEdit,
+  isActive,
+  onToggleActive,
   getPrice,
   allRecipes = [],
 }) {
@@ -28,9 +30,24 @@ export default function RecipeDetail({
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-center mb-3 animate-fade-slide-in">
-        {recipe.name}
-      </h2>
+      <div className="flex items-center justify-center gap-3 mb-3 animate-fade-slide-in">
+        <h2 className="text-2xl font-bold text-center">{recipe.name}</h2>
+        {onToggleActive && (
+          <button
+            onClick={onToggleActive}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold border transition-colors ${
+              isActive
+                ? "bg-green-100 text-green-700 border-green-300"
+                : "bg-gray-100 text-gray-400 border-gray-300"
+            }`}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            {isActive ? "On Menu" : "Off Menu"}
+          </button>
+        )}
+      </div>
 
       {!hasIngredients ? (
         <div className="w-full max-w-3xl mt-4 bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center gap-2 animate-fade-slide-in">
