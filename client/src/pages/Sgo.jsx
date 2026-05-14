@@ -177,9 +177,22 @@ export default function Sgo() {
 
   /* ---------------------- toggle active ---------------------- */
   const toggleActive = async (recipe) => {
-    const updated = await updateRecipe(recipe._id, { ...recipe, active: !recipe.active });
-    setRecipes((prev) => prev.map((r) => (r._id === updated._id ? updated : r)));
-    if (selectedRecipe?._id === updated._id) setSelectedRecipe(updated);
+    const newActive = !recipe.active;
+    const optimistic = { ...recipe, active: newActive };
+    // Update UI immediately so the button responds
+    setRecipes((prev) => prev.map((r) => (r._id === recipe._id ? optimistic : r)));
+    if (selectedRecipe?._id === recipe._id) setSelectedRecipe(optimistic);
+    try {
+      const updated = await updateRecipe(recipe._id, { ...recipe, active: newActive });
+      // If backend strips the active field, keep the local value
+      const final = { ...updated, active: updated.active ?? newActive };
+      setRecipes((prev) => prev.map((r) => (r._id === final._id ? final : r)));
+      if (selectedRecipe?._id === final._id) setSelectedRecipe(final);
+    } catch {
+      // Revert on error
+      setRecipes((prev) => prev.map((r) => (r._id === recipe._id ? recipe : r)));
+      if (selectedRecipe?._id === recipe._id) setSelectedRecipe(recipe);
+    }
   };
 
   /* ---------------------- edit / add ---------------------- */
