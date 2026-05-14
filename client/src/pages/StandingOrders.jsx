@@ -85,9 +85,11 @@ export default function StandingOrders() {
               ))}
             </div>
 
-            {/* Rows */}
+            {/* Rows — sorted by total across all days, largest first */}
             <div className="divide-y divide-gray-50">
-              {section.items.map((item, idx) => (
+              {[...section.items].sort((a, b) =>
+                DAYS.reduce((s, d) => s + parseKg(b[d]), 0) - DAYS.reduce((s, d) => s + parseKg(a[d]), 0)
+              ).map((item, idx) => (
                 <div key={idx} className={`flex items-center px-3 py-2 transition-colors ${section.rowClass}`}>
                   <div className="flex-1 flex items-center gap-2 min-w-0">
                     <span className={`w-2 h-2 rounded-full shrink-0 ${section.dotClass}`} />
