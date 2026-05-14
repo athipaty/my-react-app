@@ -29,7 +29,7 @@ export default function IngredientPriceList({ activeRecipes = [], ingredients = 
             <span className="text-xs bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">{activeRecipes.length}</span>
           </div>
           <div className="bg-white border border-green-200 rounded-xl overflow-hidden">
-            {activeRecipes.flatMap((r) => r.ingredients || []).sort((a, b) => (a.item || "").localeCompare(b.item || "")).map((ing, j) => {
+            {Array.from(new Map(activeRecipes.flatMap((r) => r.ingredients || []).map((ing) => [ing.item?.toLowerCase().trim(), ing])).values()).sort((a, b) => (a.item || "").localeCompare(b.item || "")).map((ing, j) => {
               const key = ing.item?.toLowerCase().trim();
               const override = overrideMap.get(key);
               const ingImage = ing.image || override?.image || imageMap[key] || "";
