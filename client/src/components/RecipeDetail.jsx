@@ -68,14 +68,10 @@ export default function RecipeDetail({
           </thead>
           <tbody>
             {[...recipe.ingredients]
-              .sort((a, b) => {
-                const qtyA = Number(qtyInputs[a.item]) || 0;
-                const qtyB = Number(qtyInputs[b.item]) || 0;
-                return qtyB - qtyA;
-              })
+              .sort((a, b) => Number(b.quantity) - Number(a.quantity))
               .map((ing, i) => (
                 <IngredientRow
-                  key={ing.item + i}
+                  key={ing.item}
                   ingredient={ing}
                   value={qtyInputs[ing.item]}
                   unit={ing.unit}
