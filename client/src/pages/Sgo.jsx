@@ -219,6 +219,19 @@ export default function Sgo() {
     .filter((r) => (lcQuery ? r.name.toLowerCase().includes(lcQuery) : true))
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  /* ---------------------- known ingredient images ---------------------- */
+  const knownImages = {};
+  ingredients.forEach((ov) => {
+    const key = ov.name?.toLowerCase().trim();
+    if (ov.image && key) knownImages[key] = ov.image;
+  });
+  recipes.forEach((r) => {
+    r.ingredients?.forEach((ing) => {
+      const key = ing.item?.toLowerCase().trim();
+      if (ing.image && key && !knownImages[key]) knownImages[key] = ing.image;
+    });
+  });
+
   /* ---------------------- render ---------------------- */
   return (
     <div className="min-h-screen bg-gray-50 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
@@ -259,6 +272,7 @@ export default function Sgo() {
             recipe={{ name: "", image: "", ingredients: [], method: "", type: recipeTab }}
             onSave={saveRecipe}
             onCancel={() => setAddMode(false)}
+            knownImages={knownImages}
           />
         )}
 
@@ -350,6 +364,7 @@ export default function Sgo() {
                 recipe={selectedRecipe}
                 onSave={saveRecipe}
                 onCancel={() => setEditMode(false)}
+                knownImages={knownImages}
               />
             ) : (
               <RecipeDetail

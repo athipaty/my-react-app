@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { uploadImage } from "../api";
 
-export default function EditRecipeForm({ recipe, onSave, onCancel }) {
+export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages = {} }) {
   const [draft, setDraft] = useState(() => {
     const r = JSON.parse(JSON.stringify(recipe));
     return {
@@ -39,6 +39,13 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
       ...d,
       ingredients: d.ingredients.filter((_, idx) => idx !== i),
     }));
+
+  const onIngNameBlur = (i) => {
+    const ing = draft.ingredients[i];
+    if (ing.image) return; // never overwrite an image already set
+    const match = knownImages[(ing.item || "").toLowerCase().trim()];
+    if (match) updateIng(i, "image", match);
+  };
 
   const handleRecipeImgChange = async (e) => {
     const file = e.target.files[0];
@@ -215,6 +222,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
                 <input
                   value={ing.item}
                   onChange={(e) => updateIng(i, "item", e.target.value)}
+                  onBlur={() => onIngNameBlur(i)}
                   autoComplete="off"
                   className="w-full border border-gray-300 rounded px-1 py-0.5 text-sm focus:ring-1 focus:ring-green-400 outline-none"
                 />
