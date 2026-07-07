@@ -31,6 +31,7 @@ export default function Sgo() {
   const [addMode, setAddMode] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [currentView, setCurrentView] = useState("recipes"); // "recipes" | "prices"
+  const [recipeTab, setRecipeTab] = useState("sale"); // "sale" | "staff"
   const [ingredients, setIngredients] = useState([]);
   const [editingIngredient, setEditingIngredient] = useState(null);
 
@@ -214,6 +215,7 @@ export default function Sgo() {
   const lcQuery = query.toLowerCase().trim();
 
   const visibleRecipes = [...recipes]
+    .filter((r) => (r.type || "sale") === recipeTab)
     .filter((r) => (lcQuery ? r.name.toLowerCase().includes(lcQuery) : true))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -254,10 +256,32 @@ export default function Sgo() {
         {/* Add new recipe form */}
         {currentView === "recipes" && addMode && (
           <EditRecipeForm
-            recipe={{ name: "", image: "", ingredients: [], method: "" }}
+            recipe={{ name: "", image: "", ingredients: [], method: "", type: recipeTab }}
             onSave={saveRecipe}
             onCancel={() => setAddMode(false)}
           />
+        )}
+
+        {/* Menu / Staff meal tabs */}
+        {currentView === "recipes" && !selectedRecipe && !addMode && (
+          <div className="flex gap-2 mt-2 mb-1">
+            {[
+              { key: "sale", label: "Menu" },
+              { key: "staff", label: "Staff Meal" },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setRecipeTab(tab.key)}
+                className={`flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors ${
+                  recipeTab === tab.key
+                    ? "bg-green-100 text-green-700 border-green-300"
+                    : "bg-white text-gray-400 border-gray-300"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         )}
 
         {/* Recipe grid */}
@@ -320,7 +344,9 @@ export default function Sgo() {
               </div>
             ) : (
               <p className="text-center text-gray-400 text-sm mt-10">
-                No recipes found for "{query}"
+                {query
+                  ? `No recipes found for "${query}"`
+                  : `No ${recipeTab === "sale" ? "menu" : "staff meal"} recipes yet`}
               </p>
             )}
           </div>

@@ -4,7 +4,11 @@ import { uploadImage } from "../api";
 export default function EditRecipeForm({ recipe, onSave, onCancel }) {
   const [draft, setDraft] = useState(() => {
     const r = JSON.parse(JSON.stringify(recipe));
-    return { ...r, ingredients: r.ingredients.map((ing) => ({ ...ing, quantity: String(ing.quantity ?? "") })) };
+    return {
+      ...r,
+      type: r.type || "sale",
+      ingredients: r.ingredients.map((ing) => ({ ...ing, quantity: String(ing.quantity ?? "") })),
+    };
   });
   const [status, setStatus] = useState(""); // "" | "uploading" | "saving"
 
@@ -139,6 +143,27 @@ export default function EditRecipeForm({ recipe, onSave, onCancel }) {
           className="hidden"
           onChange={handleRecipeImgChange}
         />
+      </div>
+
+      {/* Menu / Staff meal type */}
+      <div className="flex gap-2 mb-3">
+        {[
+          { key: "sale", label: "Menu" },
+          { key: "staff", label: "Staff Meal" },
+        ].map((opt) => (
+          <button
+            key={opt.key}
+            type="button"
+            onClick={() => updateField("type", opt.key)}
+            className={`flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors ${
+              draft.type === opt.key
+                ? "bg-green-100 text-green-700 border-green-300"
+                : "bg-white text-gray-400 border-gray-300"
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
       </div>
 
       {/* Ingredients table */}
