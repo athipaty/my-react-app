@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { uploadImage } from "../api";
 
-export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages = {} }) {
+export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages = {}, knownNames = [] }) {
   const [draft, setDraft] = useState(() => {
     const r = JSON.parse(JSON.stringify(recipe));
     return {
@@ -224,6 +224,7 @@ export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages =
                   onChange={(e) => updateIng(i, "item", e.target.value)}
                   onBlur={() => onIngNameBlur(i)}
                   autoComplete="off"
+                  list="known-ingredient-names"
                   className="w-full border border-gray-300 rounded px-1 py-0.5 text-sm focus:ring-1 focus:ring-green-400 outline-none"
                 />
               </td>
@@ -261,6 +262,10 @@ export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages =
           ))}
         </tbody>
       </table>
+
+      <datalist id="known-ingredient-names">
+        {knownNames.map((name) => <option key={name} value={name} />)}
+      </datalist>
 
       <button
         onClick={addIng}

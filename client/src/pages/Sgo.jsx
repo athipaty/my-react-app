@@ -232,6 +232,21 @@ export default function Sgo() {
     });
   });
 
+  /* ---------------------- known ingredient names ---------------------- */
+  const knownNamesSeen = new Set();
+  const knownNames = [];
+  ingredients.forEach((ov) => {
+    const key = ov.name?.toLowerCase().trim();
+    if (key && !knownNamesSeen.has(key)) { knownNamesSeen.add(key); knownNames.push(ov.name); }
+  });
+  recipes.forEach((r) => {
+    r.ingredients?.forEach((ing) => {
+      const key = ing.item?.toLowerCase().trim();
+      if (key && !knownNamesSeen.has(key)) { knownNamesSeen.add(key); knownNames.push(ing.item); }
+    });
+  });
+  knownNames.sort((a, b) => a.localeCompare(b));
+
   /* ---------------------- render ---------------------- */
   return (
     <div className="min-h-screen bg-gray-50 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
@@ -273,6 +288,7 @@ export default function Sgo() {
             onSave={saveRecipe}
             onCancel={() => setAddMode(false)}
             knownImages={knownImages}
+            knownNames={knownNames}
           />
         )}
 
@@ -365,6 +381,7 @@ export default function Sgo() {
                 onSave={saveRecipe}
                 onCancel={() => setEditMode(false)}
                 knownImages={knownImages}
+                knownNames={knownNames}
               />
             ) : (
               <RecipeDetail
