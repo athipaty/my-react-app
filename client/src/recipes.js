@@ -2445,6 +2445,61 @@ const recipes = [
   ],
   method:
     "Bring coconut milk to a gentle simmer. Add galangal, lemongrass, and kaffir lime leaves to infuse the aroma. Add chicken and cook until tender. Add mushrooms and season with fish sauce and palm sugar. Turn off the heat and add lime juice and crushed bird eye chili. Garnish with coriander before serving."
+},
+{
+  name: "Chicken Sauce Seasoning",
+  image: "",
+  type: "staff",
+  ingredients: [
+    {
+      item: "Chicken or Dakgangjeong",
+      quantity: "",
+      unit: "",
+      image: "",
+    },
+    {
+      item: "Corn Syrup",
+      quantity: 120,
+      unit: "g",
+      image: "/images/ingredients/corn-syrup.png",
+    },
+    {
+      item: "Ketchup",
+      quantity: 45,
+      unit: "g",
+      image: "",
+    },
+    {
+      item: "Soy Sauce",
+      quantity: 15,
+      unit: "g",
+      image: "/images/ingredients/soy-sauce.png",
+    },
+    {
+      item: "Minced Garlic",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/minced-garlic.jpg",
+    },
+    {
+      item: "White Sugar",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/white-sugar.jpg",
+    },
+    {
+      item: "Chili Powder",
+      quantity: 15,
+      unit: "g",
+      image: "",
+    },
+    {
+      item: "Water",
+      quantity: 30,
+      unit: "g",
+      image: "/images/ingredients/water.jpeg",
+    },
+  ],
 }
 ];
 export default recipes;
