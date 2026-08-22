@@ -37,14 +37,14 @@ export default function SearchBar({
       {showBack ? (
         <button
           onClick={onBack}
-          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 transition-transform duration-200 active:scale-90"
+          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 dark:text-gray-300 transition-transform duration-200 active:scale-90"
         >
           <IconBack />
         </button>
       ) : onMenu ? (
         <button
           onClick={onMenu}
-          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 transition-transform duration-200 active:scale-90"
+          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 dark:text-gray-300 transition-transform duration-200 active:scale-90"
           title="Menu"
         >
           <IconMenu />
@@ -54,7 +54,7 @@ export default function SearchBar({
       )}
 
       <input
-        className="mx-2 p-3 border rounded text-center flex-grow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:shadow-md"
+        className="mx-2 p-3 border dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded text-center flex-grow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:shadow-md"
         value={query}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
@@ -63,7 +63,7 @@ export default function SearchBar({
       {onEdit && (
         <button
           onClick={onEdit}
-          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 hover:text-green-600 transition-colors duration-200 active:scale-90"
+          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-200 active:scale-90"
           title="Edit recipe"
         >
           <IconEdit />
@@ -73,7 +73,7 @@ export default function SearchBar({
       {onAdd && (
         <button
           onClick={onAdd}
-          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 hover:text-green-600 transition-colors duration-200 active:scale-90"
+          className="w-[44px] h-[44px] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-200 active:scale-90"
           title="Add new recipe"
         >
           <IconPlus />

@@ -49,13 +49,13 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
-      <div className="bg-white rounded-t-2xl w-full max-w-md p-5 pb-10 min-h-[520px]">
+      <div className="bg-white dark:bg-gray-800 rounded-t-2xl w-full max-w-md p-5 pb-10 min-h-[520px]">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <button onClick={onCancel} disabled={busy} className="text-sm text-gray-500 px-3 py-1 border border-gray-300 rounded disabled:opacity-40">
+          <button onClick={onCancel} disabled={busy} className="text-sm text-gray-500 dark:text-gray-400 px-3 py-1 border border-gray-300 dark:border-gray-600 rounded disabled:opacity-40">
             Cancel
           </button>
-          <span className="font-semibold text-gray-800 text-sm truncate mx-3">{draft.name}</span>
+          <span className="font-semibold text-gray-800 dark:text-gray-100 text-sm truncate mx-3">{draft.name}</span>
           <button onClick={handleSave} disabled={busy} className="text-sm bg-green-500 text-white px-3 py-1 rounded disabled:opacity-50">
             {btnLabel}
           </button>
@@ -69,7 +69,7 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
           {draft.image ? (
             <img src={draft.image} alt={draft.name} className="w-full h-56 object-cover rounded-xl" />
           ) : (
-            <div className="w-full h-56 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
+            <div className="w-full h-56 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-400 dark:text-gray-500 text-sm">
               No image
             </div>
           )}
@@ -82,29 +82,29 @@ export default function IngredientEditModal({ ingredient, onSave, onCancel }) {
         {/* Price & package */}
         <div className="flex gap-3">
           <div className="flex-1">
-            <label className="text-xs text-gray-500 mb-1 block">Price (฿)</label>
+            <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Price (฿)</label>
             <input
               type="number"
               value={draft.price}
               onChange={(e) => setDraft((d) => ({ ...d, price: e.target.value }))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
+              className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
             />
           </div>
           <div className="flex-1">
-            <label className="text-xs text-gray-500 mb-1 block">Package size</label>
+            <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Package size</label>
             <input
               type="number"
               value={draft.weight.value}
               onChange={(e) => setDraft((d) => ({ ...d, weight: { ...d.weight, value: e.target.value } }))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
+              className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
             />
           </div>
           <div className="w-20">
-            <label className="text-xs text-gray-500 mb-1 block">Unit</label>
+            <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Unit</label>
             <select
               value={draft.weight.unit}
               onChange={(e) => setDraft((d) => ({ ...d, weight: { ...d.weight, unit: e.target.value } }))}
-              className="w-full border border-gray-300 rounded-lg px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
+              className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-400"
             >
               {UNITS.map((u) => <option key={u}>{u}</option>)}
             </select>
