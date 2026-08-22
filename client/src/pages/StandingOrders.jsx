@@ -3,10 +3,10 @@ const DAYS = ["Mon", "Wed", "Fri"];
 const DATA = {
   sauces: {
     label: "Sauce",
-    headerClass: "bg-amber-50 border-amber-200 text-amber-700",
-    badgeClass: "bg-amber-100 text-amber-700",
+    headerClass: "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-400",
+    badgeClass: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     dotClass: "bg-amber-400",
-    rowClass: "hover:bg-amber-50/40",
+    rowClass: "hover:bg-amber-50/40 dark:hover:bg-amber-900/10",
     items: [
       { name: "Hangover sauce",    Mon: "5 kg",  Wed: null,    Fri: null    },
       { name: "Dipping sauce",     Mon: "10 kg", Wed: null,    Fri: null    },
@@ -23,10 +23,10 @@ const DATA = {
   },
   proteins: {
     label: "Chicken",
-    headerClass: "bg-orange-50 border-orange-200 text-orange-700",
-    badgeClass: "bg-orange-100 text-orange-700",
+    headerClass: "bg-orange-50 border-orange-200 text-orange-700 dark:bg-orange-900/20 dark:border-orange-800 dark:text-orange-400",
+    badgeClass: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     dotClass: "bg-orange-400",
-    rowClass: "hover:bg-orange-50/40",
+    rowClass: "hover:bg-orange-50/40 dark:hover:bg-orange-900/10",
     items: [
       { name: "Heart",           Mon: "5 kg",   Wed: "5 kg",   Fri: "2.5 kg" },
       { name: "Gizzard",         Mon: "5 kg",   Wed: "2.5 kg", Fri: "2.5 kg" },
@@ -53,8 +53,8 @@ export default function StandingOrders() {
     <div className="pb-6">
       {/* Title */}
       <div className="mb-4 text-center">
-        <h1 className="text-lg font-bold text-gray-800 tracking-tight">SGO(TA) Standing Orders</h1>
-        <p className="text-xs text-gray-400 mt-0.5">Weekly production schedule</p>
+        <h1 className="text-lg font-bold text-gray-800 dark:text-gray-100 tracking-tight">SGO(TA) Standing Orders</h1>
+        <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Weekly production schedule</p>
       </div>
 
       {Object.entries(DATA).map(([type, section]) => {
@@ -63,20 +63,20 @@ export default function StandingOrders() {
         );
 
         return (
-          <div key={type} className="mb-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div key={type} className="mb-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
             {/* Section header */}
             <div className={`px-4 py-3 border-b ${section.headerClass}`}>
               <span className="font-semibold text-sm">{section.label}</span>
             </div>
 
             {/* Column headers — day names */}
-            <div className="flex items-center px-3 py-1.5 bg-gray-50 border-b border-gray-100">
-              <span className="flex-1 text-xs text-gray-400">Item</span>
+            <div className="flex items-center px-3 py-1.5 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700">
+              <span className="flex-1 text-xs text-gray-400 dark:text-gray-500">Item</span>
               {DAYS.map((d) => (
                 <span
                   key={d}
                   className={`w-16 text-center text-xs font-bold shrink-0 ${
-                    d === today ? "text-green-600" : "text-gray-500"
+                    d === today ? "text-green-600 dark:text-green-400" : "text-gray-500 dark:text-gray-400"
                   }`}
                 >
                   {d}
@@ -86,18 +86,18 @@ export default function StandingOrders() {
             </div>
 
             {/* Rows — sorted by total across all days, largest first */}
-            <div className="divide-y divide-gray-50">
+            <div className="divide-y divide-gray-50 dark:divide-gray-700">
               {[...section.items].sort((a, b) =>
                 DAYS.reduce((s, d) => s + parseKg(b[d]), 0) - DAYS.reduce((s, d) => s + parseKg(a[d]), 0)
               ).map((item, idx) => (
                 <div key={idx} className={`flex items-center px-3 py-2 transition-colors ${section.rowClass}`}>
                   <div className="flex-1 flex items-center gap-2 min-w-0">
                     <span className={`w-2 h-2 rounded-full shrink-0 ${section.dotClass}`} />
-                    <span className="text-sm text-gray-700 truncate">{item.name}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-200 truncate">{item.name}</span>
                   </div>
                   {DAYS.map((d) => (
                     <span key={d} className={`w-16 text-center text-xs font-semibold shrink-0 ${
-                      item[d] ? section.badgeClass.split(" ")[1] : "text-gray-200"
+                      item[d] ? section.badgeClass.split(" ")[1] : "text-gray-200 dark:text-gray-700"
                     }`}>
                       {item[d] ?? "—"}
                     </span>

@@ -27,12 +27,12 @@ function StockEditor({ override, ingName, onSave }) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => { if (e.key === "Enter") commit(); if (e.key === "Escape") onSave(null); }}
-        className="w-16 text-xs border border-green-400 rounded px-1.5 py-0.5 text-center focus:outline-none"
+        className="w-16 text-xs border border-green-400 dark:bg-gray-700 dark:text-gray-100 rounded px-1.5 py-0.5 text-center focus:outline-none"
       />
       <select
         value={unit}
         onChange={(e) => setUnit(e.target.value)}
-        className="text-xs border border-gray-200 rounded px-1 py-0.5 focus:outline-none"
+        className="text-xs border border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded px-1 py-0.5 focus:outline-none"
       >
         {UNITS.map((u) => <option key={u}>{u}</option>)}
       </select>
@@ -101,24 +101,24 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
         <div className="mb-4 flex flex-col gap-3">
           {/* Header */}
           <div className="flex items-center gap-2 px-1">
-            <span className="text-xs font-semibold text-green-700 uppercase tracking-wide">Inventory</span>
-            <span className="text-xs bg-green-100 text-green-700 font-bold px-1.5 py-0.5 rounded-full">{visibleIngredients.length}</span>
+            <span className="text-xs font-semibold text-green-700 dark:text-green-400 uppercase tracking-wide">Inventory</span>
+            <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold px-1.5 py-0.5 rounded-full">{visibleIngredients.length}</span>
             <button
               onClick={() => setShowPanel(true)}
-              className="ml-auto flex items-center gap-1 text-xs text-gray-500 border border-gray-200 rounded-lg px-2 py-1 hover:bg-gray-50"
+              className="ml-auto flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h18M7 8h10M11 12h2M9 16h6" />
               </svg>
               Filter
               {excluded.length > 0 && (
-                <span className="bg-red-100 text-red-600 font-bold px-1 rounded-full">{excluded.length}</span>
+                <span className="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 font-bold px-1 rounded-full">{excluded.length}</span>
               )}
             </button>
           </div>
 
           {/* Ingredient list */}
-          <div className="bg-white border border-green-200 rounded-xl overflow-hidden">
+          <div className="bg-white dark:bg-gray-800 border border-green-200 dark:border-green-800 rounded-xl overflow-hidden">
             {visibleIngredients.map((ing, j) => {
               const key = ing.item?.toLowerCase().trim();
               const override = overrideMap.get(key);
@@ -127,16 +127,16 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
               const stock = override?.stock;
               const isEditing = editingStock === key;
               return (
-                <div key={j} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50" : ""}`}>
+                <div key={j} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""}`}>
                   {ingImage ? (
                     <img src={ingImage} alt={ing.item} className="w-9 h-9 rounded-lg object-cover shrink-0 cursor-pointer" onClick={() => onImage?.(ingImage)} />
                   ) : (
-                    <div className="w-9 h-9 rounded-lg bg-gray-100 shrink-0 flex items-center justify-center text-gray-300 text-lg">🧂</div>
+                    <div className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 flex items-center justify-center text-gray-300 dark:text-gray-500 text-lg">🧂</div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <span className="text-sm text-gray-700">{ing.item}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-200">{ing.item}</span>
                     {usedBy.length > 0 && (
-                      <p className="text-xs text-gray-400 truncate">{usedBy.join(", ")}</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500 truncate">{usedBy.join(", ")}</p>
                     )}
                   </div>
 
@@ -150,7 +150,7 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
                   ) : (
                     <button
                       onClick={() => setEditingStock(key)}
-                      className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 text-gray-500 hover:border-green-400 hover:text-green-600 transition-colors min-w-[52px] text-center"
+                      className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400 transition-colors min-w-[52px] text-center"
                     >
                       {stock?.value > 0 ? `${stock.value} ${stock.unit}` : "— stock"}
                     </button>
@@ -159,14 +159,14 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
               );
             })}
             {visibleIngredients.length === 0 && (
-              <p className="text-center text-gray-400 text-sm py-6">All ingredients are hidden — open Filter to restore</p>
+              <p className="text-center text-gray-400 dark:text-gray-500 text-sm py-6">All ingredients are hidden — open Filter to restore</p>
             )}
           </div>
         </div>
       )}
 
       {activeRecipes.length === 0 && (
-        <div className="text-center text-gray-400 text-sm py-16">
+        <div className="text-center text-gray-400 dark:text-gray-500 text-sm py-16">
           Tick a recipe to see its ingredients here
         </div>
       )}
@@ -174,15 +174,15 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
       {/* Filter panel */}
       {showPanel && createPortal(
         <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
-          <div className="bg-white rounded-t-2xl w-full max-w-md pb-10 flex flex-col max-h-[80vh]">
-            <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b shrink-0">
-              <span className="font-semibold text-gray-800 text-sm">Filter Ingredients</span>
-              <button onClick={() => setShowPanel(false)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">✕</button>
+          <div className="bg-white dark:bg-gray-800 rounded-t-2xl w-full max-w-md pb-10 flex flex-col max-h-[80vh]">
+            <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b dark:border-gray-700 shrink-0">
+              <span className="font-semibold text-gray-800 dark:text-gray-100 text-sm">Filter Ingredients</span>
+              <button onClick={() => setShowPanel(false)} className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 text-xl leading-none">✕</button>
             </div>
-            <p className="text-xs text-gray-400 px-5 pt-2 pb-1 shrink-0">Tap an item to hide or show it in the inventory list.</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 px-5 pt-2 pb-1 shrink-0">Tap an item to hide or show it in the inventory list.</p>
             <div className="overflow-y-auto flex-1 px-5 pt-2">
               {allIngredients.length === 0 && (
-                <p className="text-center text-gray-400 text-sm py-6">No ingredients</p>
+                <p className="text-center text-gray-400 dark:text-gray-500 text-sm py-6">No ingredients</p>
               )}
               <div className="flex flex-col gap-1">
                 {allIngredients.map((ing) => {
@@ -193,14 +193,14 @@ export default function InventoryList({ activeRecipes = [], ingredients = [], on
                       key={key}
                       onClick={() => toggleExclude(ing.item)}
                       className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-colors ${
-                        isExcluded ? "bg-red-50 text-gray-400 line-through" : "bg-gray-50 text-gray-700 hover:bg-green-50"
+                        isExcluded ? "bg-red-50 text-gray-400 line-through dark:bg-red-900/20 dark:text-gray-500" : "bg-gray-50 text-gray-700 hover:bg-green-50 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-green-900/20"
                       }`}
                     >
                       <span className="text-sm">{ing.item}</span>
                       {isExcluded ? (
-                        <span className="text-xs text-red-400 font-medium shrink-0 ml-2">Hidden</span>
+                        <span className="text-xs text-red-400 dark:text-red-400 font-medium shrink-0 ml-2">Hidden</span>
                       ) : (
-                        <span className="text-xs text-gray-300 shrink-0 ml-2">Visible</span>
+                        <span className="text-xs text-gray-300 dark:text-gray-500 shrink-0 ml-2">Visible</span>
                       )}
                     </button>
                   );

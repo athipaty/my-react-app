@@ -14,8 +14,10 @@ import StandingOrders from "./StandingOrders";
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
 import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient } from "../api";
+import useTheme from "../hooks/useTheme";
 
 export default function Sgo() {
+  const { theme, toggleTheme } = useTheme();
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
@@ -249,7 +251,7 @@ export default function Sgo() {
 
   /* ---------------------- render ---------------------- */
   return (
-    <div className="min-h-screen bg-gray-50 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
       <div className="max-w-md w-full">
         <SearchBar
           query={query}
@@ -304,8 +306,8 @@ export default function Sgo() {
                 onClick={() => setRecipeTab(tab.key)}
                 className={`flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors ${
                   recipeTab === tab.key
-                    ? "bg-green-100 text-green-700 border-green-300"
-                    : "bg-white text-gray-400 border-gray-300"
+                    ? "bg-green-100 text-green-700 border-green-300 dark:bg-green-900/30 dark:text-green-400 dark:border-green-700"
+                    : "bg-white text-gray-400 border-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:border-gray-700"
                 }`}
               >
                 {tab.label}
@@ -324,7 +326,7 @@ export default function Sgo() {
             }
           >
             {loading ? (
-              <p className="text-center text-gray-400 text-sm mt-10">
+              <p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">
                 Loading recipes...
               </p>
             ) : visibleRecipes.length > 0 ? (
@@ -332,7 +334,7 @@ export default function Sgo() {
                 {visibleRecipes.map((recipe, i) => (
                   <div
                     key={recipe._id || recipe.name}
-                    className="grid-card-pop will-change-transform relative flex flex-col items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md animate-fade-slide-in cursor-pointer"
+                    className="grid-card-pop will-change-transform relative flex flex-col items-center bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md animate-fade-slide-in cursor-pointer"
                     style={{ animationDelay: `${i * 40}ms` }}
                     onClick={() => openRecipe(recipe)}
                   >
@@ -346,20 +348,20 @@ export default function Sgo() {
                         rounded="rounded-none"
                       />
                     ) : (
-                      <div className="w-full aspect-square bg-gray-100 flex items-center justify-center">
-                        <span className="text-[10px] text-gray-400 text-center px-1 leading-tight">
+                      <div className="w-full aspect-square bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <span className="text-[10px] text-gray-400 dark:text-gray-500 text-center px-1 leading-tight">
                           Image not available
                         </span>
                       </div>
                     )}
-                    <span className="text-[11px] text-gray-700 font-medium text-center px-1 py-1 leading-tight line-clamp-2">
+                    <span className="text-[11px] text-gray-700 dark:text-gray-300 font-medium text-center px-1 py-1 leading-tight line-clamp-2">
                       {recipe.name}
                     </span>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-center text-gray-400 text-sm mt-10">
+              <p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">
                 {query
                   ? `No recipes found for "${query}"`
                   : `No ${recipeTab === "sale" ? "menu" : "staff meal"} recipes yet`}
@@ -425,9 +427,11 @@ export default function Sgo() {
         onClose={() => setShowDrawer(false)}
         currentView={currentView}
         onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
-      <footer className="fixed bottom-0 inset-x-0 border-t bg-white/90 py-3 text-center text-sm text-gray-600">
+      <footer className="fixed bottom-0 inset-x-0 border-t dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 py-3 text-center text-sm text-gray-600 dark:text-gray-400">
         Powered by <strong>TingTong</strong>
       </footer>
     </div>
