@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import staticRecipes from "../recipes";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import SearchBar from "../components/SearchBar";
 import RecipeDetail from "../components/RecipeDetail";
-import EditRecipeForm from "../components/EditRecipeForm";
 import FullImageModal from "../components/FullImageModal";
 import ImageWithLoader from "../components/ImageWithLoader";
 import DrawerMenu from "../components/DrawerMenu";
-import InventoryList from "../components/InventoryList";
-import IngredientEditModal from "../components/IngredientEditModal";
-import StandingOrders from "./StandingOrders";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
 import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient } from "../api";
 import useTheme from "../hooks/useTheme";
+
+const EditRecipeForm = lazy(() => import("../components/EditRecipeForm"));
+const InventoryList = lazy(() => import("../components/InventoryList"));
+const IngredientEditModal = lazy(() => import("../components/IngredientEditModal"));
+const StandingOrders = lazy(() => import("./StandingOrders"));
 
 export default function Sgo() {
   const { theme, toggleTheme } = useTheme();
@@ -43,11 +43,13 @@ export default function Sgo() {
       try {
         let data = await fetchRecipes();
         if (data.length === 0) {
+          const { default: staticRecipes } = await import("../recipes");
           await seedRecipes(staticRecipes);
           data = await fetchRecipes();
         }
         setRecipes(data);
       } catch {
+        const { default: staticRecipes } = await import("../recipes");
         setRecipes(staticRecipes);
       } finally {
         setLoading(false);
@@ -272,26 +274,34 @@ export default function Sgo() {
 
         {/* Ingredient prices view */}
         {currentView === "prices" && (
-          <InventoryList
-            activeRecipes={recipes.filter((r) => r.active)}
-            ingredients={ingredients}
-            onImage={setFullImage}
-            onSaveIngredient={onSaveIngredient}
-          />
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <InventoryList
+              activeRecipes={recipes.filter((r) => r.active)}
+              ingredients={ingredients}
+              onImage={setFullImage}
+              onSaveIngredient={onSaveIngredient}
+            />
+          </Suspense>
         )}
 
         {/* Standing orders view */}
-        {currentView === "standingOrders" && <StandingOrders />}
+        {currentView === "standingOrders" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <StandingOrders />
+          </Suspense>
+        )}
 
         {/* Add new recipe form */}
         {currentView === "recipes" && addMode && (
-          <EditRecipeForm
-            recipe={{ name: "", image: "", ingredients: [], method: "", type: recipeTab }}
-            onSave={saveRecipe}
-            onCancel={() => setAddMode(false)}
-            knownImages={knownImages}
-            knownNames={knownNames}
-          />
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <EditRecipeForm
+              recipe={{ name: "", image: "", ingredients: [], method: "", type: recipeTab }}
+              onSave={saveRecipe}
+              onCancel={() => setAddMode(false)}
+              knownImages={knownImages}
+              knownNames={knownNames}
+            />
+          </Suspense>
         )}
 
         {/* Menu / Staff meal tabs */}
@@ -378,13 +388,15 @@ export default function Sgo() {
             }
           >
             {editMode ? (
-              <EditRecipeForm
-                recipe={selectedRecipe}
-                onSave={saveRecipe}
-                onCancel={() => setEditMode(false)}
-                knownImages={knownImages}
-                knownNames={knownNames}
-              />
+              <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+                <EditRecipeForm
+                  recipe={selectedRecipe}
+                  onSave={saveRecipe}
+                  onCancel={() => setEditMode(false)}
+                  knownImages={knownImages}
+                  knownNames={knownNames}
+                />
+              </Suspense>
             ) : (
               <RecipeDetail
                 recipe={selectedRecipe}
@@ -415,11 +427,13 @@ export default function Sgo() {
       </div>
 
       {editingIngredient && (
-        <IngredientEditModal
-          ingredient={editingIngredient}
-          onSave={onSaveIngredient}
-          onCancel={() => setEditingIngredient(null)}
-        />
+        <Suspense fallback={null}>
+          <IngredientEditModal
+            ingredient={editingIngredient}
+            onSave={onSaveIngredient}
+            onCancel={() => setEditingIngredient(null)}
+          />
+        </Suspense>
       )}
 
       <DrawerMenu
