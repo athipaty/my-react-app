@@ -8,7 +8,7 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem } from "../api";
 import useTheme from "../hooks/useTheme";
 import monthlyStockSeed from "../monthlyStock";
 
@@ -17,6 +17,8 @@ const MonthlyStockList = lazy(() => import("../components/MonthlyStockList"));
 const IngredientEditModal = lazy(() => import("../components/IngredientEditModal"));
 const StandingOrders = lazy(() => import("./StandingOrders"));
 const StockCountList = lazy(() => import("../components/StockCountList"));
+const CountStockLayout = lazy(() => import("../components/CountStockLayout"));
+const LocationCountList = lazy(() => import("../components/LocationCountList"));
 
 export default function Sgo() {
   const { theme, toggleTheme } = useTheme();
@@ -40,6 +42,8 @@ export default function Sgo() {
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [stockCounts, setStockCounts] = useState([]);
   const [monthlyStock, setMonthlyStock] = useState([]);
+  const [locationStock, setLocationStock] = useState([]);
+  const [countStockMode, setCountStockMode] = useState(null); // null | "layout" | "<location name>"
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -87,6 +91,11 @@ export default function Sgo() {
       }
     }
     load();
+  }, []);
+
+  /* ---------------------- load per-location stock counts ---------------------- */
+  useEffect(() => {
+    fetchLocationStock().then(setLocationStock).catch(() => {});
   }, []);
 
   /* ---------------------- navigation ---------------------- */
@@ -214,12 +223,26 @@ export default function Sgo() {
     });
   };
 
+  const onSaveLocationStockItem = async (draft) => {
+    const saved = await saveLocationStockItem(draft);
+    setLocationStock((prev) => {
+      const idx = prev.findIndex((i) => i._id === saved._id);
+      return idx >= 0 ? prev.map((i) => (i._id === saved._id ? saved : i)) : [...prev, saved];
+    });
+  };
+
+  const onDeleteLocationStockItem = async (id) => {
+    setLocationStock((prev) => prev.filter((i) => i._id !== id));
+    await deleteLocationStockItem(id).catch(() => {});
+  };
+
   /* ---------------------- drawer navigation ---------------------- */
   const navigateTo = (view) => {
     setCurrentView(view);
     setQuery("");
     setEditMode(false);
     setAddMode(false);
+    setCountStockMode(null);
   };
 
   /* ---------------------- toggle active ---------------------- */
@@ -321,11 +344,41 @@ export default function Sgo() {
         />
 
         {/* Monthly stock order sheet view */}
-        {currentView === "prices" && (
+        {currentView === "prices" && countStockMode === null && (
           <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
             <MonthlyStockList
               items={monthlyStock}
               onSaveItem={onSaveMonthlyStockItem}
+              onCountStock={() => setCountStockMode("layout")}
+            />
+          </Suspense>
+        )}
+
+        {/* Count Stock — location layout */}
+        {currentView === "prices" && countStockMode === "layout" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <div className="flex items-center gap-2 mb-3">
+              <button
+                onClick={() => setCountStockMode(null)}
+                className="text-sm text-gray-500 dark:text-gray-400 px-3 py-1 border border-gray-300 dark:border-gray-600 rounded"
+              >
+                ← Back
+              </button>
+              <span className="text-sm font-semibold text-green-700 dark:text-green-400 uppercase tracking-wide">Count Stock</span>
+            </div>
+            <CountStockLayout onSelectLocation={(loc) => setCountStockMode(loc)} />
+          </Suspense>
+        )}
+
+        {/* Count Stock — per-location item list */}
+        {currentView === "prices" && countStockMode !== null && countStockMode !== "layout" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <LocationCountList
+              location={countStockMode}
+              items={locationStock.filter((i) => i.location === countStockMode)}
+              onBack={() => setCountStockMode("layout")}
+              onSaveItem={onSaveLocationStockItem}
+              onDeleteItem={onDeleteLocationStockItem}
             />
           </Suspense>
         )}

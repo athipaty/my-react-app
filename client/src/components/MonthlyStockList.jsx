@@ -37,7 +37,7 @@ function QtyEditor({ item, onSave }) {
   );
 }
 
-export default function MonthlyStockList({ items = [], onSaveItem }) {
+export default function MonthlyStockList({ items = [], onSaveItem, onCountStock }) {
   const [editingKey, setEditingKey] = useState(null);
   const [query, setQuery] = useState("");
 
@@ -58,6 +58,15 @@ export default function MonthlyStockList({ items = [], onSaveItem }) {
 
   return (
     <div className="animate-fade-slide-in">
+      {onCountStock && (
+        <button
+          onClick={onCountStock}
+          className="w-full mb-3 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm py-2.5 rounded-lg transition-colors"
+        >
+          📦 Count Stock
+        </button>
+      )}
+
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}

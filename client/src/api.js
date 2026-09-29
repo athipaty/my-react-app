@@ -73,6 +73,21 @@ export async function saveMonthlyStockItem(item) {
   return data;
 }
 
+export async function fetchLocationStock() {
+  const { data } = await api.get("/api/location-stock");
+  return data;
+}
+
+export async function saveLocationStockItem(item) {
+  const { data } = await api.post("/api/location-stock", item);
+  return data;
+}
+
+export async function deleteLocationStockItem(id) {
+  const { data } = await api.delete(`/api/location-stock/${id}`);
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);
