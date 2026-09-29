@@ -86,9 +86,26 @@ function AddItemForm({ location, onAdd, onCancel, knownNames = [], knownUnits = 
   );
 }
 
-export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, knownNames = [], knownUnits = {} }) {
+export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, onReorder, knownNames = [], knownUnits = {}, online = true, pendingSyncCount = 0, onRetrySync }) {
   const [editingId, setEditingId] = useState(null);
   const [adding, setAdding] = useState(false);
+  const [order, setOrder] = useState(() => items.map((i) => i._id));
+  const [draggingId, setDraggingId] = useState(null);
+
+  const draggingIdRef = useRef(null);
+  const orderRef = useRef(order);
+  const rowRefs = useRef(new Map());
+
+  useEffect(() => { orderRef.current = order; }, [order]);
+
+  // Keep local order in sync with the prop, but not mid-drag (would fight the live reorder).
+  useEffect(() => {
+    if (draggingIdRef.current) return;
+    setOrder(items.map((i) => i._id));
+  }, [items]);
+
+  const itemsById = new Map(items.map((i) => [i._id, i]));
+  const orderedItems = order.map((id) => itemsById.get(id)).filter(Boolean);
 
   const handleSave = async (draft) => {
     setEditingId(null);
@@ -100,6 +117,43 @@ export default function LocationCountList({ location, items = [], onBack, onSave
     setAdding(false);
     if (!onSaveItem) return;
     await onSaveItem(draft);
+  };
+
+  const handlePointerMove = (e) => {
+    const id = draggingIdRef.current;
+    if (!id) return;
+    const y = e.clientY;
+    setOrder((prev) => {
+      const others = prev.filter((x) => x !== id);
+      let targetIndex = others.length;
+      for (let i = 0; i < others.length; i++) {
+        const node = rowRefs.current.get(others[i]);
+        if (!node) continue;
+        const rect = node.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        if (y < mid) { targetIndex = i; break; }
+      }
+      const next = [...others];
+      next.splice(targetIndex, 0, id);
+      return next;
+    });
+  };
+
+  const handlePointerUp = () => {
+    const id = draggingIdRef.current;
+    draggingIdRef.current = null;
+    setDraggingId(null);
+    window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("pointerup", handlePointerUp);
+    if (id && onReorder) onReorder(location, orderRef.current);
+  };
+
+  const handlePointerDown = (id) => (e) => {
+    e.preventDefault();
+    draggingIdRef.current = id;
+    setDraggingId(id);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
   };
 
   return (
@@ -115,11 +169,42 @@ export default function LocationCountList({ location, items = [], onBack, onSave
         <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold px-1.5 py-0.5 rounded-full">{items.length}</span>
       </div>
 
+      {!online && (
+        <div className="mb-2 px-3 py-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-xs text-amber-700 dark:text-amber-400">
+          📡 No connection — counts are saved on this device and will sync automatically once you're back online.
+        </div>
+      )}
+      {online && pendingSyncCount > 0 && (
+        <div className="mb-2 px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-xs text-blue-700 dark:text-blue-400 flex items-center justify-between gap-2">
+          <span>🔄 {pendingSyncCount} saved count{pendingSyncCount === 1 ? "" : "s"} waiting to sync</span>
+          {onRetrySync && (
+            <button onClick={onRetrySync} className="shrink-0 font-semibold underline">Retry now</button>
+          )}
+        </div>
+      )}
+
+      {items.length > 1 && (
+        <p className="text-xs text-gray-400 dark:text-gray-500 mb-2 px-1">Drag ⠿ to reorder</p>
+      )}
+
       <div className="bg-white dark:bg-gray-800 border border-green-200 dark:border-green-800 rounded-xl overflow-hidden">
-        {items.map((item, j) => {
+        {orderedItems.map((item, j) => {
           const isEditing = editingId === item._id;
+          const isDragging = draggingId === item._id;
           return (
-            <div key={item._id} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""}`}>
+            <div
+              key={item._id}
+              ref={(el) => { if (el) rowRefs.current.set(item._id, el); else rowRefs.current.delete(item._id); }}
+              className={`flex items-center gap-2 px-3 py-2 transition-colors ${j !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""} ${isDragging ? "bg-green-50 dark:bg-green-900/20" : ""}`}
+            >
+              <button
+                onPointerDown={handlePointerDown(item._id)}
+                className="shrink-0 text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing text-lg leading-none px-1 touch-none select-none"
+                aria-label="Drag to reorder"
+              >
+                ⠿
+              </button>
+
               <div className="flex-1 min-w-0">
                 <span className="text-sm text-gray-700 dark:text-gray-200">{item.name}</span>
               </div>

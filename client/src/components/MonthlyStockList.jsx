@@ -37,7 +37,7 @@ function QtyEditor({ item, onSave }) {
   );
 }
 
-export default function MonthlyStockList({ items = [], onSaveItem, onCountStock }) {
+export default function MonthlyStockList({ items = [], onSaveItem, onCountStock, countedByName = {} }) {
   const [editingKey, setEditingKey] = useState(null);
   const [query, setQuery] = useState("");
 
@@ -90,11 +90,17 @@ export default function MonthlyStockList({ items = [], onSaveItem, onCountStock 
             {group.items.map((item, j) => {
               const key = `${item.supplier}::${item.name}`;
               const isEditing = editingKey === key;
+              const counted = countedByName[item.name.toLowerCase().trim()];
               return (
                 <div key={key} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""}`}>
                   <div className="flex-1 min-w-0">
                     <span className="text-sm text-gray-700 dark:text-gray-200">{item.name}</span>
                     <p className="text-xs text-gray-400 dark:text-gray-500">{item.unit}</p>
+                    {counted && counted.length > 0 && (
+                      <p className="text-xs text-green-600 dark:text-green-400 mt-0.5">
+                        ✓ Counted: {counted.map((c) => `${c.qty} ${c.unit} (${c.location})`).join(", ")}
+                      </p>
+                    )}
                   </div>
 
                   {isEditing ? (

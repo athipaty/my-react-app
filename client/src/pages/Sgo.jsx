@@ -8,9 +8,11 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock } from "../api";
 import useTheme from "../hooks/useTheme";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 import monthlyStockSeed from "../monthlyStock";
+import { getQueue, enqueue, setQueue as persistQueue } from "../utils/offlineQueue";
 
 const EditRecipeForm = lazy(() => import("../components/EditRecipeForm"));
 const MonthlyStockList = lazy(() => import("../components/MonthlyStockList"));
@@ -44,6 +46,8 @@ export default function Sgo() {
   const [monthlyStock, setMonthlyStock] = useState([]);
   const [locationStock, setLocationStock] = useState([]);
   const [countStockMode, setCountStockMode] = useState(null); // null | "layout" | "<location name>"
+  const [pendingSyncCount, setPendingSyncCount] = useState(() => getQueue().length);
+  const online = useOnlineStatus();
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -97,6 +101,46 @@ export default function Sgo() {
   useEffect(() => {
     fetchLocationStock().then(setLocationStock).catch(() => {});
   }, []);
+
+  /* ---------------------- sync queued offline counts ---------------------- */
+  const flushLocationStockQueue = async () => {
+    let queue = getQueue();
+    if (queue.length === 0) return;
+
+    while (queue.length > 0) {
+      const action = queue[0];
+      try {
+        if (action.type === "save") await saveLocationStockItem(action.payload);
+        else if (action.type === "delete") await deleteLocationStockItem(action.payload.id);
+        queue = queue.slice(1);
+        persistQueue(queue);
+        setPendingSyncCount(queue.length);
+      } catch {
+        break; // still can't reach the server — stop and retry later
+      }
+    }
+
+    if (queue.length === 0) {
+      // fully synced — refetch so local placeholder ids/order match the server
+      try {
+        const fresh = await fetchLocationStock();
+        setLocationStock(fresh);
+      } catch {}
+    }
+  };
+
+  useEffect(() => {
+    if (online) flushLocationStockQueue();
+  }, [online]);
+
+  // navigator.onLine only catches a fully-down connection — on a flaky/low-data
+  // connection the browser still reports "online" while requests keep failing,
+  // so also retry periodically whenever something is still queued.
+  useEffect(() => {
+    if (pendingSyncCount === 0) return;
+    const interval = setInterval(flushLocationStockQueue, 20000);
+    return () => clearInterval(interval);
+  }, [pendingSyncCount]);
 
   /* ---------------------- navigation ---------------------- */
   const openRecipe = (recipe) => {
@@ -224,16 +268,45 @@ export default function Sgo() {
   };
 
   const onSaveLocationStockItem = async (draft) => {
-    const saved = await saveLocationStockItem(draft);
+    // Apply immediately so counting keeps working with no connection.
     setLocationStock((prev) => {
-      const idx = prev.findIndex((i) => i._id === saved._id);
-      return idx >= 0 ? prev.map((i) => (i._id === saved._id ? saved : i)) : [...prev, saved];
+      const idx = prev.findIndex((i) => i.location === draft.location && i.name === draft.name);
+      if (idx >= 0) return prev.map((i, k) => (k === idx ? { ...i, ...draft } : i));
+      const localId = `local-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      return [...prev, { ...draft, _id: localId, order: prev.filter((i) => i.location === draft.location).length }];
     });
+
+    try {
+      const saved = await saveLocationStockItem(draft);
+      setLocationStock((prev) => {
+        const idx = prev.findIndex((i) => i.location === draft.location && i.name === draft.name);
+        return idx >= 0 ? prev.map((i, k) => (k === idx ? saved : i)) : [...prev, saved];
+      });
+    } catch {
+      // no connection (or too slow to complete) — queue it and sync once back online
+      const queue = enqueue({ type: "save", payload: draft });
+      setPendingSyncCount(queue.length);
+    }
   };
 
   const onDeleteLocationStockItem = async (id) => {
     setLocationStock((prev) => prev.filter((i) => i._id !== id));
-    await deleteLocationStockItem(id).catch(() => {});
+    if (String(id).startsWith("local-")) return; // never made it to the server — nothing to delete there
+    try {
+      await deleteLocationStockItem(id);
+    } catch {
+      const queue = enqueue({ type: "delete", payload: { id } });
+      setPendingSyncCount(queue.length);
+    }
+  };
+
+  const onReorderLocationStock = async (location, ids) => {
+    try {
+      const updated = await reorderLocationStock(location, ids);
+      setLocationStock((prev) => [...prev.filter((i) => i.location !== location), ...updated]);
+    } catch {
+      // ignore — local drag order already reflects intent, will resync on next load
+    }
   };
 
   /* ---------------------- drawer navigation ---------------------- */
@@ -327,6 +400,15 @@ export default function Sgo() {
   });
   monthlyStockNames.sort((a, b) => a.localeCompare(b));
 
+  /* ---------------------- location counts, grouped by item name (for Monthly Stock display) ---------------------- */
+  const countedByName = {};
+  locationStock.forEach((item) => {
+    if (!item.name || !(item.qty > 0)) return;
+    const key = item.name.toLowerCase().trim();
+    if (!countedByName[key]) countedByName[key] = [];
+    countedByName[key].push({ location: item.location, qty: item.qty, unit: item.unit });
+  });
+
   /* ---------------------- render ---------------------- */
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
@@ -361,6 +443,7 @@ export default function Sgo() {
               items={monthlyStock}
               onSaveItem={onSaveMonthlyStockItem}
               onCountStock={() => setCountStockMode("layout")}
+              countedByName={countedByName}
             />
           </Suspense>
         )}
@@ -390,8 +473,12 @@ export default function Sgo() {
               onBack={() => setCountStockMode("layout")}
               onSaveItem={onSaveLocationStockItem}
               onDeleteItem={onDeleteLocationStockItem}
+              onReorder={onReorderLocationStock}
               knownNames={monthlyStockNames}
               knownUnits={monthlyStockUnits}
+              online={online}
+              pendingSyncCount={pendingSyncCount}
+              onRetrySync={flushLocationStockQueue}
             />
           </Suspense>
         )}
