@@ -88,6 +88,11 @@ export async function deleteLocationStockItem(id) {
   return data;
 }
 
+export async function reorderLocationStock(location, ids) {
+  const { data } = await api.put("/api/location-stock/reorder", { location, ids });
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);

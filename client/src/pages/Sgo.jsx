@@ -8,7 +8,7 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock } from "../api";
 import useTheme from "../hooks/useTheme";
 import monthlyStockSeed from "../monthlyStock";
 
@@ -236,6 +236,15 @@ export default function Sgo() {
     await deleteLocationStockItem(id).catch(() => {});
   };
 
+  const onReorderLocationStock = async (location, ids) => {
+    try {
+      const updated = await reorderLocationStock(location, ids);
+      setLocationStock((prev) => [...prev.filter((i) => i.location !== location), ...updated]);
+    } catch {
+      // ignore — local drag order already reflects intent, will resync on next load
+    }
+  };
+
   /* ---------------------- drawer navigation ---------------------- */
   const navigateTo = (view) => {
     setCurrentView(view);
@@ -390,6 +399,7 @@ export default function Sgo() {
               onBack={() => setCountStockMode("layout")}
               onSaveItem={onSaveLocationStockItem}
               onDeleteItem={onDeleteLocationStockItem}
+              onReorder={onReorderLocationStock}
               knownNames={monthlyStockNames}
               knownUnits={monthlyStockUnits}
             />
