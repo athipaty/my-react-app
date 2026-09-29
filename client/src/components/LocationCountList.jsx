@@ -86,7 +86,7 @@ function AddItemForm({ location, onAdd, onCancel, knownNames = [], knownUnits = 
   );
 }
 
-export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, onReorder, knownNames = [], knownUnits = {} }) {
+export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, onReorder, knownNames = [], knownUnits = {}, online = true, pendingSyncCount = 0, onRetrySync }) {
   const [editingId, setEditingId] = useState(null);
   const [adding, setAdding] = useState(false);
   const [order, setOrder] = useState(() => items.map((i) => i._id));
@@ -168,6 +168,20 @@ export default function LocationCountList({ location, items = [], onBack, onSave
         <span className="text-sm font-semibold text-green-700 dark:text-green-400 uppercase tracking-wide">{location}</span>
         <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold px-1.5 py-0.5 rounded-full">{items.length}</span>
       </div>
+
+      {!online && (
+        <div className="mb-2 px-3 py-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-xs text-amber-700 dark:text-amber-400">
+          📡 No connection — counts are saved on this device and will sync automatically once you're back online.
+        </div>
+      )}
+      {online && pendingSyncCount > 0 && (
+        <div className="mb-2 px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-xs text-blue-700 dark:text-blue-400 flex items-center justify-between gap-2">
+          <span>🔄 {pendingSyncCount} saved count{pendingSyncCount === 1 ? "" : "s"} waiting to sync</span>
+          {onRetrySync && (
+            <button onClick={onRetrySync} className="shrink-0 font-semibold underline">Retry now</button>
+          )}
+        </div>
+      )}
 
       {items.length > 1 && (
         <p className="text-xs text-gray-400 dark:text-gray-500 mb-2 px-1">Drag ⠿ to reorder</p>
