@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const UNITS = ["PKT", "KG", "CTN", "BOX", "BTL", "TIN", "TUB", "ROLL", "PC", "TRAY", "EA", "DRUM", "PCS", "g", "kg", "L", "ml"];
 
@@ -86,26 +87,58 @@ function AddItemForm({ location, onAdd, onCancel, knownNames = [], knownUnits = 
   );
 }
 
+function DeleteConfirmCard({ item, onCancel, onConfirm }) {
+  return createPortal(
+    <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 rounded-t-2xl w-full max-w-md p-5 pb-8">
+        <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-1">Delete this item?</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          "{item.name}" ({item.qty > 0 ? `${item.qty} ${item.unit}` : "no qty set"}) will be removed from this location's count. This can't be undone.
+        </p>
+        <div className="flex gap-2">
+          <button
+            onClick={onCancel}
+            className="flex-1 text-sm text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg py-2"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="flex-1 text-sm bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg py-2"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
 export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, onReorder, knownNames = [], knownUnits = {}, online = true, pendingSyncCount = 0, onRetrySync }) {
   const [editingId, setEditingId] = useState(null);
   const [adding, setAdding] = useState(false);
   const [order, setOrder] = useState(() => items.map((i) => i._id));
   const [draggingId, setDraggingId] = useState(null);
+  const [pendingReorder, setPendingReorder] = useState(null); // { newOrder, previousOrder } | null
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
   const draggingIdRef = useRef(null);
   const orderRef = useRef(order);
+  const dragStartOrderRef = useRef(order);
   const rowRefs = useRef(new Map());
 
   useEffect(() => { orderRef.current = order; }, [order]);
 
-  // Keep local order in sync with the prop, but not mid-drag (would fight the live reorder).
+  // Keep local order in sync with the prop, but not mid-drag or while a reorder is pending confirmation.
   useEffect(() => {
-    if (draggingIdRef.current) return;
+    if (draggingIdRef.current || pendingReorder) return;
     setOrder(items.map((i) => i._id));
-  }, [items]);
+  }, [items, pendingReorder]);
 
   const itemsById = new Map(items.map((i) => [i._id, i]));
   const orderedItems = order.map((id) => itemsById.get(id)).filter(Boolean);
+  const confirmDeleteItem = confirmDeleteId ? itemsById.get(confirmDeleteId) : null;
 
   const handleSave = async (draft) => {
     setEditingId(null);
@@ -145,15 +178,35 @@ export default function LocationCountList({ location, items = [], onBack, onSave
     setDraggingId(null);
     window.removeEventListener("pointermove", handlePointerMove);
     window.removeEventListener("pointerup", handlePointerUp);
-    if (id && onReorder) onReorder(location, orderRef.current);
+
+    const previousOrder = dragStartOrderRef.current;
+    const newOrder = orderRef.current;
+    const changed = id && newOrder.some((x, i) => x !== previousOrder[i]);
+    if (changed) {
+      setPendingReorder({ newOrder, previousOrder });
+    }
   };
 
   const handlePointerDown = (id) => (e) => {
+    if (pendingReorder) return; // resolve the current confirmation before starting another drag
     e.preventDefault();
+    dragStartOrderRef.current = order;
     draggingIdRef.current = id;
     setDraggingId(id);
     window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("pointerup", handlePointerUp);
+  };
+
+  const confirmReorder = () => {
+    if (!pendingReorder) return;
+    onReorder?.(location, pendingReorder.newOrder);
+    setPendingReorder(null);
+  };
+
+  const cancelReorder = () => {
+    if (!pendingReorder) return;
+    setOrder(pendingReorder.previousOrder);
+    setPendingReorder(null);
   };
 
   return (
@@ -182,8 +235,17 @@ export default function LocationCountList({ location, items = [], onBack, onSave
           )}
         </div>
       )}
+      {pendingReorder && (
+        <div className="mb-2 px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-xs text-green-700 dark:text-green-400 flex items-center justify-between gap-2">
+          <span>Confirm new order?</span>
+          <div className="flex gap-2 shrink-0">
+            <button onClick={cancelReorder} className="font-semibold text-gray-500 dark:text-gray-400">Cancel</button>
+            <button onClick={confirmReorder} className="font-semibold underline">Confirm</button>
+          </div>
+        </div>
+      )}
 
-      {items.length > 1 && (
+      {items.length > 1 && !pendingReorder && (
         <p className="text-xs text-gray-400 dark:text-gray-500 mb-2 px-1">Drag ⠿ to reorder</p>
       )}
 
@@ -199,7 +261,8 @@ export default function LocationCountList({ location, items = [], onBack, onSave
             >
               <button
                 onPointerDown={handlePointerDown(item._id)}
-                className="shrink-0 text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing text-lg leading-none px-1 touch-none select-none"
+                disabled={!!pendingReorder}
+                className="shrink-0 text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing text-lg leading-none px-1 touch-none select-none disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="Drag to reorder"
               >
                 ⠿
@@ -220,7 +283,7 @@ export default function LocationCountList({ location, items = [], onBack, onSave
                     {item.qty > 0 ? `${item.qty} ${item.unit}` : "— qty"}
                   </button>
                   <button
-                    onClick={() => onDeleteItem?.(item._id)}
+                    onClick={() => setConfirmDeleteId(item._id)}
                     className="text-red-400 hover:text-red-600 text-lg leading-none shrink-0"
                   >
                     ×
@@ -252,6 +315,17 @@ export default function LocationCountList({ location, items = [], onBack, onSave
           </button>
         )}
       </div>
+
+      {confirmDeleteItem && (
+        <DeleteConfirmCard
+          item={confirmDeleteItem}
+          onCancel={() => setConfirmDeleteId(null)}
+          onConfirm={() => {
+            onDeleteItem?.(confirmDeleteItem._id);
+            setConfirmDeleteId(null);
+          }}
+        />
+      )}
     </div>
   );
 }
