@@ -91,6 +91,10 @@ export default function MonthlyStockList({ items = [], onSaveItem, onCountStock,
               const key = `${item.supplier}::${item.name}`;
               const isEditing = editingKey === key;
               const counted = countedByName[item.name.toLowerCase().trim()];
+              const countedTotal = counted?.reduce((sum, c) => sum + c.qty, 0);
+              const countedUnit = counted?.[0]?.unit;
+              const hasOrderQty = item.qty > 0;
+              const hasCountedQty = !hasOrderQty && countedTotal > 0;
               return (
                 <div key={key} className={`flex items-center gap-3 px-3 py-2 ${j !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""}`}>
                   <div className="flex-1 min-w-0">
@@ -98,23 +102,21 @@ export default function MonthlyStockList({ items = [], onSaveItem, onCountStock,
                     <p className="text-xs text-gray-400 dark:text-gray-500">{item.unit}</p>
                   </div>
 
-                  <div className="shrink-0 flex flex-col items-end gap-0.5">
-                    {isEditing ? (
-                      <QtyEditor item={item} onSave={handleSave} />
-                    ) : (
-                      <button
-                        onClick={() => setEditingKey(key)}
-                        className="text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400 transition-colors min-w-[52px] text-center"
-                      >
-                        {item.qty > 0 ? `${item.qty} ${item.unit}` : "— qty"}
-                      </button>
-                    )}
-                    {counted && counted.length > 0 && (
-                      <p className="text-[11px] text-green-600 dark:text-green-400 text-right leading-tight">
-                        ✓ {counted.map((c) => `${c.qty} ${c.unit} (${c.location})`).join(", ")}
-                      </p>
-                    )}
-                  </div>
+                  {isEditing ? (
+                    <QtyEditor item={item} onSave={handleSave} />
+                  ) : (
+                    <button
+                      onClick={() => setEditingKey(key)}
+                      title={hasCountedQty ? "From Count Stock — tap to set an order qty" : undefined}
+                      className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed transition-colors min-w-[52px] text-center ${
+                        hasCountedQty
+                          ? "border-green-300 dark:border-green-700 text-green-600 dark:text-green-400 hover:border-green-500"
+                          : "border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400"
+                      }`}
+                    >
+                      {hasOrderQty ? `${item.qty} ${item.unit}` : hasCountedQty ? `${countedTotal} ${countedUnit}` : "— qty"}
+                    </button>
+                  )}
                 </div>
               );
             })}
