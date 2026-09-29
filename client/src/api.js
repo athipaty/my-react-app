@@ -58,6 +58,21 @@ export async function saveStockCount(count) {
   return data;
 }
 
+export async function fetchMonthlyStock() {
+  const { data } = await api.get("/api/monthly-stock");
+  return data;
+}
+
+export async function seedMonthlyStock(groups) {
+  const { data } = await api.post("/api/monthly-stock/seed", groups);
+  return data;
+}
+
+export async function saveMonthlyStockItem(item) {
+  const { data } = await api.post("/api/monthly-stock", item);
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);

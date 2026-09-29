@@ -8,11 +8,12 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem } from "../api";
 import useTheme from "../hooks/useTheme";
+import monthlyStockSeed from "../monthlyStock";
 
 const EditRecipeForm = lazy(() => import("../components/EditRecipeForm"));
-const InventoryList = lazy(() => import("../components/InventoryList"));
+const MonthlyStockList = lazy(() => import("../components/MonthlyStockList"));
 const IngredientEditModal = lazy(() => import("../components/IngredientEditModal"));
 const StandingOrders = lazy(() => import("./StandingOrders"));
 const StockCountList = lazy(() => import("../components/StockCountList"));
@@ -38,6 +39,7 @@ export default function Sgo() {
   const [ingredients, setIngredients] = useState([]);
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [stockCounts, setStockCounts] = useState([]);
+  const [monthlyStock, setMonthlyStock] = useState([]);
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -68,6 +70,23 @@ export default function Sgo() {
   /* ---------------------- load physical stock counts ---------------------- */
   useEffect(() => {
     fetchStockCounts().then(setStockCounts).catch(() => {});
+  }, []);
+
+  /* ---------------------- load monthly stock order sheet ---------------------- */
+  useEffect(() => {
+    async function load() {
+      try {
+        let data = await fetchMonthlyStock();
+        if (data.length === 0) {
+          await seedMonthlyStock(monthlyStockSeed);
+          data = await fetchMonthlyStock();
+        }
+        setMonthlyStock(data);
+      } catch {
+        // leave empty — view shows its own loading/empty state
+      }
+    }
+    load();
   }, []);
 
   /* ---------------------- navigation ---------------------- */
@@ -187,6 +206,14 @@ export default function Sgo() {
     });
   };
 
+  const onSaveMonthlyStockItem = async (draft) => {
+    const saved = await saveMonthlyStockItem(draft);
+    setMonthlyStock((prev) => {
+      const idx = prev.findIndex((i) => i._id === saved._id);
+      return idx >= 0 ? prev.map((i) => (i._id === saved._id ? saved : i)) : [...prev, saved];
+    });
+  };
+
   /* ---------------------- drawer navigation ---------------------- */
   const navigateTo = (view) => {
     setCurrentView(view);
@@ -274,7 +301,7 @@ export default function Sgo() {
           query={query}
           placeholder={
             currentView === "prices"
-              ? "Search ingredients..."
+              ? "Search monthly stock..."
               : currentView === "inventory"
               ? "Search inventory..."
               : "Search recipes..."
@@ -293,14 +320,12 @@ export default function Sgo() {
           onAdd={currentView === "recipes" && !selectedRecipe && !addMode ? () => setAddMode(true) : undefined}
         />
 
-        {/* Ingredient prices view */}
+        {/* Monthly stock order sheet view */}
         {currentView === "prices" && (
           <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
-            <InventoryList
-              activeRecipes={recipes.filter((r) => r.active)}
-              ingredients={ingredients}
-              onImage={setFullImage}
-              onSaveIngredient={onSaveIngredient}
+            <MonthlyStockList
+              items={monthlyStock}
+              onSaveItem={onSaveMonthlyStockItem}
             />
           </Suspense>
         )}
