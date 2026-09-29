@@ -96,23 +96,25 @@ export default function MonthlyStockList({ items = [], onSaveItem, onCountStock,
                   <div className="flex-1 min-w-0">
                     <span className="text-sm text-gray-700 dark:text-gray-200">{item.name}</span>
                     <p className="text-xs text-gray-400 dark:text-gray-500">{item.unit}</p>
+                  </div>
+
+                  <div className="shrink-0 flex flex-col items-end gap-0.5">
+                    {isEditing ? (
+                      <QtyEditor item={item} onSave={handleSave} />
+                    ) : (
+                      <button
+                        onClick={() => setEditingKey(key)}
+                        className="text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400 transition-colors min-w-[52px] text-center"
+                      >
+                        {item.qty > 0 ? `${item.qty} ${item.unit}` : "— qty"}
+                      </button>
+                    )}
                     {counted && counted.length > 0 && (
-                      <p className="text-xs text-green-600 dark:text-green-400 mt-0.5">
-                        ✓ Counted: {counted.map((c) => `${c.qty} ${c.unit} (${c.location})`).join(", ")}
+                      <p className="text-[11px] text-green-600 dark:text-green-400 text-right leading-tight">
+                        ✓ {counted.map((c) => `${c.qty} ${c.unit} (${c.location})`).join(", ")}
                       </p>
                     )}
                   </div>
-
-                  {isEditing ? (
-                    <QtyEditor item={item} onSave={handleSave} />
-                  ) : (
-                    <button
-                      onClick={() => setEditingKey(key)}
-                      className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-lg border border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400 transition-colors min-w-[52px] text-center"
-                    >
-                      {item.qty > 0 ? `${item.qty} ${item.unit}` : "— qty"}
-                    </button>
-                  )}
                 </div>
               );
             })}
