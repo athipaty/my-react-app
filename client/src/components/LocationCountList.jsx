@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const UNITS = ["g", "kg", "ml", "L", "pack", "piece", "bottle", "tube", "tin", "box", "ctn"];
+const UNITS = ["PKT", "KG", "CTN", "BOX", "BTL", "TIN", "TUB", "ROLL", "PC", "TRAY", "EA", "DRUM", "PCS", "g", "kg", "L", "ml"];
 
 function QtyEditor({ item, onSave }) {
   const [value, setValue] = useState(String(item.qty ?? ""));
@@ -33,13 +33,18 @@ function QtyEditor({ item, onSave }) {
   );
 }
 
-function AddItemForm({ location, onAdd, onCancel }) {
+function AddItemForm({ location, onAdd, onCancel, knownNames = [], knownUnits = {} }) {
   const [name, setName] = useState("");
   const [qty, setQty] = useState("");
   const [unit, setUnit] = useState("g");
   const nameRef = useRef(null);
 
   useEffect(() => { nameRef.current?.focus(); }, []);
+
+  const onNameBlur = () => {
+    const match = knownUnits[name.trim().toLowerCase()];
+    if (match) setUnit(match);
+  };
 
   const submit = () => {
     if (!name.trim()) return;
@@ -52,9 +57,15 @@ function AddItemForm({ location, onAdd, onCancel }) {
         ref={nameRef}
         value={name}
         onChange={(e) => setName(e.target.value)}
+        onBlur={onNameBlur}
         placeholder="Item name"
+        autoComplete="off"
+        list="known-location-item-names"
         className="flex-1 min-w-0 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-green-400"
       />
+      <datalist id="known-location-item-names">
+        {knownNames.map((n) => <option key={n} value={n} />)}
+      </datalist>
       <input
         type="number"
         value={qty}
@@ -75,7 +86,7 @@ function AddItemForm({ location, onAdd, onCancel }) {
   );
 }
 
-export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem }) {
+export default function LocationCountList({ location, items = [], onBack, onSaveItem, onDeleteItem, knownNames = [], knownUnits = {} }) {
   const [editingId, setEditingId] = useState(null);
   const [adding, setAdding] = useState(false);
 
@@ -140,7 +151,13 @@ export default function LocationCountList({ location, items = [], onBack, onSave
         )}
 
         {adding ? (
-          <AddItemForm location={location} onAdd={handleAdd} onCancel={() => setAdding(false)} />
+          <AddItemForm
+            location={location}
+            onAdd={handleAdd}
+            onCancel={() => setAdding(false)}
+            knownNames={knownNames}
+            knownUnits={knownUnits}
+          />
         ) : (
           <button
             onClick={() => setAdding(true)}

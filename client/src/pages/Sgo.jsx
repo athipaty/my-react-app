@@ -316,6 +316,17 @@ export default function Sgo() {
   });
   knownNames.sort((a, b) => a.localeCompare(b));
 
+  /* ---------------------- known monthly stock item names (for Count Stock add form) ---------------------- */
+  const monthlyStockNames = [];
+  const monthlyStockUnits = {};
+  monthlyStock.forEach((item) => {
+    if (!item.name) return;
+    monthlyStockNames.push(item.name);
+    const key = item.name.toLowerCase().trim();
+    if (item.unit && !monthlyStockUnits[key]) monthlyStockUnits[key] = item.unit;
+  });
+  monthlyStockNames.sort((a, b) => a.localeCompare(b));
+
   /* ---------------------- render ---------------------- */
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
@@ -379,6 +390,8 @@ export default function Sgo() {
               onBack={() => setCountStockMode("layout")}
               onSaveItem={onSaveLocationStockItem}
               onDeleteItem={onDeleteLocationStockItem}
+              knownNames={monthlyStockNames}
+              knownUnits={monthlyStockUnits}
             />
           </Suspense>
         )}
