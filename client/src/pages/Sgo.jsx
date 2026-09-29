@@ -336,6 +336,15 @@ export default function Sgo() {
   });
   monthlyStockNames.sort((a, b) => a.localeCompare(b));
 
+  /* ---------------------- location counts, grouped by item name (for Monthly Stock display) ---------------------- */
+  const countedByName = {};
+  locationStock.forEach((item) => {
+    if (!item.name || !(item.qty > 0)) return;
+    const key = item.name.toLowerCase().trim();
+    if (!countedByName[key]) countedByName[key] = [];
+    countedByName[key].push({ location: item.location, qty: item.qty, unit: item.unit });
+  });
+
   /* ---------------------- render ---------------------- */
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-2 pb-14 flex flex-col items-center overflow-x-hidden">
@@ -370,6 +379,7 @@ export default function Sgo() {
               items={monthlyStock}
               onSaveItem={onSaveMonthlyStockItem}
               onCountStock={() => setCountStockMode("layout")}
+              countedByName={countedByName}
             />
           </Suspense>
         )}
