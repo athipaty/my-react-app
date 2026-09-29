@@ -2,8 +2,9 @@ const LOCATIONS = {
   rack2: "Rack #2",
   freezer: "Freezer",
   chiller: "Chiller",
-  rack1: "Rack #1",
 };
+
+const RACK1_LEVELS = [1, 2, 3, 4].map((n) => `Rack #1 - Level ${n}`);
 
 function LocationBox({ label, className = "", onClick }) {
   return (
@@ -38,12 +39,16 @@ export default function CountStockLayout({ onSelectLocation }) {
             onClick={() => onSelectLocation(LOCATIONS.chiller)}
           />
         </div>
-        <div className="w-20 flex">
-          <LocationBox
-            label={LOCATIONS.rack1}
-            className="flex-1 w-full"
-            onClick={() => onSelectLocation(LOCATIONS.rack1)}
-          />
+        <div className="w-24 flex flex-col gap-1.5">
+          <p className="text-center text-[10px] text-gray-400 dark:text-gray-500 -mb-0.5">Rack #1</p>
+          {RACK1_LEVELS.map((location, i) => (
+            <LocationBox
+              key={location}
+              label={`Level ${i + 1}`}
+              className="flex-1 w-full text-xs"
+              onClick={() => onSelectLocation(location)}
+            />
+          ))}
         </div>
       </div>
     </div>
