@@ -8,13 +8,14 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount } from "../api";
 import useTheme from "../hooks/useTheme";
 
 const EditRecipeForm = lazy(() => import("../components/EditRecipeForm"));
 const InventoryList = lazy(() => import("../components/InventoryList"));
 const IngredientEditModal = lazy(() => import("../components/IngredientEditModal"));
 const StandingOrders = lazy(() => import("./StandingOrders"));
+const StockCountList = lazy(() => import("../components/StockCountList"));
 
 export default function Sgo() {
   const { theme, toggleTheme } = useTheme();
@@ -36,6 +37,7 @@ export default function Sgo() {
   const [recipeTab, setRecipeTab] = useState("sale"); // "sale" | "staff"
   const [ingredients, setIngredients] = useState([]);
   const [editingIngredient, setEditingIngredient] = useState(null);
+  const [stockCounts, setStockCounts] = useState([]);
 
   /* ---------------------- load recipes ---------------------- */
   useEffect(() => {
@@ -61,6 +63,11 @@ export default function Sgo() {
   /* ---------------------- load ingredient overrides ---------------------- */
   useEffect(() => {
     fetchIngredients().then(setIngredients).catch(() => {});
+  }, []);
+
+  /* ---------------------- load physical stock counts ---------------------- */
+  useEffect(() => {
+    fetchStockCounts().then(setStockCounts).catch(() => {});
   }, []);
 
   /* ---------------------- navigation ---------------------- */
@@ -172,6 +179,14 @@ export default function Sgo() {
     setEditingIngredient(null);
   };
 
+  const onSaveStockCount = async (draft) => {
+    const saved = await saveStockCount(draft);
+    setStockCounts((prev) => {
+      const idx = prev.findIndex((c) => c._id === saved._id);
+      return idx >= 0 ? prev.map((c) => (c._id === saved._id ? saved : c)) : [...prev, saved];
+    });
+  };
+
   /* ---------------------- drawer navigation ---------------------- */
   const navigateTo = (view) => {
     setCurrentView(view);
@@ -257,7 +272,13 @@ export default function Sgo() {
       <div className="max-w-md w-full">
         <SearchBar
           query={query}
-          placeholder={currentView === "prices" ? "Search ingredients..." : "Search recipes..."}
+          placeholder={
+            currentView === "prices"
+              ? "Search ingredients..."
+              : currentView === "inventory"
+              ? "Search inventory..."
+              : "Search recipes..."
+          }
           showBack={currentView === "recipes" && !!selectedRecipe && !editMode && !addMode}
           onBack={goBack}
           onChange={(v) => {
@@ -280,6 +301,18 @@ export default function Sgo() {
               ingredients={ingredients}
               onImage={setFullImage}
               onSaveIngredient={onSaveIngredient}
+            />
+          </Suspense>
+        )}
+
+        {/* Physical stock count view */}
+        {currentView === "inventory" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <StockCountList
+              recipes={recipes}
+              counts={stockCounts}
+              onImage={setFullImage}
+              onSaveCount={onSaveStockCount}
             />
           </Suspense>
         )}
