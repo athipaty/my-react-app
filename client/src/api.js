@@ -48,16 +48,6 @@ export async function saveInventoryFilter(excluded) {
   return data;
 }
 
-export async function fetchStockCounts() {
-  const { data } = await api.get("/api/stock-count");
-  return data;
-}
-
-export async function saveStockCount(count) {
-  const { data } = await api.post("/api/stock-count", count);
-  return data;
-}
-
 export async function fetchMonthlyStock() {
   const { data } = await api.get("/api/monthly-stock");
   return data;

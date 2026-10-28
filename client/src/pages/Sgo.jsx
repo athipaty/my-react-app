@@ -8,7 +8,7 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock, logVisit } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock, logVisit } from "../api";
 import useTheme from "../hooks/useTheme";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import monthlyStockSeed from "../monthlyStock";
@@ -17,8 +17,6 @@ import { getQueue, enqueue, setQueue as persistQueue } from "../utils/offlineQue
 const EditRecipeForm = lazy(() => import("../components/EditRecipeForm"));
 const MonthlyStockList = lazy(() => import("../components/MonthlyStockList"));
 const IngredientEditModal = lazy(() => import("../components/IngredientEditModal"));
-const StandingOrders = lazy(() => import("./StandingOrders"));
-const StockCountList = lazy(() => import("../components/StockCountList"));
 const CountStockLayout = lazy(() => import("../components/CountStockLayout"));
 const LocationCountList = lazy(() => import("../components/LocationCountList"));
 const UsageStats = lazy(() => import("../components/UsageStats"));
@@ -43,7 +41,6 @@ export default function Sgo() {
   const [recipeTab, setRecipeTab] = useState("sale"); // "sale" | "staff"
   const [ingredients, setIngredients] = useState([]);
   const [editingIngredient, setEditingIngredient] = useState(null);
-  const [stockCounts, setStockCounts] = useState([]);
   const [monthlyStock, setMonthlyStock] = useState([]);
   const [locationStock, setLocationStock] = useState([]);
   const [countStockMode, setCountStockMode] = useState(null); // null | "layout" | "<location name>"
@@ -74,11 +71,6 @@ export default function Sgo() {
   /* ---------------------- load ingredient overrides ---------------------- */
   useEffect(() => {
     fetchIngredients().then(setIngredients).catch(() => {});
-  }, []);
-
-  /* ---------------------- load physical stock counts ---------------------- */
-  useEffect(() => {
-    fetchStockCounts().then(setStockCounts).catch(() => {});
   }, []);
 
   /* ---------------------- load monthly stock order sheet ---------------------- */
@@ -262,14 +254,6 @@ export default function Sgo() {
     setEditingIngredient(null);
   };
 
-  const onSaveStockCount = async (draft) => {
-    const saved = await saveStockCount(draft);
-    setStockCounts((prev) => {
-      const idx = prev.findIndex((c) => c._id === saved._id);
-      return idx >= 0 ? prev.map((c) => (c._id === saved._id ? saved : c)) : [...prev, saved];
-    });
-  };
-
   const onSaveMonthlyStockItem = async (draft) => {
     const saved = await saveMonthlyStockItem(draft);
     setMonthlyStock((prev) => {
@@ -429,8 +413,6 @@ export default function Sgo() {
           placeholder={
             currentView === "prices"
               ? "Search monthly stock..."
-              : currentView === "inventory"
-              ? "Search inventory..."
               : "Search recipes..."
           }
           showBack={currentView === "recipes" && !!selectedRecipe && !editMode && !addMode}
@@ -494,29 +476,10 @@ export default function Sgo() {
           </Suspense>
         )}
 
-        {/* Physical stock count view */}
-        {currentView === "inventory" && (
-          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
-            <StockCountList
-              recipes={recipes}
-              counts={stockCounts}
-              onImage={setFullImage}
-              onSaveCount={onSaveStockCount}
-            />
-          </Suspense>
-        )}
-
         {/* Usage stats view */}
         {currentView === "usage" && (
           <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
             <UsageStats />
-          </Suspense>
-        )}
-
-        {/* Standing orders view */}
-        {currentView === "standingOrders" && (
-          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
-            <StandingOrders />
           </Suspense>
         )}
 
