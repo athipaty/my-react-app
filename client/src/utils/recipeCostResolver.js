@@ -9,7 +9,7 @@ const recipeIndex = recipes.reduce((acc, r) => {
 
 const MAX_DEPTH = 5;
 
-export function calculateRecipeCost(recipeName, usedQty, depth = 0) {
+export function calculateRecipeCost(recipeName, usedQty, depth = 0, overrides = {}) {
   if (!recipeName || usedQty <= 0 || depth > MAX_DEPTH) return 0;
 
   const recipe = recipeIndex[recipeName.toLowerCase().trim()];
@@ -37,6 +37,7 @@ export function calculateRecipeCost(recipeName, usedQty, depth = 0) {
       ingredientName: ing.item,
       usedQty: convertedQty,
       usedUnit: "g",
+      overrides,
     });
 
     if (rawCost > 0) return sum + rawCost;
@@ -45,7 +46,8 @@ export function calculateRecipeCost(recipeName, usedQty, depth = 0) {
     const nestedCost = calculateRecipeCost(
       ing.item,
       convertedQty,
-      depth + 1
+      depth + 1,
+      overrides
     );
 
     return sum + nestedCost;
