@@ -314,6 +314,12 @@ export default function Sgo() {
     setCountStockMode(null);
   };
 
+  const openRecipeFromElsewhere = (recipe) => {
+    setCurrentView("recipes");
+    setRecipeTab(recipe.type || "sale");
+    openRecipe(recipe);
+  };
+
   /* ---------------------- toggle active ---------------------- */
   const toggleActive = async (recipe) => {
     const newActive = !recipe.active;
@@ -491,7 +497,9 @@ export default function Sgo() {
               names={knownNames}
               overrides={ingredientOverrides}
               knownImages={knownImages}
+              recipes={recipes}
               onEditItem={setEditingIngredient}
+              onOpenRecipe={openRecipeFromElsewhere}
             />
           </Suspense>
         )}
