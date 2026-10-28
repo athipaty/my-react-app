@@ -1,5 +1,6 @@
 import { useState } from "react";
 import productSeed from "../productPrice";
+import ImageWithLoader from "./ImageWithLoader";
 
 const seedIndex = productSeed.reduce((acc, p) => {
   acc[p.name.toLowerCase().trim()] = p;
@@ -51,6 +52,19 @@ export default function PriceList({ names = [], overrides = {}, knownImages = {}
               i !== 0 ? "border-t border-gray-50 dark:border-gray-700" : ""
             } hover:bg-green-50 dark:hover:bg-green-900/10 transition-colors`}
           >
+            {item.image ? (
+              <ImageWithLoader
+                src={item.image}
+                alt={item.name}
+                wrapperClass="w-10 h-10 shrink-0"
+                imgClass="w-10 h-10 object-cover"
+                rounded="rounded-lg"
+              />
+            ) : (
+              <div className="w-10 h-10 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-300 dark:text-gray-600 text-xs">
+                —
+              </div>
+            )}
             <div className="flex-1 min-w-0">
               <span className="text-sm text-gray-700 dark:text-gray-200">{item.name}</span>
               <p className="text-xs text-gray-400 dark:text-gray-500">
