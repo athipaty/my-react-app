@@ -629,6 +629,7 @@ export default function Sgo() {
                 isActive={!!selectedRecipe.active}
                 onToggleActive={() => toggleActive(selectedRecipe)}
                 allRecipes={recipes}
+                knownImages={knownImages}
                 getPrice={(item, qty, unit) =>
                   calculateIngredientPrice({
                     ingredientName: item,

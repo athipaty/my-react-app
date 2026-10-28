@@ -12,6 +12,7 @@ export default function RecipeDetail({
   onToggleActive,
   getPrice,
   allRecipes = [],
+  knownImages = {},
 }) {
   const hasIngredients = recipe.ingredients && recipe.ingredients.length > 0;
 
@@ -81,6 +82,7 @@ export default function RecipeDetail({
                   onOpenRecipe={onOpenRecipe}
                   onImage={onImage}
                   allRecipes={allRecipes}
+                  knownImages={knownImages}
                   animationDelay={i * 30}
                 />
               ))}
