@@ -12,11 +12,15 @@ export function calculateIngredientPrice({
   ingredientName,
   usedQty,
   usedUnit,
+  overrides = {},
 }) {
   if (!ingredientName || usedQty <= 0) return 0;
 
   const key = ingredientName.toLowerCase().trim();
-  const product = priceIndex[key];
+  const override = overrides[key];
+  // 0️⃣ DB-saved price override takes priority over the static seed list
+  const product =
+    override?.price > 0 && override?.weight?.value > 0 ? override : priceIndex[key];
 
   // 1️⃣ Raw product pricing
   if (product?.price && product?.weight?.value) {
@@ -36,7 +40,7 @@ export function calculateIngredientPrice({
   }
 
   // 2️⃣ Nested recipe pricing
-  return calculateRecipeCost(ingredientName, usedQty);
+  return calculateRecipeCost(ingredientName, usedQty, 0, overrides);
 }
 
 

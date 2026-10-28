@@ -20,6 +20,7 @@ const IngredientEditModal = lazy(() => import("../components/IngredientEditModal
 const CountStockLayout = lazy(() => import("../components/CountStockLayout"));
 const LocationCountList = lazy(() => import("../components/LocationCountList"));
 const UsageStats = lazy(() => import("../components/UsageStats"));
+const PriceList = lazy(() => import("../components/PriceList"));
 
 export default function Sgo() {
   const { theme, toggleTheme } = useTheme();
@@ -356,6 +357,13 @@ export default function Sgo() {
     .filter((r) => (lcQuery ? r.name.toLowerCase().includes(lcQuery) : true))
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  /* ---------------------- saved price/weight overrides, by ingredient name (for price calculation + Price List) ---------------------- */
+  const ingredientOverrides = {};
+  ingredients.forEach((ov) => {
+    const key = ov.name?.toLowerCase().trim();
+    if (key) ingredientOverrides[key] = ov;
+  });
+
   /* ---------------------- known ingredient images ---------------------- */
   const knownImages = {};
   ingredients.forEach((ov) => {
@@ -472,6 +480,18 @@ export default function Sgo() {
               online={online}
               pendingSyncCount={pendingSyncCount}
               onRetrySync={flushLocationStockQueue}
+            />
+          </Suspense>
+        )}
+
+        {/* Price list view — per-ingredient price/weight/unit, editable */}
+        {currentView === "priceList" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <PriceList
+              names={knownNames}
+              overrides={ingredientOverrides}
+              knownImages={knownImages}
+              onEditItem={setEditingIngredient}
             />
           </Suspense>
         )}
@@ -606,6 +626,7 @@ export default function Sgo() {
                     ingredientName: item,
                     usedQty: Number(qty),
                     usedUnit: unit,
+                    overrides: ingredientOverrides,
                   })
                 }
               />
