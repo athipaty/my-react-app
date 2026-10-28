@@ -11,9 +11,11 @@ export default function IngredientRow({
   onOpenRecipe,
   onImage,
   allRecipes = [],
+  knownImages = {},
   animationDelay = 0,
 }) {
   const linked = resolveLinkedRecipe(ingredient.item, allRecipes);
+  const image = ingredient.image || knownImages[ingredient.item?.toLowerCase().trim()] || "";
 
   return (
     <tr
@@ -22,11 +24,11 @@ export default function IngredientRow({
     >
       <td className="border dark:border-gray-600 px-2">
         <ImageWithLoader
-          src={ingredient.image}
+          src={image}
           alt={ingredient.item}
           wrapperClass="w-12 h-12 cursor-pointer"
           imgClass="w-12 h-12 object-cover"
-          onClick={() => onImage(ingredient.image)}
+          onClick={() => onImage(image)}
         />
       </td>
 
