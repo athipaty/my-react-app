@@ -93,6 +93,16 @@ export async function reorderLocationStock(location, ids) {
   return data;
 }
 
+export async function logVisit() {
+  const { data } = await api.post("/api/visits");
+  return data;
+}
+
+export async function fetchVisitStats() {
+  const { data } = await api.get("/api/visits");
+  return data;
+}
+
 export async function uploadImage(file) {
   const form = new FormData();
   form.append("image", file);

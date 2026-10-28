@@ -8,7 +8,7 @@ import DrawerMenu from "../components/DrawerMenu";
 
 import { fmt, valid, strip0 } from "../utils/format";
 import { calculateIngredientPrice } from "../utils/priceResolver";
-import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock } from "../api";
+import { fetchRecipes, seedRecipes, updateRecipe, createRecipe, fetchIngredients, saveIngredient, fetchStockCounts, saveStockCount, fetchMonthlyStock, seedMonthlyStock, saveMonthlyStockItem, fetchLocationStock, saveLocationStockItem, deleteLocationStockItem, reorderLocationStock, logVisit } from "../api";
 import useTheme from "../hooks/useTheme";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import monthlyStockSeed from "../monthlyStock";
@@ -21,6 +21,7 @@ const StandingOrders = lazy(() => import("./StandingOrders"));
 const StockCountList = lazy(() => import("../components/StockCountList"));
 const CountStockLayout = lazy(() => import("../components/CountStockLayout"));
 const LocationCountList = lazy(() => import("../components/LocationCountList"));
+const UsageStats = lazy(() => import("../components/UsageStats"));
 
 export default function Sgo() {
   const { theme, toggleTheme } = useTheme();
@@ -100,6 +101,16 @@ export default function Sgo() {
   /* ---------------------- load per-location stock counts ---------------------- */
   useEffect(() => {
     fetchLocationStock().then(setLocationStock).catch(() => {});
+  }, []);
+
+  /* ---------------------- log one app-open per device per day ---------------------- */
+  useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    const key = "sgo-last-visit-logged";
+    if (localStorage.getItem(key) === today) return;
+    logVisit()
+      .then(() => localStorage.setItem(key, today))
+      .catch(() => {});
   }, []);
 
   /* ---------------------- sync queued offline counts ---------------------- */
@@ -492,6 +503,13 @@ export default function Sgo() {
               onImage={setFullImage}
               onSaveCount={onSaveStockCount}
             />
+          </Suspense>
+        )}
+
+        {/* Usage stats view */}
+        {currentView === "usage" && (
+          <Suspense fallback={<p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-10">Loading...</p>}>
+            <UsageStats />
           </Suspense>
         )}
 

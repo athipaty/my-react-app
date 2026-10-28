@@ -6,6 +6,7 @@ export default function DrawerMenu({ open, onClose, currentView, onNavigate, the
     { id: "prices",         icon: "💰", label: "Monthly Stock" },
     { id: "inventory",      icon: "📦", label: "Inventory" },
     { id: "standingOrders", icon: "📋", label: "Standing Orders" },
+    { id: "usage",          icon: "📊", label: "Usage" },
   ];
 
   return (
