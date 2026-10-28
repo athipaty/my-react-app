@@ -520,6 +520,7 @@ export default function Sgo() {
               onCancel={() => setAddMode(false)}
               knownImages={knownImages}
               knownNames={knownNames}
+              onIngredientImage={onSaveIngredient}
             />
           </Suspense>
         )}
@@ -615,6 +616,7 @@ export default function Sgo() {
                   onCancel={() => setEditMode(false)}
                   knownImages={knownImages}
                   knownNames={knownNames}
+                  onIngredientImage={onSaveIngredient}
                 />
               </Suspense>
             ) : (

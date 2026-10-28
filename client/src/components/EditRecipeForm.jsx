@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { uploadImage } from "../api";
 
-export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages = {}, knownNames = [] }) {
+export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages = {}, knownNames = [], onIngredientImage }) {
   const [draft, setDraft] = useState(() => {
     const r = JSON.parse(JSON.stringify(recipe));
     return {
@@ -69,6 +69,10 @@ export default function EditRecipeForm({ recipe, onSave, onCancel, knownImages =
     try {
       const url = await uploadImage(file);
       updateIng(i, "image", url);
+      // Also save to the shared ingredient database so Price List (and every
+      // other recipe using this ingredient) picks up the same image.
+      const name = draft.ingredients[i]?.item?.trim();
+      if (name) onIngredientImage?.({ name, image: url });
     } catch (err) {
       alert(`Upload failed: ${err?.response?.data?.error || err.message}`);
     } finally {
