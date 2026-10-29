@@ -96,9 +96,9 @@ export default function Sgo() {
     fetchLocationStock().then(setLocationStock).catch(() => {});
   }, []);
 
-  /* ---------------------- log one app-open per device per day ---------------------- */
+  /* ---------------------- log one app-open per device per day (Singapore calendar day, matching the backend) ---------------------- */
   useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Singapore" }).format(new Date());
     const key = "sgo-last-visit-logged";
     if (localStorage.getItem(key) === today) return;
     logVisit()
